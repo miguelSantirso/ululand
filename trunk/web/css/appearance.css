@@ -1,0 +1,194 @@
+@CHARSET "UTF-8";
+
+/**
+ * Appearance stylesheet. Everything related to the appearance, except the colors and the position
+ */
+
+/* defaults */
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+}
+
+a img,:link img,:visited img {
+	border: none;
+}
+
+body,html {
+	font-family: Verdana, Arial, sans-serif;
+}
+
+ul, ol{
+	margin-left: 1.2em;
+}
+
+
+
+/* font sizes */
+
+.xSmall {
+	font-size: x-small;
+}
+.small {
+	font-size: small;
+}
+.medium {
+	font-size: medium;
+}
+.large {
+	font-size: large;
+}
+.xLarge {
+	font-size: x-large;
+}
+.xxLarge {
+	font-size: xx-large;
+}
+.crazyLarge {
+	font-size: 4em;
+}
+
+
+
+/* horizontal list menu */
+
+.horizontalListMenu {
+	list-style-type: none;
+}
+
+
+
+/* message boxes */
+
+.messageBox {
+	border: 1px solid;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	text-align: center;
+	font-size: medium;
+}
+
+
+
+/* main menu */
+
+#mainMenu{
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border: 1px solid;
+}
+#mainMenu ul
+{
+	font-size: 15px;
+}
+#mainMenu li
+{
+	text-align: center;
+	border-left: 1px solid;
+}
+#mainMenu li a
+{
+	text-shadow: 1px 1px 1px #ddd;
+	text-decoration: none;
+	display: block;
+}
+#mainMenu li a:hover
+{
+	text-decoration: underline;
+}
+#mainMenu li a:active
+{
+	font-weight: bold;
+}
+#mainMenu li a img
+{
+	margin-top: -5px;
+}
+
+
+
+/* content */
+
+#content {
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border: 1px solid;
+}
+
+
+
+/* navigation links */
+
+a.navigation
+{
+	border: 1px solid;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+
+
+/* extensible links */
+
+span.extensible span.more
+{
+	font-weight: bold;
+}
+span.extensible:hover img.more
+{
+	cursor: pointer;
+}
+
+
+
+/* lists */
+
+ul.normalList, ol.normalList
+{
+	border: 1px solid;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+ul.normalList {
+	list-style-type: none;
+}
+ol.normalList {
+	list-style-position: inside;
+}
+.normalList li
+{
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+
+
+
+/* content boxes */
+
+div.normalBox {
+	border: 1px solid;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+.normalBox .header {
+	border-bottom: 1px solid;
+}
+
+
+/* games */
+
+img.gameThumbnail{
+	/*border: 1px solid;*/
+	border: 1px solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}

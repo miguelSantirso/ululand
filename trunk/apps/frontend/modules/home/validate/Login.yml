@@ -1,0 +1,22 @@
+methods:
+  post: [email, password]
+  
+fillin:
+  enabled: true  # Enable the form repopulation
+
+names:
+  email:
+    required: true
+    required_msg:       Debes introducir tu email
+    sfEmailValidator:
+      email_error:       El formato del email no es correcto
+    validators: [accountValidator]
+  password:
+    required: true
+    required_msg: Se requiere una contrase&ntilde;a
+    
+accountValidator:
+  class:         accountLoginValidator
+  param:
+    password:    password
+    login_error: La cuenta no existe o has introducido mal tu contrase&ntilde;a

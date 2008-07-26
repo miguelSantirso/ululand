@@ -1,0 +1,12 @@
+# default values
+all:
+  saltlength: 4
+  dir:
+    asset:  "assets"
+    game:   "UploadedGames"
+    widget: "UploadedWidgets"
+    avatarPiece: "UploadedPieces"
+  chat:
+    messages_history: 50
+    max_users:        50
+    active_time:      5

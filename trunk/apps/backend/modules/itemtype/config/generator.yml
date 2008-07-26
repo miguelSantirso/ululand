@@ -1,0 +1,15 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      ItemType
+    theme:            default
+    
+    fields:
+      name:              {name: Tipo de objetos}
+
+    list:
+      title: Listado de todos los tipos de objetos
+      display: [id, name]
+      object_actions:
+        _edit:      ~        
+        _delete:    ~

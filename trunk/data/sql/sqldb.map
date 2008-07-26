@@ -1,0 +1,7 @@
+# Sqlfile -> Database map
+lib.model.schema.sql=propel
+plugins.sfPropelActAsTaggableBehaviorPlugin.lib.model.schema.sql=propel
+plugins.nahoWikiPlugin.lib.model.schema.sql=propel
+plugins.sfSimpleForumPlugin.lib.model.schema.sql=propel
+plugins.sfPropelApprovableBehaviorPlugin.lib.model.schema.sql=propel
+plugins.sfPropelActAsRatableBehaviorPlugin.lib.model.schema.sql=propel

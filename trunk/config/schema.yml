@@ -1,0 +1,217 @@
+propel:
+  account:
+    _attributes: { phpName: Account }
+    id:
+    email:              { type: varchar(255), required: true }
+    hashedpassword:     { type: varchar(64) , required: true }
+    salt:               { type: varchar(4)  , required: true }
+    created_at:
+    confirmation_date:  { type: bu_timestamp, required: false }
+    account_level:      { type: integer     , required: true, default: 1 }
+    sessionid:          { type: integer     , required: true }
+    is_approved:   boolean
+  
+  avatar:
+    _attributes: { phpName: Avatar }
+    id:
+    account_id:
+    api_key:            { type: varchar(13),  required: false }
+    name:               { type: varchar(64) , required: true }
+    gender:             { type: integer     , required: true }
+    total_credits:      { type: integer     , required: false, default: 0 }
+    spent_credits:      { type: integer     , required: false, default: 0 }
+    
+  grupo:
+    _attributes: { phpName: Group }
+    id:
+    name:               { type: varchar(64) , required: true }
+    description:        { type: varchar(255), required: false }
+    
+  avatar_grupo:
+    _attributes: { phpName: Avatar_Group }
+    id:
+    avatar_id:       { type: integer, foreignTable: avatar, foreignReference: id, onDelete: cascade }
+    grupo_id:        { type: integer, foreignTable: grupo, foreignReference: id, onDelete: cascade }
+    is_owner:        { type: boolean, required: false, default: false }
+    is_approved:     { type: boolean, required: false, default: false }
+    
+  friendship:
+    _attributes: { phpName: Friendship }
+    id:                 ~
+    id_avatar_a:        { type: integer     , required: true }
+    a_confirmed:        { type: boolean     , required: false, default: false }
+    id_avatar_b:        { type: integer     , required: true }
+    b_confirmed:        { type: boolean     , required: false, default: false }
+    _foreignKeys:
+      -
+        foreignTable: avatar
+        references:
+          - { local: id_avatar_a, foreign: id }
+      -
+        foreignTable: avatar
+        references:
+          - { local: id_avatar_b, foreign: id }
+    
+  itemtype:
+    _attributes: { phpName: ItemType }
+    id:
+    name:               { type: varchar(64) , required: true }
+    
+  item:
+    _attributes: { phpName: Item }
+    id:
+    name:               { type: varchar(64) , required: true }
+    gender:             { type: integer     , required: true }
+    id_itemtype:        { type: integer     , required: true }
+    url:                { type: varchar(255), required: true }
+    description:        { type: varchar(255), required: false }
+    price:              { type: integer     , required: false, default: 0 }
+    _foreignKeys:
+      -
+        foreignTable: itemtype
+        onDelete:     cascade
+        references:
+          - { local: id_itemtype, foreign: id }
+          
+  avatarpiece:
+    _attributes: { phpName: AvatarPiece }
+    id:
+    name:               { type: varchar(64) , required: true }
+    description:        { type: varchar(255), required: false }
+    author_id:          { type: integer     , foreignTable: avatar, foreignReference: id, onDelete: setnull }
+    owner_id:           { type: integer     , foreignTable: avatar, foreignReference: id, onDelete: cascade }
+    url:                { type: varchar(255), required: true }
+    price:              { type: integer     , required: false, default: 0 }
+    type:               { type: varchar(64) , required: true }
+    in_use:             { type: boolean     , default: false }
+    created_at:
+    
+  avatar_item:
+    _attributes: { phpName: Avatar_Item }
+    id:
+    id_avatar:          { type: integer, required: true }
+    id_item:            { type: integer, required: true }
+    active:             { type: boolean, required: true }
+    _foreignKeys:
+      -
+        foreignTable: item
+        onDelete:     cascade
+        references:
+          - { local: id_item, foreign: id }
+      -
+        foreignTable: avatar
+        onDelete:     cascade
+        references:
+          - { local: id_avatar, foreign: id }
+          
+  game:
+    _attributes: { phpName: Game}
+    id:
+    privileges_level:  { type: integer,      required: true, default: 2 }
+    api_key:           { type: varchar(13),  required: false }
+    name:              { type: varchar(255), required: true }
+    description:       { type: longvarchar,  required: false }
+    thumbnail_path:    { type: varchar(255), required: false}
+    url:               { type: varchar(255), required: true }
+    width:             { type: integer,      required: true }
+    height:            { type: integer,      required: true }    
+    bgcolor:           { type: varchar(8),   required: false }
+    gameplays:         { type: integer,      required: false, default: 0 }
+    
+  widget:
+    _attributes: { phpName: Widget }
+    id:
+    privileges_level:  { type: integer,      required: true, default: 2 }
+    api_key:           { type: varchar(13),  required: false }
+    name:              { type: varchar(255), required: true }
+    description:       { type: longvarchar,  required: false }
+    url:               { type: varchar(255), required: true }
+    width:             { type: integer,      required: true }
+    height:            { type: integer,      required: true }    
+    bgcolor:           { type: varchar(8),   required: false }
+    
+  comment:
+    _attributes: {phpName: Comment}
+    id:                ~
+    id_avatar:         { type: integer, required: true }
+    id_game:           { type: integer, required: true }
+    text:              { type: longvarchar, required: true }
+    created_at:        ~
+    _foreignKeys: 
+      -
+        foreignTable: game
+        onDelete:     cascade
+        references: 
+          - { local: id_game, foreign: id }
+      -
+        foreignTable: avatar
+        onDelete:     cascade
+        references: 
+          - { local: id_avatar, foreign: id }
+          
+  message:
+    _attributes: {phpName: Message}
+    id:                ~
+    id_sender:         { type: integer, required: true }
+    id_recipient:      { type: integer, required: true }
+    text:              { type: longvarchar, required: true }
+    created_at:        ~
+    _foreignKeys: 
+      -
+        foreignTable: avatar
+        onDelete:     cascade
+        references: 
+          - { local: id_sender, foreign: id }
+      -
+        foreignTable: avatar
+        onDelete:     cascade
+        references: 
+          - { local: id_recipient, foreign: id }
+          
+  apisession:
+    _attributes:  {phpName: ApiSession}
+    id:                ~
+    session_id:        { type: varchar(12),  required: true }
+    avatar_apikey:     { type: varchar(13),  required: true }
+    api_key:           { type: varchar(13),  required: true }
+    privileges_level:  { type: integer,      required: true }
+    created_at:        ~
+          
+  gamestat:
+    _attributes: { phpName: GameStat }
+    id:                ~
+    game_id:           { type: integer,      foreignTable: game, foreignReference: id, onDelete: cascade }
+    gamestattype_id:   { type: integer,      foreignTable: gamestattype, foreignReference: id, onDelete: setnull }
+    name:              { type: varchar(255), required: true }
+    description:       { type: longvarchar }
+  
+  gamestattype:
+    _attributes: { phpName: GameStatType }
+    id:                ~
+    name:              { type: varchar(255), required: true }
+    description:       { type: longvarchar,  required: false }
+    
+  gamestat_avatar:
+    _attributes: { phpName: GameStat_Avatar }
+    id:                ~
+    gamestat_id:       { type: integer, foreignTable: gamestat, foreignReference: id, onDelete: cascade }
+    avatar_id:         { type: integer, foreignTable: avatar, foreignReference: id, onDelete: cascade }
+    value:             { type: integer,      required: true }
+    created_at:        ~
+    
+  chat_message:
+    _attributes: { phpName: ChatMessage }
+    id:
+    user_id:           { type: varchar(37),  required: true }
+    created_at:        ~
+    chat_message:      { type: longvarchar,  required: true }
+  
+  chat_useronline:
+    _attributes: {phpName: ChatUserOnline }
+    id:
+    user_id:           { type: varchar(37),  required: true }
+    user_name:         { type: varchar(64) , required: true }
+    avatar_api_key:    { type: varchar(13),  required: true }
+    created_at:        ~
+    updated_at:        ~
+    

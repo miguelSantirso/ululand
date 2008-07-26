@@ -1,0 +1,22 @@
+sfModalBoxPlugin symfony plugin
+===============================
+
+Installation
+------------
+symfony plugin-install http://plugins.symfony-project.com/sfModalBoxPlugin
+
+Usage
+-----
+<?php use_helper('ModalBox') ?>
+
+<?php echo m_link_to('link name', 
+                     '@remote_route_for_action', 
+                     array('title' => __('Retrieve Forgotten Password')), 
+                     array('width' => 400, 'height' => 180)) ?>
+
+
+License
+-------
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
