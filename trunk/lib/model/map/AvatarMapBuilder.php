@@ -34,7 +34,7 @@ class AvatarMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addForeignKey('ACCOUNT_ID', 'AccountId', 'int', CreoleTypes::INTEGER, 'account', 'ID', false, null);
+		$tMap->addForeignKey('PROFILE_ID', 'ProfileId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
 
 		$tMap->addColumn('API_KEY', 'ApiKey', 'string', CreoleTypes::VARCHAR, false, 13);
 

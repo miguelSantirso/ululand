@@ -3,7 +3,7 @@
 		<h2 class="alignCenter">&iexcl;Bienvenido!</h2>
 		<p class="alignCenter">Esto es <strong>ulu</strong>land</p>
 	</div>
-	<?php if( !$authenticated ): ?>
+	<?php if( !$sf_user->isAuthenticated() ): ?>
 		<div class="fixedWidth medium alignRight">
 			<div class="normalBox subtle">
 				<h3 class="alignCenter">&iexcl;<strong>ulu</strong>land es solo para socios!</h3>
@@ -22,12 +22,13 @@
 		 </div>
 		 
 	<?php else: ?>
+		<?php if($avatar) : ?>
 		<div class="fixedWidth medium alignRight">
 			<div class="normalBox normal">
 				<h3 class="header">Desde los foros...</h3>
 				<?php use_helper('Partial'); ?>
 				<div class="small">
-					<?php include_component('sfSimpleForum', 'latestPosts') ?>
+					<?php //include_component('sfSimpleForum', 'latestPosts') ?>
 				</div>
 			</div>
 		</div>
@@ -60,4 +61,5 @@
 				</ul>
 			</div>
 		</div>
+		<?php endif; ?>
 	<?php endif; ?>

@@ -1,7 +1,5 @@
 <?php
 
-// Requerimos la clase apiCommonActions que nos proporciona las acciones bï¿½sicas de la api al heredar de ella.
-require_once dirname(__FILE__).'/../../../lib/frontendCommonActions.class.php';
 
 /**
  * profile actions.
@@ -11,7 +9,7 @@ require_once dirname(__FILE__).'/../../../lib/frontendCommonActions.class.php';
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
  */
-class profileActions extends frontendCommonActions
+class profileActions extends sfActions
 {
 
 	/**
@@ -55,8 +53,8 @@ class profileActions extends frontendCommonActions
 	}
 	
 	/**
-	 * Acciones rápidas para interactuar con el avatar seleccionado.
-	 * Esto es lo que aparece cuando se pulsa en el botón + de los avatares
+	 * Acciones rï¿½pidas para interactuar con el avatar seleccionado.
+	 * Esto es lo que aparece cuando se pulsa en el botï¿½n + de los avatares
 	 * 
 	 */
 	public function executeQuickActions()

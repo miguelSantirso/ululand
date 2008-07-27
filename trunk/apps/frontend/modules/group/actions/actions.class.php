@@ -1,8 +1,5 @@
 <?php
 
-// Requerimos la clase apiCommonActions que nos proporciona las acciones bï¿½sicas de la api al heredar de ella.
-require_once dirname(__FILE__).'/../../../lib/frontendCommonActions.class.php';
-
 /**
  * group actions.
  *
@@ -11,7 +8,7 @@ require_once dirname(__FILE__).'/../../../lib/frontendCommonActions.class.php';
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
  */
-class groupActions extends frontendCommonActions
+class groupActions extends sfActions
 {
   /**
    * Executes index action
@@ -202,7 +199,7 @@ class groupActions extends frontendCommonActions
   	
   	foreach ($this->avatars_groups as $this->avatar_group):
   	
-  	// Eliminar la petición
+  	// Eliminar la peticiï¿½n
     $this->avatar_group->delete();
     
     endforeach;

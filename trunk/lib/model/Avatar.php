@@ -19,6 +19,15 @@ class Avatar extends BaseAvatar
 		return $this->name;
 	}
 
+	public function setProfile($v)
+	{
+		$this->setsfGuardUserProfile($v);		
+	}
+	public function getProfile()
+	{
+		$this->getsfGuardUserProfile();		
+	}
+	
 	public function setGender($value)
 	{
 		parent::setGender(AvatarPeer::getGenderFromValue($value));

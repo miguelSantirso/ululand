@@ -22,7 +22,7 @@ test:
     etag:                   off
 
 all:
-#  .actions:
+  .actions:
     default_module:         home   # Default module and action to be called when
     default_action:         index     # A routing rule doesn't set it
 #

@@ -4,24 +4,24 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 #-----------------------------------------------------------------------------
-#-- account
+#-- sf_guard_user_profile
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `account`;
+DROP TABLE IF EXISTS `sf_guard_user_profile`;
 
 
-CREATE TABLE `account`
+CREATE TABLE `sf_guard_user_profile`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`email` VARCHAR(255)  NOT NULL,
-	`hashedpassword` VARCHAR(64)  NOT NULL,
-	`salt` VARCHAR(4)  NOT NULL,
-	`created_at` DATETIME,
-	`confirmation_date` DATETIME,
-	`account_level` INTEGER default 1 NOT NULL,
-	`sessionid` INTEGER  NOT NULL,
-	`is_approved` INTEGER,
-	PRIMARY KEY (`id`)
+	`user_id` INTEGER  NOT NULL,
+	`username` VARCHAR(20),
+	`culture` VARCHAR(8),
+	PRIMARY KEY (`id`),
+	INDEX `sf_guard_user_profile_FI_1` (`user_id`),
+	CONSTRAINT `sf_guard_user_profile_FK_1`
+		FOREIGN KEY (`user_id`)
+		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
@@ -34,17 +34,18 @@ DROP TABLE IF EXISTS `avatar`;
 CREATE TABLE `avatar`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`account_id` INTEGER,
+	`profile_id` INTEGER  NOT NULL,
 	`api_key` VARCHAR(13),
 	`name` VARCHAR(64)  NOT NULL,
 	`gender` INTEGER  NOT NULL,
 	`total_credits` INTEGER default 0,
 	`spent_credits` INTEGER default 0,
 	PRIMARY KEY (`id`),
-	INDEX `avatar_FI_1` (`account_id`),
+	INDEX `avatar_FI_1` (`profile_id`),
 	CONSTRAINT `avatar_FK_1`
-		FOREIGN KEY (`account_id`)
-		REFERENCES `account` (`id`)
+		FOREIGN KEY (`profile_id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

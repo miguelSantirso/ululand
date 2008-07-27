@@ -1,5 +1,9 @@
-# SfGuardAuth
+# Authentification
 
+register:
+  url:   /register
+  param: { module: sfGuardAuth, action: register }
+  
 sf_guard_signin:
   url:   /login
   param: { module: sfGuardAuth, action: signin }

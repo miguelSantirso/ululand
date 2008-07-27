@@ -6,7 +6,12 @@
 </div>
 
 	<ul>
-		<li><?php echo link_to('Administrar cuentas de usuario', 'account'); ?></li>
+		<li><?php echo link_to('Administrar cuentas de usuario', 'sfGuardUser'); ?>
+			<ul>
+				<li><?php echo link_to('Administrar grupos de usuarios', 'sfGuardGroup'); ?></li>
+				<li><?php echo link_to('Administrar permisos de usuarios', 'sfGuardPermission'); ?></li>
+			</ul>
+		</li>
 		<li><?php echo link_to('Administrar avatares', 'avatar'); ?>
 			<ul>
 				<li><?php echo link_to('Administrar amistades', 'friendship'); ?></li>

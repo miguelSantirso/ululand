@@ -4,8 +4,6 @@
 ?>
 <?php
 
-// Requerimos la clase apiCommonActions que nos proporciona las acciones b�sicas de la api al heredar de ella.
-require_once dirname(__FILE__).'/../../../lib/frontendCommonActions.class.php';
 
 /**
  * game actions.
@@ -15,7 +13,7 @@ require_once dirname(__FILE__).'/../../../lib/frontendCommonActions.class.php';
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
  */
-class gameActions extends frontendCommonActions
+class gameActions extends sfActions
 {
   
   public function executeIndex()

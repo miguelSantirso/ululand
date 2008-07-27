@@ -55,7 +55,7 @@ class avatarActions extends apiCommonActions
 		
 		// Obtener el avatar
 		$avatar = AvatarPeer::retrieveByApiKey($this->getRequestParameter('avatarApiKey'));
-
+		
 		// Modificamos el nombre
 		// TODO: Aqu� seguramente se deber�a validar el nombre para comprobar que no es nada raro
 		$avatar->setName($this->getRequestParameter('avatarName'));

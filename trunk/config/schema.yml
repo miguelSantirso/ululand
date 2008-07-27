@@ -1,22 +1,18 @@
 propel:
-  account:
-    _attributes: { phpName: Account }
+  sf_guard_user_profile:
+    _attributes: { phpName: sfGuardUserProfile }
     id:
-    email:              { type: varchar(255), required: true }
-    hashedpassword:     { type: varchar(64) , required: true }
-    salt:               { type: varchar(4)  , required: true }
-    created_at:
-    confirmation_date:  { type: bu_timestamp, required: false }
-    account_level:      { type: integer     , required: true, default: 1 }
-    sessionid:          { type: integer     , required: true }
-    is_approved:   boolean
-  
+    user_id:     { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+    username:    varchar(30)
+    first_name:  varchar(20)
+    last_name:   varchar(20)
+    culture:     varchar(8)
+    
   avatar:
     _attributes: { phpName: Avatar }
     id:
-    account_id:
+    profile_id:         { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
     api_key:            { type: varchar(13),  required: false }
-    name:               { type: varchar(64) , required: true }
     gender:             { type: integer     , required: true }
     total_credits:      { type: integer     , required: false, default: 0 }
     spent_credits:      { type: integer     , required: false, default: 0 }

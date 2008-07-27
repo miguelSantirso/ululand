@@ -13,7 +13,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 
 	
-	protected $account_id;
+	protected $profile_id;
 
 
 	
@@ -36,7 +36,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 	protected $spent_credits = 0;
 
 	
-	protected $aAccount;
+	protected $asfGuardUserProfile;
 
 	
 	protected $collAvatar_Groups;
@@ -112,10 +112,10 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getAccountId()
+	public function getProfileId()
 	{
 
-		return $this->account_id;
+		return $this->profile_id;
 	}
 
 	
@@ -170,7 +170,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setAccountId($v)
+	public function setProfileId($v)
 	{
 
 		
@@ -179,13 +179,13 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 			$v = (int) $v;
 		}
 
-		if ($this->account_id !== $v) {
-			$this->account_id = $v;
-			$this->modifiedColumns[] = AvatarPeer::ACCOUNT_ID;
+		if ($this->profile_id !== $v) {
+			$this->profile_id = $v;
+			$this->modifiedColumns[] = AvatarPeer::PROFILE_ID;
 		}
 
-		if ($this->aAccount !== null && $this->aAccount->getId() !== $v) {
-			$this->aAccount = null;
+		if ($this->asfGuardUserProfile !== null && $this->asfGuardUserProfile->getId() !== $v) {
+			$this->asfGuardUserProfile = null;
 		}
 
 	} 
@@ -276,7 +276,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 			$this->id = $rs->getInt($startcol + 0);
 
-			$this->account_id = $rs->getInt($startcol + 1);
+			$this->profile_id = $rs->getInt($startcol + 1);
 
 			$this->api_key = $rs->getString($startcol + 2);
 
@@ -383,11 +383,11 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aAccount !== null) {
-				if ($this->aAccount->isModified()) {
-					$affectedRows += $this->aAccount->save($con);
+			if ($this->asfGuardUserProfile !== null) {
+				if ($this->asfGuardUserProfile->isModified()) {
+					$affectedRows += $this->asfGuardUserProfile->save($con);
 				}
-				$this->setAccount($this->aAccount);
+				$this->setsfGuardUserProfile($this->asfGuardUserProfile);
 			}
 
 
@@ -519,9 +519,9 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aAccount !== null) {
-				if (!$this->aAccount->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aAccount->getValidationFailures());
+			if ($this->asfGuardUserProfile !== null) {
+				if (!$this->asfGuardUserProfile->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->asfGuardUserProfile->getValidationFailures());
 				}
 			}
 
@@ -633,7 +633,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 				return $this->getId();
 				break;
 			case 1:
-				return $this->getAccountId();
+				return $this->getProfileId();
 				break;
 			case 2:
 				return $this->getApiKey();
@@ -661,7 +661,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 		$keys = AvatarPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
-			$keys[1] => $this->getAccountId(),
+			$keys[1] => $this->getProfileId(),
 			$keys[2] => $this->getApiKey(),
 			$keys[3] => $this->getName(),
 			$keys[4] => $this->getGender(),
@@ -686,7 +686,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 				$this->setId($value);
 				break;
 			case 1:
-				$this->setAccountId($value);
+				$this->setProfileId($value);
 				break;
 			case 2:
 				$this->setApiKey($value);
@@ -711,7 +711,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 		$keys = AvatarPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setAccountId($arr[$keys[1]]);
+		if (array_key_exists($keys[1], $arr)) $this->setProfileId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setApiKey($arr[$keys[2]]);
 		if (array_key_exists($keys[3], $arr)) $this->setName($arr[$keys[3]]);
 		if (array_key_exists($keys[4], $arr)) $this->setGender($arr[$keys[4]]);
@@ -725,7 +725,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 		$criteria = new Criteria(AvatarPeer::DATABASE_NAME);
 
 		if ($this->isColumnModified(AvatarPeer::ID)) $criteria->add(AvatarPeer::ID, $this->id);
-		if ($this->isColumnModified(AvatarPeer::ACCOUNT_ID)) $criteria->add(AvatarPeer::ACCOUNT_ID, $this->account_id);
+		if ($this->isColumnModified(AvatarPeer::PROFILE_ID)) $criteria->add(AvatarPeer::PROFILE_ID, $this->profile_id);
 		if ($this->isColumnModified(AvatarPeer::API_KEY)) $criteria->add(AvatarPeer::API_KEY, $this->api_key);
 		if ($this->isColumnModified(AvatarPeer::NAME)) $criteria->add(AvatarPeer::NAME, $this->name);
 		if ($this->isColumnModified(AvatarPeer::GENDER)) $criteria->add(AvatarPeer::GENDER, $this->gender);
@@ -761,7 +761,7 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setAccountId($this->account_id);
+		$copyObj->setProfileId($this->profile_id);
 
 		$copyObj->setApiKey($this->api_key);
 
@@ -843,32 +843,32 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 	}
 
 	
-	public function setAccount($v)
+	public function setsfGuardUserProfile($v)
 	{
 
 
 		if ($v === null) {
-			$this->setAccountId(NULL);
+			$this->setProfileId(NULL);
 		} else {
-			$this->setAccountId($v->getId());
+			$this->setProfileId($v->getId());
 		}
 
 
-		$this->aAccount = $v;
+		$this->asfGuardUserProfile = $v;
 	}
 
 
 	
-	public function getAccount($con = null)
+	public function getsfGuardUserProfile($con = null)
 	{
-		if ($this->aAccount === null && ($this->account_id !== null)) {
-						include_once 'lib/model/om/BaseAccountPeer.php';
+		if ($this->asfGuardUserProfile === null && ($this->profile_id !== null)) {
+						include_once 'lib/model/om/BasesfGuardUserProfilePeer.php';
 
-			$this->aAccount = AccountPeer::retrieveByPK($this->account_id, $con);
+			$this->asfGuardUserProfile = sfGuardUserProfilePeer::retrieveByPK($this->profile_id, $con);
 
 			
 		}
-		return $this->aAccount;
+		return $this->asfGuardUserProfile;
 	}
 
 	

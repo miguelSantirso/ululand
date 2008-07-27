@@ -23,7 +23,7 @@ abstract class BaseAvatarPeer {
 	const ID = 'avatar.ID';
 
 	
-	const ACCOUNT_ID = 'avatar.ACCOUNT_ID';
+	const PROFILE_ID = 'avatar.PROFILE_ID';
 
 	
 	const API_KEY = 'avatar.API_KEY';
@@ -46,17 +46,17 @@ abstract class BaseAvatarPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'AccountId', 'ApiKey', 'Name', 'Gender', 'TotalCredits', 'SpentCredits', ),
-		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID, AvatarPeer::ACCOUNT_ID, AvatarPeer::API_KEY, AvatarPeer::NAME, AvatarPeer::GENDER, AvatarPeer::TOTAL_CREDITS, AvatarPeer::SPENT_CREDITS, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'account_id', 'api_key', 'name', 'gender', 'total_credits', 'spent_credits', ),
+		BasePeer::TYPE_PHPNAME => array ('Id', 'ProfileId', 'ApiKey', 'Name', 'Gender', 'TotalCredits', 'SpentCredits', ),
+		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID, AvatarPeer::PROFILE_ID, AvatarPeer::API_KEY, AvatarPeer::NAME, AvatarPeer::GENDER, AvatarPeer::TOTAL_CREDITS, AvatarPeer::SPENT_CREDITS, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'profile_id', 'api_key', 'name', 'gender', 'total_credits', 'spent_credits', ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'AccountId' => 1, 'ApiKey' => 2, 'Name' => 3, 'Gender' => 4, 'TotalCredits' => 5, 'SpentCredits' => 6, ),
-		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID => 0, AvatarPeer::ACCOUNT_ID => 1, AvatarPeer::API_KEY => 2, AvatarPeer::NAME => 3, AvatarPeer::GENDER => 4, AvatarPeer::TOTAL_CREDITS => 5, AvatarPeer::SPENT_CREDITS => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'account_id' => 1, 'api_key' => 2, 'name' => 3, 'gender' => 4, 'total_credits' => 5, 'spent_credits' => 6, ),
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ProfileId' => 1, 'ApiKey' => 2, 'Name' => 3, 'Gender' => 4, 'TotalCredits' => 5, 'SpentCredits' => 6, ),
+		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID => 0, AvatarPeer::PROFILE_ID => 1, AvatarPeer::API_KEY => 2, AvatarPeer::NAME => 3, AvatarPeer::GENDER => 4, AvatarPeer::TOTAL_CREDITS => 5, AvatarPeer::SPENT_CREDITS => 6, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'profile_id' => 1, 'api_key' => 2, 'name' => 3, 'gender' => 4, 'total_credits' => 5, 'spent_credits' => 6, ),
 		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
@@ -113,7 +113,7 @@ abstract class BaseAvatarPeer {
 
 		$criteria->addSelectColumn(AvatarPeer::ID);
 
-		$criteria->addSelectColumn(AvatarPeer::ACCOUNT_ID);
+		$criteria->addSelectColumn(AvatarPeer::PROFILE_ID);
 
 		$criteria->addSelectColumn(AvatarPeer::API_KEY);
 
@@ -211,7 +211,7 @@ abstract class BaseAvatarPeer {
 	}
 
 	
-	public static function doCountJoinAccount(Criteria $criteria, $distinct = false, $con = null)
+	public static function doCountJoinsfGuardUserProfile(Criteria $criteria, $distinct = false, $con = null)
 	{
 				$criteria = clone $criteria;
 
@@ -227,7 +227,7 @@ abstract class BaseAvatarPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(AvatarPeer::ACCOUNT_ID, AccountPeer::ID);
+		$criteria->addJoin(AvatarPeer::PROFILE_ID, sfGuardUserProfilePeer::ID);
 
 		$rs = AvatarPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -239,7 +239,7 @@ abstract class BaseAvatarPeer {
 
 
 	
-	public static function doSelectJoinAccount(Criteria $c, $con = null)
+	public static function doSelectJoinsfGuardUserProfile(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
@@ -249,9 +249,9 @@ abstract class BaseAvatarPeer {
 
 		AvatarPeer::addSelectColumns($c);
 		$startcol = (AvatarPeer::NUM_COLUMNS - AvatarPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-		AccountPeer::addSelectColumns($c);
+		sfGuardUserProfilePeer::addSelectColumns($c);
 
-		$c->addJoin(AvatarPeer::ACCOUNT_ID, AccountPeer::ID);
+		$c->addJoin(AvatarPeer::PROFILE_ID, sfGuardUserProfilePeer::ID);
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
@@ -263,7 +263,7 @@ abstract class BaseAvatarPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = AccountPeer::getOMClass();
+			$omClass = sfGuardUserProfilePeer::getOMClass();
 
 			$cls = Propel::import($omClass);
 			$obj2 = new $cls();
@@ -271,7 +271,7 @@ abstract class BaseAvatarPeer {
 
 			$newObject = true;
 			foreach($results as $temp_obj1) {
-				$temp_obj2 = $temp_obj1->getAccount(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getsfGuardUserProfile(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 										$temp_obj2->addAvatar($obj1); 					break;
 				}
@@ -302,7 +302,7 @@ abstract class BaseAvatarPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(AvatarPeer::ACCOUNT_ID, AccountPeer::ID);
+		$criteria->addJoin(AvatarPeer::PROFILE_ID, sfGuardUserProfilePeer::ID);
 
 		$rs = AvatarPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -325,10 +325,10 @@ abstract class BaseAvatarPeer {
 		AvatarPeer::addSelectColumns($c);
 		$startcol2 = (AvatarPeer::NUM_COLUMNS - AvatarPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		AccountPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + AccountPeer::NUM_COLUMNS;
+		sfGuardUserProfilePeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + sfGuardUserProfilePeer::NUM_COLUMNS;
 
-		$c->addJoin(AvatarPeer::ACCOUNT_ID, AccountPeer::ID);
+		$c->addJoin(AvatarPeer::PROFILE_ID, sfGuardUserProfilePeer::ID);
 
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
@@ -344,7 +344,7 @@ abstract class BaseAvatarPeer {
 
 
 					
-			$omClass = AccountPeer::getOMClass();
+			$omClass = sfGuardUserProfilePeer::getOMClass();
 
 
 			$cls = Propel::import($omClass);
@@ -354,7 +354,7 @@ abstract class BaseAvatarPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getAccount(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getsfGuardUserProfile(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addAvatar($obj1); 					break;
 				}
