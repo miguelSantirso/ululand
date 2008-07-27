@@ -1,55 +1,16 @@
-forum_home: 
-  url:   /forum
-  param: { module: sfSimpleForum, action: forumList }
+# SfGuardAuth
 
-forum_latest_messages: 
-  url:   /forum/latest/:page
-  param: { module: sfSimpleForum, action: latestPosts, page: 1 }
-  requirements: { page: \d+ }
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
 
-forum_latest_messages_feed: 
-  url:   /forum/latest/feed
-  param: { module: sfSimpleForum, action: latestPostsFeed }
-  
-forum_forum: 
-  url:   /forum/:forum_name/:page
-  param: { module: sfSimpleForum, action: forum, page: 1 }
-  requirements: { page: \d+ }
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
 
-forum_latest_messages_for_forum: 
-  url:   /forum/:forum_name/latest/:page
-  param: { module: sfSimpleForum, action: latestForumPosts, page: 1 }
-  requirements: { page: \d+ }
-
-forum_latest_messages_for_forum_feed: 
-  url:   /forum/:forum_name/latest/feed
-  param: { module: sfSimpleForum, action: latestForumPostsFeed }
-
-forum_topic: 
-  url:   /forum/topic/:id/:stripped_title/:page
-  param: { module: sfSimpleForum, action: topic, page: 1 }
-  requirements: { page: \d+ }
-
-forum_topic_feed:
-  url:   /forum/topic/:id/:stripped_title/feed
-  param: { module: sfSimpleForum, action: topicFeed }
-
-forum_new_topic:
-  url:   /forum/new_topic/:forum_name
-  param: { module: sfSimpleForum, action: createTopic }
-
-forum_latest_messages_by_user: 
-  url:   /forum/user/:username/:page
-  param: { module: sfSimpleForum, action: latestUserPosts, page: 1 }
-  requirements: { page: \d+ }
-
-forum_latest_messages_by_user_feed: 
-  url:   /forum/user/:username/rss
-  param: { module: sfSimpleForum, action: latestUserPostsFeed }
-  
-forum_post: 
-  url:   /forum_message/:id
-  param: { module: sfSimpleForum, action: post }
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
 
 # Messages and comments
 add_message:

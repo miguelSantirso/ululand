@@ -323,8 +323,6 @@ abstract class BaseAccountPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
-			$affectedRows += AccountPeer::doOnDeleteCascade(new Criteria(), $con);
-			AccountPeer::doOnDeleteSetNull(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(AccountPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -355,55 +353,13 @@ abstract class BaseAccountPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			$affectedRows += AccountPeer::doOnDeleteCascade($criteria, $con);AccountPeer::doOnDeleteSetNull($criteria, $con);
+			
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
 			$con->rollback();
 			throw $e;
-		}
-	}
-
-	
-	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
-	{
-				$affectedRows = 0;
-
-				$objects = AccountPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-
-			include_once 'plugins/sfSimpleForumPlugin/lib/model/sfSimpleForumPost.php';
-
-						$c = new Criteria();
-			
-			$c->add(sfSimpleForumPostPeer::USER_ID, $obj->getId());
-			$affectedRows += sfSimpleForumPostPeer::doDelete($c, $con);
-
-			include_once 'plugins/sfSimpleForumPlugin/lib/model/sfSimpleForumTopicView.php';
-
-						$c = new Criteria();
-			
-			$c->add(sfSimpleForumTopicViewPeer::USER_ID, $obj->getId());
-			$affectedRows += sfSimpleForumTopicViewPeer::doDelete($c, $con);
-		}
-		return $affectedRows;
-	}
-
-	
-	protected static function doOnDeleteSetNull(Criteria $criteria, Connection $con)
-	{
-
-				$objects = AccountPeer::doSelect($criteria, $con);
-		foreach($objects as $obj) {
-
-						$selectCriteria = new Criteria(AccountPeer::DATABASE_NAME);
-			$updateValues = new Criteria(AccountPeer::DATABASE_NAME);
-			$selectCriteria->add(sfSimpleForumTopicPeer::USER_ID, $obj->getId());
-			$updateValues->add(sfSimpleForumTopicPeer::USER_ID, null);
-
-			BasePeer::doUpdate($selectCriteria, $updateValues, $con); 
 		}
 	}
 
