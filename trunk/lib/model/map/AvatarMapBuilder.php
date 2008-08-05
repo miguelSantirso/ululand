@@ -38,8 +38,6 @@ class AvatarMapBuilder {
 
 		$tMap->addColumn('API_KEY', 'ApiKey', 'string', CreoleTypes::VARCHAR, false, 13);
 
-		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 64);
-
 		$tMap->addColumn('GENDER', 'Gender', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('TOTAL_CREDITS', 'TotalCredits', 'int', CreoleTypes::INTEGER, false, null);

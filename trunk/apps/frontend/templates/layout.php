@@ -24,7 +24,7 @@
 			<?php echo tooltip_script('logoutLink', 'La pr&oacute;xima vez que entres tendr&aacute;s que identificarte.', 'creamy', 'title: "Salir", stem: "topRight", hook: {target: "bottomLeft", tip: "topRight"}, width: 225, offset: {x: 10, y: 0}'); ?>
 		<?php } else { ?>
 			<li id="loginLink"><?php echo link_to(__('Login'), '@sf_guard_signin'); ?></li>
-			<li id="registerLink"><?php echo link_to(__('Register'), '@sf_guard_signin'); ?></li>
+			<li id="registerLink"><?php echo link_to(__('Register'), '@register'); ?></li>
 			<?php echo tooltip_script('loginLink', '&iexcl;Haz clic para iniciar sesi&oacute;n y comenzar a divertirte!', 'creamy', 'title: "Entrar en Ululand", stem: "topRight", hook: {target: "bottomLeft", tip: "topRight"}, width: 175, offset: {x: 10, y: 0}'); ?>
 			<?php echo tooltip_script('registerLink', 'Haz clic para abrir una cuenta nueva en Ululand.', 'creamy', 'title: "Registrarse en Ululand", stem: "topRight", hook: {target: "bottomLeft", tip: "topRight"}, width: 175, offset: {x: 10, y: 0}'); ?>
 		<?php } ?>
@@ -80,6 +80,21 @@
 <?php echo tooltip_script('forumMenuLink', 'El foro de <strong>ulu</strong>land', 'lightGrey', 'stem: "topMiddle"'); ?>
 <?php echo tooltip_script('wikiMenuLink', 'El Wiki de <strong>ulu</strong>land', 'lightGrey', 'stem: "topMiddle"'); ?>
 <?php echo tooltip_script('blogMenuLink', 'Ir al blog de <span style="font-family: Serif">pncil</span>.', 'lightGrey', 'stem: "topMiddle"'); ?>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1096368-6");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
 
 </body>
 </html>

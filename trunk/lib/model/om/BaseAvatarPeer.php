@@ -13,7 +13,7 @@ abstract class BaseAvatarPeer {
 	const CLASS_DEFAULT = 'lib.model.Avatar';
 
 	
-	const NUM_COLUMNS = 7;
+	const NUM_COLUMNS = 6;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -27,9 +27,6 @@ abstract class BaseAvatarPeer {
 
 	
 	const API_KEY = 'avatar.API_KEY';
-
-	
-	const NAME = 'avatar.NAME';
 
 	
 	const GENDER = 'avatar.GENDER';
@@ -46,18 +43,18 @@ abstract class BaseAvatarPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'ProfileId', 'ApiKey', 'Name', 'Gender', 'TotalCredits', 'SpentCredits', ),
-		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID, AvatarPeer::PROFILE_ID, AvatarPeer::API_KEY, AvatarPeer::NAME, AvatarPeer::GENDER, AvatarPeer::TOTAL_CREDITS, AvatarPeer::SPENT_CREDITS, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'profile_id', 'api_key', 'name', 'gender', 'total_credits', 'spent_credits', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'ProfileId', 'ApiKey', 'Gender', 'TotalCredits', 'SpentCredits', ),
+		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID, AvatarPeer::PROFILE_ID, AvatarPeer::API_KEY, AvatarPeer::GENDER, AvatarPeer::TOTAL_CREDITS, AvatarPeer::SPENT_CREDITS, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'profile_id', 'api_key', 'gender', 'total_credits', 'spent_credits', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ProfileId' => 1, 'ApiKey' => 2, 'Name' => 3, 'Gender' => 4, 'TotalCredits' => 5, 'SpentCredits' => 6, ),
-		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID => 0, AvatarPeer::PROFILE_ID => 1, AvatarPeer::API_KEY => 2, AvatarPeer::NAME => 3, AvatarPeer::GENDER => 4, AvatarPeer::TOTAL_CREDITS => 5, AvatarPeer::SPENT_CREDITS => 6, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'profile_id' => 1, 'api_key' => 2, 'name' => 3, 'gender' => 4, 'total_credits' => 5, 'spent_credits' => 6, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'ProfileId' => 1, 'ApiKey' => 2, 'Gender' => 3, 'TotalCredits' => 4, 'SpentCredits' => 5, ),
+		BasePeer::TYPE_COLNAME => array (AvatarPeer::ID => 0, AvatarPeer::PROFILE_ID => 1, AvatarPeer::API_KEY => 2, AvatarPeer::GENDER => 3, AvatarPeer::TOTAL_CREDITS => 4, AvatarPeer::SPENT_CREDITS => 5, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'profile_id' => 1, 'api_key' => 2, 'gender' => 3, 'total_credits' => 4, 'spent_credits' => 5, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
 	
@@ -116,8 +113,6 @@ abstract class BaseAvatarPeer {
 		$criteria->addSelectColumn(AvatarPeer::PROFILE_ID);
 
 		$criteria->addSelectColumn(AvatarPeer::API_KEY);
-
-		$criteria->addSelectColumn(AvatarPeer::NAME);
 
 		$criteria->addSelectColumn(AvatarPeer::GENDER);
 

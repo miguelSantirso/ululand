@@ -21,10 +21,6 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 
 	
-	protected $name;
-
-
-	
 	protected $gender;
 
 
@@ -126,13 +122,6 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getName()
-	{
-
-		return $this->name;
-	}
-
-	
 	public function getGender()
 	{
 
@@ -206,22 +195,6 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setName($v)
-	{
-
-		
-		
-		if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
-		}
-
-		if ($this->name !== $v) {
-			$this->name = $v;
-			$this->modifiedColumns[] = AvatarPeer::NAME;
-		}
-
-	} 
-	
 	public function setGender($v)
 	{
 
@@ -280,19 +253,17 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 
 			$this->api_key = $rs->getString($startcol + 2);
 
-			$this->name = $rs->getString($startcol + 3);
+			$this->gender = $rs->getInt($startcol + 3);
 
-			$this->gender = $rs->getInt($startcol + 4);
+			$this->total_credits = $rs->getInt($startcol + 4);
 
-			$this->total_credits = $rs->getInt($startcol + 5);
-
-			$this->spent_credits = $rs->getInt($startcol + 6);
+			$this->spent_credits = $rs->getInt($startcol + 5);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 7; 
+						return $startcol + 6; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Avatar object", $e);
 		}
@@ -639,15 +610,12 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 				return $this->getApiKey();
 				break;
 			case 3:
-				return $this->getName();
-				break;
-			case 4:
 				return $this->getGender();
 				break;
-			case 5:
+			case 4:
 				return $this->getTotalCredits();
 				break;
-			case 6:
+			case 5:
 				return $this->getSpentCredits();
 				break;
 			default:
@@ -663,10 +631,9 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getProfileId(),
 			$keys[2] => $this->getApiKey(),
-			$keys[3] => $this->getName(),
-			$keys[4] => $this->getGender(),
-			$keys[5] => $this->getTotalCredits(),
-			$keys[6] => $this->getSpentCredits(),
+			$keys[3] => $this->getGender(),
+			$keys[4] => $this->getTotalCredits(),
+			$keys[5] => $this->getSpentCredits(),
 		);
 		return $result;
 	}
@@ -692,15 +659,12 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 				$this->setApiKey($value);
 				break;
 			case 3:
-				$this->setName($value);
-				break;
-			case 4:
 				$this->setGender($value);
 				break;
-			case 5:
+			case 4:
 				$this->setTotalCredits($value);
 				break;
-			case 6:
+			case 5:
 				$this->setSpentCredits($value);
 				break;
 		} 	}
@@ -713,10 +677,9 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setProfileId($arr[$keys[1]]);
 		if (array_key_exists($keys[2], $arr)) $this->setApiKey($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setName($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setGender($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setTotalCredits($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setSpentCredits($arr[$keys[6]]);
+		if (array_key_exists($keys[3], $arr)) $this->setGender($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setTotalCredits($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setSpentCredits($arr[$keys[5]]);
 	}
 
 	
@@ -727,7 +690,6 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(AvatarPeer::ID)) $criteria->add(AvatarPeer::ID, $this->id);
 		if ($this->isColumnModified(AvatarPeer::PROFILE_ID)) $criteria->add(AvatarPeer::PROFILE_ID, $this->profile_id);
 		if ($this->isColumnModified(AvatarPeer::API_KEY)) $criteria->add(AvatarPeer::API_KEY, $this->api_key);
-		if ($this->isColumnModified(AvatarPeer::NAME)) $criteria->add(AvatarPeer::NAME, $this->name);
 		if ($this->isColumnModified(AvatarPeer::GENDER)) $criteria->add(AvatarPeer::GENDER, $this->gender);
 		if ($this->isColumnModified(AvatarPeer::TOTAL_CREDITS)) $criteria->add(AvatarPeer::TOTAL_CREDITS, $this->total_credits);
 		if ($this->isColumnModified(AvatarPeer::SPENT_CREDITS)) $criteria->add(AvatarPeer::SPENT_CREDITS, $this->spent_credits);
@@ -764,8 +726,6 @@ abstract class BaseAvatar extends BaseObject  implements Persistent {
 		$copyObj->setProfileId($this->profile_id);
 
 		$copyObj->setApiKey($this->api_key);
-
-		$copyObj->setName($this->name);
 
 		$copyObj->setGender($this->gender);
 

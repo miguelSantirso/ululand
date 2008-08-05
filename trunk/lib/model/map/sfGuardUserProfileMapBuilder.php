@@ -36,7 +36,11 @@ class sfGuardUserProfileMapBuilder {
 
 		$tMap->addForeignKey('USER_ID', 'UserId', 'int', CreoleTypes::INTEGER, 'sf_guard_user', 'ID', true, null);
 
-		$tMap->addColumn('USERNAME', 'Username', 'string', CreoleTypes::VARCHAR, false, 20);
+		$tMap->addColumn('USERNAME', 'Username', 'string', CreoleTypes::VARCHAR, false, 30);
+
+		$tMap->addColumn('FIRST_NAME', 'FirstName', 'string', CreoleTypes::VARCHAR, false, 20);
+
+		$tMap->addColumn('LAST_NAME', 'LastName', 'string', CreoleTypes::VARCHAR, false, 20);
 
 		$tMap->addColumn('CULTURE', 'Culture', 'string', CreoleTypes::VARCHAR, false, 8);
 

@@ -1,0 +1,357 @@
+<?xml version="1.0"?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-07-25T23:26:23Z">
+    <body>
+    
+<trans-unit id="1">
+<source>Log in</source>
+<target>Entrar</target>
+</trans-unit>
+
+<trans-unit id="2">
+<source>Register</source>
+<target>Registrarte</target>
+</trans-unit>
+
+<trans-unit id="3">
+<source>Logout</source>
+<target>Salir</target>
+</trans-unit>
+
+<trans-unit id="4">
+<source>ulu&lt;span id="land"&gt;land&lt;/span&gt;</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="5">
+<source>Developers&lt;br/&gt;Network</source>
+<target>Red de&lt;br/&gt;Desarrolladores</target>
+</trans-unit>
+
+<trans-unit id="6">
+<source>Home</source>
+<target>Inicio</target>
+</trans-unit>
+
+<trans-unit id="7">
+<source>Games</source>
+<target>Juegos</target>
+</trans-unit>
+
+<trans-unit id="8">
+<source>People</source>
+<target>Gente</target>
+</trans-unit>
+
+<trans-unit id="9">
+<source>My Profile</source>
+<target>Mi perfil</target>
+</trans-unit>
+
+<trans-unit id="10">
+<source>Registered people</source>
+<target>Gente registrada</target>
+</trans-unit>
+
+<trans-unit id="11">
+<source>Community</source>
+<target>Comunidad</target>
+</trans-unit>
+
+<trans-unit id="12">
+<source>Wiki</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="13">
+<source>Forums</source>
+<target>Foros</target>
+</trans-unit>
+
+<trans-unit id="14">
+<source>by %s %s ago.</source>
+<target>por %s hace %s</target>
+</trans-unit>
+
+<trans-unit id="15">
+<source>Older posts...</source>
+<target>Entradas anteriores...</target>
+</trans-unit>
+
+<trans-unit id="16">
+<source>Ululand Developers Network</source>
+<target>Red de Desarrolladores de Ululand</target>
+</trans-unit>
+
+<trans-unit id="17">
+<source>NOTICE: We are working on this yet!</source>
+<target>AVISO: &#xA1;Todav&#xED;a estamos trabajando en esto!</target>
+</trans-unit>
+
+<trans-unit id="18">
+<source>The Ululand Developers Network is not finished yet, and we have a lot of work to do yet. However, we have opened it now so that you can %s and %s about what you, the developers, want.</source>
+<target>La Red de Desarrolladores de Ululand est&#xE1; sin terminar todav&#xED;a, y a&#xFA;n nos queda un mont&#xF3;n de trabajo. Sin embargo, la hemos abierto ya para que puedas %s y %s sobre lo que vosotros, los desarrolladores, quer&#xE9;is.</target>
+</trans-unit>
+
+<trans-unit id="19">
+<source>learn more about this project</source>
+<target>descubrir m&#xE1;s sobre este proyecto</target>
+</trans-unit>
+
+<trans-unit id="20">
+<source>darnos feedback e ideas</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="21">
+<source>Latests posts from %s</source>
+<target>&#xDA;ltimas entradas de %s</target>
+</trans-unit>
+
+<trans-unit id="22">
+<source>Loading...</source>
+<target>Cargando...</target>
+</trans-unit>
+
+<trans-unit id="23">
+<source>We are making this possible!</source>
+<target>&#xA1;Nosotros estamos haciendo esto posible!</target>
+</trans-unit>
+
+<trans-unit id="24">
+<source>Fill in your profile now!</source>
+<target>&#xA1;Rellena ahora tu perfil!</target>
+</trans-unit>
+
+<trans-unit id="25">
+<source>Your profile is not filled in and you will not be listed here.</source>
+<target>Tu perfil no est&#xE1; rellenado y no aparecer&#xE1;s en esta lista.</target>
+</trans-unit>
+
+<trans-unit id="26">
+<source>Fill in your profile &amp;raquo;</source>
+<target>Rellena tu perfil &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="27">
+<source>Edit your profile</source>
+<target>Edita tu perfil</target>
+</trans-unit>
+
+<trans-unit id="28">
+<source>Username</source>
+<target>Nombre de usuario</target>
+</trans-unit>
+
+<trans-unit id="29">
+<source>save</source>
+<target>salvar</target>
+</trans-unit>
+
+<trans-unit id="30">
+<source>cancel</source>
+<target>cancelar</target>
+</trans-unit>
+
+<trans-unit id="31">
+<source>Profile for %s</source>
+<target>Perfil de %s</target>
+</trans-unit>
+
+<trans-unit id="32">
+<source>This is your profile</source>
+<target>Este es tu perfil</target>
+</trans-unit>
+
+<trans-unit id="33">
+<source>Edit your profile &amp;raquo;</source>
+<target>Edita tu perfil &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="34">
+<source>You haven't set a username yet.</source>
+<target>Todav&#xED;a no has guardado un nombre de usuario.</target>
+</trans-unit>
+
+<trans-unit id="35">
+<source>Edit your profile now!</source>
+<target>&#xA1;Edita tu perfil ahora!</target>
+</trans-unit>
+
+<trans-unit id="36">
+<source>This user hasn't set a username.</source>
+<target>Este usuario no ha guardado un nombre de usuario.</target>
+</trans-unit>
+
+<trans-unit id="37">
+<source>List</source>
+<target>Listado</target>
+</trans-unit>
+
+<trans-unit id="38">
+<source>Join us!</source>
+<target>&#xA1;&#xDA;nete!</target>
+</trans-unit>
+
+<trans-unit id="39">
+<source>Email</source>
+<target>Correo Electr&#xF3;nico</target>
+</trans-unit>
+
+<trans-unit id="40">
+<source>Password</source>
+<target>Contrase&#xF1;a</target>
+</trans-unit>
+
+<trans-unit id="41">
+<source>Retype password</source>
+<target>Reescribe la contrase&#xF1;a</target>
+</trans-unit>
+
+<trans-unit id="42">
+<source>Create account</source>
+<target>Crear cuenta</target>
+</trans-unit>
+
+<trans-unit id="43">
+<source>Log In</source>
+<target>Entrar</target>
+</trans-unit>
+
+<trans-unit id="44">
+<source>Come on in!</source>
+<target>&#xA1;Entra!</target>
+</trans-unit>
+
+<trans-unit id="45">
+<source>Remember me?</source>
+<target>&#xBF;Recu&#xE9;rdame?</target>
+</trans-unit>
+
+<trans-unit id="46">
+<source>sign in</source>
+<target>entrar</target>
+</trans-unit>
+
+<trans-unit id="47">
+<source>Forgot your password?</source>
+<target>&#xBF;Olvidaste tu contrase&#xF1;a?</target>
+</trans-unit>
+
+<trans-unit id="48">
+<source>This field is required!</source>
+<target>&#xA1;Este campo es obligatorio!</target>
+</trans-unit>
+
+<trans-unit id="49">
+<source>That is not a valid email!</source>
+<target>&#xA1;Ese email no es v&#xE1;lido!</target>
+</trans-unit>
+
+<trans-unit id="50">
+<source>This username is already taken!</source>
+<target>&#xA1;Ese nombre de usuario ya est&#xE1; cogido!</target>
+</trans-unit>
+
+<trans-unit id="51">
+<source>The passwords don't match!</source>
+<target>&#xA1;Las contrase&#xF1;as no coinciden!</target>
+</trans-unit>
+
+<trans-unit id="52">
+<source>Hello! You can %1$s or %2$s.</source>
+<target>&#xA1;Hola! Puedes %1$s o %2$s.</target>
+</trans-unit>
+
+<trans-unit id="53">
+<source>give us feedback or ideas</source>
+<target>darnos feedback o ideas</target>
+</trans-unit>
+
+<trans-unit id="54">
+<source>our blog</source>
+<target>nuestro blog</target>
+</trans-unit>
+
+<trans-unit id="55">
+<source>Welcome back, %1$s! %2$s?</source>
+<target>&#xA1;Hola de nuevo, %1$s! &#xBF;%2$s?</target>
+</trans-unit>
+
+<trans-unit id="56">
+<source>Language</source>
+<target>Idioma</target>
+</trans-unit>
+
+<trans-unit id="57">
+<source>Our creations</source>
+<target>Nuestras creaciones</target>
+</trans-unit>
+
+<trans-unit id="58">
+<source>NOTICE: Disabled module!</source>
+<target>AVISO: &#xA1;M&#xF3;dulo desactivado!</target>
+</trans-unit>
+
+<trans-unit id="59">
+<source>This module has been disabled by the administrators of the site.</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="60">
+<source>We create games!</source>
+<target>&#xA1;Nosotros creamos juegos!</target>
+</trans-unit>
+
+<trans-unit id="61">
+<source>This module has been disabled.</source>
+<target>Este m&#xF3;dulo ha sido desactivado.</target>
+</trans-unit>
+
+<trans-unit id="62">
+<source>Disabled</source>
+<target>Desactivado</target>
+</trans-unit>
+
+<trans-unit id="63">
+<source>disabled module</source>
+<target>m&#xF3;dulo desactivado</target>
+</trans-unit>
+
+<trans-unit id="64">
+<source>The Ululand Developers Network is not finished yet, and we have a lot of work to do yet. Please, %s to tell us about bugs, ideas or anything else.</source>
+<target>La Red de Desarrolladores de Ululand no est&#xE1; terminada todav&#xED;a, y nos queda un mont&#xF3;n de trabajo por hacer. Por favor, %s para avisarnos de bugs, contarnos ideas o cualquier otra cosa.</target>
+</trans-unit>
+
+<trans-unit id="65">
+<source>Quick Links:</source>
+<target>Enlaces R&#xE1;pidos</target>
+</trans-unit>
+
+<trans-unit id="66">
+<source>Registered users list</source>
+<target>Usuarios registrados</target>
+</trans-unit>
+
+<trans-unit id="67">
+<source>What is this?</source>
+<target>&#xBF;Qu&#xE9; es esto?</target>
+</trans-unit>
+
+<trans-unit id="68">
+<source>The password is too short (5 characters minimum)</source>
+<target>La contrase&#xF1;a es demasiado corta (5 caracteres m&#xED;nimo)</target>
+</trans-unit>
+
+<trans-unit id="69">
+<source>The password is too long. (25 characters maximum)</source>
+<target>La contrase&#xF1;a es demasiado larga (25 caracteres m&#xE1;ximo)</target>
+</trans-unit>
+
+<trans-unit id="70">
+<source>send us an email</source>
+<target>envíanos un email</target>
+</trans-unit>
+</body>
+  </file>
+</xliff>

@@ -8,13 +8,13 @@
 			<div class="normalBox subtle">
 				<h3 class="alignCenter">&iexcl;<strong>ulu</strong>land es solo para socios!</h3>
 				<p class="small">Lo bueno es que <strong>cualquiera</strong> puede ser socio de <strong>ulu</strong>land. Y gratis. Y en cualquier momento. De hecho, si todav&iacute;a no eres socio de Ululand, podr&iacute;as serlo en un minuto.</p>
-				<p><?php echo link_to('Hazte socio de <strong>ulu</strong>land', 'home/Register', array('class' => 'navigation')) ?></p>
+				<p><?php echo link_to('Hazte socio de <strong>ulu</strong>land', '@register', array('class' => 'navigation')) ?></p>
 			</div>
 			<div class="normalBox subtle">
 				<h3 class="alignCenter">Eh, eh. Que yo ya soy socio, amigo.</h3>
 				<h4>Disculpe, se&ntilde;or. No le recordaba.</h4>
 				<p class="small">Perd&oacute;n. Normalmente nos acordamos de nuestros socios pero bueno, no pasa nada. Quiz&aacute;s lleves tiempo sin venir o te est&eacute;s conectando desde un ordenador diferente.</p>
-				<p><?php echo link_to('Identif&iacute;cate en <strong>ulu</strong>land', 'home/Login', array('class' => 'navigation')) ?></p>
+				<p><?php echo link_to('Identif&iacute;cate en <strong>ulu</strong>land', '@sf_guard_signin', array('class' => 'navigation')) ?></p>
 			</div>
 		</div>
 		 <div class="fixedWidth medium">

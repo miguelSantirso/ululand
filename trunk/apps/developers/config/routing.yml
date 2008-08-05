@@ -1,0 +1,44 @@
+# profiles
+
+show_user_profile:
+  url: /user/:username
+  param: { module: profile, action: show }
+
+# various
+
+latest_news_ajax:
+  url: /latest_news
+  param: { module: home, action: latestNews }
+
+# Authentification
+register:
+  url: /register
+  param: { module: sfGuardAuth, action: register }
+
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
+# default rules
+homepage:
+  url:   /
+  param: { module: home, action: index }
+
+default_symfony:
+  url:   /symfony/:action/*
+  param: { module: default }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

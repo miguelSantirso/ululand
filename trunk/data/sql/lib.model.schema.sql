@@ -14,13 +14,37 @@ CREATE TABLE `sf_guard_user_profile`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`user_id` INTEGER  NOT NULL,
-	`username` VARCHAR(20),
+	`username` VARCHAR(30),
+	`first_name` VARCHAR(20),
+	`last_name` VARCHAR(20),
 	`culture` VARCHAR(8),
 	PRIMARY KEY (`id`),
 	INDEX `sf_guard_user_profile_FI_1` (`user_id`),
 	CONSTRAINT `sf_guard_user_profile_FK_1`
 		FOREIGN KEY (`user_id`)
 		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- developer_profile
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `developer_profile`;
+
+
+CREATE TABLE `developer_profile`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`user_profile_id` INTEGER  NOT NULL,
+	`url` VARCHAR(64),
+	`description` TEXT,
+	`is_free` INTEGER default 0,
+	PRIMARY KEY (`id`),
+	INDEX `developer_profile_FI_1` (`user_profile_id`),
+	CONSTRAINT `developer_profile_FK_1`
+		FOREIGN KEY (`user_profile_id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
 		ON DELETE CASCADE
 )Type=MyISAM;
 
@@ -36,7 +60,6 @@ CREATE TABLE `avatar`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`profile_id` INTEGER  NOT NULL,
 	`api_key` VARCHAR(13),
-	`name` VARCHAR(64)  NOT NULL,
 	`gender` INTEGER  NOT NULL,
 	`total_credits` INTEGER default 0,
 	`spent_credits` INTEGER default 0,

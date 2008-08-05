@@ -8,6 +8,14 @@ propel:
     last_name:   varchar(20)
     culture:     varchar(8)
     
+  developer_profile:
+    _attributes: { phpName: DeveloperProfile }
+    id:
+    user_profile_id: { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
+    url:             { type: varchar(64), required: false }
+    description:     { type: longvarchar, required: false }
+    is_free:         { type: boolean, required: false, default: false }
+    
   avatar:
     _attributes: { phpName: Avatar }
     id:
