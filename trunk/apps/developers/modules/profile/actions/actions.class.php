@@ -26,7 +26,28 @@ class profileActions extends sfActions
 	public function executeList()
 	{
 		$this->setFlash('warning', 'AVISO: Este módulo tiene varias funcionalidades desactivadas.', false);
-		$this->sf_guard_user_profiles = sfGuardUserProfilePeer::doSelect(new Criteria());
+		
+		$pager = new sfPropelPager('DeveloperProfile', sfConfig::get('app_pager_profile'));
+		$c = new Criteria();
+		$tag = $this->getRequestParameter('tag');
+		if($tag)
+		{
+			$this->tag = $tag;
+			$c = TagPeer::getTaggedWithCriteria('DeveloperProfile', $tag);
+		}
+		$search = $this->getRequestParameter('search');
+		if($search)
+		{
+			$this->search = $search;
+			$c->addJoin(sfGuardUserProfilePeer::ID, DeveloperProfilePeer::USER_PROFILE_ID);
+			$c->add(sfGuardUserProfilePeer::USERNAME, '%'.$search.'%', Criteria::LIKE);
+		}
+		
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+
+		$this->profilesPager = $pager;
 	}
 
 	/**

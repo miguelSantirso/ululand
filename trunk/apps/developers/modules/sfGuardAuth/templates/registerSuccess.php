@@ -10,27 +10,27 @@
 		<?php echo form_tag('@register') ?>
 			<div class="form-field fixedWidth half contentBox light alignCenter">
 				<?php echo
-				"<p class='noSpace alignCenter'>".label_for("username", __("Email"))."</p>", 
+				"<p class='noSpace center'>".label_for("username", __("Email"))."</p>", 
 				form_error("username"),
-				"<p class='noSpace alignCenter'>".input_tag("username", $sf_params->get("username"))."</p>"
+				"<p class='noSpace center'>".input_tag("username", $sf_params->get("username"))."</p>"
 				?>
 			</div>
 			<div class="form-field fixedWidth half contentBox light alignCenter">
 				<?php echo 
-				"<p class='noSpace alignCenter'>".label_for("password", __("Password"))."</p>",
+				"<p class='noSpace center'>".label_for("password", __("Password"))."</p>",
 				form_error("password"),
-				"<p class='noSpace alignCenter'>".input_password_tag("password", $sf_params->get("password"))."</p>"
+				"<p class='noSpace center'>".input_password_tag("password", $sf_params->get("password"))."</p>"
 				?>
 			</div>
 			<div class="form-field fixedWidth half contentBox light alignCenter">
 				<?php echo 
-				"<p class='noSpace alignCenter'>".label_for("password_check", __("Retype password"))."</p>",
+				"<p class='noSpace center'>".label_for("password_check", __("Retype password"))."</p>",
 				form_error("password_check"),
-				"<p class='noSpace alignCenter'>".input_password_tag("password_check", $sf_params->get("password_check"))."</p>"
+				"<p class='noSpace center'>".input_password_tag("password_check", $sf_params->get("password_check"))."</p>"
 				?>
 			</div>
 		      <?php 
-			  echo "<p class='alignCenter'>".submit_tag(__('Create account'), array("class" => "xLarge")) ."</p>"
+			  echo "<p class='center'>".submit_tag(__('Create account'), array("class" => "xLarge")) ."</p>"
 			  ?>
 		    <div style="clear:both;"></div>
 		</form>

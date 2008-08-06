@@ -4,12 +4,12 @@
 ?>
 <div id="pageHeader">
 	<h2>
-		<?php echo link_to($sf_guard_user_profile, 'profile/show?id='.$sf_guard_user_profile->getId()); ?>
+		<?php echo link_to($sf_guard_user_profile, 'profile/show?username='.$sf_guard_user_profile->getUsername()); ?>
 		<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 			<span class="">(<?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?>)</span>
 		<?php } ?>
 	</h2>
-	<p class="subtitle"><?php echo sprintf(__("Profile for %s"), link_to($sf_guard_user_profile, 'profile/show?id='.$sf_guard_user_profile->getId())); ?></p>
+	<p class="subtitle"><?php echo sprintf(__("Profile for %s"), link_to($sf_guard_user_profile, 'profile/show?username='.$sf_guard_user_profile->getUsername())); ?></p>
 </div>
 	
 <div id="pageContent">
@@ -21,10 +21,13 @@
 			gravatar_id=".md5($sf_guard_user_profile->getSfGuardUser()->getUsername());/*.
 			"&default=".urlencode($default).
 			"&size=".$size;*/
-			echo image_tag($grav_url, array('class' => '')); 
+			echo link_to(image_tag($grav_url, array('class' => 'noSpace')), 'profile/show?username='.$sf_guard_user_profile->getUsername()); 
 		?>
-		<p class=""><?php echo $developerProfile->getTagsString(); ?></p>
-		<p class="noSpace"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
+		<?php $developerTags = $developerProfile->getTags(); ?>
+		<p class=""><?php echo $developerProfile->getLinkedTagsString(); ?></p>
+		<?php if($developerProfile->getUrl() != '') : ?>
+			<p class="noSpace"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
+		<?php endif; ?>
 		<?php if($developerProfile->getIsFree()) { ?>
 			<p class="right"><?php echo __('Hey! I\'m looking for a project to work on!'); ?></p>
 		<?php } ?>
@@ -32,10 +35,10 @@
 	</div>
 	<div class="fixedWidth wide alignLeft">
 		<div class="contentBox bordered">
-		<?php if($developerProfile){ ?> 
+		<?php if($developerProfile->getDescription() != ''){ ?> 
 			<?php echo sfMarkdown::doConvert( $developerProfile->getDescription() ); ?>
 		<?php } else { ?>
-			<?php echo __('There is no description for this user'); ?>
+			<p><?php echo __('There is no description for this user'); ?></p>
 		<?php } ?>
 		<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 			<span class="xSmall"><?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?></span>
@@ -44,7 +47,7 @@
 	</div>
 	<div style="clear:both"></div>
 	<div class="fixedWidth quarter contentBox alignCenter">
-		<?php echo link_to(__('List'), 'profile/list', array('class' => 'button')) ?>
+		<?php echo link_to(sprintf('&laquo; %s', __('List')), 'profile/list', array('class' => 'button')) ?>
 	</div>
 
 </div>
