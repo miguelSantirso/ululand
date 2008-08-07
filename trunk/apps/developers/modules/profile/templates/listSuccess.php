@@ -26,7 +26,9 @@
 			
 		<div class="center"><?php echo pager_navigation($profilesPager, 'profile/list'); ?></div>
 		
-		<?php foreach ($profilesPager->getResults() as $profile): ?>
+		<?php $profiles = $profilesPager->getResults(); ?>
+		<?php sfPropelActAsTaggableBehavior::preloadTags($profiles); ?>
+		<?php foreach ($profiles as $profile): ?>
 			<?php $userProfile = $profile->getsfGuardUserProfile(); ?>
 			<?php if($userProfile->isFilledIn()) { ?>
 				<div class="contentBox bordered">

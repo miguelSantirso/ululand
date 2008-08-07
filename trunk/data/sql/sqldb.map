@@ -6,3 +6,4 @@ plugins.sfSimpleForumPlugin.lib.model.schema.sql=propel
 plugins.sfPropelApprovableBehaviorPlugin.lib.model.schema.sql=propel
 plugins.sfPropelActAsRatableBehaviorPlugin.lib.model.schema.sql=propel
 plugins.sfGuardPlugin.lib.model.schema.sql=propel
+plugins.sfPropelActAsCommentableBehaviorPlugin.lib.model.schema.sql=propel

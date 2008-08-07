@@ -47,6 +47,7 @@
 				<?php echo link_to(__("Community"), "@wiki_home"); ?>
 				<ul>
 					<li><?php echo link_to(__("Wiki"), "@wiki_home"); ?></li>
+					<li><?php echo link_to(__("Kollaborator"), "/collaboration"); ?></li>
 					<li><?php echo link_to(__("Google Group"), "http://groups.google.com/group/desarrolladores-ululand"); ?></li>
 				</ul>
 			</li>

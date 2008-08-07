@@ -139,6 +139,29 @@ CREATE TABLE `friendship`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
+#-- collaboration_offer
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `collaboration_offer`;
+
+
+CREATE TABLE `collaboration_offer`
+(
+	`created_by` INTEGER,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	`title` VARCHAR(75)  NOT NULL,
+	`description` TEXT  NOT NULL,
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (`id`),
+	INDEX `collaboration_offer_FI_1` (`created_by`),
+	CONSTRAINT `collaboration_offer_FK_1`
+		FOREIGN KEY (`created_by`)
+		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
 #-- itemtype
 #-----------------------------------------------------------------------------
 
