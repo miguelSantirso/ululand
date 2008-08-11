@@ -57,7 +57,7 @@ propel:
           - { local: id_avatar_b, foreign: id }
     
   collaboration_offer:
-    _attricutes: { phpName: CollaborationOffer }
+    _attributes: { phpName: CollaborationOffer }
     created_by:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     updated_at: ~

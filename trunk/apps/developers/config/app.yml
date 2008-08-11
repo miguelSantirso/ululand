@@ -2,3 +2,4 @@
 all:
   pager:
     profile: 12
+    collaboration: 20

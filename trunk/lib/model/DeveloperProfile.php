@@ -25,7 +25,7 @@ class DeveloperProfile extends BaseDeveloperProfile
 			$tagsString .= ", ";
 		}
 		
-		return $tagsString;
+		return trim($tagsString, " ,");
 	}
 	
 	public function getLinkedTagsString()
@@ -35,10 +35,10 @@ class DeveloperProfile extends BaseDeveloperProfile
 		foreach($tags as $tag)
 		{
 			$tagsString .= link_to($tag, 'profile/list?tag='.$tag);
-			$tagsString .= ' ';
+			$tagsString .= ', ';
 		}
 		
-		return $tagsString;
+		return trim($tagsString, " ,");
 	}
 }
 

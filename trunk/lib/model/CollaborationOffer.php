@@ -25,7 +25,7 @@ class CollaborationOffer extends BaseCollaborationOffer
 			$tagsString .= ", ";
 		}
 		
-		return $tagsString;
+		return trim($tagsString, " ,");
 	}
 	
 	public function getLinkedTagsString()
@@ -35,10 +35,10 @@ class CollaborationOffer extends BaseCollaborationOffer
 		foreach($tags as $tag)
 		{
 			$tagsString .= link_to($tag, 'collaboration/list?tag='.$tag);
-			$tagsString .= ' ';
+			$tagsString .= ', ';
 		}
 		
-		return $tagsString;
+		return trim($tagsString, " ,");
 	}
 }
 

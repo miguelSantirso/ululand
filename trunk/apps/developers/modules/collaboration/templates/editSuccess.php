@@ -20,21 +20,21 @@
 		<p class="noSpace"><?php echo label_for('title', __('Title:')); ?></p>
 		<?php echo form_error("title"); ?>
 		<?php echo object_input_tag($collaboration_offer, 'getTitle', array (
-		  'size' => 55, 'maxlength' => 75
+		  'size' => 65, 'maxlength' => 75
 		)) ?>
 		<br/>
 		<br/>
 		<p class="noSpace"><?php echo label_for('description', __('Description:')); ?></p>
 		<?php echo form_error('description'); ?>
 		<?php echo object_textarea_tag($collaboration_offer, 'getDescription', array (
-		  'size' => '60x5',
+		  'size' => '50x12',
 		)) ?>
 		<br/>
 		<br/>
 		<p class="noSpace"><?php echo label_for('tags', __('What are you looking for? (tags)')); ?></p>
 		<?php echo form_error('tags'); ?>
 		<?php echo object_input_tag($collaboration_offer, 'getTagsString', array (
-		  'size' => 55,
+		  'size' => 65,
 		)) ?>
 		<br/>
 		<br/>
@@ -49,7 +49,7 @@
 	</div>
 	
 	<div class="contentBox alignLeft fixedWidth half">
-		<h3 class="header"><?php echo __('Write a cool collaboration offer:'); ?>
+		<h3 class="header"><?php echo __('Write a cool collaboration offer:'); ?></h3>
 	</div>
 
 </div>
