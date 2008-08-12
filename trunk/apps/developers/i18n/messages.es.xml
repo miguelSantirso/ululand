@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-07-25T23:26:23Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-12T20:29:06Z">
     <body>
     
 <trans-unit id="1">
@@ -350,7 +350,302 @@
 
 <trans-unit id="70">
 <source>send us an email</source>
-<target>envíanos un email</target>
+<target>env&#xED;anos un email</target>
+</trans-unit>
+
+<trans-unit id="71">
+<source>Kollaborator</source>
+<target></target>
+</trans-unit>
+
+<trans-unit id="72">
+<source>Google Group</source>
+<target>Grupo de Google</target>
+</trans-unit>
+
+<trans-unit id="73">
+<source>There is no comment for the moment.</source>
+<target>No hay comentarios todavía</target>
+</trans-unit>
+
+<trans-unit id="74">
+<source>Post a comment</source>
+<target>Enviar un comentario</target>
+</trans-unit>
+
+<trans-unit id="75">
+<source>Name</source>
+<target>Nombre</target>
+</trans-unit>
+
+<trans-unit id="76">
+<source>Title</source>
+<target>Título</target>
+</trans-unit>
+
+<trans-unit id="77">
+<source>Accepts Markdown</source>
+<target>Acepta Markdown</target>
+</trans-unit>
+
+<trans-unit id="78">
+<source>Post this comment</source>
+<target>Enviar este comentario</target>
+</trans-unit>
+
+<trans-unit id="79">
+<source>%1% ago</source>
+<target>hace %1%</target>
+</trans-unit>
+
+<trans-unit id="80">
+<source>Remove</source>
+<target>Eliminar</target>
+</trans-unit>
+
+<trans-unit id="81">
+<source>Popular tags</source>
+<target>Etiquetas populares</target>
+</trans-unit>
+
+<trans-unit id="82">
+<source>Collaboration offers list</source>
+<target>Lista de ofertas de colaboración</target>
+</trans-unit>
+
+<trans-unit id="83">
+<source>Colaborative work is great, isn't it?</source>
+<target>El trabajo en grupo es genial, ¿no?</target>
+</trans-unit>
+
+<trans-unit id="84">
+<source>Showing collaboration offers tagged with %1$s (%2$s)</source>
+<target>Mostrando ofertas de colaboración etiquetadas con %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="85">
+<source>Search results for %1$s (%2$s)</source>
+<target>Resultados de la búsqueda para %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="86">
+<source>Submit your own &amp;raquo;</source>
+<target>Envía la tuya &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="87">
+<source>requires %s or %s</source>
+<target>requiere %s o %s</target>
+</trans-unit>
+
+<trans-unit id="88">
+<source>log in</source>
+<target>iniciar sesión</target>
+</trans-unit>
+
+<trans-unit id="89">
+<source>register</source>
+<target>registro</target>
+</trans-unit>
+
+<trans-unit id="90">
+<source>Search</source>
+<target>Buscar</target>
+</trans-unit>
+
+<trans-unit id="91">
+<source>Search!</source>
+<target>¡Buscar!</target>
+</trans-unit>
+
+<trans-unit id="92">
+<source>Submit a collaboration offer</source>
+<target>Envía una oferta de colaboración</target>
+</trans-unit>
+
+<trans-unit id="93">
+<source>Collaboration Offer Info:</source>
+<target>Información de la Oferta de Colaboración:</target>
+</trans-unit>
+
+<trans-unit id="94">
+<source>Title:</source>
+<target>Título:</target>
+</trans-unit>
+
+<trans-unit id="95">
+<source>Description:</source>
+<target>Descripción:</target>
+</trans-unit>
+
+<trans-unit id="96">
+<source>What are you looking for? (tags)</source>
+<target>¿Qué estás buscando? (etiquetas)</target>
+</trans-unit>
+
+<trans-unit id="97">
+<source>update preview &amp;raquo;</source>
+<target>actualizar vista previa &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="98">
+<source>Preview</source>
+<target>Vista Previa</target>
+</trans-unit>
+
+<trans-unit id="99">
+<source>Related Collaboration Offers</source>
+<target>Ofertas de Colaboración Relacionadas</target>
+</trans-unit>
+
+<trans-unit id="100">
+<source>The Kollaborator!</source>
+<target>¡El Kollaborator!</target>
+</trans-unit>
+
+<trans-unit id="101">
+<source>Collaboration Offers</source>
+<target>Ofertas de Colaboración</target>
+</trans-unit>
+
+<trans-unit id="102">
+<source>show all</source>
+<target>mostrar todo</target>
+</trans-unit>
+
+<trans-unit id="103">
+<source>Looking for a project to work on? Here you can find some projects in which you can collaborate.</source>
+<target>¿Buscando un proyecto en el que colaborar? Quizás aquí puedas encontrar algo.</target>
+</trans-unit>
+
+<trans-unit id="104">
+<source>Latest offers</source>
+<target>Últimas ofertas</target>
+</trans-unit>
+
+<trans-unit id="105">
+<source>Collaborators</source>
+<target>Colaboradores</target>
+</trans-unit>
+
+<trans-unit id="106">
+<source>Looking for someone to help you in your latest project? Here you can find some people that might want to help you.</source>
+<target>¿Estás buscando a alguien que te ayude en tu proyecto? Aquí puedes encontrar gente que quizás quiera ayudarte.</target>
+</trans-unit>
+
+<trans-unit id="107">
+<source>Recent collaborators</source>
+<target>Colaboradores Recientes</target>
+</trans-unit>
+
+<trans-unit id="108">
+<source>Collaboration Offer</source>
+<target>Oferta de Colaboración</target>
+</trans-unit>
+
+<trans-unit id="109">
+<source>Submitted by %1$s %2$s ago (%3$s)</source>
+<target>Enviado por %1$s hace %2$s (%3$s)</target>
+</trans-unit>
+
+<trans-unit id="110">
+<source>Tags</source>
+<target>Etiquetas</target>
+</trans-unit>
+
+<trans-unit id="111">
+<source>Edit</source>
+<target>Editar</target>
+</trans-unit>
+
+<trans-unit id="112">
+<source>Similar Offers</source>
+<target>Ofertas Parecidas</target>
+</trans-unit>
+
+<trans-unit id="113">
+<source>Showing developers tagged with %1$s (%2$s)</source>
+<target>Mostrando desarrolladores etiquetados con %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="114">
+<source>Developers whose name is similar to %1$s (%2$s)</source>
+<target>Desarrolladores cuyo nombre es parecido a %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="115">
+<source>General Data</source>
+<target>Información General</target>
+</trans-unit>
+
+<trans-unit id="116">
+<source>Nick:</source>
+<target>Alias:</target>
+</trans-unit>
+
+<trans-unit id="117">
+<source>Language:</source>
+<target>Idioma:</target>
+</trans-unit>
+
+<trans-unit id="118">
+<source>Developer Data</source>
+<target>Datos de Desarrollador</target>
+</trans-unit>
+
+<trans-unit id="119">
+<source>Url:</source>
+<target>Url:</target>
+</trans-unit>
+
+<trans-unit id="120">
+<source>Tags:</source>
+<target>Etiquetas:</target>
+</trans-unit>
+
+<trans-unit id="121">
+<source>Looking for a project to work on?</source>
+<target>¿Buscando un proyecto en el que trabajar?</target>
+</trans-unit>
+
+<trans-unit id="122">
+<source>Description</source>
+<target>Descripción</target>
+</trans-unit>
+
+<trans-unit id="123">
+<source>Write whatever you want. Accepts Markdown.</source>
+<target>Escribe lo que quieras. Acepta Markdown.</target>
+</trans-unit>
+
+<trans-unit id="124">
+<source>Related Developers</source>
+<target>Desarrolladores Relacionados</target>
+</trans-unit>
+
+<trans-unit id="125">
+<source>edit</source>
+<target>editar</target>
+</trans-unit>
+
+<trans-unit id="126">
+<source>Hey! I'm looking for a project to work on!</source>
+<target>¡Ey! ¡Estoy buscando un proyecto en el que colaborar!</target>
+</trans-unit>
+
+<trans-unit id="127">
+<source>There is no description for this user</source>
+<target>No hay descripción para este usuario</target>
+</trans-unit>
+
+<trans-unit id="128">
+<source>Url</source>
+<target>Url</target>
+</trans-unit>
+
+<trans-unit id="129">
+<source>Similar Developers</source>
+<target>Desarrolladores Parecidos</target>
 </trans-unit>
 </body>
   </file>
