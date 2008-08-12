@@ -3,8 +3,12 @@
 // date: 2008/07/23 19:55:02
 ?>
 <div id="pageHeader">
-	<h2>
+	<!-- <h2>
 		<?php echo link_to($sf_guard_user_profile, 'profile/show?username='.$sf_guard_user_profile->getUsername()); ?>
+
+	</h2> -->
+	<h2>
+		<?php echo linkToProfileWithGravatar($sf_guard_user_profile, 70); ?>
 		<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 			<span class="">(<?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?>)</span>
 		<?php } ?>
@@ -14,38 +18,38 @@
 	
 <div id="pageContent">
 
-	<div class="fixedWidth third alignLeft">
-		<div class="contentBox small right">
-		<?php
-			$grav_url = "http://www.gravatar.com/avatar.php?
-			gravatar_id=".md5($sf_guard_user_profile->getSfGuardUser()->getUsername());/*.
-			"&default=".urlencode($default).
-			"&size=".$size;*/
-			echo link_to(image_tag($grav_url, array('class' => 'noSpace')), 'profile/show?username='.$sf_guard_user_profile->getUsername()); 
-		?>
-		<?php $developerTags = $developerProfile->getTags(); ?>
-		<p class=""><?php echo $developerProfile->getLinkedTagsString(); ?></p>
-		<?php if($developerProfile->getUrl() != '') : ?>
-			<p class="noSpace"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
-		<?php endif; ?>
+	<div class="fixedWidth wide alignLeft contentBox bordered">
+		<h3 class="header"><?php echo linkToProfile($sf_guard_user_profile); ?></h3>
 		<?php if($developerProfile->getIsFree()) { ?>
-			<p class="right"><?php echo __('Hey! I\'m looking for a project to work on!'); ?></p>
+			<p class="contentBox light center"><?php echo __('Hey! I\'m looking for a project to work on!'); ?></p>
 		<?php } ?>
-		</div>
-	</div>
-	<div class="fixedWidth wide alignLeft">
-		<div class="contentBox bordered">
+		
 		<?php if($developerProfile->getDescription() != ''){ ?> 
 			<?php echo sfMarkdown::doConvert( $developerProfile->getDescription() ); ?>
 		<?php } else { ?>
 			<p><?php echo __('There is no description for this user'); ?></p>
 		<?php } ?>
+		
+		<?php if($developerProfile->getUrl() != '') : ?>
+			<p class="small"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
+		<?php endif; ?>
+		<p class="small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $developerProfile->getLinkedTagsString(); ?></p>
+		
 		<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
-			<span class="xSmall"><?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?></span>
+			<span class="small"><?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?></span>
 		<?php } ?>
-		</div>
 	</div>
+
+	<div class="alignLeft">
+		<?php include_partial('searchForm'); ?>
+		
+		<?php include_partial('relatedByTags', array('title' => __('Similar Developers'), 'tagsString' => $developerProfile->getTagsString())) ?>
+		
+		<?php include_partial('collaboration/relatedByTags', array('tagsString' => $developerProfile->getTagsString())) ?>
+	</div>
+	
 	<div style="clear:both"></div>
+	
 	<div class="fixedWidth quarter contentBox alignCenter">
 		<?php echo link_to(sprintf('&laquo; %s', __('List')), 'profile/list', array('class' => 'button')) ?>
 	</div>

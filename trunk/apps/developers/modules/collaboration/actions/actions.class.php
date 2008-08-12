@@ -34,6 +34,12 @@ class collaborationActions extends sfActions
     $this->forward404Unless($this->collaboration_offer);
   }
 
+  public function executePreview()
+  {
+  	$this->title = $this->getRequestParameter('title');
+  	$this->description = $this->getRequestParameter('description');
+  }
+  
   public function executeCreate()
   {
     $this->collaboration_offer = new CollaborationOffer();

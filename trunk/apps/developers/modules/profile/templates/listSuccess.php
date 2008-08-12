@@ -30,13 +30,11 @@
 			<p class=""><?php echo link_to(__("Fill in your profile &raquo;"), 'profile/edit?id='.$sf_user->getProfile()->getId()); ?></p>
 		</div>
 	<?php } ?>
-		<div class="contentBox light">
+		<div class="">
 			<?php include_partial('searchForm'); ?>
 		</div>
-		<div class="contentBox light">
-			<h3 class="header"><?php echo __('Tags'); ?></h3>
-			<?php $tags = TagPeer::getPopulars(null, array('model' => 'DeveloperProfile')); ?>
-			<?php echo tag_cloud($tags, 'profile/list?tag=%s', array('class' => 'xxSmall')); ?>
+		<div class="">
+			<?php include_partial('tagCloud') ?>
 		</div>
 	</div>
 </div>

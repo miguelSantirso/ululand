@@ -1,4 +1,4 @@
-<?php use_helper('Partial'); ?>
+<?php use_helper('Partial', 'Tags'); ?>
 
 <div id="pageHeader">
 	<h2><?php echo link_to(__("Collaboration offers list"), '/collaboration/list'); ?></h2>
@@ -22,13 +22,25 @@
 		
 		<?php include_component('collaboration', 'list'); ?>
 		
-		<?php echo link_to (__('Submit your own &raquo;'), 'collaboration/create', array('class' => 'alignRight')) ?>
+		<?php if($sf_user->isAuthenticated()) : ?>
+			<?php echo link_to(__('Submit your own &raquo;'), 'collaboration/create', array('class' => 'alignRight')); ?>
+		<?php else :  ?>
+			<p class="right">
+				(<?php echo sprintf(__('requires %s or %s'), link_to(__('log in'), '@sf_guard_signin'), link_to(__('register'), '@register')) ?>)
+				<?php echo link_to(__('Submit your own &raquo;'), 'collaboration/create', array('class' => '')); ?> 
+			</p>
+		<?php endif; ?>
 	</div>
 	
 	<div class="fixedWidth third alignRight">
 
 		<?php include_partial('searchForm'); ?>
 
+		<div class="">
+
+			<?php include_partial('tagCloud'); ?>
+
+		</div>
 	</div>
 	
 </div>

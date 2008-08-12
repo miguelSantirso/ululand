@@ -11,10 +11,10 @@
 	<li class="">
 		<strong><?php echo linkToCollaborationOffer($collaboration_offer, array('class' => 'firstRow')); ?></strong>
 		<div class="lastRow">
-			<small class="alignRight"><?php echo sprintf('by %1$s %2$s ago', 
+			<p class="alignRight xSmall noSpace"><?php echo sprintf('by %1$s %2$s ago', 
 					linkToProfile($collaboration_offer->getsfGuardUser()->getProfile()), 
-					time_ago_in_words($collaboration_offer->getCreatedAt('U')) ); ?></small>
-			<p class="noSpace small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $collaboration_offer->getLinkedTagsString(); ?></p>
+					time_ago_in_words($collaboration_offer->getCreatedAt('U')) ); ?></p>
+			<p class="noSpace xSmall"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $collaboration_offer->getLinkedTagsString(); ?></p>
 		</div>
 	</li>
 <?php endforeach; ?>

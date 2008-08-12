@@ -43,5 +43,5 @@ class CollaborationOffer extends BaseCollaborationOffer
 }
 
 sfPropelBehavior::add('CollaborationOffer', array('sfPropelActAsSignableBehavior' => array()));
-
+sfPropelBehavior::add('CollaborationOffer', array('sfPropelActAsCommentableBehavior') );
 sfPropelBehavior::add('CollaborationOffer', array('sfPropelActAsTaggableBehavior'));

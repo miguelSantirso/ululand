@@ -43,7 +43,7 @@
 					<li><?php echo link_to(__("Registered people"), "/profile/list"); ?></li>
 				</ul>
 			</li>
-			<li class="<?php echo $sf_context->getModuleName() == 'nahoWiki' ? 'selected' : '' ?>">
+			<li class="<?php echo ($sf_context->getModuleName() == 'nahoWiki' || $sf_context->getModuleName() == 'collaboration') ? 'selected' : '' ?>">
 				<?php echo link_to(__("Community"), "@wiki_home"); ?>
 				<ul>
 					<li><?php echo link_to(__("Wiki"), "@wiki_home"); ?></li>
