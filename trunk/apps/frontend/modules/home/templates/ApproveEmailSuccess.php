@@ -1,11 +1,11 @@
-<div class="fixedWidth wide normalBox subtle">
+<div class="contentColumn wide normalBox subtle">
 	<h2 class="alignCenter">Necesitas validar tu email</h2>
 	<p class="alignCenter">Busca el email de confirmaci&oacute;n en tu correo y sigue las instrucciones.</p>
 </div>
 
 <!-- Long explanation -->
-<div class="fixedWidth wide">
-	<div class="fixedWidth medium alignLeft">
+<div class="contentColumn wide">
+	<div class="contentColumn medium alignLeft">
 		<div class="normalBox subtle">
 			<h3 class="header large">Pasos a seguir:</h3>
 			<div class="normalBox normal">
@@ -24,7 +24,7 @@
 	</div>
 	
 	<!-- Step By Step instructions -->
-	<div class="fixedWidth medium alignRight">
+	<div class="contentColumn medium alignRight">
 		<div class="normalBox subtle">
 			<h3 class="header large">&iquest;No encuentras el email?</h3>
 			<?php echo link_to('Reenviar email a <strong>'.$userEmail.'</strong> &raquo;', 'home/ResendApprovalEmail?userEmail='.$userEmail, array('class' => 'navigation')) ?>

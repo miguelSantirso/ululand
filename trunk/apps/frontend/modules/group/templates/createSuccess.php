@@ -1,10 +1,10 @@
 <?php use_helper('Validation'); ?>
-	<div class="fixedWidth wide normalBox subtle">
+	<div class="contentColumn wide normalBox subtle">
 		<h2 class="alignCenter">Crear grupo</h2>
 		<p class="alignCenter">Crea un nuevo grupo. Despu&eacute;s invita a tus amigos y &iexcl;a jugar!</p>
 	</div>
 	
-<div class="fixedWidth medium">
+<div class="contentColumn medium">
 	<?php echo form_tag('group/create', array('name' => 'groupForm', 'class' => 'card')) ?>
 	<fieldset class="labelsAtRight">
 	<legend class="xLarge">Crear grupo</legend>

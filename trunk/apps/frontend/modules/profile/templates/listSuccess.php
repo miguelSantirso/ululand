@@ -1,4 +1,4 @@
-<div class="fixedWidth wide normalBox subtle">
+<div class="contentColumn wide normalBox subtle">
 	<h2 class="alignCenter">Las habitaciones</h2>
 	<p class="alignCenter">Aqu&iacute; estamos todos.</p>
 </div>

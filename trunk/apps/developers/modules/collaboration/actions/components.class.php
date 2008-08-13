@@ -11,7 +11,7 @@
 class collaborationComponents extends sfComponents
 {
 	public function executeList()
-	{
+	{	
 		$pager = new sfPropelPager('CollaborationOffer', sfConfig::get('app_pager_collaboration'));
 		$c = new Criteria();
 		$tag = $this->getRequestParameter('tag');
@@ -32,5 +32,23 @@ class collaborationComponents extends sfComponents
 		$pager->init();
 
 		$this->collaborationsPager = $pager;
+	}
+	
+	public function executeRelatedByTags()
+	{
+		$c = new Criteria();
+		
+		if($this->tagsString)
+		{
+			$c = TagPeer::getTaggedWithCriteria('CollaborationOffer', $this->tagsString, null, array('nb_common_tags' => 1));			
+		}
+				
+		$this->limit = isset($this->limit) ? $this->limit : $this->getRequestParameter('limit');
+		if($this->limit)
+		{
+			$c->setLimit($this->limit);
+		}
+		
+		$this->objects = CollaborationOfferPeer::doSelect($c);
 	}
 }

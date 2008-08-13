@@ -3,14 +3,14 @@
 // date: 2008/02/21 12:09:13
 ?>
 
-<div class="fixedWidth wide normalBox subtle">
+<div class="contentColumn wide normalBox subtle">
 	<h2 class="alignCenter">Todos los grupos</h2>
 	<p class="alignCenter">&iexcl;Todos los grupos en ululand! Jugar en grupo mola m&aacute;s, &iquest;no?</p>
 </div>
 
 <?php use_helper('PagerNavigation') ?>
 
-<div class="fixedWidth medium alignLeft">
+<div class="contentColumn medium alignLeft">
 	<?php echo pager_navigation($groupsPager, 'group/listall') ?>
 	<ul class="normalList subtle">
 	<?php $alt=""; ?>
@@ -24,7 +24,7 @@
 	<?php echo pager_navigation($groupsPager, 'group/listall') ?>
 </div>
 
-<div class="fixedWidth medium normalBox subtle alignRight">
+<div class="contentColumn medium normalBox subtle alignRight">
 <h3>Crear un grupo:</h3>
 <?php echo link_to('Crear un grupo &raquo;', 'group/create', array('class' => 'navigation')) ?>
 </div>

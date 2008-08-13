@@ -5,24 +5,24 @@
 </div>
 
 <div id="pageContent">
-	<div class="fixedWidth half alignCenter">
+	<div class="contentColumn half alignCenter">
 	
 		<?php echo form_tag('@register') ?>
-			<div class="form-field fixedWidth half contentBox light alignCenter">
+			<div class="form-field contentColumn half contentBox light alignCenter">
 				<?php echo
 				"<p class='noSpace alignCenter'>".label_for("username", __("Email"))."</p>", 
 				form_error("username"),
 				"<p class='noSpace alignCenter'>".input_tag("username", $sf_params->get("username"))."</p>"
 				?>
 			</div>
-			<div class="form-field fixedWidth half contentBox light alignCenter">
+			<div class="form-field contentColumn half contentBox light alignCenter">
 				<?php echo 
 				"<p class='noSpace alignCenter'>".label_for("password", __("Password"))."</p>",
 				form_error("password"),
 				"<p class='noSpace alignCenter'>".input_password_tag("password", $sf_params->get("password"))."</p>"
 				?>
 			</div>
-			<div class="form-field fixedWidth half contentBox light alignCenter">
+			<div class="form-field contentColumn half contentBox light alignCenter">
 				<?php echo 
 				"<p class='noSpace alignCenter'>".label_for("password_check", __("Retype password"))."</p>",
 				form_error("password_check"),

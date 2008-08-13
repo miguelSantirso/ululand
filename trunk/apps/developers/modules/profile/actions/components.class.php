@@ -27,11 +27,44 @@ class profileComponents extends sfComponents
 			$c->addJoin(sfGuardUserProfilePeer::ID, DeveloperProfilePeer::USER_PROFILE_ID);
 			$c->add(sfGuardUserProfilePeer::USERNAME, '%'.$search.'%', Criteria::LIKE);
 		}
+		$this->onlyFree = $this->onlyFree || $this->getRequestParameter('onlyFree');
+		if($this->onlyFree)
+		{
+			$c->add(DeveloperProfilePeer::IS_FREE, true);
+		}
+		$this->limit = isset($this->limit) ? $this->limit : $this->getRequestParameter('limit');
+		if($this->limit)
+		{
+			$c->setLimit($this->limit);
+		}
 		
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));
 		$pager->init();
 
 		$this->profilesPager = $pager;
+	}
+	
+	public function executeRelatedByTags()
+	{
+		$c = new Criteria();
+		
+		if($this->tagsString)
+		{
+			$c = TagPeer::getTaggedWithCriteria('DeveloperProfile', $this->tagsString, null, array('nb_common_tags' => 1));			
+		}
+		
+		if($this->onlyFree)
+		{
+			$c->add(DeveloperProfilePeer::IS_FREE, true);
+		}
+		
+		$this->limit = isset($this->limit) ? $this->limit : $this->getRequestParameter('limit');
+		if($this->limit)
+		{
+			$c->setLimit($this->limit);
+		}
+		
+		$this->objects = DeveloperProfilePeer::doSelect($c);
 	}
 }

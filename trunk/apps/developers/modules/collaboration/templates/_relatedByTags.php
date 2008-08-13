@@ -1,6 +1,9 @@
 <?php
 	
-	$objects = TagPeer::getTaggedWith($tagsString, array('model' => 'CollaborationOffer', 'nb_common_tags' => 1));
+	if(!isset($objects))
+	{
+		$objects = TagPeer::getTaggedWith($tagsString, array('model' => 'CollaborationOffer', 'nb_common_tags' => 1));
+	}
 
 	if(!isset($title))
 	{

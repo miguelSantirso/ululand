@@ -1,6 +1,6 @@
 <?php use_helper('Validation'); ?>
 
-<div class="fixedWidth wide normalBox lightColor">
+<div class="contentColumn wide normalBox lightColor">
 	<h2 class="alignCenter">Administraci&oacute;n</h2>
 	<p class="alignCenter">La zona de los que mandan.</p>
 </div>

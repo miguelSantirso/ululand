@@ -35,12 +35,12 @@ body,html {
 	text-align: center;
 }
 
-div.fixedWidth.wide {
+div.contentColumn.wide {
 	width: 930px;
 	margin: 0 auto;
 }
 
-div.fixedWidth.medium {
+div.contentColumn.medium {
 	width: 420px;
 	margin: 1em;
 }
@@ -112,12 +112,12 @@ div.fixedWidth.medium {
 	</div>
 
 	<div id="content" class="rounded">
-		<div class="fixedWidth wide normalBox lightColor">
+		<div class="contentColumn wide normalBox lightColor">
 			<h1 class="alignCenter">Email de confirmaci&oacute;n de email</h1>
 			<p class="alignCenter">Haz click en el enlace que encontrarás abajo</p>
 		</div>
 		
-		<div class="fixedWidth wide normalBox defaultColor">
+		<div class="contentColumn wide normalBox defaultColor">
 			<h2 class="header">Eh... Hola, buenos d&iacute;as</h2>
 			<p>Lo primero es darte la bienvenida a <strong>ulu</strong>land. Estamos encantados de tener un nuevo amigo entre nosotros.</p>
 			 

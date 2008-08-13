@@ -5,7 +5,7 @@
 
 <div>
 	<!-- avatar info -->
-	<div class="fixedWidth wide normalBox subtle alignLeft">
+	<div class="contentColumn wide normalBox subtle alignLeft">
 		<div class="">
 		<?php include_component('widget', 'widget', array('widgetName' => 'UlulandAvatarRepresentator', 
 														'width' => '100px', 'height' => '150px',
@@ -23,7 +23,7 @@
 	<br style="clear:both;" />
 
 	<!-- friends -->
-	<div class="fixedWidth wide normalBox subtle">
+	<div class="contentColumn wide normalBox subtle">
 		<h3 class="header">Amigos</h3>
 		<div class="alignCenter">
 			<?php
@@ -44,7 +44,7 @@
 	</div>
 
 	<!-- messages -->
-	<div id="messages" class="fixedWidth medium alignLeft">
+	<div id="messages" class="contentColumn medium alignLeft">
 		<div class="normalBox subtle">
 			<h3 class="header">Tabl&oacute;n de mensajes</h3>
 			<ol id="messagesList" class="normalList subtle">
@@ -79,7 +79,7 @@
 	</div>
 	
 	<!-- avatar info -->
-	<div class="fixedWidth medium alignRight">
+	<div class="contentColumn medium alignRight">
 		<div class="normalBox normal">
 			<h3 class="header">Informaci&oacute;n del avatar:</h3>
 			<h4>Cr&eacute;ditos totales:</h4>

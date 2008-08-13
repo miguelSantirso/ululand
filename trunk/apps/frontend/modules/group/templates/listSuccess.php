@@ -1,7 +1,7 @@
 <?php use_helper('Tooltip'); ?>
 <?php use_helper('nahoWiki'); ?>
 
-<div class="fixedWidth wide normalBox subtle">
+<div class="contentColumn wide normalBox subtle">
 	<h2 class="alignCenter">Tus grupos</h2>
 	<p class="alignCenter"><?php echo "&iexcl;T&iacute;o, est&aacute;s en ", count($groups), " grupos!"; ?></p>
 </div>

@@ -21,8 +21,6 @@ class profileActions extends sfActions
 	 */
 	public function executeList()
 	{
-		$this->setFlash('warning', 'AVISO: Este módulo tiene varias funcionalidades desactivadas.', false);
-		
 		$tag = $this->getRequestParameter('tag');
 		if($tag)
 		{

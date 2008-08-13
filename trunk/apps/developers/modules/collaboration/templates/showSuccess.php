@@ -5,7 +5,7 @@
 </div>
 
 <div id="pageContent">
-	<div class="fixedWidth wide alignLeft">
+	<div class="contentColumn wide alignLeft">
 		<div class="contentBox bordered">
 			<h3 class="header"><?php echo linkToCollaborationOffer($collaboration_offer); ?></h3>
 			
@@ -30,16 +30,16 @@
 			?>
 		</div>
 	</div>
-	<div class="alignLeft">
+	<div class="contentColumn quarter alignLeft">
 		<?php include_partial('searchForm'); ?>
 		
-		<?php include_partial('relatedByTags', array('title' => __('Similar Offers'), 'tagsString' => $collaboration_offer->getTagsString())) ?>
+		<?php include_partial('relatedByTags', array('title' => __('Similar Offers'), 'tagsString' => $collaboration_offer->getTagsString())); ?>
 		
-		<?php include_partial('profile/relatedByTags', array('tagsString' => $collaboration_offer->getTagsString())) ?>
+		<?php include_component('profile', 'relatedByTags', array('tagsString' => $collaboration_offer->getTagsString(), 'onlyFree' => true)); ?>
 	</div>
 	
 	<div style="clear:both"></div>
-	<div class="fixedWidth quarter alignCenter">
+	<div class="contentColumn quarter alignCenter">
 		<?php echo link_to(sprintf('&laquo; %s', __('List')), 'collaboration/list', array('class' => 'button')) ?>
 	</div>
 	

@@ -1,12 +1,12 @@
 <?php use_helper('Tooltip'); ?>
 <?php use_helper('nahoWiki'); ?>
 
-<div class="fixedWidth wide normalBox subtle">
+<div class="contentColumn wide normalBox subtle">
 	<h2 class="alignCenter"><?php echo "Grupo: ", $group;?></h2>
 	<p class="alignCenter"><?php echo $description;?></p>
 </div>
 
-<div class="fixedWidth wide normalBox subtle">
+<div class="contentColumn wide normalBox subtle">
 	<?php $belongs = false; $ispetition = false; $isowner = false; ?>
 	<p>
 	<?php 

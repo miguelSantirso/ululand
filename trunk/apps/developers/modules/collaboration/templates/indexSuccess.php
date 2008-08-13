@@ -5,10 +5,10 @@
 <?php use_helper('Partial'); ?>
 <div id="pageContent">
 
-	<div class="fixedWidth half alignLeft">
+	<div class="contentColumn half alignLeft">
 		
 		<div class="contentBox">
-			<h3 class="header"><?php echo __('Collaboration Offers'); ?> (<?php echo link_to(__('show all'), 'collaboration/list') ?>)</h3>
+			<h3 class="header"><?php echo __('Collaboration Offers'); ?> <?php if($sf_user->isAuthenticated()) echo '(' . link_to(__('submit your own') .')', 'collaboration/create', array('class' => '')); ?></h3>
 			<p class="small"><?php echo __('Looking for a project to work on? Here you can find some projects in which you can collaborate.') ?></p>
 			
 			<div class="alignRight">
@@ -16,32 +16,25 @@
 			</div>
 			<h4>&nbsp;<?php echo __("Latest offers"); ?></h4>
 			<?php include_component('collaboration', 'list'); ?>
-			<?php if($sf_user->isAuthenticated()) : ?>
-				<?php echo link_to(__('Submit your own &raquo;'), 'collaboration/create', array('class' => 'alignRight')); ?>
-			<?php else :  ?>
-				<p class="right">
-					(<?php echo sprintf(__('requires %s or %s'), link_to(__('log in'), '@sf_guard_signin'), link_to(__('register'), '@register')) ?>)
-					<?php echo link_to(__('Submit your own &raquo;'), 'collaboration/create', array('class' => '')); ?> 
-				</p>
-			<?php endif; ?>
+			<p class="right"><?php echo link_to(__('Show full list &raquo;'), 'collaboration/list') ?></p>
 			
 			<div style="clear:both;"></div>
 		</div>
 		
 	</div>
 	
-	<div class="fixedWidth half alignRight">
+	<div class="contentColumn half alignRight">
 		
 		<div class="contentBox">
-			<h3 class="header"><?php echo __('Collaborators'); ?> (<?php echo link_to(__('show all'), 'profile/list') ?>)</h3>
+			<h3 class="header"><?php echo __('Collaborators'); ?></h3>
 			<p class="small"><?php echo __('Looking for someone to help you in your latest project? Here you can find some people that might want to help you.') ?></p>
 			
 			<div class="alignRight">
-			<?php include_partial('profile/searchForm', array('title' => '')); ?>
+			<?php include_partial('profile/searchForm', array('title' => '', 'onlyFree' => true)); ?>
 			</div>
 			<h4>&nbsp;<?php echo __("Recent collaborators"); ?></h4>
-			<?php include_component('profile', 'list'); ?>
-			
+			<?php include_component('profile', 'list', array('onlyFree' => true)); ?>
+			<p class="right"><?php echo link_to(__('Show full list &raquo;'), 'profile/list') ?></p>
 		</div>
 		
 	</div>

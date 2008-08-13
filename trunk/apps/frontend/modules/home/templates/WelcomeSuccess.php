@@ -1,10 +1,10 @@
 <?php use_helper('Validation'); ?>
-	<div class="fixedWidth wide normalBox subtle">
+	<div class="contentColumn wide normalBox subtle">
 		<h2 class="alignCenter">&iexcl;Bienvenido!</h2>
 		<p class="alignCenter">Esto es <strong>ulu</strong>land</p>
 	</div>
 	<?php if( !$sf_user->isAuthenticated() ): ?>
-		<div class="fixedWidth medium alignRight">
+		<div class="contentColumn medium alignRight">
 			<div class="normalBox subtle">
 				<h3 class="alignCenter">&iexcl;<strong>ulu</strong>land es solo para socios!</h3>
 				<p class="small">Lo bueno es que <strong>cualquiera</strong> puede ser socio de <strong>ulu</strong>land. Y gratis. Y en cualquier momento. De hecho, si todav&iacute;a no eres socio de Ululand, podr&iacute;as serlo en un minuto.</p>
@@ -17,13 +17,13 @@
 				<p><?php echo link_to('Identif&iacute;cate en <strong>ulu</strong>land', '@sf_guard_signin', array('class' => 'navigation')) ?></p>
 			</div>
 		</div>
-		 <div class="fixedWidth medium">
+		 <div class="contentColumn medium">
 		 	<?php echo image_tag('bienvenido.png', array('alt' => 'Bienvenido a Ululand')) ?>
 		 </div>
 		 
 	<?php else: ?>
 		<?php if($avatar) : ?>
-		<div class="fixedWidth medium alignRight">
+		<div class="contentColumn medium alignRight">
 			<div class="normalBox normal">
 				<h3 class="header">Desde los foros...</h3>
 				<?php use_helper('Partial'); ?>
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="fixedWidth medium alignLeft">
+		<div class="contentColumn medium alignLeft">
 				<div class="alignLeft">
 				<?php include_component('widget', 'widget', array('widgetName' => 'UlulandAvatarRepresentator', 
 																'width' => '100px', 'height' => '150px',

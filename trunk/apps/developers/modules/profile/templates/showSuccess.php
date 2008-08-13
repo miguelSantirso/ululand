@@ -18,29 +18,31 @@
 	
 <div id="pageContent">
 
-	<div class="fixedWidth wide alignLeft contentBox bordered">
-		<h3 class="header"><?php echo linkToProfile($sf_guard_user_profile); ?></h3>
-		<?php if($developerProfile->getIsFree()) { ?>
-			<p class="contentBox light center"><?php echo __('Hey! I\'m looking for a project to work on!'); ?></p>
-		<?php } ?>
-		
-		<?php if($developerProfile->getDescription() != ''){ ?> 
-			<?php echo sfMarkdown::doConvert( $developerProfile->getDescription() ); ?>
-		<?php } else { ?>
-			<p><?php echo __('There is no description for this user'); ?></p>
-		<?php } ?>
-		
-		<?php if($developerProfile->getUrl() != '') : ?>
-			<p class="small"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
-		<?php endif; ?>
-		<p class="small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $developerProfile->getLinkedTagsString(); ?></p>
-		
-		<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
-			<span class="small"><?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?></span>
-		<?php } ?>
+	<div class="contentColumn wide alignLeft">
+		<div class="contentBox bordered">
+			<h3 class="header"><?php echo linkToProfile($sf_guard_user_profile); ?></h3>
+			<?php if($developerProfile->getIsFree()) { ?>
+				<p class="contentBox light center"><?php echo __('Hey! I\'m looking for a project to work on!'); ?></p>
+			<?php } ?>
+			
+			<?php if($developerProfile->getDescription() != ''){ ?> 
+				<?php echo sfMarkdown::doConvert( $developerProfile->getDescription() ); ?>
+			<?php } else { ?>
+				<p><?php echo __('There is no description for this user'); ?></p>
+			<?php } ?>
+			
+			<?php if($developerProfile->getUrl() != '') : ?>
+				<p class="small"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
+			<?php endif; ?>
+			<p class="small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $developerProfile->getLinkedTagsString(); ?></p>
+			
+			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
+				<span class="small"><?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?></span>
+			<?php } ?>
+		</div>
 	</div>
 
-	<div class="alignLeft">
+	<div class="contentColumn quarter alignLeft">
 		<?php include_partial('searchForm'); ?>
 		
 		<?php include_partial('relatedByTags', array('title' => __('Similar Developers'), 'tagsString' => $developerProfile->getTagsString())) ?>
@@ -50,7 +52,7 @@
 	
 	<div style="clear:both"></div>
 	
-	<div class="fixedWidth quarter contentBox alignCenter">
+	<div class="contentColumn quarter contentBox alignCenter">
 		<?php echo link_to(sprintf('&laquo; %s', __('List')), 'profile/list', array('class' => 'button')) ?>
 	</div>
 

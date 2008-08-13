@@ -25,7 +25,7 @@
 					$username = $sf_user->getUsername();
 				}
 				?>
-				<?php echo __(sprintf(__('Welcome back, %1$s! %2$s?'), link_to($username, "profile/edit?id=".$sf_user->getProfile()->getId()), link_to(__("Logout"), "@sf_guard_signout"))); ?>
+				<?php echo __(sprintf(__('Welcome back, %1$s! %2$s?'), link_to($username, "profile/show?username=".$sf_user->getProfile()->getUsername()), link_to(__("Logout"), "@sf_guard_signout"))); ?>
 			<?php } ?>
 		</div>
 		<div id="logo"><h1><?php echo link_to(__('ulu<span id="land">land</span>'), "@homepage"); ?></h1> <p><?php echo __('Developers<br/>Network'); ?></p></div>
@@ -36,19 +36,18 @@
 			<li class="<?php echo $sf_context->getModuleName() == 'game' ? 'selected' : '' ?>">
 				<?php echo link_to(__("Games"), '/game'); ?>
 			</li>
-			<li class="<?php echo $sf_context->getModuleName() == 'profile' ? 'selected' : '' ?>">
-				<?php echo link_to(__("People"), "/profile"); ?>
+			<?php $selected = $sf_context->getModuleName() == 'nahoWiki' ||
+								$sf_context->getModuleName() == 'collaboration' || 
+								$sf_context->getModuleName() == 'profile'; ?>
+			<li class="<?php echo $selected ? 'selected' : '' ?>">
+				<?php echo link_to(__("Community"), "/community"); ?>
 				<ul>
-					<?php if($sf_user->isAuthenticated()) { ?><li><?php echo link_to(__('My Profile'), "profile/show?id=".$sf_user->getProfile()->getId()); ?></li> <?php } ?>
-					<li><?php echo link_to(__("Registered people"), "/profile/list"); ?></li>
-				</ul>
-			</li>
-			<li class="<?php echo ($sf_context->getModuleName() == 'nahoWiki' || $sf_context->getModuleName() == 'collaboration') ? 'selected' : '' ?>">
-				<?php echo link_to(__("Community"), "@wiki_home"); ?>
-				<ul>
-					<li><?php echo link_to(__("Wiki"), "@wiki_home"); ?></li>
 					<li><?php echo link_to(__("Kollaborator"), "/collaboration"); ?></li>
+					<li><?php echo link_to(__("Wiki"), "@wiki_home"); ?></li>
 					<li><?php echo link_to(__("Google Group"), "http://groups.google.com/group/desarrolladores-ululand"); ?></li>
+					<li><hr/></li>
+					<li><?php echo link_to(__("Registered people"), "/profile/list"); ?></li>
+					<li><?php echo link_to(__("Collaboration Offers"), "/collaboration/list"); ?></li>
 				</ul>
 			</li>
 		</ul>

@@ -3,7 +3,7 @@
 // date: 2008/02/21 12:09:13
 ?>
 
-<div class="fixedWidth wide normalBox subtle">
+<div class="contentColumn wide normalBox subtle">
 	<h2 class="alignCenter">La sala de m&aacute;quinas</h2>
 	<p class="alignCenter">Elige un juego. Divi&eacute;rtete. Esto es <strong>ulu</strong>land; esta es tu casa.</p>
 </div>

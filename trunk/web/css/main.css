@@ -132,6 +132,12 @@ ul#mainMenu li ul li {
 	float: none;
 	padding-top: 0.2em;
 }
+ul#mainMenu li ul li hr {
+	height: 1px;
+	border: 0;
+	margin: 0;
+	background-color: #a6c0e3;
+}
 
 #mainMenu a {
 	text-decoration: none;
@@ -205,7 +211,7 @@ div#content {
 	
 	width: 980px;
 	margin: 0.4em auto;
-	padding: 0.2em 1em 1em;
+	padding: 0.2em 15px 15px;
 }
 
 div#pageContent
@@ -216,7 +222,7 @@ div#pageContent
 	margin: 0.2em 0.4em;
 	padding: 0.2em;
 }
-div#contentRow
+div.contentRow
 {
 	clear: both;
 }
@@ -225,6 +231,14 @@ div#contentRow
 {
 	padding-bottom: 0.2em;
 	border-bottom: 1px solid #c6c6c6;
+}
+.header a
+{
+	text-decoration: none;
+}
+.header a:hover
+{
+	text-decoration: underline;
 }
 
 /* alignments */
@@ -276,25 +290,6 @@ div#contentRow
 }
 
 
-/* fixed widths */
-
-div.fixedWidth.wide
-{
-	width: 665px;
-}
-div.fixedWidth.half
-{
-	width: 440px;
-}
-div.fixedWidth.third
-{
-	width: 285px;
-}
-div.fixedWidth.quarter
-{
-	width: 205px;
-}
-
 
 /* page headers */
 
@@ -321,6 +316,8 @@ div#pageHeader
 	color: #424242;
 	text-decoration: none;
 }
+
+
 
 /* content boxes */
 
@@ -349,6 +346,30 @@ div#pageHeader
 .contentBox.dark .header
 {
 	border-color: #00266b;
+}
+
+/* fixed widths */
+
+div.contentColumn
+{
+	margin: 0;
+	padding: 0;
+}
+div.contentColumn.wide
+{
+	width: 720px;
+}
+div.contentColumn.half
+{
+	width: 480px;
+}
+div.contentColumn.third
+{
+	width: 320px;
+}
+div.contentColumn.quarter
+{
+	width: 240px;
 }
 
 
@@ -449,4 +470,17 @@ ul.tags li a:active
 .form_error {
 	text-align: center;
 	color: red;
+}
+
+
+/* forms */
+
+form.grande input, input.grande
+{
+	font-size: x-large;
+	padding: 0.2em;
+}
+
+form small {
+	color: #666;
 }

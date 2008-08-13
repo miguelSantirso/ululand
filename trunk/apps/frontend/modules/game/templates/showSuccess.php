@@ -7,7 +7,7 @@
 <?php use_helper('sfRating') ?>
 
 	<!-- game box -->
-	<div class="fixedWidth wide normalBox subtle">
+	<div class="contentColumn wide normalBox subtle">
 		<h2><?php echo link_to($game->getName(), 'game/show?id='.$game->getId()); ?></h2>
 		<div class="alignCenter" style="width: <?php echo $game->getWidth()+200 ?>px; margin-left: auto;">
 			<div class="alignLeft">
@@ -21,7 +21,7 @@
 	</div>
 
 	<!-- game info -->
-	<div class="fixedWidth medium normalBox subtle alignLeft">
+	<div class="contentColumn medium normalBox subtle alignLeft">
 		<div class="alignLeft">
 			<?php echo sf_rater($game) ?>
 			<img class="gameThumbnail" alt="game logo" src="<?php echo $game->getThumbnailUrl(); ?>" />
@@ -38,7 +38,7 @@
 	</div>
 	
 	<!-- game author info -->
-	<div class="fixedWidth medium normalBox subtle alignRight">
+	<div class="contentColumn medium normalBox subtle alignRight">
 		<img class="alignRight gameThumbnail" alt="game logo" src="<?php echo $game->getThumbnailUrl(); ?>" />
 		<h2 class="strongEmphasis xLarge">Nombre del autor</h2>
 		<p class="">Texto breve del autor</p>
@@ -49,7 +49,7 @@
 	<br style="clear:both" />
 
 	<!-- game comments -->
-	<div class="fixedWidth medium alignLeft normalBox subtle">
+	<div class="contentColumn medium alignLeft normalBox subtle">
 		<h3 class="header">Comentarios</h3>
 		<?php if($game->getCommentsAmount() == 0) { ?>
 			<p>No hay comentarios todav&iacute;a. &iexcl;S&eacute; el primero!</p>
@@ -84,7 +84,7 @@
 	</div>
 	
 	<!-- game info -->
-	<div id="gameInfo" class="fixedWidth medium alignRight normalBox subtle">
+	<div id="gameInfo" class="contentColumn medium alignRight normalBox subtle">
 		<h3 class="header">Rankings</h3>
 		<?php $gamestats = $game->getGameStats(); ?>
 		<?php if(count($gamestats) == 0) { ?>

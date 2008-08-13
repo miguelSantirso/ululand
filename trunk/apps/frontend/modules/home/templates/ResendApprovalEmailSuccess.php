@@ -1,6 +1,6 @@
 <p class="xxLarge alignCenter">Email de confirmación enviado a<br/><?php echo $userEmail; ?></p>
 <br/>
-<div class="fixedWidth wide">
+<div class="contentColumn wide">
 	<div class="normalBox subtle">
 		<h3 class="alignCenter">&iquest;Qu&eacute; hacer ahora?</h3>
 		<br/>

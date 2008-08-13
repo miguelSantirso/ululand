@@ -13,7 +13,7 @@
         ?><?php else: ?><?php echo $comment['AuthorName'] ?><?php endif; ?></span>,
     <?php echo __('%1% ago', array('%1%' => distance_of_time_in_words(strtotime($comment['CreatedAt'])))) ?>
   </p>
-    <?php if($sf_user->getId() == $author->getId()) : ?>
+    <?php if($sf_user->isAuthenticated() && $sf_user->getId() == $author->getId()) : ?>
     	<?php echo link_to_remote(__('Remove'), array(
     			'update' => "sf_comment_".$comment['Id'],
     			'url'    => 'sfComment/remove?id='.$comment['Id']),
