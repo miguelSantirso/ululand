@@ -41,7 +41,8 @@ class profileActions extends sfActions
 	{
 		if($this->getRequestParameter('id'))
 		{
-			$this->sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
+			$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
+			$this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 		}
 		else if($this->getRequestParameter('username'))
 		{
@@ -50,7 +51,7 @@ class profileActions extends sfActions
 			$this->sf_guard_user_profile = sfGuardUserProfilePeer::doSelectOne($c);
 		}
 		
-		$this->developerProfile = $this->sf_guard_user_profile->getDeveloperProfile();
+		$this->developerProfile = $this->sf_guard_user_profile->getDeveloperProfile(true);
 		
 		$this->forward404Unless($this->sf_guard_user_profile);
 	}
@@ -66,20 +67,26 @@ class profileActions extends sfActions
 	 *
 	 */
 	public function executeEdit()
-	{
-		// Obtener el id del perfil a editar
-		$profileId = $this->getRequestParameter('id');
-		 
+	{	
+		if($this->getRequestParameter('id'))
+		{
+			$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
+			$this->redirect('profile/edit?username='.$sf_guard_user_profile->getUsername());
+		}
+		else if($this->getRequestParameter('username'))
+		{
+			$c = new Criteria();
+			$c->add(sfGuardUserProfilePeer::USERNAME, $this->getRequestParameter('username'));
+			$this->sf_guard_user_profile = sfGuardUserProfilePeer::doSelectOne($c);
+		}
+		
 		// Comprobar que el usuario está editando su propio perfil y no otro
-		if($profileId != $this->getUser()->getProfile()->getId())
+		if($this->sf_guard_user_profile != $this->getUser()->getProfile())
 		{
 			// @todo Mensaje no internacionalizado
 			$this->setFlash('error', 'No tienes permisos para editar ese perfil');
 			$this->forward('profile', 'list');
 		}
-
-		// Obtener el perfil a editar
-		$this->sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($profileId);
 
 		// Obtener el perfil de desarrollador a editar (en caso de no existir, se fuerza su creación)
 		$this->developerProfile = $this->sf_guard_user_profile->getDeveloperProfile(true);
@@ -131,7 +138,7 @@ class profileActions extends sfActions
 			$this->getUser()->setCulture($this->getRequestParameter('culture'));
 		}
 		
-		return $this->redirect('profile/show?id='.$sf_guard_user_profile->getId());
+		return $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 	}
 
 }

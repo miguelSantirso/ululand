@@ -20,7 +20,7 @@
 			
 			<p class="noSpace small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $collaboration_offer->getLinkedTagsString(); ?></p>
 			<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $collaboration_offer->getCreatedBy()) : ?>
-				<p><?php echo link_to(__('Edit'), 'collaboration/edit?id='.$collaboration_offer->getId()); ?></p>
+				<p><?php echo linkToEditCollaborationOffer($collaboration_offer, array(), __('Edit')); ?></p>
 			<?php endif; ?>
 		</div>
 		<div class="contentBox">

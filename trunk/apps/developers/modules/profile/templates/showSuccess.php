@@ -10,10 +10,10 @@
 	<h2>
 		<?php echo linkToProfileWithGravatar($sf_guard_user_profile, 70); ?>
 		<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
-			<span class="">(<?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?>)</span>
+			<span class="">(<?php echo linkToEditProfile($sf_guard_user_profile); ?>)</span>
 		<?php } ?>
 	</h2>
-	<p class="subtitle"><?php echo sprintf(__("Profile for %s"), link_to($sf_guard_user_profile, 'profile/show?username='.$sf_guard_user_profile->getUsername())); ?></p>
+	<p class="subtitle"><?php echo sprintf(__("Profile for %s"), linkToProfile($sf_guard_user_profile)); ?></p>
 </div>
 	
 <div id="pageContent">
@@ -37,7 +37,7 @@
 			<p class="small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $developerProfile->getLinkedTagsString(); ?></p>
 			
 			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
-				<span class="small"><?php echo link_to(__('edit'), 'profile/edit?id='.$sf_guard_user_profile->getId()) ?></span>
+				<span class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></span>
 			<?php } ?>
 		</div>
 	</div>

@@ -90,7 +90,7 @@
 	<div class="contentBox" style="text-align: center">
 		<?php echo submit_tag(__('save')) ?>
 		<?php if ($sf_guard_user_profile->getId()): ?>
-		  &nbsp;<?php echo link_to(__('cancel'), 'profile/show?id='.$sf_guard_user_profile->getId()) ?>
+		  &nbsp;<?php echo link_to(__('cancel'), 'profile/show?username='.$sf_guard_user_profile->getUsername()) ?>
 		<?php else: ?>
 		  &nbsp;<?php echo link_to(__('cancel'), 'profile/list') ?>
 		<?php endif; ?>

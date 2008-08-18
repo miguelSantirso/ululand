@@ -30,7 +30,18 @@ class collaborationActions extends sfActions
 
   public function executeShow()
   {
-    $this->collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));
+  	if($this->getRequestParameter('id'))
+	{
+		$collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));
+		$this->redirect('collaboration/show?title='.$collaboration_offer->getTitle());
+	}
+	else if($this->getRequestParameter('title'))
+	{
+		$c = new Criteria();
+		$c->add(CollaborationOfferPeer::TITLE, $this->getRequestParameter('title'));
+		$this->collaboration_offer = CollaborationOfferPeer::doSelectOne($c);
+	}
+	
     $this->forward404Unless($this->collaboration_offer);
   }
 
@@ -49,7 +60,18 @@ class collaborationActions extends sfActions
 
   public function executeEdit()
   {
-    $this->collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));
+    if($this->getRequestParameter('id'))
+	{
+		$collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));
+		$this->redirect('collaboration/edit?title='.$collaboration_offer->getTitle());
+	}
+	else if($this->getRequestParameter('title'))
+	{
+		$c = new Criteria();
+		$c->add(CollaborationOfferPeer::TITLE, $this->getRequestParameter('title'));
+		$this->collaboration_offer = CollaborationOfferPeer::doSelectOne($c);
+	}
+	
     $this->forward404Unless($this->collaboration_offer);
 
     if($this->getUser()->getId() != $this->collaboration_offer->getCreatedBy())

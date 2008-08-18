@@ -21,8 +21,7 @@ class communityActions extends sfActions
   
   public function executeLatestCommunityNews()
   {
-  	$feedUrls = array('http://blog.pncil.com/feed/',
-  					'http://mochiland.com/feed/',
+  	$feedUrls = array('http://mochiland.com/feed/',
   					'http://feeds.feedburner.com/Actionscriptcom',
   					'http://www.sephiroth.it/weblog/atom.xml',
   					'http://www.flashguru.co.uk/feed');

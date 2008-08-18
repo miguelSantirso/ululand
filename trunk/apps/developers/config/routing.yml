@@ -1,9 +1,53 @@
+# kollaborator
+
+kollaborator_index:
+  url: /kollaborator
+  param: { module: collaboration, action: index }
+
+# collaboration offers
+
+collaboration_list:
+  url: /collaborations
+  param: { module: collaboration, action: list }
+
+collaboration_list_tag:
+  url: /collaborations/tag/:tag
+  param: { module: collaboration, action: list }
+  
+collaboration_list_search:
+  url: /collaborations/search/:search
+  param: { module: collaboration, action: list }
+  
+collaboration_show:
+  url: /collaborations/:title
+  param: { module: collaboration, action: show }
+
+collaboration_edit:
+  url: /collaborations/:title/edit
+  param: { module: collaboration, action: edit }
+  
 # profiles
 
-show_user_profile:
-  url: /user/:username
+user_list:
+  url: /users
+  param: { module: profile, action: list }
+
+user_list_tag:
+  url: /users/tag/:tag
+  param: { module: profile, action: list }
+
+user_list_search:
+  url: /users/search/:search
+  param: { module: profile, action: list }
+  
+user_show:
+  url: /users/:username
   param: { module: profile, action: show }
 
+user_edit:
+  url: /users/:username/edit
+  param: { module: profile, action: edit }
+  
 # various
 
 latest_news_ajax:

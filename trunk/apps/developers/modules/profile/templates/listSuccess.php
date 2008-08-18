@@ -27,7 +27,7 @@
 	<div class="contentColumn quarter alignRight">
 	<?php if($sf_user->isAuthenticated() && !$sf_user->getProfile()->isFilledIn()) { ?>
 		<div class="contentBox light">
-			<h4 class="header small"><?php echo link_to(__("Fill in your profile now!"), 'profile/edit?id='.$sf_user->getProfile()->getId()); ?></h4>
+			<h4 class="header small"><?php echo link_to(__("Fill in your profile now!"), 'profile/edit?username='.$sf_user->getProfile()->getUsername()); ?></h4>
 			<p class="small"><?php echo __("Your profile is not filled in and you will not be listed here."); ?></p>
 			<p class=""><?php echo link_to(__("Fill in your profile &raquo;"), 'profile/edit?id='.$sf_user->getProfile()->getId()); ?></p>
 		</div>

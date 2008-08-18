@@ -50,7 +50,7 @@
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('offerPreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('offerPreview', 1);",
 				    'with'      => "'title=' + $('title').value + '&description=' + $('description').value")) ?>
-			</form>
+			
 			<?php echo link_to_remote(__('update preview &raquo;'), array(
 				'update'  => 'offerPreview',
 				'url'     => 'collaboration/preview',
@@ -60,11 +60,12 @@
 			array('class' => 'large alignRight')) ?>
 			<?php echo submit_tag('save') ?>
 			<?php if ($collaboration_offer->getId()): ?>
-			  &nbsp;<?php echo link_to('cancel', 'collaboration/show?id='.$collaboration_offer->getId()) ?>
+			  &nbsp;<?php echo linkToCollaborationOffer($collaboration_offer, array(), 'cancel'); ?>
 			<?php else: ?>
 			  &nbsp;<?php echo link_to('cancel', 'collaboration/list') ?>
 			<?php endif; ?>
 			<div style="clear:both"></div>
+			</form>
 		</div>
 	</div>
 	

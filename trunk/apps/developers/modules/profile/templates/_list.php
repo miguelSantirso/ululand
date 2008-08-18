@@ -12,7 +12,7 @@
 					<li class="">
 						<?php echo linkToProfileWithGravatar($userProfile, 30, array('class' => 'firstRow large')); ?>
 						<div class="lastRow">
-							<?php if($sf_user->isAuthenticated() && $userProfile->getId() == $sf_user->getProfile()->getId()) { echo link_to(__('edit'), 'profile/edit?id='.$userProfile->getId(), array('class' => 'alignRight xSmall')); } ?>
+							<?php if($sf_user->isAuthenticated() && $userProfile->getId() == $sf_user->getProfile()->getId()) { echo linkToEditProfile($sf_user->getProfile(), array('class' => 'alignRight xSmall')); } ?>
 							<p class="noSpace xSmall"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $profile->getLinkedTagsString(); ?></p>
 						</div>
 					</li>

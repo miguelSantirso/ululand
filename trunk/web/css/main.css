@@ -203,7 +203,7 @@ ul#mainMenu li ul li hr {
 
 div#content {
 	background-color: #fff;
-	color: #252525;
+	color: #333;
 	
 	border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -212,6 +212,10 @@ div#content {
 	width: 980px;
 	margin: 0.4em auto;
 	padding: 0.2em 15px 15px;
+}
+#content p, #content blockquote
+{
+	color: #444;
 }
 
 div#pageContent
@@ -329,21 +333,21 @@ div#pageHeader
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
-.contentBox.bordered
+div.bordered
 {
 	border: 1px solid #c6c6c6;
 }
-.contentBox.light
+div.light
 {
 	background-color: #ececec;
 }
-.contentBox.dark
+div.dark
 {
 	background-color: #000211;
 	color: #d8e6ff;
 	border-color: #00266b;
 }
-.contentBox.dark .header
+div.dark .header
 {
 	border-color: #00266b;
 }
@@ -460,6 +464,23 @@ ul.tags li a:active
 }
 
 
+/* cloud list */
+
+ul.cloud {
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+}
+ul.cloud li {
+	display: inline;
+	margin: 0.2em;
+}
+ul.cloud li a {
+	text-decoration: none;
+}
+ul.cloud li a:hover {
+	text-decoration: underline;
+}
 /* text formats */
 
 .noSpace {
