@@ -54,6 +54,35 @@ a.button:active {
 }
 
 
+/* big box links */
+
+a.bigBox {
+	background: #f1f1f1 url('../images/bigBoxButtonBg.gif') no-repeat center right;
+	
+	text-decoration: none;
+	
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	padding: 1em 80px 1em 1em;
+	margin-bottom: 1em;
+	display: block;
+}
+a.bigBox:hover {
+	background-color: #fafafa;
+}
+a.bigBox:active {
+	background-color: #eee;
+}
+a.bigBox span.header {
+	display: block;
+	margin-bottom: 0.6em;
+}
+a.bigBox span.description {
+	display: block;
+	color: #666;
+}
+
 /* user menu */
 
 #userMenu {

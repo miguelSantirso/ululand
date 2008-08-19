@@ -1,5 +1,0 @@
-generator:
-  class:              sfPropelAdminGenerator
-  param:
-    model_class:      GameStat_Avatar
-    theme:            default

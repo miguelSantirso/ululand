@@ -1,1 +1,0 @@
-<span class="strongColor">Tu comentario ha sido correctamente eliminado</span>

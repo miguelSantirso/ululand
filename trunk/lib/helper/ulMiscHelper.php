@@ -17,7 +17,7 @@
 			if($urlPart != "")
 			{
 				$reconstructedUrl .= '/' .$urlPart;
-				$finalUrl .= link_to(substr(urldecode($urlPart), 0, 20), $reconstructedUrl, array('class' => 'urlLevel-'.$level)) . '<span>&raquo;';
+				$finalUrl .= link_to(substr(urldecode($urlPart), 0, 20), $reconstructedUrl, array('class' => 'urlLevel-'.$level)) . '/<span>';
 				$level++;
 			}
 		}
