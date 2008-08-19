@@ -61,7 +61,7 @@ class profileActions extends sfActions
 		$this->username = $this->getRequestParameter('username');
 		$this->description = $this->getRequestParameter('description');
 	}
-	
+  
 	/**
 	 * Muestra el formulario de edición de un perfil
 	 *
@@ -70,8 +70,9 @@ class profileActions extends sfActions
 	{	
 		if($this->getRequestParameter('id'))
 		{
-			$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
-			$this->redirect('profile/edit?username='.$sf_guard_user_profile->getUsername());
+			$this->sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
+			if($this->sf_guard_user_profile->getUsername())
+				$this->redirect('profile/edit?username='.$this->sf_guard_user_profile->getUsername());
 		}
 		else if($this->getRequestParameter('username'))
 		{

@@ -58,37 +58,62 @@ a.button:active {
 
 #userMenu {
 	font-size: small;
-	
-	float: right;
+	width: 100%;
+	text-align: right;
 }
 
-/* logo */
 
-#logo {
-	margin-left: 2.4em;
-	margin-bottom: 0.5em;
+/* title */
+
+#title {
+	margin: 0;
+	color: #a3d4f2;
 }
-#logo h1 {
-	border-right: 2px solid;
-	
-	font-size: xx-large;
-	margin: 0 0.5em 0 0;
-	padding: 0 0.5em 0 0;
+#title h1 {
+	margin: 0 0.5em 0.5em;
+	font-weight: normal;
 	float: left;
 }
-#logo h1 a {
+#title h1 a {
+	margin-left: 5px;
+	margin-right: 5px;
 	color: #006eb3;
 	text-decoration: none;
 }
-#logo h1 a:hover {
-	text-decoration: underline;
+#title h1 a:hover {
+	/*border-bottom: 4px solid;*/
+	color: #0091ed;
 }
-#logo h1 span#land{
-	font-weight: normal;
+#title .urlLevel-0 {
+	font-weight: bold;
 }
-#logo p {
-	margin-top: 4px;
-	padding-top: 4px;
+#title .urlLevel-1 {
+	color: #2d85bc;
+	font-size: 0.9em;
+}
+#title .urlLevel-2 {
+	color: #5d9cc4;
+	font-size: 0.85em;
+}
+#title .urlLevel-3 {
+	color: #70a8cb;
+	font-size: 0.8em;
+}
+#title .urlLevel-4, #title .urlLevel-5, #title .urlLevel-6 {
+	color: #70a8cb;
+	font-size: 0.7em;
+}
+#title h1 span
+{
+	cursor: default;
+	color: #a3d4f2;
+	padding-bottom: 2px;
+	border-bottom: 4px solid #c6dcf5;
+}
+#title h1 span:hover
+{
+	border-bottom: 4px solid #0091ed;
+	color: #0091ed;
 }
 
 /* header */
@@ -101,7 +126,7 @@ div#header {
 ul#mainMenu {
 	font-size: large;
 	
-	margin-left: 1em;
+	margin-left: 0;
 	list-style-type: none;
 	clear: both;
 }

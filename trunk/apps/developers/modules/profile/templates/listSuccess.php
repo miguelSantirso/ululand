@@ -33,7 +33,7 @@
 		</div>
 	<?php } ?>
 		<div class="">
-			<?php include_partial('searchForm'); ?>
+			<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
 		</div>
 		<div class="">
 			<?php include_partial('tagCloud') ?>

@@ -38,7 +38,7 @@
 	
 	<div class="contentColumn quarter alignRight">
 
-		<?php include_partial('searchForm'); ?>
+		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
 
 		<div class="">
 

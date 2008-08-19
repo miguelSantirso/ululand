@@ -29,24 +29,25 @@ collaboration_edit:
 # profiles
 
 user_list:
-  url: /users
+  url: /people
   param: { module: profile, action: list }
 
 user_list_tag:
-  url: /users/tag/:tag
+  url: /people/tag/:tag
   param: { module: profile, action: list }
 
 user_list_search:
-  url: /users/search/:search
+  url: /people/search/:search
   param: { module: profile, action: list }
   
 user_show:
-  url: /users/:username
+  url: /people/:username
   param: { module: profile, action: show }
 
 user_edit:
-  url: /users/:username/edit
+  url: /people/:username/edit
   param: { module: profile, action: edit }
+  
   
 # various
 
