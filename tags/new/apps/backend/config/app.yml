@@ -1,0 +1,9 @@
+# default values
+all:
+  apikeylength: 12 # este valor debe ser igual al de la base de datos
+  dir:
+    asset:   "assets"
+    game:    "UploadedGames"
+    widget:  "UploadedWidgets"
+    avatarPiece: "UploadedPieces"
+    

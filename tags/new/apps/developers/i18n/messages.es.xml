@@ -1,0 +1,652 @@
+<?xml version="1.0"?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-12T20:29:06Z">
+    <body>
+    
+<trans-unit id="1">
+<source>Log in</source>
+<target>Entrar</target>
+</trans-unit>
+
+<trans-unit id="2">
+<source>Register</source>
+<target>Registrarte</target>
+</trans-unit>
+
+<trans-unit id="3">
+<source>Logout</source>
+<target>Salir</target>
+</trans-unit>
+
+<trans-unit id="4">
+<source>ulu&lt;span id="land"&gt;land&lt;/span&gt;</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="5">
+<source>Developers&lt;br/&gt;Network</source>
+<target>Red de&lt;br/&gt;Desarrolladores</target>
+</trans-unit>
+
+<trans-unit id="6">
+<source>Home</source>
+<target>Inicio</target>
+</trans-unit>
+
+<trans-unit id="7">
+<source>Games</source>
+<target>Juegos</target>
+</trans-unit>
+
+<trans-unit id="8">
+<source>People</source>
+<target>Gente</target>
+</trans-unit>
+
+<trans-unit id="9">
+<source>My Profile</source>
+<target>Mi perfil</target>
+</trans-unit>
+
+<trans-unit id="10">
+<source>Registered people</source>
+<target>Gente registrada</target>
+</trans-unit>
+
+<trans-unit id="11">
+<source>Community</source>
+<target>Comunidad</target>
+</trans-unit>
+
+<trans-unit id="12">
+<source>Wiki</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="13">
+<source>Forums</source>
+<target>Foros</target>
+</trans-unit>
+
+<trans-unit id="14">
+<source>by %s %s ago.</source>
+<target>por %s hace %s</target>
+</trans-unit>
+
+<trans-unit id="15">
+<source>Older posts...</source>
+<target>Entradas anteriores...</target>
+</trans-unit>
+
+<trans-unit id="16">
+<source>Ululand Developers Network</source>
+<target>Red de Desarrolladores de Ululand</target>
+</trans-unit>
+
+<trans-unit id="17">
+<source>NOTICE: We are working on this yet!</source>
+<target>AVISO: &#xA1;Todav&#xED;a estamos trabajando en esto!</target>
+</trans-unit>
+
+<trans-unit id="18">
+<source>The Ululand Developers Network is not finished yet, and we have a lot of work to do yet. However, we have opened it now so that you can %s and %s about what you, the developers, want.</source>
+<target>La Red de Desarrolladores de Ululand est&#xE1; sin terminar todav&#xED;a, y a&#xFA;n nos queda un mont&#xF3;n de trabajo. Sin embargo, la hemos abierto ya para que puedas %s y %s sobre lo que vosotros, los desarrolladores, quer&#xE9;is.</target>
+</trans-unit>
+
+<trans-unit id="19">
+<source>learn more about this project</source>
+<target>descubrir m&#xE1;s sobre este proyecto</target>
+</trans-unit>
+
+<trans-unit id="20">
+<source>darnos feedback e ideas</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="21">
+<source>Latests posts from %s</source>
+<target>&#xDA;ltimas entradas de %s</target>
+</trans-unit>
+
+<trans-unit id="22">
+<source>Loading...</source>
+<target>Cargando...</target>
+</trans-unit>
+
+<trans-unit id="23">
+<source>We are making this possible!</source>
+<target>&#xA1;Nosotros estamos haciendo esto posible!</target>
+</trans-unit>
+
+<trans-unit id="24">
+<source>Fill in your profile now!</source>
+<target>&#xA1;Rellena ahora tu perfil!</target>
+</trans-unit>
+
+<trans-unit id="25">
+<source>Your profile is not filled in and you will not be listed here.</source>
+<target>Tu perfil no est&#xE1; rellenado y no aparecer&#xE1;s en esta lista.</target>
+</trans-unit>
+
+<trans-unit id="26">
+<source>Fill in your profile &amp;raquo;</source>
+<target>Rellena tu perfil &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="27">
+<source>Edit your profile</source>
+<target>Edita tu perfil</target>
+</trans-unit>
+
+<trans-unit id="28">
+<source>Username</source>
+<target>Nombre de usuario</target>
+</trans-unit>
+
+<trans-unit id="29">
+<source>save</source>
+<target>salvar</target>
+</trans-unit>
+
+<trans-unit id="30">
+<source>cancel</source>
+<target>cancelar</target>
+</trans-unit>
+
+<trans-unit id="31">
+<source>Profile for %s</source>
+<target>Perfil de %s</target>
+</trans-unit>
+
+<trans-unit id="32">
+<source>This is your profile</source>
+<target>Este es tu perfil</target>
+</trans-unit>
+
+<trans-unit id="33">
+<source>Edit your profile &amp;raquo;</source>
+<target>Edita tu perfil &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="34">
+<source>You haven't set a username yet.</source>
+<target>Todav&#xED;a no has guardado un nombre de usuario.</target>
+</trans-unit>
+
+<trans-unit id="35">
+<source>Edit your profile now!</source>
+<target>&#xA1;Edita tu perfil ahora!</target>
+</trans-unit>
+
+<trans-unit id="36">
+<source>This user hasn't set a username.</source>
+<target>Este usuario no ha guardado un nombre de usuario.</target>
+</trans-unit>
+
+<trans-unit id="37">
+<source>List</source>
+<target>Listado</target>
+</trans-unit>
+
+<trans-unit id="38">
+<source>Join us!</source>
+<target>&#xA1;&#xDA;nete!</target>
+</trans-unit>
+
+<trans-unit id="39">
+<source>Email</source>
+<target>Correo Electr&#xF3;nico</target>
+</trans-unit>
+
+<trans-unit id="40">
+<source>Password</source>
+<target>Contrase&#xF1;a</target>
+</trans-unit>
+
+<trans-unit id="41">
+<source>Retype password</source>
+<target>Reescribe la contrase&#xF1;a</target>
+</trans-unit>
+
+<trans-unit id="42">
+<source>Create account</source>
+<target>Crear cuenta</target>
+</trans-unit>
+
+<trans-unit id="43">
+<source>Log In</source>
+<target>Entrar</target>
+</trans-unit>
+
+<trans-unit id="44">
+<source>Come on in!</source>
+<target>&#xA1;Entra!</target>
+</trans-unit>
+
+<trans-unit id="45">
+<source>Remember me?</source>
+<target>&#xBF;Recu&#xE9;rdame?</target>
+</trans-unit>
+
+<trans-unit id="46">
+<source>sign in</source>
+<target>entrar</target>
+</trans-unit>
+
+<trans-unit id="47">
+<source>Forgot your password?</source>
+<target>&#xBF;Olvidaste tu contrase&#xF1;a?</target>
+</trans-unit>
+
+<trans-unit id="48">
+<source>This field is required!</source>
+<target>&#xA1;Este campo es obligatorio!</target>
+</trans-unit>
+
+<trans-unit id="49">
+<source>That is not a valid email!</source>
+<target>&#xA1;Ese email no es v&#xE1;lido!</target>
+</trans-unit>
+
+<trans-unit id="50">
+<source>This username is already taken!</source>
+<target>&#xA1;Ese nombre de usuario ya est&#xE1; cogido!</target>
+</trans-unit>
+
+<trans-unit id="51">
+<source>The passwords don't match!</source>
+<target>&#xA1;Las contrase&#xF1;as no coinciden!</target>
+</trans-unit>
+
+<trans-unit id="52">
+<source>Hello! You can %1$s or %2$s.</source>
+<target>&#xA1;Hola! Puedes %1$s o %2$s.</target>
+</trans-unit>
+
+<trans-unit id="53">
+<source>give us feedback or ideas</source>
+<target>darnos feedback o ideas</target>
+</trans-unit>
+
+<trans-unit id="54">
+<source>our blog</source>
+<target>nuestro blog</target>
+</trans-unit>
+
+<trans-unit id="55">
+<source>Welcome back, %1$s! %2$s?</source>
+<target>&#xA1;Hola de nuevo, %1$s! &#xBF;%2$s?</target>
+</trans-unit>
+
+<trans-unit id="56">
+<source>Language</source>
+<target>Idioma</target>
+</trans-unit>
+
+<trans-unit id="57">
+<source>Our creations</source>
+<target>Nuestras creaciones</target>
+</trans-unit>
+
+<trans-unit id="58">
+<source>NOTICE: Disabled module!</source>
+<target>AVISO: &#xA1;M&#xF3;dulo desactivado!</target>
+</trans-unit>
+
+<trans-unit id="59">
+<source>This module has been disabled by the administrators of the site.</source>
+<target/>
+</trans-unit>
+
+<trans-unit id="60">
+<source>We create games!</source>
+<target>&#xA1;Nosotros creamos juegos!</target>
+</trans-unit>
+
+<trans-unit id="61">
+<source>This module has been disabled.</source>
+<target>Este m&#xF3;dulo ha sido desactivado.</target>
+</trans-unit>
+
+<trans-unit id="62">
+<source>Disabled</source>
+<target>Desactivado</target>
+</trans-unit>
+
+<trans-unit id="63">
+<source>disabled module</source>
+<target>m&#xF3;dulo desactivado</target>
+</trans-unit>
+
+<trans-unit id="64">
+<source>The Ululand Developers Network is not finished yet, and we have a lot of work to do yet. Please, %s to tell us about bugs, ideas or anything else.</source>
+<target>La Red de Desarrolladores de Ululand no est&#xE1; terminada todav&#xED;a, y nos queda un mont&#xF3;n de trabajo por hacer. Por favor, %s para avisarnos de bugs, contarnos ideas o cualquier otra cosa.</target>
+</trans-unit>
+
+<trans-unit id="65">
+<source>Quick Links:</source>
+<target>Enlaces R&#xE1;pidos</target>
+</trans-unit>
+
+<trans-unit id="66">
+<source>Registered users list</source>
+<target>Usuarios registrados</target>
+</trans-unit>
+
+<trans-unit id="67">
+<source>What is this?</source>
+<target>&#xBF;Qu&#xE9; es esto?</target>
+</trans-unit>
+
+<trans-unit id="68">
+<source>The password is too short (5 characters minimum)</source>
+<target>La contrase&#xF1;a es demasiado corta (5 caracteres m&#xED;nimo)</target>
+</trans-unit>
+
+<trans-unit id="69">
+<source>The password is too long. (25 characters maximum)</source>
+<target>La contrase&#xF1;a es demasiado larga (25 caracteres m&#xE1;ximo)</target>
+</trans-unit>
+
+<trans-unit id="70">
+<source>send us an email</source>
+<target>env&#xED;anos un email</target>
+</trans-unit>
+
+<trans-unit id="71">
+<source>Kollaborator</source>
+<target></target>
+</trans-unit>
+
+<trans-unit id="72">
+<source>Google Group</source>
+<target>Grupo de Google</target>
+</trans-unit>
+
+<trans-unit id="73">
+<source>There is no comment for the moment.</source>
+<target>No hay comentarios todavía</target>
+</trans-unit>
+
+<trans-unit id="74">
+<source>Post a comment</source>
+<target>Enviar un comentario</target>
+</trans-unit>
+
+<trans-unit id="75">
+<source>Name</source>
+<target>Nombre</target>
+</trans-unit>
+
+<trans-unit id="76">
+<source>Title</source>
+<target>Título</target>
+</trans-unit>
+
+<trans-unit id="77">
+<source>Accepts Markdown</source>
+<target>Acepta Markdown</target>
+</trans-unit>
+
+<trans-unit id="78">
+<source>Post this comment</source>
+<target>Enviar este comentario</target>
+</trans-unit>
+
+<trans-unit id="79">
+<source>%1% ago</source>
+<target>hace %1%</target>
+</trans-unit>
+
+<trans-unit id="80">
+<source>Remove</source>
+<target>Eliminar</target>
+</trans-unit>
+
+<trans-unit id="81">
+<source>Popular tags</source>
+<target>Etiquetas populares</target>
+</trans-unit>
+
+<trans-unit id="82">
+<source>Collaboration offers list</source>
+<target>Lista de ofertas de colaboración</target>
+</trans-unit>
+
+<trans-unit id="83">
+<source>Colaborative work is great, isn't it?</source>
+<target>El trabajo en grupo es genial, ¿no?</target>
+</trans-unit>
+
+<trans-unit id="84">
+<source>Showing collaboration offers tagged with %1$s (%2$s)</source>
+<target>Mostrando ofertas de colaboración etiquetadas con %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="85">
+<source>Search results for %1$s (%2$s)</source>
+<target>Resultados de la búsqueda para %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="86">
+<source>Submit your own &amp;raquo;</source>
+<target>Envía la tuya &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="87">
+<source>requires %s or %s</source>
+<target>requiere %s o %s</target>
+</trans-unit>
+
+<trans-unit id="88">
+<source>log in</source>
+<target>iniciar sesión</target>
+</trans-unit>
+
+<trans-unit id="89">
+<source>register</source>
+<target>registro</target>
+</trans-unit>
+
+<trans-unit id="90">
+<source>Search</source>
+<target>Buscar</target>
+</trans-unit>
+
+<trans-unit id="91">
+<source>Search!</source>
+<target>¡Buscar!</target>
+</trans-unit>
+
+<trans-unit id="92">
+<source>Submit a collaboration offer</source>
+<target>Envía una oferta de colaboración</target>
+</trans-unit>
+
+<trans-unit id="93">
+<source>Collaboration Offer Info:</source>
+<target>Información de la Oferta de Colaboración:</target>
+</trans-unit>
+
+<trans-unit id="94">
+<source>Title:</source>
+<target>Título:</target>
+</trans-unit>
+
+<trans-unit id="95">
+<source>Description:</source>
+<target>Descripción:</target>
+</trans-unit>
+
+<trans-unit id="96">
+<source>What are you looking for? (tags)</source>
+<target>¿Qué estás buscando? (etiquetas)</target>
+</trans-unit>
+
+<trans-unit id="97">
+<source>update preview &amp;raquo;</source>
+<target>actualizar vista previa &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="98">
+<source>Preview</source>
+<target>Vista Previa</target>
+</trans-unit>
+
+<trans-unit id="99">
+<source>Related Collaboration Offers</source>
+<target>Ofertas de Colaboración Relacionadas</target>
+</trans-unit>
+
+<trans-unit id="100">
+<source>The Kollaborator!</source>
+<target>¡El Kollaborator!</target>
+</trans-unit>
+
+<trans-unit id="101">
+<source>Collaboration Offers</source>
+<target>Ofertas de Colaboración</target>
+</trans-unit>
+
+<trans-unit id="102">
+<source>show all</source>
+<target>mostrar todo</target>
+</trans-unit>
+
+<trans-unit id="103">
+<source>Looking for a project to work on? Here you can find some projects in which you can collaborate.</source>
+<target>¿Buscando un proyecto en el que colaborar? Quizás aquí puedas encontrar algo.</target>
+</trans-unit>
+
+<trans-unit id="104">
+<source>Latest offers</source>
+<target>Últimas ofertas</target>
+</trans-unit>
+
+<trans-unit id="105">
+<source>Collaborators</source>
+<target>Colaboradores</target>
+</trans-unit>
+
+<trans-unit id="106">
+<source>Looking for someone to help you in your latest project? Here you can find some people that might want to help you.</source>
+<target>¿Estás buscando a alguien que te ayude en tu proyecto? Aquí puedes encontrar gente que quizás quiera ayudarte.</target>
+</trans-unit>
+
+<trans-unit id="107">
+<source>Recent collaborators</source>
+<target>Colaboradores Recientes</target>
+</trans-unit>
+
+<trans-unit id="108">
+<source>Collaboration Offer</source>
+<target>Oferta de Colaboración</target>
+</trans-unit>
+
+<trans-unit id="109">
+<source>Submitted by %1$s %2$s ago (%3$s)</source>
+<target>Enviado por %1$s hace %2$s (%3$s)</target>
+</trans-unit>
+
+<trans-unit id="110">
+<source>Tags</source>
+<target>Etiquetas</target>
+</trans-unit>
+
+<trans-unit id="111">
+<source>Edit</source>
+<target>Editar</target>
+</trans-unit>
+
+<trans-unit id="112">
+<source>Similar Offers</source>
+<target>Ofertas Parecidas</target>
+</trans-unit>
+
+<trans-unit id="113">
+<source>Showing developers tagged with %1$s (%2$s)</source>
+<target>Mostrando desarrolladores etiquetados con %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="114">
+<source>Developers whose name is similar to %1$s (%2$s)</source>
+<target>Desarrolladores cuyo nombre es parecido a %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="115">
+<source>General Data</source>
+<target>Información General</target>
+</trans-unit>
+
+<trans-unit id="116">
+<source>Nick:</source>
+<target>Alias:</target>
+</trans-unit>
+
+<trans-unit id="117">
+<source>Language:</source>
+<target>Idioma:</target>
+</trans-unit>
+
+<trans-unit id="118">
+<source>Developer Data</source>
+<target>Datos de Desarrollador</target>
+</trans-unit>
+
+<trans-unit id="119">
+<source>Url:</source>
+<target>Url:</target>
+</trans-unit>
+
+<trans-unit id="120">
+<source>Tags:</source>
+<target>Etiquetas:</target>
+</trans-unit>
+
+<trans-unit id="121">
+<source>Looking for a project to work on?</source>
+<target>¿Buscando un proyecto en el que trabajar?</target>
+</trans-unit>
+
+<trans-unit id="122">
+<source>Description</source>
+<target>Descripción</target>
+</trans-unit>
+
+<trans-unit id="123">
+<source>Write whatever you want. Accepts Markdown.</source>
+<target>Escribe lo que quieras. Acepta Markdown.</target>
+</trans-unit>
+
+<trans-unit id="124">
+<source>Related Developers</source>
+<target>Desarrolladores Relacionados</target>
+</trans-unit>
+
+<trans-unit id="125">
+<source>edit</source>
+<target>editar</target>
+</trans-unit>
+
+<trans-unit id="126">
+<source>Hey! I'm looking for a project to work on!</source>
+<target>¡Ey! ¡Estoy buscando un proyecto en el que colaborar!</target>
+</trans-unit>
+
+<trans-unit id="127">
+<source>There is no description for this user</source>
+<target>No hay descripción para este usuario</target>
+</trans-unit>
+
+<trans-unit id="128">
+<source>Url</source>
+<target>Url</target>
+</trans-unit>
+
+<trans-unit id="129">
+<source>Similar Developers</source>
+<target>Desarrolladores Parecidos</target>
+</trans-unit>
+</body>
+  </file>
+</xliff>

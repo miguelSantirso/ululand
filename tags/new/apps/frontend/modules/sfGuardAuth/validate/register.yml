@@ -1,0 +1,22 @@
+fields:
+  username:
+    required:
+      msg: This field is required!
+    sfEmailValidator:
+      email_error: That is not a valid email!
+    sfGuardUsernameTakenValidator:
+      msg: This username is already taken!
+  password:
+    required:
+      msg: This field is required!
+    sfStringValidator:
+      min:       5
+      min_error: The password is too short (5 characters minimum)
+      max:       25
+      max_error: The password is too long. (25 characters maximum)
+    sfCompareValidator:
+      check: password_check
+      compare_error: The passwords don't match!
+  password_check:
+    required:
+      msg: This field is required!

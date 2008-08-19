@@ -1,0 +1,226 @@
+@CHARSET "UTF-8";
+
+/* default */
+
+body,html {
+	background-color: #faf4ff;
+}
+
+
+
+/* links */
+
+a {
+	color: #6d009b;
+}
+a:hover {
+	color: #b400ff;
+}
+a:active {
+	color: #de00ff;
+	font-weight: bold;
+}
+
+a.profileLink.male
+{
+	color: #00afff;
+}
+a.profileLink.male:hover
+{
+	background-color: #00afff;
+	color: #ffffff;
+}
+a.profileLink.female
+{
+	color: #ff00af;
+}
+a.profileLink.female:hover
+{
+	background-color: #ff00af;
+	color: #ffffff;
+}
+
+
+
+/* navigation links */
+
+a.navigation {
+	background-color: #f7eaff;
+	border-color: #efdafd;
+}
+a:hover.navigation {
+	background-color: #edd2ff;
+	border-color: #e4bbff;
+}
+a:active.navigation {
+	background-color: #f8eeff;
+}
+
+
+
+/* emphasis colors */
+
+.subtleEmphasis
+{
+}
+.emphasis
+{
+}
+.strongEmphasis
+{
+}
+
+
+
+/* messages boxes */
+.messageBox.error {
+	color: #ff2a00;
+	background-color: #ffcdc3;
+	border-color: #ff2a00;
+}
+.messageBox.warning {
+	color: #f3bd02;
+	background-color: #fffad4;
+	border-color: #ffe400;
+}
+.messageBox.success {
+	color: #81ab00;
+	background-color: #e7ff9d;
+	border-color: #c0ff00;
+}
+
+
+
+/* user menu */
+
+#userMenu {
+	color: #cf97fe;
+}
+#userMenu a {
+	color: #c886ff;
+}
+#userMenu a:hover {
+	color: #aa46ff;
+	background-color: #fdfaff;
+}
+
+
+
+/* main menu */
+
+#mainMenu
+{
+	background: #ffffff;
+	border-color: #f2e2ff;
+}
+#mainMenu li
+{
+	border-color: #f8f8f8;
+}
+#mainMenu li a
+{
+	color: #5c5c5c;
+}
+#mainMenu li a:hover
+{
+	color: #000;
+	background-color: #fbfbfb;
+}
+#mainMenu li a:active
+{
+	background-color: #eee;
+}
+
+
+
+/* content */
+
+#content {
+	background: #ffffff;
+	border-color: #f2e2ff;
+}
+
+
+
+/* games */
+
+img.gameThumbnail
+{
+	background: #fff;
+	border-color: #f1f1f1;
+}
+
+ 
+
+/* lists & boxes */
+
+ol.subtle, ul.subtle, div.subtle {
+	color: #626262;
+	border-color: #cfcfcf !important;
+	background-color: #fdfdfd !important;
+}
+ol.normal, ul.normal, div.normal {
+	color: #4a0077;
+	background-color: #f7eaff !important;
+	border-color: #efdafd !important;
+}
+
+ol.subtle:hover, ul.subtle:hover, div.subtle:hover {
+	border-color: #aeaeae !important;
+}
+ol.normal:hover, ul.normal:hover, div.normal:hover {
+	border-color: #e3baff !important;
+}
+
+.normalBox.subtle .header {
+	border-color: #dddddd;
+}
+.normalBox.normal .header {
+	border-color: #e3baff;
+}
+
+
+/* lists lis */
+
+.normalList.normal li{
+	background-color: #f1dcff;
+	border-top-color: #ffffff;
+	border-bottom-color: #e0b3ff;
+}
+.normalList.normal li.alt{
+	background-color: #edd1ff;
+}
+.normalList.normal li:hover, ul.normalList.normal li.alt:hover{
+	background-color: #dca6ff;
+}
+
+.normalList.subtle li{
+	background-color: #efefef;
+	border-top-color: #ffffff;
+	border-bottom-color: #cfcfcf;
+}
+.normalList.subtle li.alt{
+	background-color: #e7e7e7;
+}
+.normalList.subtle li:hover, ul.normalList.subtle li.alt:hover{
+	background-color: #fafafa;
+}
+
+
+
+/* footer */
+
+#footer {
+	color: #cf97fe;
+}
+#footer a {
+	color: #c886ff;
+}
+#footer a:hover {
+	color: #aa46ff;
+	background-color: #fdfaff;
+}
+#footer a:active {
+	color: #cf97fe;
+	background-color: #fdfaff;
+}
