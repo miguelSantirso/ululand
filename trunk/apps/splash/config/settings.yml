@@ -26,26 +26,26 @@ all:
 #    error_404_module:       default   # To be called when a 404 error is raised
 #    error_404_action:       error404  # Or when the requested URL doesn't match any route
 #
-    login_module:           sfGuardAuth
-    login_action:           signin
-
-    secure_module:          sfGuardAuth
-    secure_action:          secure
+#    login_module:           default   # To be called when a non-authenticated user
+#    login_action:           login     # Tries to access a secure page
 #
-    module_disabled_module: home   # To be called when a user requests 
-    module_disabled_action: disabled  # A module disabled in the module.yml
+#    secure_module:          default   # To be called when a user doesn't have
+#    secure_action:          secure    # The credentials required for an action
+#
+#    module_disabled_module: default   # To be called when a user requests 
+#    module_disabled_action: disabled  # A module disabled in the module.yml
 #
 #    unavailable_module:     default   # To be called when a user requests a page
 #    unavailable_action:  unavailable  # From an application disabled via the available setting below
 #
-  .settings:
+#  .settings:
 #    available:              on        # Enable the whole application. Switch to off to redirect all requests to the unavailable module and action.
 #
 #    # Optional features. Deactivating unused features boots performance a bit.
 #    use_database:           on        # Enable database manager. Set to off if you don't use a database.
 #    use_security:           on        # Enable security features (login and credentials). Set to off for public applications.
 #    use_flash:              on        # Enable flash parameter feature. Set to off if you never use the set_flash() method in actions.
-    i18n:                   on       # Enable interface translation. Set to off if your application should not be translated.
+#    i18n:                   off       # Enable interface translation. Set to off if your application should not be translated.
 #    check_symfony_version:  off       # Enable check of symfony version for every request. Set to on to have symfony clear the cache automatically when the framework is upgraded. Set to off if you always clear the cache after an upgrade.
 #    use_process_cache:      on        # Enable symfony optimizations based on PHP accelerators. Set to off for tests or when you have enabled a PHP accelerator in your server but don't want symfony to use it internally.
 #    compressed:             off       # Enable PHP response compression. Set to on to compress the outgoing HTML via the PHP handler.
@@ -81,13 +81,13 @@ all:
 #    web_debug_web_dir:      /sf/sf_web_debug
 #
 #    # Helpers included in all templates by default
-    standard_helpers:       [Partial, Cache, Form, I18N, ulLinks]
+#    standard_helpers:       [Partial, Cache, Form]
 #
 #    # Activated modules from plugins or from the symfony core
-    enabled_modules:        [default, sfGuardAuth, sfComment, nahoWiki]
+#    enabled_modules:        [default]
 #
 #    # Charset used for the response
-    charset:                utf-8
+#    charset:                utf-8
 #
 #    # Miscellaneous
 #    strip_comments:         on         # Remove comments in core framework classes as defined in the core_compile.yml

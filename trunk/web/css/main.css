@@ -94,52 +94,51 @@ a.bigBox span.description {
 
 /* title */
 
-#title {
+#dynamicTitle {
 	margin: 0;
 	color: #a3d4f2;
 }
-#title h1 {
+#dynamicTitle h1 {
 	margin: 0 0.5em 0.5em;
 	font-weight: normal;
 	float: left;
 }
-#title h1 a {
+#dynamicTitle h1 a {
 	margin-left: 5px;
 	margin-right: 5px;
 	color: #006eb3;
 	text-decoration: none;
 }
-#title h1 a:hover {
-	/*border-bottom: 4px solid;*/
+#dynamicTitle h1 a:hover {
 	color: #0091ed;
 }
-#title .urlLevel-0 {
+#dynamicTitle .urlLevel-0 {
 	font-weight: bold;
 }
-#title .urlLevel-1 {
+#dynamicTitle .urlLevel-1 {
 	color: #2d85bc;
 	font-size: 0.9em;
 }
-#title .urlLevel-2 {
+#dynamicTitle .urlLevel-2 {
 	color: #5d9cc4;
 	font-size: 0.85em;
 }
-#title .urlLevel-3 {
+#dynamicTitle .urlLevel-3 {
 	color: #70a8cb;
 	font-size: 0.8em;
 }
-#title .urlLevel-4, #title .urlLevel-5, #title .urlLevel-6 {
+#dynamicTitle .urlLevel-4, #title .urlLevel-5, #title .urlLevel-6 {
 	color: #70a8cb;
 	font-size: 0.7em;
 }
-#title h1 span
+#dynamicTitle h1 span
 {
 	cursor: default;
 	color: #a3d4f2;
 	padding-bottom: 2px;
 	border-bottom: 4px solid #c6dcf5;
 }
-#title h1 span:hover
+#dynamicTitle h1 span:hover
 {
 	border-bottom: 4px solid #0091ed;
 	color: #0091ed;
