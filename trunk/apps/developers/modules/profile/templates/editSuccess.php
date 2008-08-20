@@ -51,7 +51,7 @@
 				
 				<div id="developerDescription">
 					<h3 class="header"><?php echo __('Description'); ?></h3>
-					<p class="noSpace"><?php echo __('Write whatever you want. Accepts Markdown.'); ?></p>
+					<p class="noSpace"><?php echo sprintf(__('Write whatever you want. Accepts %s.'), link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax')); ?></p>
 					<?php echo object_textarea_tag($developerProfile, 'getDescription', array (
 					  'rows' => 15,
 					  'cols' => 51

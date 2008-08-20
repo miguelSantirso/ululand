@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-19T13:25:43Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-20T12:01:07Z">
     <body>
     
 <trans-unit id="1">
@@ -650,7 +650,7 @@
 
 <trans-unit id="130">
 <source>Comma separated. Examples: coder, artist, musician, full-time</source>
-<target>Separadas por comas. Ejemplos: programador, artista, músico, tiempo completo</target>
+<target>Separadas por comas. Ejemplos: programador, artista, m&#xFA;sico, tiempo completo</target>
 </trans-unit>
 
 <trans-unit id="131">
@@ -660,12 +660,12 @@
 
 <trans-unit id="132">
 <source>You are already listed as collaborator, so...</source>
-<target>Ya estás marcado como colaborador, así que...</target>
+<target>Ya est&#xE1;s marcado como colaborador, as&#xED; que...</target>
 </trans-unit>
 
 <trans-unit id="133">
 <source>%s to set that you are looking for a project and...</source>
-<target>%s para guardar que estás buscando un proyecto y...</target>
+<target>%s para guardar que est&#xE1;s buscando un proyecto y...</target>
 </trans-unit>
 
 <trans-unit id="134">
@@ -675,27 +675,27 @@
 
 <trans-unit id="135">
 <source>Try to search in the existing collaboration offers:</source>
-<target>Intenta buscar en las ofertas de colaboración actuales:</target>
+<target>Intenta buscar en las ofertas de colaboraci&#xF3;n actuales:</target>
 </trans-unit>
 
 <trans-unit id="136">
 <source>Looking for collaborators?</source>
-<target>¿Buscando colaboradores?</target>
+<target>&#xBF;Buscando colaboradores?</target>
 </trans-unit>
 
 <trans-unit id="137">
 <source>Submit your own collaboration offer</source>
-<target>Envía tu propia oferta de colaboración</target>
+<target>Env&#xED;a tu propia oferta de colaboraci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="138">
 <source>%1$s or %2$s to submit your own collaboration offer</source>
-<target>%1$s o %2$s para enviar tu propia oferta de colaboración</target>
+<target>%1$s o %2$s para enviar tu propia oferta de colaboraci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="139">
 <source>Login</source>
-<target>Inicia sesión</target>
+<target>Inicia sesi&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="140">
@@ -705,7 +705,7 @@
 
 <trans-unit id="141">
 <source>submit your own</source>
-<target>envía la tuya</target>
+<target>env&#xED;a la tuya</target>
 </trans-unit>
 
 <trans-unit id="142">
@@ -715,7 +715,7 @@
 
 <trans-unit id="143">
 <source>login</source>
-<target>iniciar sesión</target>
+<target>iniciar sesi&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="144">
@@ -725,7 +725,7 @@
 
 <trans-unit id="145">
 <source>%1$s to appear here</source>
-<target>%1$s para aparecer aquí</target>
+<target>%1$s para aparecer aqu&#xED;</target>
 </trans-unit>
 
 <trans-unit id="146">
@@ -735,12 +735,12 @@
 
 <trans-unit id="147">
 <source>Collaboration tool</source>
-<target>Herramienta de colaboración</target>
+<target>Herramienta de colaboraci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="148">
 <source>Collaboration offers</source>
-<target>Ofertas de colaboración</target>
+<target>Ofertas de colaboraci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="149">
@@ -750,12 +750,12 @@
 
 <trans-unit id="150">
 <source>Suscribe to our %s to keep up to date with the latest news about Ululand and to discuss about flash games development.</source>
-<target>Suscríbete a nuestro %s para mantenerte al día con las últimas noticias sobre ululand y para participar en debates sobre desarrollo de juegos flash.</target>
+<target>Suscr&#xED;bete a nuestro %s para mantenerte al d&#xED;a con las &#xFA;ltimas noticias sobre ululand y para participar en debates sobre desarrollo de juegos flash.</target>
 </trans-unit>
 
 <trans-unit id="151">
 <source>Subscribe to</source>
-<target>Suscríbete a</target>
+<target>Suscr&#xED;bete a</target>
 </trans-unit>
 
 <trans-unit id="152">
@@ -765,12 +765,12 @@
 
 <trans-unit id="153">
 <source>Latest news from the community</source>
-<target>Últimas noticias de la comunidad</target>
+<target>&#xDA;ltimas noticias de la comunidad</target>
 </trans-unit>
 
 <trans-unit id="154">
 <source>Latest collaboration Offers</source>
-<target>Últimas ofertas de colaboración</target>
+<target>&#xDA;ltimas ofertas de colaboraci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="155">
@@ -780,17 +780,62 @@
 
 <trans-unit id="156">
 <source>Latest posts from %s</source>
-<target>Últimas entradas de %s</target>
+<target>&#xDA;ltimas entradas de %s</target>
 </trans-unit>
 
 <trans-unit id="157">
 <source>Don't use your team name. You will be able to create it after.</source>
-<target>No uses el nombre de tu equipo. Podrás crearlo más adelante.</target>
+<target>No uses el nombre de tu equipo. Podr&#xE1;s crearlo m&#xE1;s adelante.</target>
 </trans-unit>
 
 <trans-unit id="158">
 <source>Must be a valid e-mail</source>
-<target>Debe ser un e-mail válido</target>
+<target>Debe ser un e-mail v&#xE1;lido</target>
+</trans-unit>
+
+<trans-unit id="159">
+<source>Write whatever you want. Accepts %s.</source>
+<target>Escribe lo que quieras. Acepta %s.</target>
+</trans-unit>
+
+<trans-unit id="160">
+<source>The Kollaborator helps you work together.</source>
+<target>El Kollaborator os ayuda a trabajar juntos.</target>
+</trans-unit>
+
+<trans-unit id="161">
+<source>Once you have send your collaboration offer, the Kollaborator will search the collaborators who fit your offer within the registered developers.</source>
+<target>Cuando hayas enviado tu oferta de colaboración, el Kollaborator buscará automáticamente colaboradores registrados que se ajusten a tu oferta.</target>
+</trans-unit>
+
+<trans-unit id="162">
+<source>Register to submit your own collaboration offers or to appear in the list of available collaborators.</source>
+<target>Regístrate para enviar tus propias ofertas de colaboración o para aparecer en la lista de colaboradores disponibles.</target>
+</trans-unit>
+
+<trans-unit id="163">
+<source>Search within the existing collaboration offers</source>
+<target>Busca en las ofertas de colaboración existentes.</target>
+</trans-unit>
+
+<trans-unit id="164">
+<source>If you are looking for a project to work on, check the latest collaboration offers.</source>
+<target>Si estás buscando un proyecto en el que colaborar, mírate las últimas ofertas de colaboración.</target>
+</trans-unit>
+
+<trans-unit id="165">
+<source>Quick Links</source>
+<target>Enlaces Rápidos</target>
+</trans-unit>
+
+<trans-unit id="166">
+<source>Flash Game Developers Wiki</source>
+<target>Wiki de Desarrolladores de Juegos Flash</target>
+</trans-unit>
+
+<trans-unit id="167">
+<source>The Kollaborator</source>
+<target>El Kollaborator</target>
 </trans-unit>
 </body>
   </file>

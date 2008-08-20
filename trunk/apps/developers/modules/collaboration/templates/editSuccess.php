@@ -27,7 +27,7 @@
 			<?php echo object_textarea_tag($collaboration_offer, 'getDescription', array (
 			  'size' => '50x12',
 			)) ?>
-			<br/>
+			<p class="noSpace"><small><?php echo sprintf(__('Write whatever you want. Accepts %s.'), link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax')); ?></small></p>
 			<br/>
 			<p class="noSpace"><?php echo label_for('tags', __('What are you looking for? (tags)')); ?></p>
 			<?php echo form_error('tags'); ?>
