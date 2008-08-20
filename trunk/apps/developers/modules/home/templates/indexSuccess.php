@@ -26,7 +26,7 @@
 				<?php echo javascript_tag(
 				  remote_function(array(
 				    'update'  => 'latestNews',
-				    'url'     => 'http://ululand.com/developers/home/latestNews'
+				    'url'     => 'home/latestNews'
 				  ))
 				) ?>
 			</div>

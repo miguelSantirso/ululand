@@ -1,18 +1,18 @@
 	
 	<div id="developers">
-		<a href="http://ululand.com/developers/">&iexcl;Desarrolladores, por aqu&iacute;! &raquo;</a>
+		<a href="http://developers.ululand.com/">&iexcl;Desarrolladores, por aqu&iacute;! &raquo;</a>
 	</div>
 
 	
 	<div id="content">
-		<img id="vaamolar" src="imgs/molar.gif" alt="Esto va a molar mucho" />
+		<img id="vaamolar" src="images/molar.gif" alt="Esto va a molar mucho" />
 		<div id="header"></div>
 		<div id="video">
 			<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/VPnF0Bx0nA4&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/VPnF0Bx0nA4&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>
 		</div>
 				
 		<div id="dibu">
-			<img src="imgs/dibu.png" alt="Play Social" />
+			<img src="images/dibu.png" alt="Play Social" />
 		</div>
 
 		
