@@ -1,0 +1,18 @@
+CollaborationOffer:
+  buscamosGrafistas:
+    created_by: miguelSantirso
+    title: Buscamos grafista
+    description: Buscamos grafista que sepa *dibujar* muy bien
+    tags: grafista
+    
+  buscamosAnimador:
+    created_by: miguelSantirso
+    title: Buscamos animador
+    description: Buscamos animador que sepa *dibujar* muy bien
+    tags: animador
+    
+  buscamosProgramador:
+    created_by: miguelSantirso
+    title: Buscamos programador
+    description: Buscamos programador que sepa *dibujar* muy bien
+    tags: programador

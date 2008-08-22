@@ -1,0 +1,31 @@
+CodePieceLanguage:
+  ActionScript3:
+    code: as3
+    name: ActionScript 3.0
+    Description: Última versión del lenguaje de programación de Flash
+    
+  ActionScript 2:
+    code: as2
+    name: ActionScript 2.0
+    Description:  Versión 2.0 del lenguaje de programación de Flash
+    
+  PHP:
+    code: php
+    name: PHP
+  
+  HTML:
+    code: html
+    name: HTML
+    
+  CSS:
+    code: css
+    name: CSS (Cascading Style Sheets)
+    
+CodePiece:
+  AddChild:
+    created_by: miguelSantirso
+    title: Uso de AddChild
+    description: Añadir un elemento al árbol de dibujado
+    code_piece_language_id: ActionScript3
+    source: this.AddChild(new MyBitmap()); 
+    
