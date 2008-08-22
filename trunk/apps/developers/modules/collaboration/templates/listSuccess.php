@@ -22,6 +22,8 @@
 		</div>
 	<?php endif; ?>
 	
+	<?php echo sprintf(__('by %1$s %2$s $3$s ago.'), $user->name, $user->days, 'ago'); ?>
+	
 	<div class="contentColumn wide alignLeft">
 		
 		<?php include_component('collaboration', 'list'); ?>

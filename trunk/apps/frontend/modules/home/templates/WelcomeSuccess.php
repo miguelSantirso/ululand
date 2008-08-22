@@ -3,6 +3,7 @@
 		<h2 class="alignCenter">&iexcl;Bienvenido!</h2>
 		<p class="alignCenter">Esto es <strong>ulu</strong>land</p>
 	</div>
+	
 	<?php if( !$sf_user->isAuthenticated() ): ?>
 		<div class="contentColumn medium alignRight">
 			<div class="normalBox subtle">

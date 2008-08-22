@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-20T12:01:07Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-21T18:21:58Z">
     <body>
     
 <trans-unit id="1">
@@ -805,27 +805,27 @@
 
 <trans-unit id="161">
 <source>Once you have send your collaboration offer, the Kollaborator will search the collaborators who fit your offer within the registered developers.</source>
-<target>Cuando hayas enviado tu oferta de colaboración, el Kollaborator buscará automáticamente colaboradores registrados que se ajusten a tu oferta.</target>
+<target>Cuando hayas enviado tu oferta de colaboraci&#xF3;n, el Kollaborator buscar&#xE1; autom&#xE1;ticamente colaboradores registrados que se ajusten a tu oferta.</target>
 </trans-unit>
 
 <trans-unit id="162">
 <source>Register to submit your own collaboration offers or to appear in the list of available collaborators.</source>
-<target>Regístrate para enviar tus propias ofertas de colaboración o para aparecer en la lista de colaboradores disponibles.</target>
+<target>Reg&#xED;strate para enviar tus propias ofertas de colaboraci&#xF3;n o para aparecer en la lista de colaboradores disponibles.</target>
 </trans-unit>
 
 <trans-unit id="163">
 <source>Search within the existing collaboration offers</source>
-<target>Busca en las ofertas de colaboración existentes.</target>
+<target>Busca en las ofertas de colaboraci&#xF3;n existentes.</target>
 </trans-unit>
 
 <trans-unit id="164">
 <source>If you are looking for a project to work on, check the latest collaboration offers.</source>
-<target>Si estás buscando un proyecto en el que colaborar, mírate las últimas ofertas de colaboración.</target>
+<target>Si est&#xE1;s buscando un proyecto en el que colaborar, m&#xED;rate las &#xFA;ltimas ofertas de colaboraci&#xF3;n.</target>
 </trans-unit>
 
 <trans-unit id="165">
 <source>Quick Links</source>
-<target>Enlaces Rápidos</target>
+<target>Enlaces R&#xE1;pidos</target>
 </trans-unit>
 
 <trans-unit id="166">
@@ -837,6 +837,7 @@
 <source>The Kollaborator</source>
 <target>El Kollaborator</target>
 </trans-unit>
+
 </body>
   </file>
 </xliff>

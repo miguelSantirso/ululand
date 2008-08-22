@@ -1,5 +1,6 @@
 # kollaborator
 
+echo $cadena;
 kollaborator_index:
   url: /kollaborator
   param: { module: collaboration, action: index }

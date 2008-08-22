@@ -1,7 +1,6 @@
 prod:
   .settings:
-    no_script_name:           on
-    suffix:                   .html
+    no_script_name:           off
 
 dev:
   .settings:
