@@ -387,6 +387,13 @@ abstract class BasesfGuardUserPeer {
 			$c->add(CollaborationOfferPeer::CREATED_BY, $obj->getId());
 			$affectedRows += CollaborationOfferPeer::doDelete($c, $con);
 
+			include_once 'lib/model/CodePiece.php';
+
+						$c = new Criteria();
+			
+			$c->add(CodePiecePeer::CREATED_BY, $obj->getId());
+			$affectedRows += CodePiecePeer::doDelete($c, $con);
+
 			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardUserPermission.php';
 
 						$c = new Criteria();

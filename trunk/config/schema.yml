@@ -64,7 +64,24 @@ propel:
     title:       { type: varchar(75), required: true }
     description: { type: longvarchar, required: true }
     
-     
+  code_piece:
+    _attributes: { phpName: CodePiece }
+    id: ~
+    created_by:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    created_at: ~
+    updated_at: ~ 
+    title:       { type: varchar(75), required: true }
+    description: { type: longvarchar, required: false }
+    code_piece_language_id: ~
+    source:      { type: longvarchar, required: true }
+    
+  code_piece_language:
+    _attributes: { phpName: CodePieceLanguage }
+    id: ~
+    code:               { type: varchar(8) , required: true }
+    name:               { type: varchar(32), required: true }
+    description:        { type: longvarchar, required: false }
+    
   itemtype:
     _attributes: { phpName: ItemType }
     id:

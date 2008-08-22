@@ -89,7 +89,7 @@ all:
     enabled_modules:        [default, sfEmail, sfGuardGroup, sfGuardUser, sfGuardPermission ]
 #
 #    # Charset used for the response
-#    charset:                utf-8
+    charset:                utf-8
 #
 #    # Miscellaneous
 #    strip_comments:         on         # Remove comments in core framework classes as defined in the core_compile.yml

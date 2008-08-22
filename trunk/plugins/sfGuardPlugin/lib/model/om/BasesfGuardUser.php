@@ -56,6 +56,12 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	protected $lastCollaborationOfferCriteria = null;
 
 	
+	protected $collCodePieces;
+
+	
+	protected $lastCodePieceCriteria = null;
+
+	
 	protected $collsfGuardUserPermissions;
 
 	
@@ -455,6 +461,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collCodePieces !== null) {
+				foreach($this->collCodePieces as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collsfGuardUserPermissions !== null) {
 				foreach($this->collsfGuardUserPermissions as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -530,6 +544,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 				if ($this->collCollaborationOffers !== null) {
 					foreach($this->collCollaborationOffers as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collCodePieces !== null) {
+					foreach($this->collCodePieces as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -756,6 +778,10 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 				$copyObj->addCollaborationOffer($relObj->copy($deepCopy));
 			}
 
+			foreach($this->getCodePieces() as $relObj) {
+				$copyObj->addCodePiece($relObj->copy($deepCopy));
+			}
+
 			foreach($this->getsfGuardUserPermissions() as $relObj) {
 				$copyObj->addsfGuardUserPermission($relObj->copy($deepCopy));
 			}
@@ -931,6 +957,111 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	{
 		$this->collCollaborationOffers[] = $l;
 		$l->setsfGuardUser($this);
+	}
+
+	
+	public function initCodePieces()
+	{
+		if ($this->collCodePieces === null) {
+			$this->collCodePieces = array();
+		}
+	}
+
+	
+	public function getCodePieces($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseCodePiecePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collCodePieces === null) {
+			if ($this->isNew()) {
+			   $this->collCodePieces = array();
+			} else {
+
+				$criteria->add(CodePiecePeer::CREATED_BY, $this->getId());
+
+				CodePiecePeer::addSelectColumns($criteria);
+				$this->collCodePieces = CodePiecePeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(CodePiecePeer::CREATED_BY, $this->getId());
+
+				CodePiecePeer::addSelectColumns($criteria);
+				if (!isset($this->lastCodePieceCriteria) || !$this->lastCodePieceCriteria->equals($criteria)) {
+					$this->collCodePieces = CodePiecePeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastCodePieceCriteria = $criteria;
+		return $this->collCodePieces;
+	}
+
+	
+	public function countCodePieces($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseCodePiecePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(CodePiecePeer::CREATED_BY, $this->getId());
+
+		return CodePiecePeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addCodePiece(CodePiece $l)
+	{
+		$this->collCodePieces[] = $l;
+		$l->setsfGuardUser($this);
+	}
+
+
+	
+	public function getCodePiecesJoinCodePieceLanguage($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseCodePiecePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collCodePieces === null) {
+			if ($this->isNew()) {
+				$this->collCodePieces = array();
+			} else {
+
+				$criteria->add(CodePiecePeer::CREATED_BY, $this->getId());
+
+				$this->collCodePieces = CodePiecePeer::doSelectJoinCodePieceLanguage($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(CodePiecePeer::CREATED_BY, $this->getId());
+
+			if (!isset($this->lastCodePieceCriteria) || !$this->lastCodePieceCriteria->equals($criteria)) {
+				$this->collCodePieces = CodePiecePeer::doSelectJoinCodePieceLanguage($criteria, $con);
+			}
+		}
+		$this->lastCodePieceCriteria = $criteria;
+
+		return $this->collCodePieces;
 	}
 
 	

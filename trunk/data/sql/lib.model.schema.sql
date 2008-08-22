@@ -162,6 +162,51 @@ CREATE TABLE `collaboration_offer`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
+#-- code_piece
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `code_piece`;
+
+
+CREATE TABLE `code_piece`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`created_by` INTEGER,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	`title` VARCHAR(75)  NOT NULL,
+	`description` TEXT,
+	`code_piece_language_id` INTEGER,
+	`source` TEXT  NOT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `code_piece_FI_1` (`created_by`),
+	CONSTRAINT `code_piece_FK_1`
+		FOREIGN KEY (`created_by`)
+		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE,
+	INDEX `code_piece_FI_2` (`code_piece_language_id`),
+	CONSTRAINT `code_piece_FK_2`
+		FOREIGN KEY (`code_piece_language_id`)
+		REFERENCES `code_piece_language` (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- code_piece_language
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `code_piece_language`;
+
+
+CREATE TABLE `code_piece_language`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`code` VARCHAR(8)  NOT NULL,
+	`name` VARCHAR(32)  NOT NULL,
+	`description` TEXT,
+	PRIMARY KEY (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
 #-- itemtype
 #-----------------------------------------------------------------------------
 

@@ -38,6 +38,12 @@
 		<li><?php echo link_to('Administrar objetos', 'item'); ?>
 			<ul><li><?php echo link_to('Administrar tipos de objetos', 'itemtype'); ?></li></ul>
 		</li>
+		<li><?php echo link_to('Administrar ofertas de colaboración', 'collaboration'); ?></li>
+		<li><?php echo link_to('Administrar recetas de código', 'codePiece'); ?>
+			<ul>
+				<li><?php echo link_to('Administrar lenguajes de programación para las recetas', 'codePieceLanguage'); ?></li>
+			</ul>
+		</li>
 		<li>Administrar foros
 			<ul>
 				<li><?php echo link_to('Administrar categor&iacute;as', 'sfSimpleForumCategoryAdmin'); ?></li>
