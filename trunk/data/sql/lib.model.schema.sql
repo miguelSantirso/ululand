@@ -49,6 +49,26 @@ CREATE TABLE `developer_profile`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
+#-- player_profile
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `player_profile`;
+
+
+CREATE TABLE `player_profile`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`user_profile_id` INTEGER  NOT NULL,
+	`description` TEXT,
+	PRIMARY KEY (`id`),
+	INDEX `player_profile_FI_1` (`user_profile_id`),
+	CONSTRAINT `player_profile_FK_1`
+		FOREIGN KEY (`user_profile_id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
 #-- avatar
 #-----------------------------------------------------------------------------
 

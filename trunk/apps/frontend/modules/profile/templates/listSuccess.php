@@ -11,13 +11,7 @@
 <?php $alt = ""; ?>
 <?php foreach ($profilesPager->getResults() as $profile): ?>
 	<li class="<?php echo $alt; ?>">
-		<div class="alignLeft">
-		<?php include_component('widget', 'widget', array('widgetName' => 'UlulandAvatarRepresentator', 
-														'width' => '50px', 'height' => '75px',
-														'flashVars' => 'sizeStretch=0.6&avatarApiKeys='.$profile->getApiKey() )); ?>
-		</div>
-		<h4 class=""><?php echo $profile->getProfileLink(); ?></h4>
-		<p class="">Tiene <?php echo $profile->getFriendsNumber(); ?> amigos.</p>
+		<h4 class=""><?php echo $profile->getUsername(); ?></h4>
 		<br style="clear:both" />
 	</li>
 	<?php $alt = $alt == "" ? "alt" : ""; ?>

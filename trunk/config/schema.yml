@@ -16,6 +16,12 @@ propel:
     description:     { type: longvarchar, required: false }
     is_free:         { type: boolean, required: false, default: false }
     
+  player_profile:
+    _attributes: { phpName: PlayerProfile }
+    id:
+    user_profile_id: { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
+    description:     { type: longvarchar, required: false }
+    
   avatar:
     _attributes: { phpName: Avatar }
     id:

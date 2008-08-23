@@ -25,81 +25,110 @@ class profileActions extends sfActions
 	{
 		//$this->profiles = AvatarPeer::doSelect(new Criteria());
 
-		$pager = new sfPropelPager('Avatar', sfConfig::get('app_pager_profile'));
-		$c = new Criteria();
-		$c->addDescendingOrderByColumn(AvatarPeer::NAME);
-		$pager->setCriteria($c);
+		$pager = new sfPropelPager('sfGuardUserProfile', sfConfig::get('app_pager_profile'));
 		$pager->setPage($this->getRequestParameter('page', 1));
 		$pager->init();
 
 		$this->profilesPager = $pager;
 	}
 
-	public function executeShow()
-	{
-		// Obtener el avatar del perfil
-		$this->profile = AvatarPeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->forward404Unless($this->profile);
-		
-		// Comprobamos si el usuario est� viendo su propio perfil
-		$this->ownProfile = ($this->profile->getId() == $this->getUser()->getAttribute('avatarId'));
-
-		// Obtenemos la hipot�tica relaci�n de amistad entre el avatar del usuario y el avatar del perfil
-		$this->friendship = FriendshipPeer::getFriendshipBetween($this->profile->getId(), $this->getUser()->getAttribute('avatarId'));
-
-		// Obtenemos los amigos y las peticiones de amigo sin confirmar
-		$this->friends = $this->profile->getFriends();
-		$this->notConfirmedFriends = $this->profile->getNotConfirmedFriends();
-	}
-	
-	/**
-	 * Acciones r�pidas para interactuar con el avatar seleccionado.
-	 * Esto es lo que aparece cuando se pulsa en el bot�n + de los avatares
-	 * 
-	 */
-	public function executeQuickActions()
-	{
-		$this->profile = AvatarPeer::retrieveByPK($this->getRequestParameter('id'));
-		
-		// Comprobamos si el usuario est� viendo su propio perfil
-		$this->ownProfile = ($this->profile->getId() == $this->getUser()->getAttribute('avatarId'));
-
-		// Obtenemos la hipot�tica relaci�n de amistad entre el avatar del usuario y el avatar del perfil
-		$this->friendship = FriendshipPeer::getFriendshipBetween($this->profile->getId(), $this->getUser()->getAttribute('avatarId'));
-		
-	}
-	
-	/**
-	 * Acción que añade una relación de amistad
+/**
+	 * Muestra la información de un perfil
 	 *
 	 */
-	public function executeAddFriend()
+	public function executeShow()
 	{
-		// Obtener los ids de los dos avatares
-		$this->avatarAId = $this->getUser()->getAttribute("avatarId");
-		$this->avatarBId = $this->getRequestParameter('id');
-		 
-		try
+		if($this->getRequestParameter('id'))
 		{
-			// Establecer la nueva relación
-			FriendshipPeer::addFriendship($this->avatarAId, $this->avatarBId);
+			$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
+			$this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 		}
-		catch (Exception $e)
+		else if($this->getRequestParameter('username'))
 		{
-			$this->setFlash("error", "Error al crear la relaci&oacute;n de amistad: ".$e->getMessage(), false);
-			// Volvemos a la página anterior
-			$this->redirect("profile/show?id=".$this->avatarBId);
+			$c = new Criteria();
+			$c->add(sfGuardUserProfilePeer::USERNAME, $this->getRequestParameter('username'));
+			$this->sf_guard_user_profile = sfGuardUserProfilePeer::doSelectOne($c);
 		}
-		 
-		$this->setFlash("success", "Se ha enviado o confirmado la petici&oacute;n de amistad.", false);
-		// Volvemos a la página anterior
-		if($this->getRequestParameter('redirectToProfile'))
-		{
-			$this->redirect("profile/show?id=".$this->getRequestParameter('redirectToProfile'));
-		}
-		else
-		{
-			$this->redirect("profile/show?id=".$this->avatarBId);			
-		}
+		
+		$this->playerProfile = $this->sf_guard_user_profile->getPlayerProfile(true);
+		
+		$this->forward404Unless($this->sf_guard_user_profile);
 	}
+	
+	
+	 /* Muestra el formulario de edición de un perfil
+	 *
+	 */
+	public function executeEdit()
+	{	
+		if($this->getRequestParameter('id'))
+		{
+			$this->sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
+			if($this->sf_guard_user_profile->getUsername())
+				$this->redirect('profile/edit?username='.$this->sf_guard_user_profile->getUsername());
+		}
+		else if($this->getRequestParameter('username'))
+		{
+			$c = new Criteria();
+			$c->add(sfGuardUserProfilePeer::USERNAME, $this->getRequestParameter('username'));
+			$this->sf_guard_user_profile = sfGuardUserProfilePeer::doSelectOne($c);
+		}
+		
+		// Comprobar que el usuario está editando su propio perfil y no otro
+		if($this->sf_guard_user_profile != $this->getUser()->getProfile())
+		{
+			// @todo Mensaje no internacionalizado
+			$this->setFlash('error', 'No tienes permisos para editar ese perfil');
+			$this->forward('profile', 'list');
+		}
+
+		// Obtener el perfil de jugador a editar (en caso de no existir, se fuerza su creación)
+		$this->playerProfile = $this->sf_guard_user_profile->getPlayerProfile(true);
+		
+		$this->forward404Unless($this->sf_guard_user_profile);
+	}
+	
+	 /* Actualiza un perfil según los datos recibidos como parámetros
+	 *
+	 * @return unknown
+	 */
+	public function executeUpdate()
+	{
+		if($this->getRequest()->getMethod() == sfRequest::POST)
+		{
+			// Obtener el id del perfil a editar
+			$profileId = $this->getRequestParameter('id');
+	
+			// Comprobar que el usuario está editando su propio perfil y no otro
+			if($profileId != $this->getUser()->getProfile()->getId())
+			{
+				// @todo Mensaje no internacionalizado
+				$this->setFlash('warning', 'No tienes permisos para editar ese perfil');
+				$this->forward('profile', 'list');
+			}
+			
+			// Obtener el objeto del perfil de usuario a editar
+			$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk($this->getRequestParameter('id'));
+			$this->forward404Unless($sf_guard_user_profile);
+	
+			$sf_guard_user_profile->setUsername($this->getRequestParameter('username'));
+			$sf_guard_user_profile->setCulture($this->getRequestParameter('culture'));
+	
+			$sf_guard_user_profile->save();
+			
+			// Obtener el objeto del perfil de usuario a editar
+			$playerProfile = $sf_guard_user_profile->getPlayerProfile();
+			$this->forward404Unless($playerProfile);
+	
+			$playerProfile->setDescription($this->getRequestParameter('description'));
+			
+			$playerProfile->save();
+	
+			
+			$this->getUser()->setCulture($this->getRequestParameter('culture'));
+		}
+		
+		return $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
+	}
+	
 }

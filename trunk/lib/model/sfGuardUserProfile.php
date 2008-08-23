@@ -53,4 +53,31 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 			return $developerProfile;
 		}
 	}
+	
+     /* Retorna el perfil de jugador asociado al perfil de usuario o null si no existe.
+	 *
+	 * @param boolean $forceCreation Si vale true, crea un perfil de jugador en caso de no existir.
+	 * @return El perfil de jugador asociado al perfil de usuario o null si no existe.
+	 */
+	public function getPlayerProfile($forceCreation = false)
+	{
+		// Obtener el perfil del desarrollador
+		$playerProfiles = $this->getPlayerProfiles();
+		$playerProfile =  $playerProfiles ? $playerProfiles[0] : null;
+		
+		if($playerProfile || !$forceCreation)
+		{
+			return $playerProfile;						
+		}
+		else // No existe y se ha pedido que sea creado en ese caso
+		{
+			// Crear el nuevo perfil de jugador
+			$playerProfile = new PlayerProfile();
+			$playerProfile->setsfGuardUserProfile($this);
+			$playerProfile->save();
+			
+			// Retornar el nuevo perfil de jugador
+			return $playerProfile;
+		}
+	}
 }
