@@ -1,3 +1,6 @@
+update:
+  is_secure: on
+  
 create:
   is_secure: on
   

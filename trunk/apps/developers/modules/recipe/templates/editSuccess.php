@@ -43,6 +43,7 @@
 			<?php echo observe_field('title', array(
 					'update'  => 'recipePreview',
 					'url'     => 'recipe/preview',
+					'script'    => 'true',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
 				    'with'    => "'title=' + $('title').value + '&source=' + $('source').value")) ?>
@@ -50,6 +51,7 @@
 					'frequency' => '5',
 					'update'    => 'recipePreview',
 					'url'       => 'recipe/preview',
+					'script'    => 'true',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
 				    'with'    => "'title=' + $('title').value + '&source=' + $('source').value")) ?>
@@ -57,6 +59,7 @@
 					'frequency' => '5',
 					'update'    => 'recipePreview',
 					'url'       => 'recipe/preview',
+					'script'    => 'true',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
 				    'with'    => "'title=' + $('title').value + '&source=' + $('source').value")) ?>
@@ -65,6 +68,7 @@
 			<?php echo link_to_remote(__('update preview &raquo;'), array(
 				'update'  => 'recipePreview',
 				'url'     => 'recipe/preview',
+				'script'    => 'true',
 				'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
 		    	'with'    => "'title=' + $('title').value + '&source=' + $('source').value"),
@@ -93,6 +97,7 @@
 			  remote_function(array(
 			    'update'  => 'recipePreview',
 			    'url'     => 'recipe/preview',
+			  	'script'    => 'true',
 			  	'complete'=> "Element.hide('loadIndicator')",
 			    'with'    => "'title=' + $('title').value + '&source=' + $('source').value"
 			  ))

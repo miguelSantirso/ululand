@@ -5,7 +5,7 @@
  *
  * @package    ululand_dev
  * @subpackage profile
- * @author     Your name here
+ * @author     Pncil.com
  * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
  */
 class profileActions extends sfActions
@@ -54,6 +54,7 @@ class profileActions extends sfActions
 		$this->developerProfile = $this->sf_guard_user_profile->getDeveloperProfile(true);
 		
 		$this->forward404Unless($this->sf_guard_user_profile);
+		$this->developerProfile->incrementCounter(); // Una visita más
 	}
 	
 	public function executePreview()

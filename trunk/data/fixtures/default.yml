@@ -79,3 +79,4 @@ CodePiece:
     created_by: miguelSantirso
     title: Uso de AddChild
     source: this.AddChild(new MyBitmap());
+    tags: as3, actionscript, addchild, bitmap

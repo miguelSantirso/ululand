@@ -57,22 +57,22 @@ propel:
           - { local: id_avatar_b, foreign: id }
     
   collaboration_offer:
-    _attributes: { phpName: CollaborationOffer }
-    created_by:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    _attributes:  { phpName: CollaborationOffer }
+    created_by:   { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     updated_at: ~
-    title:       { type: varchar(75), required: true }
-    description: { type: longvarchar, required: true }
+    title:        { type: varchar(75), required: true }
+    description:  { type: longvarchar, required: true }
     
   code_piece:
     _attributes: { phpName: CodePiece }
     id: ~
-    created_by:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    created_by:   { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     updated_at: ~ 
-    title:       { type: varchar(75), required: true }
+    title:        { type: varchar(75), required: true }
     code_piece_language_id: ~
-    source:      { type: longvarchar, required: true }
+    source:       { type: longvarchar, required: true }
     
   code_piece_language:
     _attributes: { phpName: CodePieceLanguage }

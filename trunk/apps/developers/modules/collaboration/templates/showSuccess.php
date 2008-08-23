@@ -7,7 +7,12 @@
 <div id="pageContent">
 	<div class="contentColumn wide alignLeft">
 		<div class="contentBox bordered">
-			<h3 class="header"><?php echo linkToCollaborationOffer($collaboration_offer); ?></h3>
+			<h3 class="header">
+				<?php echo linkToCollaborationOffer($collaboration_offer); ?>
+				<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $collaboration_offer->getCreatedBy()) : ?>
+					<span>(<?php echo linkToEditCollaborationOffer($collaboration_offer, array(), __('edit')); ?>)</span>
+				<?php endif; ?>
+			</h3>
 			
 			<div class="xSmall right">
 				<p class="noSpace"><?php echo sprintf(__('Submitted by %1$s %2$s ago (%3$s)'),
@@ -19,9 +24,8 @@
 			<?php echo sfMarkdown::doConvert( $collaboration_offer->getDescription() ); ?>
 			
 			<p class="noSpace small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $collaboration_offer->getLinkedTagsString(); ?></p>
-			<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $collaboration_offer->getCreatedBy()) : ?>
-				<p><?php echo linkToEditCollaborationOffer($collaboration_offer, array(), __('Edit')); ?></p>
-			<?php endif; ?>
+			<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $collaboration_offer->getCounter(); ?></p>
+			
 		</div>
 		<div class="contentBox">
 			<?php

@@ -40,8 +40,10 @@ class CollaborationOffer extends BaseCollaborationOffer
 		
 		return trim($tagsString, " ,");
 	}
+
 }
 
 sfPropelBehavior::add('CollaborationOffer', array('sfPropelActAsSignableBehavior' => array()));
+sfPropelBehavior::add('CollaborationOffer', array('sfPropelActAsCountableBehavior'));
 sfPropelBehavior::add('CollaborationOffer', array('sfPropelActAsCommentableBehavior') );
 sfPropelBehavior::add('CollaborationOffer', array('sfPropelActAsTaggableBehavior'));

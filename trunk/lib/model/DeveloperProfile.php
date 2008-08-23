@@ -43,3 +43,4 @@ class DeveloperProfile extends BaseDeveloperProfile
 }
 
 sfPropelBehavior::add('DeveloperProfile', array('sfPropelActAsTaggableBehavior'));
+sfPropelBehavior::add('DeveloperProfile', array('sfPropelActAsCountableBehavior'));

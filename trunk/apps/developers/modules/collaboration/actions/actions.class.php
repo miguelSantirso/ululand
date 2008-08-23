@@ -5,7 +5,7 @@
  *
  * @package    ululand
  * @subpackage collaborations
- * @author     Your name here
+ * @author     Pncil.com
  * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
  */
 class collaborationActions extends sfActions
@@ -43,6 +43,7 @@ class collaborationActions extends sfActions
 	}
 	
     $this->forward404Unless($this->collaboration_offer);
+    $this->collaboration_offer->incrementCounter(); // Una visita más
   }
 
   public function executePreview()

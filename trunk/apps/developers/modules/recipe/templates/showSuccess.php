@@ -29,6 +29,7 @@
 				<?php echo sfMarkdown::doConvert( $code_piece->getSource() ); ?>
 				
 				<p class="noSpace small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $code_piece->getLinkedTagsString(); ?></p>
+				<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $code_piece->getCounter(); ?></p>
 				
 			</div>
 			<div class="contentBox">
