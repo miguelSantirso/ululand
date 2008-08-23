@@ -3,6 +3,7 @@ all:
   pager:
     profile: 12
     collaboration: 20
+    recipe: 15
     
   sf_guard_plugin:
      remember_key_expiration_age:  2592000   # 30 days in seconds
