@@ -106,16 +106,16 @@ class collaborationActions extends sfActions
   {
 		// @todo mensaje no internacionalizado
 		$this->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
-		$this->getRequest()->setError("title", 'Prueba de error');
+		
 		if($this->getRequestParameter('id'))
 		{
-			$redirectTo = 'collaboration/edit?id='.$this->getRequestParameter('id');
+			$redirectTo = 'edit?id='.$this->getRequestParameter('id');
 		}
 		else
 		{
-			$redirectTo = 'collaboration/create';
+			$redirectTo = 'create';
 		}
-		return $this->redirect($redirectTo);
+		return $this->forward('collaboration', $redirectTo);
   }
 
 }

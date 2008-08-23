@@ -175,7 +175,6 @@ CREATE TABLE `code_piece`
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	`title` VARCHAR(75)  NOT NULL,
-	`description` TEXT,
 	`code_piece_language_id` INTEGER,
 	`source` TEXT  NOT NULL,
 	PRIMARY KEY (`id`),

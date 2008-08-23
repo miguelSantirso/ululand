@@ -78,6 +78,4 @@ CodePiece:
   AddChild:
     created_by: miguelSantirso
     title: Uso de AddChild
-    description: Añadir un elemento al árbol de dibujado
-    code_piece_language_id: ActionScript3
     source: this.AddChild(new MyBitmap());

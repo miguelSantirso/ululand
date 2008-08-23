@@ -58,11 +58,11 @@
 				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('offerPreview', 1);",
 		    	'with'    => "'title=' + $('title').value + '&description=' + $('description').value"),
 			array('class' => 'large alignRight')) ?>
-			<?php echo submit_tag('save') ?>
+			<?php echo submit_tag(__('submit')) ?>
 			<?php if ($collaboration_offer->getId()): ?>
 			  &nbsp;<?php echo linkToCollaborationOffer($collaboration_offer, array(), 'cancel'); ?>
 			<?php else: ?>
-			  &nbsp;<?php echo link_to('cancel', 'collaboration/list') ?>
+			  &nbsp;<?php echo link_to(__('cancel'), 'collaboration/list') ?>
 			<?php endif; ?>
 			<div style="clear:both"></div>
 			</form>

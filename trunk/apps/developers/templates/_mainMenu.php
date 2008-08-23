@@ -9,12 +9,14 @@
 			</li>
 			<?php $selected = $sf_context->getModuleName() == 'nahoWiki' ||
 								$sf_context->getModuleName() == 'collaboration' ||
+								$sf_context->getModuleName() == 'recipe' ||
 								$sf_context->getModuleName() == 'community' || 
 								$sf_context->getModuleName() == 'profile'; ?>
 			<li class="<?php echo $selected ? 'selected' : '' ?>">
 				<?php echo link_to(__("Community"), "/community"); ?>
 				<ul>
-					<li><?php echo link_to(__("Kollaborator"), "/collaboration"); ?></li>
+					<li><?php echo link_to(__("Kollaborator"), "collaboration"); ?></li>
+					<li><?php echo link_to(__("Cookbook"), "recipe"); ?></li>
 					<li><?php echo link_to(__("Wiki"), "@wiki_home"); ?></li>
 					<li><?php echo link_to(__("Google Group"), "http://groups.google.com/group/desarrolladores-ululand"); ?></li>
 					<li><hr/></li>

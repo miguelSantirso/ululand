@@ -13,7 +13,7 @@
 				<p class="noSpace"><?php echo sprintf(__('Submitted by %1$s %2$s ago (%3$s)'),
 							linkToProfile($collaboration_offer->getsfGuardUser()->getProfile()),
 							time_ago_in_words($collaboration_offer->getCreatedAt('U')), 
-							format_date($collaboration_offer->getCreatedAt()) ); ?>
+							format_date($collaboration_offer->getCreatedAt()) ); ?></p>
 			</div>
 			
 			<?php echo sfMarkdown::doConvert( $collaboration_offer->getDescription() ); ?>

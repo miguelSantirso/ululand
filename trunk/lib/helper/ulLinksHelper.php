@@ -74,3 +74,32 @@
 		$linkText = $customText == "" ? $collaborationOffer->getTitle() : $customText;
 		return link_to($linkText, "collaboration/edit?title=".$collaborationOffer->getTitle(), $options);
 	}
+	
+	
+	/**
+	 * Retorna el código html de un enlace a la receta pasada como parámetro
+	 *
+	 * @param CodePiece $recipe Receta a la que se desea enlazar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace a la oferta de colaboración pasada como parámetro
+	 */
+	function linkToRecipe($recipe, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
+		return link_to($linkText, "recipe/show?id=".$recipe->getId(), $options);
+	}
+	
+	/**
+	 * Retorna el código html de un enlace al menú de edición de la receta pasada como parámetro
+	 *
+	 * @param CodePiece $recipe Receta a la que se desea enlazar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace a la oferta de colaboración pasada como parámetro
+	 */
+	function linkToEditRecipe($recipe, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
+		return link_to($linkText, "recipe/edit?id=".$recipe->getId(), $options);
+	}

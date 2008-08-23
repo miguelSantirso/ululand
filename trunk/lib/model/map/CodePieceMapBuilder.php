@@ -42,8 +42,6 @@ class CodePieceMapBuilder {
 
 		$tMap->addColumn('TITLE', 'Title', 'string', CreoleTypes::VARCHAR, true, 75);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
-
 		$tMap->addForeignKey('CODE_PIECE_LANGUAGE_ID', 'CodePieceLanguageId', 'int', CreoleTypes::INTEGER, 'code_piece_language', 'ID', false, null);
 
 		$tMap->addColumn('SOURCE', 'Source', 'string', CreoleTypes::LONGVARCHAR, true, null);

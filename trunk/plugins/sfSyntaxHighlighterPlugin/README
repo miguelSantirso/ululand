@@ -1,0 +1,56 @@
+# sfSyntaxHighlighter plugin
+
+The sfSyntaxHighlighterPlugin adds automatically the javascript code needed to use the [SyntaxHighlighter](http://code.google.com/p/syntaxhighlighter/) javascript library.
+
+After installation, you will only need to enable the ``sfSyntaxHighlighterFilter`` in the applications you want.
+
+## Installation
+
+__1. Install the plugin__
+
+    symfony plugin-install http://plugins.symfony-project.com/sfSyntaxHighlighterPlugin
+    
+__2. Modify the ``filters.yml`` file of the application to enable the filter__ so that the plugin can add the Javascript code at the bottom of every page.
+
+    # generally, you will want to insert your own filters here
+    sf_syntax_highlighter_plugin:
+        class: sfSyntaxHighlighterFilter
+
+__3. Clear the cache__
+
+    symfony cc
+
+## SyntaxHighlighter's basic usage
+
+You can find the official documentation of the [SyntaxHighlighter](http://code.google.com/p/syntaxhighlighter/) library in ("usage" section of their wiki)[http://code.google.com/p/syntaxhighlighter/wiki/Usage].
+
+### Highlighting code
+
+Place your code on the page and surround it with ``<pre>`` tag. Set name attribute to code and class attribute to one of the language aliases you wish to use.
+
+    <pre name="code" class="c-sharp">
+        ... some code here ...
+    </pre>
+
+
+## SyntaxHighlighter version
+
+This plugin uses version 1.5.1 of [SyntaxHighlighter](http://code.google.com/p/syntaxhighlighter/).
+
+## Supported Highlighting Brushes
+
+These are the currently supported highlighting brushes. The different aliases for every brush are between parenthesis.
+ 
+ * ActionScript 3.0 ('as','actionscript','ActionScript','as3','AS3')
+ * C++ ('cpp','c','c++')
+ * C# ('c#','c-sharp','csharp')
+ * CSS ('css')
+ * Delphi ('delphi','pascal')
+ * Java ('java')
+ * JavaScript ('js','jscript','javascript')
+ * PHP ('php')
+ * Python ('py','python')
+ * Ruby ('ruby','rails','ror')
+ * SQL ('sql')
+ * Visual Basic ('vb','vb.net')
+ * XML ('xml','xhtml','xslt','html','xhtml')

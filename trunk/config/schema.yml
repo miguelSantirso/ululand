@@ -71,7 +71,6 @@ propel:
     created_at: ~
     updated_at: ~ 
     title:       { type: varchar(75), required: true }
-    description: { type: longvarchar, required: false }
     code_piece_language_id: ~
     source:      { type: longvarchar, required: true }
     
