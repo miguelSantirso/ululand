@@ -54,6 +54,11 @@ a.button:active {
 }
 
 
+div#contentShadow {
+	background: url('../images/smallHorizontalShadow.png') repeat-x;
+	height: 4px;
+	widht: 100%;
+}
 /* big box links */
 
 a.bigBox {
@@ -144,6 +149,108 @@ a.bigBox span.description {
 	color: #0091ed;
 }
 
+/* level 1 header (main) */
+
+div#mainHeader {
+	padding: 6px 6px 6px 18px;
+	background: #00afff repeat-x;
+	}
+	div#mainHeader h2 {
+		text-transform: lowercase;
+		font-weight: normal;
+		font-size: 23px;
+		padding: 0;
+		margin: 0;
+		}
+		div#mainHeader h2 a {
+			color: #ffffff;
+			text-decoration: none;
+		}
+		div#mainHeader h2 a:hover {
+			color: #ffffff;
+			text-decoration: underline;
+		}
+	div#mainHeader ul {
+		list-style-type: none;
+		float: right;
+		margin: 7px 7px;
+		padding: 0;
+		font-size: 15px;
+		}
+		div#mainHeader li {
+			text-transform: lowercase;
+			float: left;
+			}
+			div#mainHeader li a {
+				text-decoration: none;
+				color: #c6edff;
+				border-left: 1px solid #2cbdff;
+				border-right: 1px solid #00a0e9;
+				padding: 3px 0.5em 3px 0.5em;
+			}
+			div#mainHeader li a.selected {
+				text-decoration: underline;
+			}
+			div#mainHeader li a:hover {
+				background-color: #1399d7;
+				color: #ffffff;
+			}
+			div#mainHeader li a:active {
+				background-color: #1882b3;
+			}
+		
+/* level 2 header (module) */
+
+div#moduleHeader {
+	padding: 3px 3px 4px 20px;
+	border-top: 1px solid #40c2fd;
+	background: url('../images/smallHorizontalShadow.png') #107fc9 repeat-x;
+	}
+	div#moduleHeader h3 {
+		text-transform: lowercase;
+		font-weight: normal;
+		font-size: 15px;
+		padding: 0;
+		margin: 0;
+		color: #9ccafd;
+		}
+		div#moduleHeader h3 a {
+			color: #daebff;
+			text-decoration: none;
+		}
+		div#moduleHeader h3 a:hover {
+			color: #ffffff;
+			text-decoration: underline;
+		}
+	div#moduleHeader ul {
+		list-style-type: none;
+		float: right;
+		margin: 2px 10px;
+		padding: 0;
+		font-size: 13px;
+		}
+		div#moduleHeader li {
+			text-transform: lowercase;
+			float: left;
+			}
+			div#moduleHeader li a {
+				text-decoration: none;
+				color: #add4ff;
+				border-left: 1px solid #1d8cd7;
+				border-right: 1px solid #0b77bf;
+				padding: 2px 0.5em 1px 0.5em;
+			}
+			div#moduleHeader li a.selected {
+				text-decoration: underline;
+			}
+			div#moduleHeader li a:hover {
+				background-color: #1d71a9;
+				color: #ffffff;
+			}
+			div#moduleHeader li a:active {
+				background-color: #0f5686;
+			}
+		
 /* header */
 
 div#header {
@@ -262,9 +369,9 @@ div#content {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	
-	width: 980px;
+	width: 1000px;
 	margin: 0.4em auto;
-	padding: 0.2em 15px 15px;
+	padding: 0 0 20px 0;
 }
 #content p, #content blockquote
 {
@@ -286,6 +393,7 @@ div.contentRow
 
 .header
 {
+	text-shadow: 0px 1px 0 white;
 	padding-bottom: 0.2em;
 	border-bottom: 1px solid #c6c6c6;
 }
@@ -352,13 +460,15 @@ div.contentRow
 
 div#pageHeader
 {
+	margin: 0 20px;
 	border-bottom: 1px solid #c6c6c6;
 }
 #pageHeader h2
 {
 	font-weight: normal;
+	text-shadow: #ddd 0px 2px 1px;
 }
-#pageHeader .subtitle
+#pageHeader .subtitle, .subtitle
 {
 	font-size: normal;
 	margin-top: 0.6em;
@@ -374,7 +484,12 @@ div#pageHeader
 	text-decoration: none;
 }
 
+/* page content */
 
+div#pageContent
+{
+	margin: 15px;
+}
 
 /* content boxes */
 
@@ -444,6 +559,8 @@ ul.full li, ul.compound li
 	padding: 0.5em;
 }
 
+/* "full" lists */
+
 ul.full li
 {
 	border: 1px solid #e1e1e1;
@@ -456,6 +573,7 @@ ul.full li:hover
 	border: 1px solid #c6c6c6;
 }
 
+/* compound lists */
 
 ul.compound li { padding: 0; }
 ul.compound li *.firstRow
@@ -466,7 +584,7 @@ ul.compound li *.firstRow
 	-webkit-border-radius-topleft: 4px;
 	-webkit-border-radius-topright: 4px;
 
-	background-color: #e9e9e9;
+	background-color: #f0f0f0;
 }
 ul.compound li *.lastRow
 {
@@ -477,7 +595,7 @@ ul.compound li *.lastRow
 	-webkit-border-radius-bottomright: 4px;
 	border-top: 0;
 	
-	background-color: #f1f1f1;
+	background-color: #f9f9f9;
 }
 ul.compound li a.firstRow
 {
@@ -485,7 +603,11 @@ ul.compound li a.firstRow
 }
 ul.compound li a.firstRow:hover
 {
-	background-color: #e1e1e1;
+	background-color: #e5e5e5;
+}
+ul.compound li a.firstRow:active
+{
+	background-color: #fbfbfb;
 }
 
 /* tags lists */
@@ -534,6 +656,8 @@ ul.cloud li a {
 ul.cloud li a:hover {
 	text-decoration: underline;
 }
+
+
 /* text formats */
 
 .noSpace {

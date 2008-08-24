@@ -38,8 +38,8 @@
 				<a href="<?php echo url_for('@wiki_home'); ?>" class="bigBox">
 					<span class="large"><?php echo __('Flash Game Developers Wiki'); ?></span>
 				</a>
-				<a href="<?php echo url_for('collaboration'); ?>" class="bigBox">
-					<span class="large"><?php echo __('The Kollaborator'); ?></span>
+				<a href="<?php echo url_for('recipe'); ?>" class="bigBox">
+					<span class="large"><?php echo __('Flash Code Recipes'); ?></span>
 				</a>
 				<a href="<?php echo url_for('profile/list'); ?>" class="bigBox">
 					<span class="large"><?php echo __('Registered People'); ?></span>

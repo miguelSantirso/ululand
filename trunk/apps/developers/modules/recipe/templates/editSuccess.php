@@ -1,10 +1,4 @@
-<?php use_helper('Object', 'Validation', 'Javascript'); ?>
-
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Submit a recipe"), '/recipe/create'); ?></h2>
-	<p class="subtitle"><?php echo __("Keep It Simple, Stupid!"); ?></p>
-</div>
-
+<?php use_helper('Object', 'Validation', 'Javascript', 'ModalBox', 'SyntaxHighlighter'); ?>
 
 <div id="pageContent">
 
@@ -15,7 +9,7 @@
 			
 			<?php echo object_input_hidden_tag($code_piece, 'getId') ?>
 		
-			<!-- Título -->
+			<!-- TÃ­tulo -->
 			<p class="noSpace"><?php echo label_for('title', __('Title:')); ?></p>
 			<?php echo form_error("title"); ?>
 			<?php echo object_input_tag($code_piece, 'getTitle', array (
@@ -23,13 +17,14 @@
 			)) ?>
 			<br/>
 			<br/>
-			<!-- Código -->
+			<!-- CÃ³digo -->
+			<?php echo link_to_function(__('add code'), 'Modalbox.show($("codeSnippetInsertion"), {title: "'. __('Code Snippet Insertion') .'", width: 880});', array('class' => 'alignRight')); ?>
 			<p class="noSpace"><?php echo label_for('source', __('Source:')); ?></p>
 			<?php echo form_error('source'); ?>
 			<?php echo object_textarea_tag($code_piece, 'getSource', array (
 			  'size' => '50x12',
 			)) ?>
-			<p class="noSpace"><small class=''><?php echo __('Paste or write the code here. You can preview it in the right side.'); ?></small></p>
+			<p class="noSpace"><small class=''><?php echo sprintf(__('Press the %s link to insert source code beautifully formatted.'), link_to_function(__('add code'), 'Modalbox.show($("codeSnippetInsertion"), {title: "'. __('Code Snippet Insertion') .'", width: 880});') ); ?></small></p>
 			<br/>
 			<!-- Tags -->
 			<p class="noSpace"><?php echo label_for('tags', __('Tags:')); ?></p>
@@ -39,6 +34,23 @@
 			)) ?>
 			<p class="noSpace"><small class=''><?php echo __('Comma separated.'); ?></small></p>
 			<br/>
+			
+			<!-- insert code box -->
+			<div id="codeSnippetInsertion" class="contentColumn wide alignCenter" style="display: none;">
+				<h5 class="header"><strong>1. </strong><?php echo __('Select a programming language'); ?></h5>
+				<?php echo select_programming_language_tag('programming language', null, array('id' => 'programmingLanguage', 'class' => 'large') ); ?>
+				<br/>
+				<br/>
+				<h5 class="header"><strong>2. </strong><?php echo __('Paste or write the code'); ?></h5>
+				<textarea id="codeToAdd" cols="80" rows="20" name="codeToAdd"></textarea>
+				<p class="noSpace"><small class=''><?php echo __('Paste or write your code here. You will be able to preview it after pressing "insert".'); ?></small></p>
+				<br/>
+				<div class="center contentBox">
+					<input class="large" type="button" value="<?php echo __('insert'); ?>" name="insert" onclick="addCodeAndClose();"/>
+					<?php echo link_to_function(__('cancel'), 'Modalbox.hide();'); ?>
+				</div>
+				
+			</div>
 			
 			<?php echo observe_field('title', array(
 					'update'  => 'recipePreview',

@@ -1,7 +1,3 @@
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Disabled"), "/game"); ?></h2>
-	<p class="subtitle"><?php echo __("disabled module"); ?></p>
-</div>
 
 <div id="pageContent">
 

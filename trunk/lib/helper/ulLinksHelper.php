@@ -47,6 +47,7 @@
 	    		$options);
 	}
 	
+	
 	/**
 	 * Retorna el código html de un enlace a la oferta de colaboración pasada como parámetro
 	 *
@@ -87,7 +88,7 @@
 	function linkToRecipe($recipe, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
-		return link_to($linkText, "recipe/show?id=".$recipe->getId(), $options);
+		return link_to($linkText, "recipe/show?title=".$recipe->getTitle(), $options);
 	}
 	
 	/**
@@ -101,5 +102,5 @@
 	function linkToEditRecipe($recipe, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
-		return link_to($linkText, "recipe/edit?id=".$recipe->getId(), $options);
+		return link_to($linkText, "recipe/edit?title=".$recipe->getTitle(), $options);
 	}

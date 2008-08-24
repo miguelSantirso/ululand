@@ -1,8 +1,4 @@
 <?php use_helper('Object', 'Javascript') ?>
-<div id="pageHeader">
-	<h2><?php echo __("Edit your profile"); ?></h2>
-
-</div>
 
 <div id="pageContent">
 	<?php echo form_tag('profile/update') ?>

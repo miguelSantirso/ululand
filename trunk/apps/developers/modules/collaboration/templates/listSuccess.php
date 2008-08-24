@@ -1,10 +1,5 @@
 <?php use_helper('Partial', 'Tags'); ?>
 
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Collaboration offers list"), '/collaboration/list'); ?></h2>
-	<p class="subtitle"><?php echo __("Colaborative work is great, isn't it?"); ?></p>
-</div>
-
 <div id="pageContent">
 
 	<?php if(isset($tag)) : ?>

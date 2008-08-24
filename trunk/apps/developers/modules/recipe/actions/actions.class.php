@@ -12,7 +12,7 @@ class recipeActions extends sfActions
 {
   public function executeIndex()
   {
-    return $this->forward('recipe', 'list');
+    return $this->redirect('recipe/list');
   }
 
   public function executeList()
@@ -31,7 +31,18 @@ class recipeActions extends sfActions
 
   public function executeShow()
   {
-    $this->code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+  	if($this->getRequestParameter('id'))
+	{
+		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+		$this->redirect('collaboration/show?title='.$collaboration_offer->getTitle());
+	}
+	else if($this->getRequestParameter('title'))
+	{
+		$c = new Criteria();
+		$c->add(CodePiecePeer::TITLE, $this->getRequestParameter('title'));
+		$this->code_piece = CodePiecePeer::doSelectOne($c);
+	}
+	
     $this->forward404Unless($this->code_piece);
     $this->code_piece->incrementCounter(); // Una visita más
   }
@@ -51,8 +62,25 @@ class recipeActions extends sfActions
 
   public function executeEdit()
   {
-    $this->code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+  	if($this->getRequestParameter('id'))
+	{
+		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+		$this->redirect('collaboration/show?title='.$collaboration_offer->getTitle());
+	}
+	else if($this->getRequestParameter('title'))
+	{
+		$c = new Criteria();
+		$c->add(CodePiecePeer::TITLE, $this->getRequestParameter('title'));
+		$this->code_piece = CodePiecePeer::doSelectOne($c);
+	}
+	
     $this->forward404Unless($this->code_piece);
+    
+    if($this->getUser()->getId() != $this->code_piece->getCreatedBy())
+    {
+    	$this->setFlash('warning', 'You don\'t have permission to edit this recipe!');
+    	$this->redirect('recipe/show?id='.$this->getRequestParameter('id'));
+    }
   }
 
   public function executeUpdate()
@@ -103,4 +131,5 @@ class recipeActions extends sfActions
 
     return $this->redirect('recipe/list');
   }
+  
 }

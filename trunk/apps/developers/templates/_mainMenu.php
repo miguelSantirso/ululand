@@ -15,13 +15,12 @@
 			<li class="<?php echo $selected ? 'selected' : '' ?>">
 				<?php echo link_to(__("Community"), "/community"); ?>
 				<ul>
-					<li><?php echo link_to(__("Kollaborator"), "collaboration"); ?></li>
-					<li><?php echo link_to(__("Cookbook"), "recipe"); ?></li>
+					<li><?php echo link_to(__("Recipes"), "recipe"); ?></li>
+					<li><?php echo link_to(__("Collaboration Offers"), "/collaboration"); ?></li>
+					<li><?php echo link_to(__("Registered people"), "/profile/list"); ?></li>
+					<li><hr/></li>
 					<li><?php echo link_to(__("Wiki"), "@wiki_home"); ?></li>
 					<li><?php echo link_to(__("Google Group"), "http://groups.google.com/group/desarrolladores-ululand"); ?></li>
-					<li><hr/></li>
-					<li><?php echo link_to(__("Registered people"), "/profile/list"); ?></li>
-					<li><?php echo link_to(__("Collaboration Offers"), "/collaboration/list"); ?></li>
 				</ul>
 			</li>
 		</ul>

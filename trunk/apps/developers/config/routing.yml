@@ -1,12 +1,31 @@
-# kollaborator
+# code recipes
 
-echo $cadena;
-kollaborator_index:
-  url: /kollaborator
-  param: { module: collaboration, action: index }
+recipe_list:
+  url: /recipes
+  param: { module: recipe, action: list }
 
+recipe_list_tag:
+  url: /recipes/tag/:tag
+  param: { module: recipe, action: list }
+  
+recipe_list_search:
+  url: /recipes/search/:search
+  param: { module: recipe, action: list }
+  
+recipe_show:
+  url: /recipes/:title
+  param: { module: recipe, action: show }
+
+recipe_edit:
+  url: /recipes/:title/edit
+  param: { module: recipe, action: edit }
+  
 # collaboration offers
 
+collaboration_index:
+  url: /collaborations/index
+  param: { module: collaboration, action: index }
+  
 collaboration_list:
   url: /collaborations
   param: { module: collaboration, action: list }

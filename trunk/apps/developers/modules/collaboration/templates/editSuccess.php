@@ -1,11 +1,5 @@
 <?php use_helper('Object', 'Validation', 'Javascript') ?>
 
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Submit a collaboration offer"), '/collaboration/create'); ?></h2>
-	<p class="subtitle"><?php echo __("Colaborative work is great, isn't it?"); ?></p>
-</div>
-
-
 <div id="pageContent">
 
 	<div class="contentColumn half alignLeft">

@@ -1,5 +1,7 @@
 <?php
 
+	
+	
 	function dynamicContextUrl($context)
 	{
 		//$url = url_for($context->getModuleName().'/'.$context->getActionName(), true);

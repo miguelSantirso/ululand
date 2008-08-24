@@ -35,6 +35,14 @@
 	<!-- content -->
 	
 	<div id="content">
+		<?php include_partial('global/mainHeader') ?>
+		
+		<?php // @todo mover la condición del if a una función en algún sitio decente ?>
+		<?php if (is_readable($sf_context->getModuleDirectory() . DIRECTORY_SEPARATOR ."templates". DIRECTORY_SEPARATOR ."_". "header" .".php")) : ?>
+			<?php include_partial($sf_context->getModuleName() . '/header') ?>
+		<?php endif; ?>
+		
+		<div id="contentShadow"></div>
 		<?php echo $sf_data->getRaw('sf_content') ?>
 		
 		<div style="clear:both;"></div>

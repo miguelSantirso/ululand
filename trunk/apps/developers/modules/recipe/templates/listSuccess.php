@@ -1,11 +1,5 @@
 <?php use_helper('Partial', 'Tags'); ?>
 
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Cookbook Recipes List"), '/recipe/list'); ?></h2>
-	<p class="subtitle"><?php echo __("Let's cook a great flash game!"); ?></p>
-</div>
-
-
 <div id="pageContent">
 
 	<?php if(isset($tag)) : ?>

@@ -1,8 +1,4 @@
 <?php use_helper('Date', 'Partial'); ?>
-<div id="pageHeader">
-	<h2><?php echo __('Collaboration Offer') ?></h2>
-	<p class="subtitle"><?php echo __("Colaborative work is great, isn't it?"); ?></p>
-</div>
 
 <div id="pageContent">
 	<div class="contentColumn wide alignLeft">

@@ -1,10 +1,5 @@
 <?php use_helper('PagerNavigation', 'Partial', 'Tags') ?>
 
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Registered people"), 'profile/list'); ?></h2>
-	<p class="subtitle"><?php echo __("We create games!"); ?></p>
-</div>
-
 <div id="pageContent">
 	
 	<?php if(isset($tag)) : ?>

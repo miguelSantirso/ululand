@@ -1,11 +1,5 @@
 <?php use_helper('Date', 'Partial', 'sfRating'); ?>
 
-
-<div id="pageHeader">
-	<h2><?php echo __('Recipes') ?></h2>
-	<p class="subtitle"><?php echo __("Let's cook a great flash game!"); ?></p>
-</div>
-
 <div id="pageContent">
 
 	<div class="contentRow">

@@ -1,8 +1,4 @@
 <?php use_helper('Javascript'); ?>
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Community"), 'community'); ?></h2>
-	<p class="subtitle"><?php echo __("We create games!"); ?></p>
-</div>
 
 <div id="pageContent">
 	<div class="contentRow">
@@ -26,7 +22,7 @@
 				<!-- caja de suscripción a grupo de Google -->
 				  <p><b><?php echo __('Subscribe to'); ?> <a href="http://groups.google.com/group/desarrolladores-ululand">our group</a></b></p>
 				  <form action="http://groups.google.com/group/desarrolladores-ululand/boxsubscribe">
-				  Email: <input type=text name=email <?php if($sf_user->isAuthenticated()) : ?>value="<?php echo $sf_user ?>"<?php endif; ?> />
+				  Email: <input type=text name=email <?php if($sf_user->isAuthenticated()) : ?>value="<?php echo $sf_user->getUsername(); ?>"<?php endif; ?> />
 				  <input type=submit name="sub" value="<?php echo __('Subscribe'); ?>" />
 				  </form>
 			</div>
