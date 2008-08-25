@@ -6,36 +6,68 @@ After installation, you will only need to enable the ``sfSyntaxHighlighterFilter
 
 ## Installation
 
-__1. Install the plugin__
+**1.** Install the plugin
 
     symfony plugin-install http://plugins.symfony-project.com/sfSyntaxHighlighterPlugin
     
-__2. Modify the ``filters.yml`` file of the application to enable the filter__ so that the plugin can add the Javascript code at the bottom of every page.
+**2.** Modify the ``filters.yml`` file of the application to enable the filter so that the plugin can add the Javascript code at the bottom of every page.
 
     # generally, you will want to insert your own filters here
     sf_syntax_highlighter_plugin:
         class: sfSyntaxHighlighterFilter
 
-__3. Clear the cache__
+**3.** Clear the cache
 
     symfony cc
 
-## SyntaxHighlighter's basic usage
+## sfSyntaxHighlighterPlugin's basic usage
 
-You can find the official documentation of the [SyntaxHighlighter](http://code.google.com/p/syntaxhighlighter/) library in ("usage" section of their wiki)[http://code.google.com/p/syntaxhighlighter/wiki/Usage].
+### Using BBCode
 
-### Highlighting code
+The most simple option is to surround the code you want to highlight 
+with BBCode. For example:
 
-Place your code on the page and surround it with ``<pre>`` tag. Set name attribute to code and class attribute to one of the language aliases you wish to use.
+    ...
+    [code="php"]
+        ... some php code here ...
+    [/code]
 
-    <pre name="code" class="c-sharp">
+
+or
+
+    ...
+    [code lang="php"]
+        ... some php code here ...
+    [/code]
+
+Also, you can use three different BBCode tags that will be automatically recognised:
+
+    ...
+    [code="php"]
+        ... some php code here ...
+    [/code]
+
+    [sourcecode="css"]
+        ... some css code here ...
+    [/sourcecode]
+
+    [source="c++"]
+        ... some C++ code here ...
+    [/source]
+
+Then, the plugin will highlight any code surrounded with that tags. Notice that you have to use one of the aliases for the desired programming languages (see *Supported Highlighting Brushes* at the bottom of this documentation).
+
+
+### Using the library's syntax
+
+<small>You can find the official documentation of the [SyntaxHighlighter](http://code.google.com/p/syntaxhighlighter/) library in ("usage" section of their wiki)[http://code.google.com/p/syntaxhighlighter/wiki/Usage].</small>
+
+Place your code on the page and surround it with ``pre`` tag. Set name attribute to code and class attribute to one of the language aliases you wish to use.
+
+    <pre name="code" class="php">
         ... some code here ...
     </pre>
 
-
-## SyntaxHighlighter version
-
-This plugin uses version 1.5.1 of [SyntaxHighlighter](http://code.google.com/p/syntaxhighlighter/).
 
 ## Supported Highlighting Brushes
 
@@ -54,3 +86,9 @@ These are the currently supported highlighting brushes. The different aliases fo
  * SQL ('sql')
  * Visual Basic ('vb','vb.net')
  * XML ('xml','xhtml','xslt','html','xhtml')
+
+
+## SyntaxHighlighter version
+
+This plugin uses version 1.5.1 of [SyntaxHighlighter](http://code.google.com/p/syntaxhighlighter/).
+

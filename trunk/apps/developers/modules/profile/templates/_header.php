@@ -1,14 +1,14 @@
-
+<?php $action = $sf_context->getActionName(); ?>
 <div id="moduleHeader">
 	<ul>
-		<li><?php echo link_to(__('List'), 'profile/list'); ?></li>
+		<li><?php echo link_to(__('List'), 'profile/list', array('class' => $action == "list" ? 'selected' : '')); ?></li>
 	</ul>
 	
 	<h3>
 		<?php
 		$separator = ' &raquo ' ;
 		$moduleIndex = link_to(__('People'), 'profile');
-		switch($sf_context->getActionName()) 
+		switch($action) 
 		{
 			case "list":
 				echo $moduleIndex . $separator . link_to(__('List'), 'profile/list');
