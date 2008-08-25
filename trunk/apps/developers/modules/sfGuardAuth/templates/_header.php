@@ -8,7 +8,7 @@
 	
 	<h3>
 		<?php
-		$separator = ' &raquo ' ;
+		$separator = ' &raquo; ' ;
 		$moduleIndex = link_to(__('Home'), 'home');
 		switch($action) 
 		{

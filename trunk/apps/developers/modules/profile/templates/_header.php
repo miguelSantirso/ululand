@@ -6,7 +6,7 @@
 	
 	<h3>
 		<?php
-		$separator = ' &raquo ' ;
+		$separator = ' &raquo; ' ;
 		$moduleIndex = link_to(__('People'), 'profile');
 		switch($action) 
 		{

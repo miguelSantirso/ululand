@@ -9,7 +9,7 @@
 	
 	<h3>
 		<?php
-		$separator = ' &raquo ' ;
+		$separator = ' &raquo; ' ;
 		$moduleIndex = link_to(__('Collaboration offers'), 'collaboration');
 		switch($sf_context->getActionName()) 
 		{

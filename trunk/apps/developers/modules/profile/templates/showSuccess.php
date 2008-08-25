@@ -19,14 +19,14 @@
 				<div class="contentBox light center"><span><?php echo __('Hey! I\'m looking for a project to work on!'); ?></span></div>
 			<?php } ?>
 			
-			<div class="contentBox bordered">
+			<div class="">
 			<?php if($developerProfile->getDescription() != ''){ ?> 
 				<?php echo sfMarkdown::doConvert( $developerProfile->getDescription() ); ?>
 			<?php } else { ?>
 				<p><?php echo __('There is no description for this user'); ?></p>
 			<?php } ?>
 			</div>
-			<div class="contentBox light">
+			<div class="contentBox light bordered">
 			<h4 class="header small"><?php echo __('Developer Details:') ?></h4>
 			<?php if($developerProfile->getUrl() != '') : ?>
 				<p class="noSpace small"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
@@ -37,6 +37,13 @@
 			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 				<span class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></span>
 			<?php } ?>
+			</div>
+			<div class="contentBox light">
+			<h4 class="header small"><?php echo __('Comments:') ?></h4>
+			<?php
+				include_component('sfComment', 'commentList', array('object' => $developerProfile));
+				include_component('sfComment', 'commentForm', array('object' => $developerProfile));
+			?>
 			</div>
 		</div>
 	</div>

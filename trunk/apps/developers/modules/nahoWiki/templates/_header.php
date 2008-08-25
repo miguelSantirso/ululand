@@ -7,7 +7,7 @@
 	
 	<h3>
 		<?php
-		$separator = ' &raquo ' ;
+		$separator = ' &raquo; ' ;
 		$moduleIndex = link_to(__('Wiki'), '@wiki_home');
 		switch($sf_context->getActionName()) 
 		{
