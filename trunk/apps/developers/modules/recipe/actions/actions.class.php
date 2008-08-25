@@ -34,12 +34,12 @@ class recipeActions extends sfActions
   	if($this->getRequestParameter('id'))
 	{
 		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('recipe/show?title='.$code_piece->getTitle());
+		$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
 	}
-	else if($this->getRequestParameter('title'))
+	else if($this->getRequestParameter('stripped_title'))
 	{
 		$c = new Criteria();
-		$c->add(CodePiecePeer::TITLE, $this->getRequestParameter('title'));
+		$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
 		$this->code_piece = CodePiecePeer::doSelectOne($c);
 	}
 	
@@ -65,12 +65,12 @@ class recipeActions extends sfActions
   	if($this->getRequestParameter('id'))
 	{
 		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('recipe/show?title='.$code_piece->getTitle());
+		$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
 	}
 	else if($this->getRequestParameter('title'))
 	{
 		$c = new Criteria();
-		$c->add(CodePiecePeer::TITLE, $this->getRequestParameter('title'));
+		$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
 		$this->code_piece = CodePiecePeer::doSelectOne($c);
 	}
 	

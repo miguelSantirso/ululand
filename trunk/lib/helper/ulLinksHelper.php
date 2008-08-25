@@ -59,7 +59,7 @@
 	function linkToCollaborationOffer($collaborationOffer, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $collaborationOffer->getTitle() : $customText;
-		return link_to($linkText, "collaboration/show?title=".$collaborationOffer->getTitle(), $options);
+		return link_to($linkText, "collaboration/show?stripped_title=".$collaborationOffer->getStrippedTitle(), $options);
 	}
 	
 	/**
@@ -73,7 +73,7 @@
 	function linkToEditCollaborationOffer($collaborationOffer, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $collaborationOffer->getTitle() : $customText;
-		return link_to($linkText, "collaboration/edit?title=".$collaborationOffer->getTitle(), $options);
+		return link_to($linkText, "collaboration/edit?stripped_title=".$collaborationOffer->getStrippedTitle(), $options);
 	}
 	
 	
@@ -88,7 +88,7 @@
 	function linkToRecipe($recipe, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
-		return link_to($linkText, "recipe/show?title=".$recipe->getTitle(), $options);
+		return link_to($linkText, "recipe/show?stripped_title=".$recipe->getStrippedTitle(), $options);
 	}
 	
 	/**
@@ -102,5 +102,5 @@
 	function linkToEditRecipe($recipe, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
-		return link_to($linkText, "recipe/edit?title=".$recipe->getTitle(), $options);
+		return link_to($linkText, "recipe/edit?stripped_title=".$recipe->getStrippedTitle(), $options);
 	}

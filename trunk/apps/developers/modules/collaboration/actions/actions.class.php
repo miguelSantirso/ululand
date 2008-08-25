@@ -33,12 +33,12 @@ class collaborationActions extends sfActions
   	if($this->getRequestParameter('id'))
 	{
 		$collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('collaboration/show?title='.$collaboration_offer->getTitle());
+		$this->redirect('collaboration/show?stripped_title='.$collaboration_offer->getStrippedTitle());
 	}
-	else if($this->getRequestParameter('title'))
+	else if($this->getRequestParameter('stripped_title'))
 	{
 		$c = new Criteria();
-		$c->add(CollaborationOfferPeer::TITLE, $this->getRequestParameter('title'));
+		$c->add(CollaborationOfferPeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
 		$this->collaboration_offer = CollaborationOfferPeer::doSelectOne($c);
 	}
 	
@@ -64,12 +64,12 @@ class collaborationActions extends sfActions
     if($this->getRequestParameter('id'))
 	{
 		$collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('collaboration/edit?title='.$collaboration_offer->getTitle());
+		$this->redirect('collaboration/edit?stripped_title='.$collaboration_offer->getTitle());
 	}
-	else if($this->getRequestParameter('title'))
+	else if($this->getRequestParameter('stripped_title'))
 	{
 		$c = new Criteria();
-		$c->add(CollaborationOfferPeer::TITLE, $this->getRequestParameter('title'));
+		$c->add(CollaborationOfferPeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
 		$this->collaboration_offer = CollaborationOfferPeer::doSelectOne($c);
 	}
 	

@@ -40,6 +40,8 @@ class CollaborationOfferMapBuilder {
 
 		$tMap->addColumn('TITLE', 'Title', 'string', CreoleTypes::VARCHAR, true, 75);
 
+		$tMap->addColumn('STRIPPED_TITLE', 'StrippedTitle', 'string', CreoleTypes::VARCHAR, true, 75);
+
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);

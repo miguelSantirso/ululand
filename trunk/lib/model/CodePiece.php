@@ -40,6 +40,20 @@ class CodePiece extends BaseCodePiece
 		
 		return trim($tagsString, " ,");
 	}
+
+	/**
+	 * Modificación de la función automática setTitle para que se establezca el campo stripped_title cuando valga null.
+	 * Esto es necesario para el funcionamiento de los permalinks
+	 *
+	 * @param unknown_type $v
+	 */
+	public function setTitle($v)
+	{
+		parent::setTitle($v);
+		
+		if(!$this->getStrippedTitle())
+			$this->setStrippedTitle(ulToolkit::stripText($v));
+	}
 }
 
 sfPropelBehavior::add('CodePiece', array('sfPropelActAsSignableBehavior' => array()));
