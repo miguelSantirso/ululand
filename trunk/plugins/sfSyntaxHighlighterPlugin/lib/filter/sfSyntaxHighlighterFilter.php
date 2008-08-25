@@ -181,6 +181,7 @@ class sfSyntaxHighlighterFilter extends sfFilter
   protected function checkForPreTag( $content )
   {
   	if ( stristr( $content, '<pre' ) && stristr( $content, '</pre>' ) ) return TRUE;
+  	if ( stristr( $content, '<textarea' ) && stristr( $content, '</textarea>' ) ) return TRUE;
 
   	return FALSE;
   }

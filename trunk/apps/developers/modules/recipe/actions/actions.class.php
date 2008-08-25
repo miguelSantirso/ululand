@@ -34,7 +34,7 @@ class recipeActions extends sfActions
   	if($this->getRequestParameter('id'))
 	{
 		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('collaboration/show?title='.$collaboration_offer->getTitle());
+		$this->redirect('recipe/show?title='.$code_piece->getTitle());
 	}
 	else if($this->getRequestParameter('title'))
 	{
@@ -65,7 +65,7 @@ class recipeActions extends sfActions
   	if($this->getRequestParameter('id'))
 	{
 		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('collaboration/show?title='.$collaboration_offer->getTitle());
+		$this->redirect('recipe/show?title='.$code_piece->getTitle());
 	}
 	else if($this->getRequestParameter('title'))
 	{

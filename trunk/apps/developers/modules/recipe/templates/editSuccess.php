@@ -51,14 +51,14 @@
 				</div>
 				
 			</div>
-			
+			<?php $with = "'title=' + encodeURIComponent($('title').value) + '&source=' + encodeURIComponent($('source').value)"; ?>
 			<?php echo observe_field('title', array(
 					'update'  => 'recipePreview',
 					'url'     => 'recipe/preview',
 					'script'    => 'true',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
-				    'with'    => "'title=' + $('title').value + '&source=' + $('source').value")) ?>
+				    'with'    => $with)) ?>
 			<?php echo observe_field('description', array(
 					'frequency' => '5',
 					'update'    => 'recipePreview',
@@ -66,7 +66,7 @@
 					'script'    => 'true',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
-				    'with'    => "'title=' + $('title').value + '&source=' + $('source').value")) ?>
+				    'with'    => $with)) ?>
 			<?php echo observe_field('source', array(
 					'frequency' => '5',
 					'update'    => 'recipePreview',
@@ -74,7 +74,7 @@
 					'script'    => 'true',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
-				    'with'    => "'title=' + $('title').value + '&source=' + $('source').value")) ?>
+				    'with'    => $with)) ?>
 				    
 				    			
 			<?php echo link_to_remote(__('update preview &raquo;'), array(
@@ -83,7 +83,7 @@
 				'script'    => 'true',
 				'before'  => "Element.show('loadIndicator'); Element.setOpacity('recipePreview', 0.5);",
 				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('recipePreview', 1);",
-		    	'with'    => "'title=' + $('title').value + '&source=' + $('source').value"),
+		    	'with'    => $with),
 			array('class' => 'large alignRight')); ?>
 			
 			
@@ -111,7 +111,7 @@
 			    'url'     => 'recipe/preview',
 			  	'script'    => 'true',
 			  	'complete'=> "Element.hide('loadIndicator')",
-			    'with'    => "'title=' + $('title').value + '&source=' + $('source').value"
+			    'with'    => $with
 			  ))
 			) ?>
 	</div>

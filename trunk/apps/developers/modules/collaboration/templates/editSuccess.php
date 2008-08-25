@@ -31,26 +31,27 @@
 			<p class="noSpace"><small class=''><?php echo __('Comma separated. Examples: coder, artist, musician, full-time'); ?></small></p>
 			<br/>
 			
+			<?php $with = "'title=' + encodeURIComponent($('title').value) + '&description=' + encodeURIComponent($('description').value)"; ?>
 			<?php echo observe_field('title', array(
 					'update'  => 'offerPreview',
 					'url'     => 'collaboration/preview',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('offerPreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('offerPreview', 1);",
-				    'with'    => "'title=' + $('title').value + '&description=' + $('description').value")) ?>
+				    'with'    => $with)) ?>
 			<?php echo observe_field('description', array(
 					'frequency' => '5',
 					'update'    => 'offerPreview',
 					'url'       => 'collaboration/preview',
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('offerPreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('offerPreview', 1);",
-				    'with'      => "'title=' + $('title').value + '&description=' + $('description').value")) ?>
+				    'with'      => $with)) ?>
 			
 			<?php echo link_to_remote(__('update preview &raquo;'), array(
 				'update'  => 'offerPreview',
 				'url'     => 'collaboration/preview',
 				'before'  => "Element.show('loadIndicator'); Element.setOpacity('offerPreview', 0.5);",
 				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('offerPreview', 1);",
-		    	'with'    => "'title=' + $('title').value + '&description=' + $('description').value"),
+		    	'with'    => $with),
 			array('class' => 'large alignRight')) ?>
 			<?php echo submit_tag(__('submit')) ?>
 			<?php if ($collaboration_offer->getId()): ?>
@@ -73,7 +74,7 @@
 			    'update'  => 'offerPreview',
 			    'url'     => 'collaboration/preview',
 			  	'complete'=> "Element.hide('loadIndicator')",
-			    'with'    => "'title=' + $('title').value + '&description=' + $('description').value"
+			    'with'    => $with
 			  ))
 			) ?>
 	</div>

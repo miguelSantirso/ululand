@@ -54,12 +54,27 @@
 					)) ?>
 				</div>
 				<br/>
+				
+			<?php $with = "'username=' + encodeURIComponent($('username').value) + '&description=' + encodeURIComponent($('description').value)"; ?>
+			<?php echo observe_field('username', array(
+				'update'  => 'profilePreview',
+				'url'     => 'profile/preview',
+				'before'  => "Element.show('loadIndicator'); Element.setOpacity('profilePreview', 0.5);",
+				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('profilePreview', 1);",
+			    'with'    => $with)) ?>
+			<?php echo observe_field('description', array(
+				'frequency' => '5',
+				'update'    => 'profilePreview',
+				'url'       => 'profile/preview',
+				'before'  => "Element.show('loadIndicator'); Element.setOpacity('profilePreview', 0.5);",
+				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('profilePreview', 1);",
+			    'with'      => $with)) ?>
 			<?php echo link_to_remote(__('update preview &raquo;'), array(
 				'update'  => 'profilePreview',
 				'url'     => 'profile/preview',
 				'before'  => "Element.show('loadIndicator'); Element.setOpacity('profilePreview', 0.5);",
 				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('profilePreview', 1);",
-		    	'with'    => "'username=' + $('username').value + '&description=' + $('description').value"),
+		    	'with'    => $with),
 			array('class' => 'large alignRight')) ?>
 				<div style="clear:both"></div>
 			</div>
@@ -76,7 +91,7 @@
 			    'update'  => 'profilePreview',
 			    'url'     => 'profile/preview',
 			  	'complete'=> "Element.hide('loadIndicator')",
-			    'with'    => "'username=' + $('username').value + '&description=' + $('description').value"
+			    'with'    => $with
 			  ))
 			) ?>
 	</div>
@@ -91,18 +106,6 @@
 		  &nbsp;<?php echo link_to(__('cancel'), 'profile/list') ?>
 		<?php endif; ?>
 	</div>
-			<?php echo observe_field('username', array(
-				'update'  => 'profilePreview',
-				'url'     => 'profile/preview',
-				'before'  => "Element.show('loadIndicator'); Element.setOpacity('profilePreview', 0.5);",
-				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('profilePreview', 1);",
-			    'with'    => "'username=' + $('username').value + '&description=' + $('description').value")) ?>
-		<?php echo observe_field('description', array(
-				'frequency' => '5',
-				'update'    => 'profilePreview',
-				'url'       => 'profile/preview',
-				'before'  => "Element.show('loadIndicator'); Element.setOpacity('profilePreview', 0.5);",
-				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('profilePreview', 1);",
-			    'with'      => "'username=' + $('username').value + '&description=' + $('description').value")) ?>
+
 	</form>
 </div>
