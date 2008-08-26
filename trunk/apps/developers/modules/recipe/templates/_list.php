@@ -26,4 +26,4 @@
 <?php endforeach; ?>
 </ul>
 
-<div class="center"><?php echo pager_navigation($recipesPager, 'profile/list'); ?></div>
+<div class="center"><?php echo pager_navigation($recipesPager, 'recipe/list'); ?></div>

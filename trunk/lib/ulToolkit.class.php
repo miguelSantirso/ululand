@@ -6,11 +6,11 @@ class ulToolkit
 	{
 		$text = strtolower($text);
 		
-		// Reemplazar caracteres especiales de español
-		// @todo: esto no funciona, no se por qué.
-		$specialChars = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
-		$goodChars    = array('a', 'e', 'i', 'o', 'u', 'n');
-		$text = str_replace($specialChars, $goodChars, $text);
+		// @todo: falla. Añade una a antes de cada carácter raro
+	 	// change non-latin characters to nearest latin equivalent
+		$search = array ('/[áàâäÂÄ]/i','/[éèêëÊË]/i','/[íîïÎÏ]/i','/[óôöÔÖ]/i','/[úûùüÛÜ]/i','/[ñ]/i','/[ç]/i');
+		$replace = array ('a','e','i','o','u','n','c');
+		$text = preg_replace($search, $replace, $text);
 				
 		// strip all non word chars
 		$text = ereg_replace('[^A-Za-z0-9]', ' ', $text); // este es más restrictivo

@@ -19,7 +19,7 @@
 					<br/>
 					
 					<p class="noSpace"><?php echo label_for('culture', __('Language:')); ?></p>
-					<?php echo select_language_tag('culture', null, array('languages' => array('es', 'en'))); ?>
+					<?php echo select_language_tag('culture', $sf_guard_user_profile->getCulture(), array('languages' => array('es', 'en'))); ?>
 					<br/>
 					<br/>
 				</div>

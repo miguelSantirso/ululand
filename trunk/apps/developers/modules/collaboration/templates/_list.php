@@ -1,6 +1,6 @@
 <?php use_helper('Date', 'PagerNavigation'); ?>
 
-<div class="center"><?php echo pager_navigation($collaborationsPager, 'profile/list'); ?></div>
+<div class="center"><?php echo pager_navigation($collaborationsPager, 'collaboration/list'); ?></div>
 
 <ul class="compound">
 	<?php
@@ -20,4 +20,4 @@
 <?php endforeach; ?>
 </ul>
 
-<div class="center"><?php echo pager_navigation($collaborationsPager, 'profile/list'); ?></div>
+<div class="center"><?php echo pager_navigation($collaborationsPager, 'collaboration/list'); ?></div>

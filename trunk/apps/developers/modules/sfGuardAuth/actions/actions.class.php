@@ -12,6 +12,14 @@ require_once(sfConfig::get('sf_plugins_dir').'/sfGuardPlugin/modules/sfGuardAuth
  */
 class sfGuardAuthActions extends BasesfGuardAuthActions
 {
+	public function executeSignin()
+	{	
+		if($this->getUser()->isAuthenticated())
+			$this->getUser()->setCulture($this->getUser()->getProfile()->getCulture());
+			
+		parent::executeSignin();
+	}
+	
 	public function executeRegister()
 	{
 		if ($this->getRequest()->getMethod() != sfRequest::POST)
