@@ -56,6 +56,12 @@ class profileActions extends sfActions
 	}
 	
 	
+	public function executePreview()
+	{
+		$this->username = $this->getRequestParameter('username');
+		$this->description = $this->getRequestParameter('description');
+	}
+	
 	 /* Muestra el formulario de edición de un perfil
 	 *
 	 */

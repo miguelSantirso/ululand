@@ -27,9 +27,6 @@
 				<p><?php echo __('There is no description for this user'); ?></p>
 			<?php } ?>
 			
-			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
-				<span class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></span>
-			<?php } ?>
 		</div>
 	</div>
 	

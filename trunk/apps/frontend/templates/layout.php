@@ -18,7 +18,7 @@
 <div id="userMenu">
 	<ul class="horizontalListMenu small">
 		<?php if( $sf_user->isAuthenticated() ) { ?>
-			<li id="roomLink"><?php echo link_to('Mi Habitaci&oacute;n', 'profile/show?username='.$sf_user->getProfile()); ?></li>
+			<li id="roomLink"><?php echo linkToProfile($sf_user->getProfile(), array(), "Mi habitaci&oacute;n"); ?></li>
 			<li id="logoutLink"><?php echo link_to(__('Logout'), '@sf_guard_signout'); ?></li>
 			<?php echo tooltip_script('roomLink', 'Ir a tu habitaci&oacute;n para ver los &uacute;ltimos mensajes recibidos, tus amigos, tu aspecto o las &uacute;ltimas puntuaciones que hayas obtenido.', 'creamy', 'title: "Tu habitaci&oacute;n", stem: "topRight", hook: {target: "bottomLeft", tip: "topRight"}, width: 225, offset: {x: 10, y: 0}'); ?>
 			<?php echo tooltip_script('logoutLink', 'La pr&oacute;xima vez que entres tendr&aacute;s que identificarte.', 'creamy', 'title: "Salir", stem: "topRight", hook: {target: "bottomLeft", tip: "topRight"}, width: 225, offset: {x: 10, y: 0}'); ?>
