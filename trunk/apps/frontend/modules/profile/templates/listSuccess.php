@@ -11,7 +11,7 @@
 <?php $alt = ""; ?>
 <?php foreach ($profilesPager->getResults() as $profile): ?>
 	<li class="<?php echo $alt; ?>">
-		<h4 class=""><?php echo $profile->getUsername(); ?></h4>
+		<h4 class=""><?php echo link_to($profile, 'profile/show?username='.$profile); ?></h4>
 		<br style="clear:both" />
 	</li>
 	<?php $alt = $alt == "" ? "alt" : ""; ?>

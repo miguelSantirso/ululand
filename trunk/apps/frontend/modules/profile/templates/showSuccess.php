@@ -13,14 +13,12 @@
 			<span class="">(<?php echo linkToEditProfile($sf_guard_user_profile); ?>)</span>
 		<?php } ?>
 	</h2>
-	<p class="subtitle"><?php echo sprintf(__("Profile for %s"), linkToProfile($sf_guard_user_profile)); ?></p>
 </div>
 	
 <div id="pageContent">
 
 	<div class="contentColumn wide alignLeft">
 		<div class="contentBox bordered">
-			<h3 class="header"><?php echo linkToProfile($sf_guard_user_profile); ?></h3>
 			
 			
 			<?php if($playerProfile->getDescription() != ''){ ?> 
