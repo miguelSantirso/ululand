@@ -34,11 +34,11 @@
 				<span class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></span>
 			<?php } ?>
 			</div>
-			<div class="contentBox light">
+			<div class="contentBox">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>
 			<?php
-				include_component('sfComment', 'commentList', array('object' => $developerProfile));
-				include_component('sfComment', 'commentForm', array('object' => $developerProfile));
+				include_component('sfComment', 'commentForm', array('object' => $developerProfile, 'order' => 'desc'));
+				include_component('sfComment', 'commentList', array('object' => $developerProfile, 'order' => 'desc'));
 			?>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 		<?php include_partial('collaboration/relatedByTags', array('tagsString' => $developerProfile->getTagsString())) ?>
 	</div>
 	
-	<div style="clear:both"></div>
+	<div class="clearFloat"></div>
 	
 	<div class="contentColumn quarter contentBox alignCenter">
 		<?php echo link_to(sprintf('&laquo; %s', __('List')), 'profile/list', array('class' => 'button')) ?>

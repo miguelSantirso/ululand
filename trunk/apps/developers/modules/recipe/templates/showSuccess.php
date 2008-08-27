@@ -5,7 +5,7 @@
 	<div class="contentRow">
 	
 		<div class="contentColumn wide alignLeft">
-			<div class="contentBox bordered">
+			<div class="contentBox">
 				<div class="alignRight"><?php echo sf_rater($code_piece) ?></div>
 				<h3 class="header">
 					<?php echo linkToRecipe($code_piece); ?>
@@ -22,15 +22,20 @@
 				
 				<?php echo sfMarkdown::doConvert( $code_piece->getSource() ); ?>
 				
+			</div>
+			<div class="contentBox bordered light">
+				<h4 class="header"><?php echo __('Recipe details'); ?></h4>
 				<p class="noSpace small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $code_piece->getLinkedTagsString(); ?></p>
+				<p class="noSpace small"><strong><?php echo __('Rating'); ?>:</strong> <?php echo sprintf(__('%s out of %s'), $code_piece->getRating(), $code_piece->getMaxRating()); ?></p>
+				<p class="noSpace small"><strong><?php echo __('Autor'); ?>:</strong> <?php echo linkToProfile($code_piece->getsfGuardUser()->getProfile()); ?></p>
+				<p class="noSpace small"><strong><?php echo __('Date'); ?>:</strong> <?php echo format_date($code_piece->getCreatedAt()); ?></p>
 				<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $code_piece->getCounter(); ?></p>
-				
 			</div>
 			<div class="contentBox">
-				<h4 class="header">Comentarios</h4>
+				<h4 class="header small"><?php echo __('Comments:') ?></h4>
 				<?php
-					include_component('sfComment', 'commentList', array('object' => $code_piece));
-					include_component('sfComment', 'commentForm', array('object' => $code_piece));
+				include_component('sfComment', 'commentForm', array('object' => $code_piece, 'order' => 'desc'));
+				include_component('sfComment', 'commentList', array('object' => $code_piece, 'order' => 'desc'));
 				?>
 			</div>
 		</div>

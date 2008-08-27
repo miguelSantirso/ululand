@@ -76,7 +76,7 @@
 				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('profilePreview', 1);",
 		    	'with'    => $with),
 			array('class' => 'large alignRight')) ?>
-				<div style="clear:both"></div>
+				<div class="clearFloat"></div>
 			</div>
 		</div>
 
@@ -96,7 +96,7 @@
 			) ?>
 	</div>
 	
-	<div style="clear:both"></div>
+	<div class="clearFloat"></div>
 	
 	<div class="contentBox" style="text-align: center">
 		<?php echo submit_tag(__('save')) ?>

@@ -1,55 +1,25 @@
-<?php use_helper('Form'); ?>
-<?php use_helper('Validation'); ?>
-<?php use_helper('Javascript'); ?>
-<?php use_helper('I18N'); ?>
-<?php use_helper('Date'); ?>
+<?php use_helper('Form', 'Validation', 'Javascript', 'Date', 'ulMisc'); ?>
 
-<?php if ( ($sf_user->isAuthenticated() && $config_user['enabled'])
-          || $config_anonymous['enabled']): ?>
+<?php if(!$sf_user->isAuthenticated()) : ?>
+	<div class="contentBox light">
+		<strong><?php echo sprintf(__("You must %s or %s to comment!"), link_to(__('log in'), '@sf_guard_signin'), link_to(__('Register'), '@register')); ?></strong>
+	</div>
+<?php else : ?>
   <?php
   echo form_tag('sfComment/'.$action, 
-                array('class' => 'sf_comment_form contentBox light', 
+                array('class' => 'commentForm', 
                       'id'    => 'sf_comment_form', 
                       'name'  => 'sf_comment_form'));
   ?>
-    <fieldset>
-    	<h4 class="header"><?php echo __("Post a comment"); ?></h4>
-      <?php if ($sf_request->hasError('unauthorized')): ?>
-        <div class="sf_comment_form_error">
-          <?php echo $sf_request->getError('unauthorized') ?>
-        </div>
-      <?php endif; ?>
 
-      <?php if (isset($config_used['layout']['name'])): ?>
-        <div class="<?php echo $config_used['layout']['name']; ?>">
-          <?php echo form_error('sf_comment_name') ?>
-          <label for="sf_comment_name"><?php echo __('Name') ?></label>
-          <?php echo input_tag('sf_comment_name') ?>
-        </div>
-      <?php endif; ?>
+	<span class="gravatar">
+		<?php echo gravatar_tag($sf_user->getUsername()); ?>
+	</span>    
+    <div class="required">
+      <?php echo form_error('sf_comment') ?>
+      <?php echo textarea_tag('sf_comment') ?>
+    </div>
 
-      <?php if (isset($config_used['layout']['email'])): ?>
-        <div class="<?php echo $config_used['layout']['email']; ?>">
-          <?php echo form_error('sf_comment_email') ?>
-          <label for="sf_comment_email"><?php echo __('Email') ?></label>
-          <?php echo input_tag('sf_comment_email') ?>
-        </div>
-      <?php endif; ?>
-
-      <?php if (isset($config_used['layout']['title'])): ?>
-        <div class="<?php echo $config_used['layout']['title']; ?>">
-          <?php echo form_error('sf_comment_title') ?>
-          <label for="sf_comment_title"><?php echo __('Title') ?></label>
-          <?php echo input_tag('sf_comment_title') ?>
-        </div>
-      <?php endif; ?>
-
-      <div class="required">
-        <?php echo form_error('sf_comment') ?>
-        <label for="sf_comment"><?php echo __('Accepts Markdown') ?></label>
-        <?php echo textarea_tag('sf_comment') ?>
-      </div>
-    </fieldset>
 
     <?php
     switch (sfConfig::get('sf_path_info_array'))
@@ -78,21 +48,25 @@
 
     <?php if ($config['use_ajax']): ?>
       <div id="sf_comment_ajax_indicator" style="display: none">&nbsp;</div>
-      <?php
-      echo submit_to_remote('sf_comment_ajax_submit',
-                           __('Post this comment'),
-                           array('update'   => array('success' => 'sf_comment_list', 'failure' => 'sf_comment_form'),
-                                 'url'      => 'sfComment/'.$action,
-                                 'loading'  => "Element.show('sf_comment_ajax_indicator')",
-                                 'complete' => "Element.hide('sf_comment_ajax_indicator');Element.scrollTo('sf_comment_list')",
-                                 'script'   => true),
-                           array('class' => 'submit'));
-      ?>
-      <noscript>
-        <?php echo submit_tag(__('Post this comment'), array('class' => 'submit')) ?>
-      </noscript>
-    <?php else: ?>
-      <?php echo submit_tag(__('Post this comment'), array('class' => 'submit')) ?>
-    <?php endif; ?>
+      <div class="actions">
+	      <?php
+	      echo submit_to_remote('sf_comment_ajax_submit',
+	                           __('Post this comment'),
+	                           array('update'   => array('success' => 'sf_comment_list', 'failure' => 'sf_comment_form'),
+	                                 'url'      => 'sfComment/'.$action,
+	                                 'loading'  => "Element.show('sf_comment_ajax_indicator')",
+	                           		 'success'  => "Element.hide('sf_comment_form');",
+	                                 'complete' => "Element.hide('sf_comment_ajax_indicator'); new Effect.Highlight($(\"commentsList\").firstDescendant())",
+	                                 'script'   => true),
+	                           array('class' => 'submit'));
+	      ?>
+	      <noscript>
+	        <?php echo submit_tag(__('Submit'), array('class' => 'submit')) ?>
+	      </noscript>
+	    <?php else: ?>
+	      <?php echo submit_tag(__('Submit'), array('class' => 'submit')) ?>
+	    <?php endif; ?>
+	    <span><?php echo __('Accepts Markdown'); ?></span>
+    </div>
   </form>
 <?php endif; ?>

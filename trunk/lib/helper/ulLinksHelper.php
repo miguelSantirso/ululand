@@ -10,7 +10,7 @@
 	 */
 	function linkToProfile($sfGuardUserProfile, $options = array(), $customText = "")
 	{
-		$linkText = $customText == "" ? $sfGuardUserProfile->getUsername() : $customText;
+		$linkText = $customText == "" ? $sfGuardUserProfile : $customText;
 		return link_to($linkText, "profile/show?username=".$sfGuardUserProfile->getUsername(), $options);
 	}
 	
@@ -41,10 +41,9 @@
 	{
 		$linkText = $customText == "" ? $sfGuardUserProfile->getUsername() : $customText;
 		$grav_url = "http://www.gravatar.com/avatar/".md5($sfGuardUserProfile->getSfGuardUser()->getUsername()).'?s='.$size;
+		$imageTag = image_tag($grav_url, array('style' => 'border: 0; float: left;'));
 		
-	    return link_to(image_tag($grav_url, array('style' => 'border: 0; float: left;')) . '&nbsp;' . $sfGuardUserProfile->getUsername(), 
-	    		"profile/show?username=".$sfGuardUserProfile->getUsername(), 
-	    		$options);
+		return linkToProfile($sfGuardUserProfile, $options, $imageTag . '&nbsp;' . $linkText );
 	}
 	
 	

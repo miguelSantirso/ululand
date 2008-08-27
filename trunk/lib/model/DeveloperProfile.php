@@ -10,6 +10,37 @@
 class DeveloperProfile extends BaseDeveloperProfile
 {
 	/**
+	 * Retorna el número de recetas enviadas al Cookbook de código flash
+	 *
+	 */
+	public function getNbRecipes()
+	{
+		$c = new Criteria();
+		$c->add(CodePiecePeer::CREATED_BY, $this->getUserProfileId());
+		return count(CodePiecePeer::doSelect($c));
+	}
+	
+	/**
+	 * Retorna el número de recetas enviadas al Cookbook de código flash
+	 *
+	 */
+	public function getNbCollaborations()
+	{
+		$c = new Criteria();
+		$c->add(CollaborationOfferPeer::CREATED_BY, $this->getUserProfileId());
+		return count(CollaborationOfferPeer::doSelect($c));
+	}
+	
+	/**
+	 * Retorna el número de recetas enviadas al Cookbook de código flash
+	 *
+	 */
+	public function getNbCommentsInProfile()
+	{
+		return count($this->getComments());
+	}
+	
+	/**
 	 * Retorna una cadena con todos los tags del objeto separados por comas.
 	 *
 	 * @todo Buscar la forma de que esta función esté en el ámbito del plugin en lugar de en el de cada clase

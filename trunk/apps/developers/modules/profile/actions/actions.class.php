@@ -109,7 +109,7 @@ class profileActions extends sfActions
 			$profileId = $this->getRequestParameter('id');
 	
 			// Comprobar que el usuario está editando su propio perfil y no otro
-			if($this->getUser()->isAuthenticated && $profileId != $this->getUser()->getProfile()->getId())
+			if($this->getUser()->isAuthenticated() && $profileId != $this->getUser()->getProfile()->getId())
 			{
 				// @todo Mensaje no internacionalizado
 				$this->setFlash('warning', 'No tienes permisos para editar ese perfil');

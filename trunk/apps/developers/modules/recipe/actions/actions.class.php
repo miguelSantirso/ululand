@@ -53,6 +53,25 @@ class recipeActions extends sfActions
   	$this->source = $this->getRequestParameter('source');
   }
   
+  public function executeEmbed()
+  {
+  	if($this->getRequestParameter('id'))
+	{
+		$this->code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+	}
+	else if($this->getRequestParameter('stripped_title'))
+	{
+		$c = new Criteria();
+		$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
+		$this->code_piece = CodePiecePeer::doSelectOne($c);
+	}
+	
+    $this->forward404Unless($this->code_piece);
+    $this->code_piece->incrementCounter(); // Una visita más
+    
+    $this->getResponse()->setContentType('application/x-javascript');
+  }
+  
   public function executeCreate()
   {
     $this->code_piece = new CodePiece();

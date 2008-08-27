@@ -27,7 +27,7 @@ all:
         title:        optional
         comment:      required
       name:           Anonymous User
-    css:              true
+    css:              false
     count:
       enabled:        true
       method:         setSfCommentCount

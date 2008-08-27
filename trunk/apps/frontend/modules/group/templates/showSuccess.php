@@ -68,5 +68,5 @@
 		if ($ispetition == false && $belongs == false) echo link_to("Unirse al grupo", 'group/union?group='.$group->getId()); 
 	?>
 	</p>
-	<div style="clear:both"></div>
+	<div class="clearFloat"></div>
 </div>

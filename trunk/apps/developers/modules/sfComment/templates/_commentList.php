@@ -1,6 +1,6 @@
 <div id="sf_comment_list">
   <?php if (count($comments) > 0): ?>
-  	<ul class="full">
+  	<ul id="commentsList" class="comments small">
     <?php foreach ($comments as $comment): ?>
     	<li>
      		<?php include_partial('sfComment/commentView', array('comment' => $comment)) ?>

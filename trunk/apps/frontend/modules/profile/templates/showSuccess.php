@@ -35,7 +35,7 @@
 		</div>
 	</div>
 	
-	<div style="clear:both"></div>
+	<div class="clearFloat"></div>
 	
 	<div class="contentColumn quarter contentBox alignCenter">
 		<?php echo link_to(sprintf('&laquo; %s', __('List')), 'profile/list', array('class' => 'button')) ?>

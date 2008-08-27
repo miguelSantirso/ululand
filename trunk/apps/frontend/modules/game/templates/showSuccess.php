@@ -100,6 +100,6 @@
 			<?php endforeach; ?>
 		<?php } ?>
 	</div>
-	<div style="clear:both"></div>
+	<div class="clearFloat"></div>
 
 <?php echo link_to('&laquo; Listado', 'game/list', array('class' => 'navigation')) ?>

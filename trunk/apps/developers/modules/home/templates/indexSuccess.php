@@ -14,11 +14,13 @@
 			</div>
 			<?php else: ?>
 			<div class="contentBox">
-				<h3 class="header"><?php echo __('Your profile:'); ?></h3>
+				<h3 class="header">
+					<?php echo __('Your profile'); ?> <?php echo "(".linkToEditProfile($sf_user->getProfile(), array(), __('edit')).")" ?>:
+				</h3>
 				
 				<?php include_partial('profile/badge', array('profile' => $sf_user->getProfile()) ); ?>
 				
-				<div style="clear:both"></div>
+				<div class="clearFloat"></div>
 				<h3 class="header"><?php echo __('Subscribe to our Google Group'); ?></h3>
 				<p><?php echo sprintf(
 					__('Suscribe to our %s to keep up to date with the latest news about Ululand and to discuss about flash games development.'), 

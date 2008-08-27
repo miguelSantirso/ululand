@@ -59,7 +59,7 @@
 			<?php else: ?>
 			  &nbsp;<?php echo link_to(__('cancel'), 'collaboration/list') ?>
 			<?php endif; ?>
-			<div style="clear:both"></div>
+			<div class="clearFloat"></div>
 			</form>
 		</div>
 	</div>
