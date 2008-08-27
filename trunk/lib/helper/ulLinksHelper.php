@@ -15,6 +15,20 @@
 	}
 	
 	/**
+	 * Retorna el código html de un enlace al perfil del usuario pasado como parámetro
+	 *
+	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace al perfil pasado como parámetro
+	 */
+	function linkToCommentProfile($sfGuardUserProfile, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? __('comment this profile') : $customText;
+		return link_to($linkText, "profile/show?username=".$sfGuardUserProfile->getUsername()."#postComment", $options);
+	}
+	
+	/**
 	 * Retorna el código html de un enlace al menú de edición del perfil del usuario pasado como parámetro
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
@@ -39,11 +53,12 @@
 	 */
 	function linkToProfileWithGravatar($sfGuardUserProfile, $size = 80, $options = array(), $customText = "")
 	{
-		$linkText = $customText == "" ? $sfGuardUserProfile->getUsername() : $customText;
+		$linkText = $customText == "" ? $sfGuardUserProfile : $customText;
 		$grav_url = "http://www.gravatar.com/avatar/".md5($sfGuardUserProfile->getSfGuardUser()->getUsername()).'?s='.$size;
-		$imageTag = image_tag($grav_url, array('style' => 'border: 0; float: left;'));
+		$imageTag = image_tag($grav_url, array('alt' => $sfGuardUserProfile, 'title' => $sfGuardUserProfile));
+		$linkText = '<span class="gravatar">'.$imageTag.'</span>'.$linkText;
 		
-		return linkToProfile($sfGuardUserProfile, $options, $imageTag . '&nbsp;' . $linkText );
+		return '<span class="linkToProfileWithGravatar">'.linkToProfile($sfGuardUserProfile, $options, $linkText ).'</span>';
 	}
 	
 	

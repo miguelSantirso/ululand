@@ -36,6 +36,13 @@ a img
 div.clearFloat
 { clear: both; }
 
+/* link to profile with gravatar */
+
+span.linkToProfileWithGravatar { display: inline;  }
+	span.linkToProfileWithGravatar .gravatar { float: left; }
+	span.linkToProfileWithGravatar a span.gravatar { border: 1px solid #ddd; padding: 1px; margin-right: 5px; }
+		span.linkToProfileWithGravatar a:hover span.gravatar { border-color: #003e66; }
+ 
 /* button-like links */
 
 a.button {
@@ -664,15 +671,7 @@ ul.cloud li a:hover {
 /* profile badges */
 
 div.profileBadge
-{ background: #f8f8f8; border: 1px solid #e5e5e5; padding: 5px; }
-	
-	div.profileBadge a img.gravatar
-	{ background: #fff; padding: 3px; margin-right: 10px; float: left; }
-	div.profileBadge a:hover img.gravatar
-	{ border-bottom: 3px solid #003e66; padding-bottom: 0; }
-	
-	div.profileBadge a.username
-	{ font-size: large; }
+{ background: #f8f8f8; border: 1px solid #e5e5e5; padding: 5px; display: block; }
 	
 	div.profileBadge div.details
 	{ font-size: small; color: #666; margin-top: 5px; }
@@ -703,30 +702,32 @@ form small {
 
 /* comments */
 
-ul.comments { list-style-type: none; margin: 20px 0; padding: 0;}
-	ul.comments li { margin: 0 0 20px; padding: 0 0 0 90px; }
-	ul.comments li .author { border-bottom: 1px solid #ddd; display: block; }
-		ul.comments li .author a { text-decoration: none; font-weight: bold; }
-		ul.comments li .author .authorImage { display: inline; float: left; margin-left: -90px; }
-		ul.comments li .author a span.authorImage { border: 1px solid #ddd; padding: 1px; }
-			ul.comments li .author a:hover span.authorImage { border-color: #003e66; } 
-	ul.comments li .meta { float: right; margin: 2px 10px 0; }
-		ul.comments li .meta .date { text-align: right; font-size: x-small; color: #696969; }
-	ul.comments li blockquote { margin: 0.3em 0 0.2em 0; }
-		ul.comments li blockquote h1,
-		ul.comments li blockquote h2,
-		ul.comments li blockquote h3 { font-size: small; }
-	ul.comments li p.actions { font-size: x-small; }
+ul.comments { list-style-type: none; margin: 10px 0; padding: 0;}
+	ul.comments li.comment { margin: 35px 0 20px; padding: 0 0 0 90px; }
+	ul.comments li.comment .author { border-bottom: 1px solid #ddd; padding-bottom: 4px; display: block; }
+		ul.comments li.comment .author a { text-decoration: none; font-weight: bold; }
+			ul.comments li.comment .author a:hover { text-decoration: underline; }
+		ul.comments li.comment .author .authorImage { display: inline; float: left; margin-left: -90px; }
+		ul.comments li.comment .author a span.authorImage { border: 1px solid #ddd; padding: 1px; }
+			ul.comments li.comment .author a:hover span.authorImage { border-color: #003e66; } 
+	ul.comments li.comment .meta { float: right; margin: 2px 10px 0; }
+		ul.comments li.comment .meta .date { text-align: right; font-size: x-small; color: #696969; }
+	ul.comments li.comment blockquote { margin: 0.2em 0 0.2em 0; }
+		ul.comments li.comment blockquote * { margin-top: 0.2em; }
+		ul.comments li.comment blockquote h1,
+		ul.comments li.comment blockquote h2,
+		ul.comments li.comment blockquote h3 { font-size: small; }
+	ul.comments li.comment p.actions { font-size: x-small; }
 	
 /* comments form */
 
-form#sf_comment_form { padding: 0 0 0 90px; margin: 0 0 3em 0; }
+form#sf_comment_form { padding: 0 0 0 90px; margin: 8px 0 30px 0; }
 	form#sf_comment_form span.gravatar { float: left; margin-left: -90px; }
 		form#sf_comment_form span.gravatar img { border: 1px solid #ddd; padding: 1px; }
 	form#sf_comment_form textarea { display: block; width: 98%; height: 74px; border: 1px solid #ddd; padding: 4px; }
 	form#sf_comment_form div.actions { margin: 5px 0 10px 0; }
 		form#sf_comment_form div.actions input.submit { font-size: small; float: right; }
-		form#sf_comment_form div.actions span { font-size: x-small; color: #696969; margin: 5px 0 0 5px; }
+		form#sf_comment_form div.actions span { font-size: x-small; color: #696969; margin: 0 0 0 5px; }
 	
 	
 	

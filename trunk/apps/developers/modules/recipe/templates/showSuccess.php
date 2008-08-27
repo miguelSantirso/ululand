@@ -27,7 +27,7 @@
 				<h4 class="header"><?php echo __('Recipe details'); ?></h4>
 				<p class="noSpace small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $code_piece->getLinkedTagsString(); ?></p>
 				<p class="noSpace small"><strong><?php echo __('Rating'); ?>:</strong> <?php echo sprintf(__('%s out of %s'), $code_piece->getRating(), $code_piece->getMaxRating()); ?></p>
-				<p class="noSpace small"><strong><?php echo __('Autor'); ?>:</strong> <?php echo linkToProfile($code_piece->getsfGuardUser()->getProfile()); ?></p>
+				<p class="noSpace small"><strong><?php echo __('Autor'); ?>:</strong> <?php echo linkToProfile($code_piece->getsfGuardUser()->getProfile(), 15); ?></p>
 				<p class="noSpace small"><strong><?php echo __('Date'); ?>:</strong> <?php echo format_date($code_piece->getCreatedAt()); ?></p>
 				<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $code_piece->getCounter(); ?></p>
 			</div>

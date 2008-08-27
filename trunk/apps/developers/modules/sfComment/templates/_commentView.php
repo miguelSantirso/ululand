@@ -27,8 +27,14 @@
 	<blockquote><?php echo sfMarkdown::doConvert($comment['Text']); ?></blockquote>
 	<p class="actions">
 	<?php echo linkToProfile($author->getProfile(), array(), __('See Profile')); ?>
-	<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $author->getId()) : ?>
+	<?php if($sf_user->isAuthenticated()) : ?>
+		<?php $linkText = sprintf(__('Leave %s a note'), $author->getProfile()); ?>
+   		<?php echo " | " . linkToCommentProfile($author->getProfile(), array(), $linkText); ?>
+   		
+   		<?php if($sf_user->getId() == $author->getId()) : ?>
    		<?php echo " | " . $linkToRemove ?>
+	  	<?php endif; ?>
+   		
   	<?php endif; ?>
   	</p>
 </div>

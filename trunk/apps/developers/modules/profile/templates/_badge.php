@@ -4,8 +4,9 @@
 
 <div class="profileBadge">
 	<?php if($profile->isFilledIn()) : ?>
-	<?php echo linkToProfile($profile, array(), gravatar_tag($profile->getSfGuardUser()->getUsername(), 80, array('class' => 'gravatar')) ); ?>
-	<?php echo linkToProfile($profile, array('class' => 'username')); ?>
+	<?php //echo linkToProfile($profile, array(), gravatar_tag($profile->getSfGuardUser()->getUsername(), 80, array('class' => 'gravatar')) ); ?>
+	<?php //echo linkToProfile($profile, array('class' => 'username')); ?>
+	<?php echo linkToProfileWithGravatar($profile, 80, array('class' => 'large')); ?>
 	<div class="details">
 		<p class=""><small><?php echo sprintf('%s visits to your profile', $developerProfile->getCounter()); ?></small></p>
 		<p class=""><small><?php echo sprintf('%1$s comments in your profile', $developerProfile->getNbCommentsInProfile()); ?></small></p>

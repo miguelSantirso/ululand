@@ -2,7 +2,7 @@
   <?php if (count($comments) > 0): ?>
   	<ul id="commentsList" class="comments small">
     <?php foreach ($comments as $comment): ?>
-    	<li>
+    	<li class="comment">
      		<?php include_partial('sfComment/commentView', array('comment' => $comment)) ?>
      	</li>
     <?php endforeach; ?>

@@ -66,7 +66,7 @@
 	    <?php else: ?>
 	      <?php echo submit_tag(__('Submit'), array('class' => 'submit')) ?>
 	    <?php endif; ?>
-	    <span><?php echo __('Accepts Markdown'); ?></span>
+		<span><?php echo sprintf(__('Accepts %s.'), link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax')); ?></span>
     </div>
   </form>
 <?php endif; ?>

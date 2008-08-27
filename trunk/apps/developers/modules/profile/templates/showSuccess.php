@@ -34,7 +34,7 @@
 				<span class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></span>
 			<?php } ?>
 			</div>
-			<div class="contentBox">
+			<div class="contentBox" id="postComment">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>
 			<?php
 				include_component('sfComment', 'commentForm', array('object' => $developerProfile, 'order' => 'desc'));
