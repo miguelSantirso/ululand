@@ -1,12 +1,12 @@
 <?php
 
 	/**
-	 * Retorna el código html de un enlace al perfil del usuario pasado como parámetro
+	 * Retorna el cï¿½digo html de un enlace al perfil del usuario pasado como parï¿½metro
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace al perfil pasado como parámetro
+	 * @return string cï¿½digo html del enlace al perfil pasado como parï¿½metro
 	 */
 	function linkToProfile($sfGuardUserProfile, $options = array(), $customText = "")
 	{
@@ -15,12 +15,12 @@
 	}
 	
 	/**
-	 * Retorna el código html de un enlace al perfil del usuario pasado como parámetro
+	 * Retorna el cï¿½digo html de un enlace al perfil del usuario pasado como parï¿½metro
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace al perfil pasado como parámetro
+	 * @return string cï¿½digo html del enlace al perfil pasado como parï¿½metro
 	 */
 	function linkToCommentProfile($sfGuardUserProfile, $options = array(), $customText = "")
 	{
@@ -29,12 +29,12 @@
 	}
 	
 	/**
-	 * Retorna el código html de un enlace al menú de edición del perfil del usuario pasado como parámetro
+	 * Retorna el cï¿½digo html de un enlace al menï¿½ de ediciï¿½n del perfil del usuario pasado como parï¿½metro
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace al perfil pasado como parámetro
+	 * @return string cï¿½digo html del enlace al perfil pasado como parï¿½metro
 	 */
 	function linkToEditProfile($sfGuardUserProfile, $options = array(), $customText = "")
 	{
@@ -43,13 +43,13 @@
 	}
 	
 		/**
-	 * Retorna el código html de un enlace al perfil del usuario pasado como parámetro, incluyendo el gravatar
+	 * Retorna el cï¿½digo html de un enlace al perfil del usuario pasado como parï¿½metro, incluyendo el gravatar
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
-	 * @param int $size tamaño del gravatar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param int $size tamaï¿½o del gravatar
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace al perfil pasado como parámetro
+	 * @return string cï¿½digo html del enlace al perfil pasado como parï¿½metro
 	 */
 	function linkToProfileWithGravatar($sfGuardUserProfile, $size = 80, $options = array(), $customText = "")
 	{
@@ -63,12 +63,12 @@
 	
 	
 	/**
-	 * Retorna el código html de un enlace a la oferta de colaboración pasada como parámetro
+	 * Retorna el cï¿½digo html de un enlace a la oferta de colaboraciï¿½n pasada como parï¿½metro
 	 *
-	 * @param CollaborationOffer $collaborationOffer Oferta de colaboración a la que se desea enlazar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param CollaborationOffer $collaborationOffer Oferta de colaboraciï¿½n a la que se desea enlazar
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace a la oferta de colaboración pasada como parámetro
+	 * @return string cï¿½digo html del enlace a la oferta de colaboraciï¿½n pasada como parï¿½metro
 	 */
 	function linkToCollaborationOffer($collaborationOffer, $options = array(), $customText = "")
 	{
@@ -77,12 +77,12 @@
 	}
 	
 	/**
-	 * Retorna el código html de un enlace a la oferta de colaboración pasada como parámetro
+	 * Retorna el cï¿½digo html de un enlace a la oferta de colaboraciï¿½n pasada como parï¿½metro
 	 *
-	 * @param CollaborationOffer $collaborationOffer Oferta de colaboración a la que se desea enlazar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param CollaborationOffer $collaborationOffer Oferta de colaboraciï¿½n a la que se desea enlazar
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace a la oferta de colaboración pasada como parámetro
+	 * @return string cï¿½digo html del enlace a la oferta de colaboraciï¿½n pasada como parï¿½metro
 	 */
 	function linkToEditCollaborationOffer($collaborationOffer, $options = array(), $customText = "")
 	{
@@ -92,12 +92,12 @@
 	
 	
 	/**
-	 * Retorna el código html de un enlace a la receta pasada como parámetro
+	 * Retorna el cï¿½digo html de un enlace a la receta pasada como parï¿½metro
 	 *
 	 * @param CodePiece $recipe Receta a la que se desea enlazar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace a la oferta de colaboración pasada como parámetro
+	 * @return string cï¿½digo html del enlace a la oferta de colaboraciï¿½n pasada como parï¿½metro
 	 */
 	function linkToRecipe($recipe, $options = array(), $customText = "")
 	{
@@ -106,12 +106,12 @@
 	}
 	
 	/**
-	 * Retorna el código html de un enlace al menú de edición de la receta pasada como parámetro
+	 * Retorna el cï¿½digo html de un enlace al menï¿½ de ediciï¿½n de la receta pasada como parï¿½metro
 	 *
 	 * @param CodePiece $recipe Receta a la que se desea enlazar
-	 * @param array $options opciones que se añadirán al link_to
+	 * @param array $options opciones que se aï¿½adirï¿½n al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace a la oferta de colaboración pasada como parámetro
+	 * @return string cï¿½digo html del enlace a la oferta de colaboraciï¿½n pasada como parï¿½metro
 	 */
 	function linkToEditRecipe($recipe, $options = array(), $customText = "")
 	{

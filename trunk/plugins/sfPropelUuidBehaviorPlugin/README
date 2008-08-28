@@ -1,0 +1,87 @@
+= sfPropelUuidBehaviorPlugin plugin =
+
+The `sfPropelUuidBehaviorPlugin` is a symfony plugin that provides automatic generation of "Universally Unique IDentifier" for any propel object.
+
+This is based on this specification : http://www.ietf.org/rfc/rfc4122.txt
+
+== Installation ==
+
+  * Install the plugin
+  
+    {{{
+      symfony plugin-install http://plugins.symfony-project.com/sfPropelUuidBehaviorPlugin
+    }}}
+
+  * Enable Propel behavior support in `propel.ini`:
+
+    {{{
+      propel.builder.AddBehaviors = true
+    }}}
+  
+  * Add necessary fields to your model :
+  
+  {{{
+  #!xml
+    <!-- schema.xml -->
+    <column name="uuid" type="CHAR" size="36" required="true" />
+  }}}
+
+  * Rebuild your database and model
+  
+  {{{
+  #!sh
+    symfony propel-build-all
+  }}}
+  
+  * Enable the behavior for one of your Propel model:
+
+    {{{
+    #!php
+    <?php
+      // lib/model/Article.php
+      class Article
+      {
+      }
+
+      sfPropelBehavior::add('Article', array('sfPropelUuidBehavior'));
+    }}}
+
+It is possible to specify another column for holding UUIDs :
+
+    {{{
+    #!php
+    <?php
+      // lib/model/Article.php
+      class Article
+      {
+      }
+
+      sfPropelBehavior::add('Article', array('sfPropelUuidBehavior' => 
+                                             array('columns' => 
+                                                   array('uuid' => MyClassPeer::COLUMN_NAME))));
+    }}}
+
+
+== Usage ==
+
+Each time an object is saved, the behavior will verify validity of its UUID. 
+A new UUID will be attributed to object if it does not already have one or if the one he has is not valid.
+
+== Public API ==
+
+=== sfPropelUuidBehaviorToolkit ===
+
+ * (static) `string generateUuid()` : Generates a Universally Unique IDentifier, version 4
+ * (static) `string isUuid(string $uuid)` : Returns true if supplied string is a valid UUID
+
+== Changelog ==
+
+=== 2007-03-21 | 0.9.1 beta ===
+
+ * fixed typo
+ * fixed bug when using custom uuid column
+ * implemented `checkConfig()` method (see forthcoming (?) patch in #1596)
+
+=== 2007-03-20 | 0.9 beta ===
+
+Initial public release.

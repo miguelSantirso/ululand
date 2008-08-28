@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-21T18:21:58Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-28T18:31:49Z">
     <body>
     
 <trans-unit id="1">
@@ -838,6 +838,211 @@
 <target>El Kollaborator</target>
 </trans-unit>
 
+
+<trans-unit id="168">
+<source>Recipes</source>
+<target>Recetas</target>
+</trans-unit>
+
+<trans-unit id="169">
+<source>Collaborations</source>
+<target>Colaboraciones</target>
+</trans-unit>
+
+<trans-unit id="170">
+<source>Showing recipes tagged with %1$s (%2$s)</source>
+<target>Mostrando recetas etiquetadas con %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="171">
+<source>Recipe Info:</source>
+<target>Información de la receta:</target>
+</trans-unit>
+
+<trans-unit id="172">
+<source>add code</source>
+<target>añadir código</target>
+</trans-unit>
+
+<trans-unit id="173">
+<source>Code Snippet Insertion</source>
+<target>Inseción de Bloque de Código</target>
+</trans-unit>
+
+<trans-unit id="174">
+<source>Source:</source>
+<target>Código fuente:</target>
+</trans-unit>
+
+<trans-unit id="175">
+<source>Press the %s link to insert source code beautifully formatted.</source>
+<target>Pulsa el botón de %s para insertar código con un formato precioso (¡en serio!).</target>
+</trans-unit>
+
+<trans-unit id="176">
+<source>Comma separated.</source>
+<target>Separadas por comas.</target>
+</trans-unit>
+
+<trans-unit id="177">
+<source>Select a programming language</source>
+<target>Selecciona un lenguaje de programación</target>
+</trans-unit>
+
+<trans-unit id="178">
+<source>Paste or write the code</source>
+<target>Pega o escribe el código</target>
+</trans-unit>
+
+<trans-unit id="179">
+<source>Paste or write your code here. You will be able to preview it after pressing "insert".</source>
+<target>Pega o escribe tu código aquí. Podrás previsualizarlo después de pulsar "insertar".</target>
+</trans-unit>
+
+<trans-unit id="180">
+<source>insert</source>
+<target>insertar</target>
+</trans-unit>
+
+<trans-unit id="181">
+<source>submit</source>
+<target>enviar</target>
+</trans-unit>
+
+<trans-unit id="182">
+<source>Index</source>
+<target>Índice</target>
+</trans-unit>
+
+<trans-unit id="183">
+<source>Submit</source>
+<target>Enviar</target>
+</trans-unit>
+
+<trans-unit id="184">
+<source>Show</source>
+<target>Mostrar</target>
+</trans-unit>
+
+<trans-unit id="185">
+<source>Related Recipes</source>
+<target>Recetas Relacionadas</target>
+</trans-unit>
+
+<trans-unit id="186">
+<source>Embed &amp;amp; details</source>
+<target>Insertar &amp; detalles</target>
+</trans-unit>
+
+<trans-unit id="187">
+<source>Embed:</source>
+<target>Insertar:</target>
+</trans-unit>
+
+<trans-unit id="188">
+<source>Recipe details</source>
+<target>Detalles de la receta</target>
+</trans-unit>
+
+<trans-unit id="189">
+<source>Rating</source>
+<target>Puntuación</target>
+</trans-unit>
+
+<trans-unit id="190">
+<source>%s out of %s</source>
+<target>%s de un máximo de %s</target>
+</trans-unit>
+
+<trans-unit id="191">
+<source>Autor</source>
+<target>Autor</target>
+</trans-unit>
+
+<trans-unit id="192">
+<source>Date</source>
+<target>Fecha</target>
+</trans-unit>
+
+<trans-unit id="193">
+<source>Visits</source>
+<target>Visitas</target>
+</trans-unit>
+
+<trans-unit id="194">
+<source>Comments:</source>
+<target>Comentarios</target>
+</trans-unit>
+
+<trans-unit id="195">
+<source>Similar Recipes</source>
+<target>Recetas Similares</target>
+</trans-unit>
+
+<trans-unit id="196">
+<source>Disabled module</source>
+<target>Módulo desactivado</target>
+</trans-unit>
+
+<trans-unit id="197">
+<source>Your profile</source>
+<target>Tu perfil</target>
+</trans-unit>
+
+<trans-unit id="198">
+<source>Subscribe to our Google Group</source>
+<target>Suscríbete a nuestro Grupo en Google</target>
+</trans-unit>
+
+<trans-unit id="199">
+<source>Flash Code Recipes</source>
+<target>Recetas de código Flash</target>
+</trans-unit>
+
+<trans-unit id="200">
+<source>You must %s or %s to comment!</source>
+<target>¡Debes %s o %s para comentar!</target>
+</trans-unit>
+
+<trans-unit id="201">
+<source>Accepts %s.</source>
+<target>Acepta %s.</target>
+</trans-unit>
+
+<trans-unit id="202">
+<source>wrote:</source>
+<target>escribió:</target>
+</trans-unit>
+
+<trans-unit id="203">
+<source>See Profile</source>
+<target>Ver Perfil</target>
+</trans-unit>
+
+<trans-unit id="204">
+<source>Leave %s a note</source>
+<target>Dejar una nota a %s</target>
+</trans-unit>
+
+<trans-unit id="205">
+<source>We help you work together.</source>
+<target>Os ayudamos a trabajar juntos.</target>
+</trans-unit>
+
+<trans-unit id="206">
+<source>Collaboration offer details</source>
+<target>Detalles de la oferta de colaboración</target>
+</trans-unit>
+
+<trans-unit id="207">
+<source>Developer Details:</source>
+<target>Detalles del Desarrollador</target>
+</trans-unit>
+
+<trans-unit id="208">
+<source>Looking for a project to work on!</source>
+<target>¡Buscando un proyecto en el que trabajar!</target>
+</trans-unit>
 </body>
   </file>
 </xliff>

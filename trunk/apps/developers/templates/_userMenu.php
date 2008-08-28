@@ -11,6 +11,6 @@
 					$username = $sf_user->getUsername();
 				}
 				?>
-				<?php echo __(sprintf(__('Welcome back, %1$s! %2$s?'), link_to($username, "profile/show?username=".$sf_user->getProfile()->getUsername()), link_to(__("Logout"), "@sf_guard_signout"))); ?>
+				<?php echo __(sprintf(__('Welcome back, %1$s! %2$s?'), linkToProfile($username), link_to(__("Logout"), "@sf_guard_signout"))); ?>
 			<?php } ?>
 		</div>

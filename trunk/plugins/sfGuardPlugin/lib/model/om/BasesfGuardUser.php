@@ -1029,41 +1029,6 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 		$l->setsfGuardUser($this);
 	}
 
-
-	
-	public function getCodePiecesJoinCodePieceLanguage($criteria = null, $con = null)
-	{
-				include_once 'lib/model/om/BaseCodePiecePeer.php';
-		if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collCodePieces === null) {
-			if ($this->isNew()) {
-				$this->collCodePieces = array();
-			} else {
-
-				$criteria->add(CodePiecePeer::CREATED_BY, $this->getId());
-
-				$this->collCodePieces = CodePiecePeer::doSelectJoinCodePieceLanguage($criteria, $con);
-			}
-		} else {
-									
-			$criteria->add(CodePiecePeer::CREATED_BY, $this->getId());
-
-			if (!isset($this->lastCodePieceCriteria) || !$this->lastCodePieceCriteria->equals($criteria)) {
-				$this->collCodePieces = CodePiecePeer::doSelectJoinCodePieceLanguage($criteria, $con);
-			}
-		}
-		$this->lastCodePieceCriteria = $criteria;
-
-		return $this->collCodePieces;
-	}
-
 	
 	public function initsfGuardUserPermissions()
 	{

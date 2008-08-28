@@ -87,23 +87,7 @@ class sfSyntaxHighlighterFilter extends sfFilter
   	{
   		$response->addJavascript('/sfSyntaxHighlighterPlugin/js/' . $language["js"]);
   	}
-  	/*
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushAs3');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushCpp');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushCSharp');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushCss');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushDelphi');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushJava');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushJScript');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushPhp');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushPython');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushRuby');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushSql');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushVb');
-	  	$response->addJavascript('/sfSyntaxHighlighterPlugin/js/shBrushXml');
-	*/
   }
-  
   
   /**
    * Searches for BBCode within a string

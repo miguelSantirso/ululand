@@ -74,20 +74,13 @@ propel:
   code_piece:
     _attributes:    { phpName: CodePiece }
     id: ~
+    uuid:           { type: varchar(36), required: true }
     created_by:     { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     updated_at: ~ 
     title:          { type: varchar(75), required: true }
     stripped_title: { type: varchar(75), required: true }
-    code_piece_language_id: ~
     source:         { type: longvarchar, required: true }
-    
-  code_piece_language:
-    _attributes: { phpName: CodePieceLanguage }
-    id: ~
-    code:               { type: varchar(8) , required: true }
-    name:               { type: varchar(32), required: true }
-    description:        { type: longvarchar, required: false }
     
   itemtype:
     _attributes: { phpName: ItemType }

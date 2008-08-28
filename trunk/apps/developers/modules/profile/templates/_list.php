@@ -10,11 +10,15 @@
 				<?php $userProfile = $profile->getsfGuardUserProfile(); ?>
 				<?php if($userProfile->isFilledIn()) { ?>
 					<li class="">
-						<?php echo linkToProfileWithGravatar($userProfile, 30, array('class' => 'firstRow large')); ?>
+						<?php echo linkToProfileWithGravatar($userProfile, 80, array('class' => 'firstRow large')); ?>
 						<div class="lastRow">
 							<?php if($sf_user->isAuthenticated() && $userProfile->getId() == $sf_user->getProfile()->getId()) { echo linkToEditProfile($sf_user->getProfile(), array('class' => 'alignRight xSmall')); } ?>
 							<p class="noSpace xSmall"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $profile->getLinkedTagsString(); ?></p>
+							<?php if($profile->getIsFree()) : ?>
+							<p class="xSmall"><strong><?php echo __('Looking for a project to work on!'); ?></strong></p>
+							<?php endif; ?>
 						</div>
+						<div class="clearFloat"></div>
 					</li>
 				<?php } ?>
 			<?php endforeach; ?>

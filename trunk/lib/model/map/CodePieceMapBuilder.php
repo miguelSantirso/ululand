@@ -34,6 +34,8 @@ class CodePieceMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
+		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
+
 		$tMap->addForeignKey('CREATED_BY', 'CreatedBy', 'int', CreoleTypes::INTEGER, 'sf_guard_user', 'ID', false, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
@@ -43,8 +45,6 @@ class CodePieceMapBuilder {
 		$tMap->addColumn('TITLE', 'Title', 'string', CreoleTypes::VARCHAR, true, 75);
 
 		$tMap->addColumn('STRIPPED_TITLE', 'StrippedTitle', 'string', CreoleTypes::VARCHAR, true, 75);
-
-		$tMap->addForeignKey('CODE_PIECE_LANGUAGE_ID', 'CodePieceLanguageId', 'int', CreoleTypes::INTEGER, 'code_piece_language', 'ID', false, null);
 
 		$tMap->addColumn('SOURCE', 'Source', 'string', CreoleTypes::LONGVARCHAR, true, null);
 

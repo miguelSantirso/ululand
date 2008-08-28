@@ -1,7 +1,8 @@
 <?php use_helper('ulMisc'); ?>
  
-<div id="dynamicTitle">
+<div id="webTitle">
 	<h1>
-		<?php echo dynamicContextUrl($sf_context); ?>
+		<?php $linktText = sprintf('%1$s is a flash game %2$s.', '<span class="url">developers.ululand.com</span>', '<span class="important">developers community</span>') ?>
+		<?php echo link_to(__($linktText), '@homepage') ?>
 	</h1>
 </div>

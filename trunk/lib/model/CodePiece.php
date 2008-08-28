@@ -42,7 +42,7 @@ class CodePiece extends BaseCodePiece
 	}
 
 	/**
-	 * Modificación de la función automática setTitle para que se establezca el campo stripped_title cuando valga null.
+	 * Modificaciï¿½n de la funciï¿½n automï¿½tica setTitle para que se establezca el campo stripped_title cuando valga null.
 	 * Esto es necesario para el funcionamiento de los permalinks
 	 *
 	 * @param unknown_type $v
@@ -61,3 +61,4 @@ sfPropelBehavior::add('CodePiece', array('sfPropelActAsCountableBehavior'));
 sfPropelBehavior::add('CodePiece', array('sfPropelActAsCommentableBehavior') );
 sfPropelBehavior::add('CodePiece', array('sfPropelActAsTaggableBehavior'));
 sfPropelBehavior::add('CodePiece', array('sfPropelActAsRatableBehavior' => array('max_rating' => 5))); // Max rating value for a recipe
+sfPropelBehavior::add('CodePiece', array('sfPropelUuidBehavior'));

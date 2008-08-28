@@ -14,7 +14,7 @@
 				      echo  
 				      label_for('username', __('Email')),
 				      form_error('username'),
-				      "<p class='noSpace center'>".input_tag('username', $sf_data->get('sf_params')->get('username'))."</p>";
+				      "<p class='noSpace'>".input_tag('username', $sf_data->get('sf_params')->get('username'))."</p>";
 				      ?>
 		      	</div>
 		    </div>
@@ -24,7 +24,7 @@
 				      echo  
 				        label_for('password', __('Password')),
 				      	form_error('password'),
-				        "<p class='noSpace center'>".input_password_tag('password')."</p>";
+				        "<p class='noSpace'>".input_password_tag('password')."</p>";
 				      ?>
 				</div>
 		    </div>

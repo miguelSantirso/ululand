@@ -4,9 +4,15 @@
 
 function addCodeAndClose()
 {
+	newValue = $("codeToAdd").value;
+	
+	//newValue = newValue.replace(/ /g,'&nbsp;');
+	newValue = newValue.replace(/</g,'&lt;');
+	//newValue = newValue.replace(/\n/gm,'&nbsp;<br>')
+
 	//insertAtCursor($("source"), "\n[code=\"" + $("programmingLanguage").value + "\"]\n" + $("codeToAdd").value + "\n[/code]\n");
-	//insertAtCursor($("source"), "\n<pre name=\"code\" class=\"" + $("programmingLanguage").value + "\">\n" + $("codeToAdd").value + "\n</pre>\n");
-	insertAtCursor($("source"), "\n<textarea name=\"code\" class=\"" + $("programmingLanguage").value + "\">\n" + $("codeToAdd").value + "\n</textarea>\n");
+	insertAtCursor($("source"), "\n<pre name=\"code\" class=\"" + $("programmingLanguage").value + "\">\n" + newValue + "\n</pre>\n");
+	//insertAtCursor($("source"), "\n<textarea name=\"code\" class=\"" + $("programmingLanguage").value + "\">\n" + $("codeToAdd").value + "\n</textarea>\n");
 	Modalbox.hide();
 }
 

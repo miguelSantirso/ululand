@@ -44,7 +44,7 @@ class recipeActions extends sfActions
 	}
 	
     $this->forward404Unless($this->code_piece);
-    $this->code_piece->incrementCounter(); // Una visita más
+    $this->code_piece->incrementCounter(); // Una visita mï¿½s
   }
   
   public function executePreview()
@@ -55,19 +55,15 @@ class recipeActions extends sfActions
   
   public function executeEmbed()
   {
-  	if($this->getRequestParameter('id'))
-	{
-		$this->code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-	}
-	else if($this->getRequestParameter('stripped_title'))
+  	if($this->getRequestParameter('r'))
 	{
 		$c = new Criteria();
-		$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
+		$c->add(CodePiecePeer::UUID, $this->getRequestParameter('r'));
 		$this->code_piece = CodePiecePeer::doSelectOne($c);
 	}
 	
     $this->forward404Unless($this->code_piece);
-    $this->code_piece->incrementCounter(); // Una visita más
+    $this->code_piece->incrementCounter(); // Una visita mÃ¡s
     
     $this->getResponse()->setContentType('application/x-javascript');
   }

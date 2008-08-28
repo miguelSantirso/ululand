@@ -16,12 +16,11 @@
 
 	<!-- header and menu -->
 	<div id="header">
-	
-		<?php include_partial('global/userMenu'); ?>
-		
 		<?php include_partial('global/title'); ?>
 		
 		<?php include_partial('global/mainMenu'); ?>
+		
+		<?php include_partial('global/userMenu'); ?>
 	</div>
 	
 	
@@ -37,7 +36,7 @@
 	<div id="content">
 		<?php include_partial('global/mainHeader') ?>
 		
-		<?php // @todo mover la condición del if a una función en algún sitio decente ?>
+		<?php // @todo mover la condiciï¿½n del if a una funciï¿½n en algï¿½n sitio decente ?>
 		<?php if (is_readable($sf_context->getModuleDirectory() . DIRECTORY_SEPARATOR ."templates". DIRECTORY_SEPARATOR ."_". "header" .".php")) : ?>
 			<?php include_partial($sf_context->getModuleName() . '/header') ?>
 		<?php endif; ?>

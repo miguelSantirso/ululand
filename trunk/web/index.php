@@ -9,17 +9,16 @@ list($tld, $domain, $subdomain, $subdomain2) = array_reverse(explode('.', $_SERV
 
 // determine which subdomain we're looking at
 $app = $subdomain;
-$app = (empty($app) || $app == 'www' ) ? 'developers' : $app;
+$app = (empty($app) || $app == 'www' ) ? 'splash' : $app;
 
 // determine which app to load based on subdomain
 if (!is_dir(SF_ROOT_DIR.'/apps/'.$app))
 {
-    define('SF_APP','developers');
+    define('SF_APP','splash');
 }
 else
 {
     define('SF_APP',$app);
-    define('SF_APP','developers');
 }
 
 require_once(SF_ROOT_DIR.DIRECTORY_SEPARATOR.'apps'.DIRECTORY_SEPARATOR.SF_APP.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');

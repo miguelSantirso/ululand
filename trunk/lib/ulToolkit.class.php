@@ -2,6 +2,16 @@
 
 class ulToolkit
 {
+	/**
+	 * Retorna la url base de la aplicación
+	 *
+	 * @return La url base de la aplicación. Por ejemplo: 'http://ululand.com/'
+	 */
+	public static function getBaseUrl()
+	{
+		return 'http://'.$_SERVER['HTTP_HOST'];
+	}
+	
 	public static function stripText($text)
 	{
 		$text = strtolower($text);

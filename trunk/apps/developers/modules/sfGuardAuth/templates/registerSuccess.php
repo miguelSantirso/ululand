@@ -14,7 +14,7 @@
 					<?php echo
 					label_for("username", __("Email")), 
 					form_error("username"),
-					"<p class='noSpace center'>".input_tag("username", $sf_params->get("username"))."</p>",
+					"<p class='noSpace'>".input_tag("username", $sf_params->get("username"))."</p>",
 					"<small class='alignLeft'>".__('Must be a valid e-mail')."</small>"
 					?>
 				</div>
@@ -24,7 +24,7 @@
 					<?php echo 
 					label_for("password", __("Password")),
 					form_error("password"),
-					"<p class='noSpace center'>".input_password_tag("password", $sf_params->get("password"))."</p>"
+					"<p class='noSpace'>".input_password_tag("password", $sf_params->get("password"))."</p>"
 					?>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 					<?php echo 
 					label_for("password_check", __("Retype password")),
 					form_error("password_check"),
-					"<p class='noSpace center'>".input_password_tag("password_check", $sf_params->get("password_check"))."</p>"
+					"<p class='noSpace'>".input_password_tag("password_check", $sf_params->get("password_check"))."</p>"
 					?>
 				</div>
 			</div>
