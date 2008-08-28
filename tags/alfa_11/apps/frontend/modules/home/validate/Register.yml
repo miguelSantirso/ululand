@@ -1,0 +1,25 @@
+    
+fillin:
+  enabled: true  # Enable the form repopulation
+  param:
+    name: registerForm  # Form name, not needed if there is only one form in the page
+    exclude_types: [hidden, password] # Do not repopulate these field types
+fields:
+  email:
+    required:
+      msg:       Debes introducir un email
+    sfEmailValidator:
+      email_error:       El formato del email no es correcto
+    sfCompareValidator:
+      check:             confirmEmail
+      compare_error:     Los dos emails deben coincidir.
+    sfPropelUniqueValidator:
+      class:             Account
+      column:            email
+      unique_error:      Ese email ya ha sido registrado. Solo se permite una cuenta por email.
+  password:
+    sfStringValidator:
+      min:       5
+      min_error: La contrase&ntilde;a es demasiado corta (debe ser de 5 caracteres o m&aacute;s)
+      max:       20
+      max_error: La contrase&ntilde;a es demasiado larga (no puede tener m&aacute;s de 20 caracteres)

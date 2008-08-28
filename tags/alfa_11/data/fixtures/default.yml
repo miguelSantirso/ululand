@@ -1,0 +1,60 @@
+
+
+# USUARIOS
+##########
+
+sfGuardUser:
+  miguelSantirso:
+    username:       tirso.00@gmail.com
+    password:       tirsotirso
+    is_super_admin: true
+  
+sfGuardUserProfile:
+  miguelSantirso:
+    username: miguelSantirso
+    culture: es
+    user_id: miguelSantirso
+    
+DeveloperProfile:
+  miguelSantirso:
+    user_profile_id: miguelSantirso
+    url: http://miguelsantirso.es/
+    description: test test test *cursiva*
+    tags: programador, as3
+    is_free: true
+
+
+
+# COLLABORATION OFFERS
+######################
+
+CollaborationOffer:
+  buscamosGrafistas:
+    created_by: miguelSantirso
+    title: Buscamos grafista
+    description: Buscamos grafista que sepa *dibujar* muy bien
+    tags: grafista
+    
+  buscamosAnimador:
+    created_by: miguelSantirso
+    title: Buscamos animador
+    description: Buscamos animador que sepa *dibujar* muy bien
+    tags: animador
+    
+  buscamosProgramador:
+    created_by: miguelSantirso
+    title: Buscamos programador
+    description: Buscamos programador que sepa *dibujar* muy bien
+    tags: programador
+
+
+
+# COOKBOOK
+##########
+
+CodePiece:
+  AddChild:
+    created_by: miguelSantirso
+    title: Uso de AddChild
+    source: <pre name="code" class="as3">this.AddChild(new MyBitmap());</pre>
+    tags: as3, actionscript, addchild, bitmap

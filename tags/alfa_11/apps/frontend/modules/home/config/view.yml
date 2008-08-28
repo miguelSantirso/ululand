@@ -1,0 +1,10 @@
+ApproveEmailSuccess:
+  layout: isolatedLayout
+ResendApprovalEmailSuccess:
+  layout: isolatedLayout
+ResendApprovalEmailError:
+  layout: isolatedLayout
+LoginSuccess:
+  layout: isolatedLayout
+RegisterSuccess:
+  layout: isolatedLayout

@@ -1,0 +1,29 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      Avatar
+    theme:            default
+    
+    fields:
+      id:
+      name:              {name: Nombre}
+      account_id:         {name: Cuenta asociada}
+      api_key:           {name: Api Key}
+      gender:            {name: Sexo}
+      total_credits:     {name: Créditos totales}
+      available_credits: {name: Créditos disponibles}
+
+    list:
+      title: Listado de avatares
+      display: [id, account_id, api_key, name, gender, total_credits, available_credits]
+      filters: [id, account_id,name, _gender]
+      object_actions:
+        _edit:      ~
+        _delete:    ~
+        
+    edit:
+      title: Editar un avatar
+      display: [account_id, name, api_key, _gender, total_credits, available_credits, avatar_item]
+      fields:
+        total_credits:     { params: disabled=true }
+        avatar_item:       { name: Objetos en posesión del avatar, type: admin_check_list, params: through_class=Avatar_Item }

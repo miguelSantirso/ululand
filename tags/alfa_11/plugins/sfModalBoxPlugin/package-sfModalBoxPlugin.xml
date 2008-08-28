@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.5.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>[automatic]</name>
+ <channel>pear.symfony-project.com</channel>
+ <summary>Provide a link helper to use modalbox</summary>
+ <description>see http://okonet.ru/projects/modalbox/ for more informations</description>
+ <lead>
+     <name>Mickael KURMANN</name>
+       <user>elbouillon</user>
+       <email>mickael.kurmann@gmail.com</email>
+       <active>yes</active>
+ </lead>
+ <date>[automatic]</date>
+ <version>
+   <release>0.0.5</release>
+   <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <notes>-</notes>
+ <contents>[automatic]</contents>
+
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>1.0.0</min>
+    <max>1.1.0</max>
+   </package>
+  </required>
+ </dependencies>
+
+ <phprelease>
+ </phprelease>
+
+ <changelog>
+ </changelog>
+</package>

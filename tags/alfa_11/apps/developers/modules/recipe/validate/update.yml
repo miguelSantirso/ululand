@@ -1,0 +1,7 @@
+fields:
+  title:
+    required:
+      msg: This field is required!
+  source:
+    required:
+      msg: This field is required!
