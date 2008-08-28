@@ -36,6 +36,13 @@ class recipeActions extends sfActions
 		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
 		$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
 	}
+	else if($this->getRequestParameter('r'))
+	{
+		$c = new Criteria();
+		$c->add(CodePiecePeer::UUID, $this->getRequestParameter('r'));
+		$code_piece = CodePiecePeer::doSelectOne($c);
+		$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
+	}
 	else if($this->getRequestParameter('stripped_title'))
 	{
 		$c = new Criteria();

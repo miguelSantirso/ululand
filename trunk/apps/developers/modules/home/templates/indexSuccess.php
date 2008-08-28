@@ -55,9 +55,6 @@
 		
 	</div>
 	
-	<br/>
-	<br/>
-	
 	<div class="contentRow">
 		
 		<div class="contentColumn half alignLeft">

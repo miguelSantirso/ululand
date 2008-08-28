@@ -37,4 +37,5 @@
    		
   	<?php endif; ?>
   	</p>
+  	<div class="clearFloat"></div>
 </div>
