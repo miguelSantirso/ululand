@@ -24,9 +24,9 @@
 				<h3 class="header"><?php echo __('Subscribe to our Google Group'); ?></h3>
 				<p><?php echo sprintf(
 					__('Suscribe to our %s to keep up to date with the latest news about Ululand and to discuss about flash games development.'), 
-					link_to('Ululand\'s Group in Google', 'http://groups.google.com/group/desarrolladores-ululand'));  ?>
-				<!-- caja de suscripción a grupo de Google -->
-				  <p><b><?php echo __('Subscribe to'); ?> <a href="http://groups.google.com/group/desarrolladores-ululand">our group</a></b></p>
+					link_to(__('Ululand\'s Group in Google'), 'http://groups.google.com/group/desarrolladores-ululand'));  ?>
+				<!-- caja de suscripciï¿½n a grupo de Google -->
+				  <p><b><?php echo __('Subscribe to'); ?> <a href="http://groups.google.com/group/desarrolladores-ululand"><?php echo __('our group'); ?></a></b></p>
 				  <form action="http://groups.google.com/group/desarrolladores-ululand/boxsubscribe">
 				  Email: <input type=text name=email <?php if($sf_user->isAuthenticated()) : ?>value="<?php echo $sf_user->getUsername(); ?>"<?php endif; ?> />
 				  <input type=submit name="sub" value="<?php echo __('Subscribe'); ?>" />

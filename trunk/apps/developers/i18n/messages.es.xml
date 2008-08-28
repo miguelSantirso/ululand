@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-28T18:31:49Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-28T21:21:44Z">
     <body>
     
 <trans-unit id="1">
@@ -856,27 +856,27 @@
 
 <trans-unit id="171">
 <source>Recipe Info:</source>
-<target>Información de la receta:</target>
+<target>Informaci&#xF3;n de la receta:</target>
 </trans-unit>
 
 <trans-unit id="172">
 <source>add code</source>
-<target>añadir código</target>
+<target>a&#xF1;adir c&#xF3;digo</target>
 </trans-unit>
 
 <trans-unit id="173">
 <source>Code Snippet Insertion</source>
-<target>Inseción de Bloque de Código</target>
+<target>Inseci&#xF3;n de Bloque de C&#xF3;digo</target>
 </trans-unit>
 
 <trans-unit id="174">
 <source>Source:</source>
-<target>Código fuente:</target>
+<target>C&#xF3;digo fuente:</target>
 </trans-unit>
 
 <trans-unit id="175">
 <source>Press the %s link to insert source code beautifully formatted.</source>
-<target>Pulsa el botón de %s para insertar código con un formato precioso (¡en serio!).</target>
+<target>Pulsa el bot&#xF3;n de %s para insertar c&#xF3;digo con un formato precioso (&#xA1;en serio!).</target>
 </trans-unit>
 
 <trans-unit id="176">
@@ -886,17 +886,17 @@
 
 <trans-unit id="177">
 <source>Select a programming language</source>
-<target>Selecciona un lenguaje de programación</target>
+<target>Selecciona un lenguaje de programaci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="178">
 <source>Paste or write the code</source>
-<target>Pega o escribe el código</target>
+<target>Pega o escribe el c&#xF3;digo</target>
 </trans-unit>
 
 <trans-unit id="179">
 <source>Paste or write your code here. You will be able to preview it after pressing "insert".</source>
-<target>Pega o escribe tu código aquí. Podrás previsualizarlo después de pulsar "insertar".</target>
+<target>Pega o escribe tu c&#xF3;digo aqu&#xED;. Podr&#xE1;s previsualizarlo despu&#xE9;s de pulsar "insertar".</target>
 </trans-unit>
 
 <trans-unit id="180">
@@ -911,7 +911,7 @@
 
 <trans-unit id="182">
 <source>Index</source>
-<target>Índice</target>
+<target>&#xCD;ndice</target>
 </trans-unit>
 
 <trans-unit id="183">
@@ -946,12 +946,12 @@
 
 <trans-unit id="189">
 <source>Rating</source>
-<target>Puntuación</target>
+<target>Puntuaci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="190">
 <source>%s out of %s</source>
-<target>%s de un máximo de %s</target>
+<target>%s de un m&#xE1;ximo de %s</target>
 </trans-unit>
 
 <trans-unit id="191">
@@ -981,7 +981,7 @@
 
 <trans-unit id="196">
 <source>Disabled module</source>
-<target>Módulo desactivado</target>
+<target>M&#xF3;dulo desactivado</target>
 </trans-unit>
 
 <trans-unit id="197">
@@ -991,17 +991,17 @@
 
 <trans-unit id="198">
 <source>Subscribe to our Google Group</source>
-<target>Suscríbete a nuestro Grupo en Google</target>
+<target>Suscr&#xED;bete a nuestro Grupo en Google</target>
 </trans-unit>
 
 <trans-unit id="199">
 <source>Flash Code Recipes</source>
-<target>Recetas de código Flash</target>
+<target>Recetas de c&#xF3;digo Flash</target>
 </trans-unit>
 
 <trans-unit id="200">
 <source>You must %s or %s to comment!</source>
-<target>¡Debes %s o %s para comentar!</target>
+<target>&#xA1;Debes %s o %s para comentar!</target>
 </trans-unit>
 
 <trans-unit id="201">
@@ -1011,7 +1011,7 @@
 
 <trans-unit id="202">
 <source>wrote:</source>
-<target>escribió:</target>
+<target>escribi&#xF3;:</target>
 </trans-unit>
 
 <trans-unit id="203">
@@ -1031,7 +1031,7 @@
 
 <trans-unit id="206">
 <source>Collaboration offer details</source>
-<target>Detalles de la oferta de colaboración</target>
+<target>Detalles de la oferta de colaboraci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="207">
@@ -1041,8 +1041,115 @@
 
 <trans-unit id="208">
 <source>Looking for a project to work on!</source>
-<target>¡Buscando un proyecto en el que trabajar!</target>
+<target>&#xA1;Buscando un proyecto en el que trabajar!</target>
 </trans-unit>
+
+<trans-unit id="209">
+<source>%1$s is a flash game %2$s.</source>
+<target>%1$s es una %2$s de juegos flash</target>
+</trans-unit>
+
+<trans-unit id="210">
+<source>developers community</source>
+<target>comunidad de desarrolladores</target>
+</trans-unit>
+
+<trans-unit id="211">
+<source>less than a minute</source>
+<target>menos de un minuto</target>
+</trans-unit>
+
+<trans-unit id="212">
+<source>1 minute</source>
+<target>1 minuto</target>
+</trans-unit>
+
+<trans-unit id="213">
+<source>less than 5 seconds</source>
+<target>menos de 5 segundos</target>
+</trans-unit>
+
+<trans-unit id="214">
+<source>less than 10 seconds</source>
+<target>menos de 10 segundos</target>
+</trans-unit>
+
+<trans-unit id="215">
+<source>less than 20 seconds</source>
+<target>menos de 20 segundos</target>
+</trans-unit>
+
+<trans-unit id="216">
+<source>less than half a minute</source>
+<target>menos de medio minuto</target>
+</trans-unit>
+
+<trans-unit id="217">
+<source>less than a minute</source>
+<target>menos de un minuto</target>
+</trans-unit>
+
+<trans-unit id="218">
+<source>1 minute</source>
+<target>1 minuto</target>
+</trans-unit>
+
+<trans-unit id="219">
+<source>%minutes% minutes</source>
+<target>%minutes% minutos</target>
+</trans-unit>
+
+<trans-unit id="220">
+<source>about 1 month</source>
+<target>alrededor de un mes</target>
+</trans-unit>
+
+<trans-unit id="221">
+<source>%months% months</source>
+<target>%months% meses</target>
+</trans-unit>
+
+<trans-unit id="222">
+<source>about 1 year</source>
+<target>alredor de un a&#xF1;o</target>
+</trans-unit>
+
+<trans-unit id="223">
+<source>%years% years</source>
+<target>%years% a&#xF1;os</target>
+</trans-unit>
+
+<trans-unit id="224">
+<source>1 day</source>
+<target>1 d&#xED;a</target>
+</trans-unit>
+
+<trans-unit id="224">
+<source>%days% days</source>
+<target>%days% d&#xED;as</target>
+</trans-unit>
+
+<trans-unit id="225">
+<source>%days% days</source>
+<target>%days% d&#xED;as</target>
+</trans-unit>
+
+
+<trans-unit id="226">
+<source>Ululand's Group in Google</source>
+<target>Grupo de Ululand en Google</target>
+</trans-unit>
+
+<trans-unit id="227">
+<source>our group</source>
+<target>nuestro grupo</target>
+</trans-unit>
+
+<trans-unit id="227">
+<source>Flash Game Developers Community - developers.ululand.com</source>
+<target>Comunidad de Desarrolladores de Juegos Flash - developers.ululand.com</target>
+</trans-unit>
+
 </body>
   </file>
 </xliff>

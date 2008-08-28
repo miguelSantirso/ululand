@@ -3,10 +3,10 @@ default:
     content-type: text/html
 
   metas:
-    title:        Red de desarrolladores de Ululand
+    title:        Flash Game Developers Community - developers.ululand.com
     robots:       index, follow
     description:  Red de desarrolladores de Ululand
-    keywords:     ululand, flash development, desarrollo, flash, desarrolladores, developers
+    keywords:     ululand, flash development, desarrollo, flash, desarrolladores, developers, desarrollo juegos flash, comunidad desarrolladores, flash games development
     language:     es
 
   stylesheets:    [main]
