@@ -1,0 +1,23 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      PlayerProfile_Group
+    theme:            default
+
+    fields:
+      grupo_id:         {name: Grupo}
+      player_profile_id:        {name: Avatar}
+      is_owner:         {name: Propietario}
+      is_approved:      {name: Admitido}
+
+    list:
+      title: Listado de la relacion de grupos y avatares
+      display: [id, grupo_id, player_profile_id, is_owner, is_approved]
+      filters: [id, grupo_id, player_profile_id, is_owner, is_approved]
+      object_actions:
+        _edit:      ~
+        _delete:    ~
+        
+    edit:
+      title: Editar una relacion grupo avatar
+      display: [id, grupo_id, player_profile_id, is_owner, is_approved]
