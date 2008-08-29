@@ -107,27 +107,27 @@ CREATE TABLE `grupo`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- avatar_grupo
+#-- player_profile_grupo
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `avatar_grupo`;
+DROP TABLE IF EXISTS `player_profile_grupo`;
 
 
-CREATE TABLE `avatar_grupo`
+CREATE TABLE `player_profile_grupo`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`avatar_id` INTEGER,
+	`player_profile_id` INTEGER,
 	`grupo_id` INTEGER,
 	`is_owner` INTEGER default 0,
 	`is_approved` INTEGER default 0,
 	PRIMARY KEY (`id`),
-	INDEX `avatar_grupo_FI_1` (`avatar_id`),
-	CONSTRAINT `avatar_grupo_FK_1`
-		FOREIGN KEY (`avatar_id`)
-		REFERENCES `avatar` (`id`)
+	INDEX `player_profile_grupo_FI_1` (`player_profile_id`),
+	CONSTRAINT `player_profile_grupo_FK_1`
+		FOREIGN KEY (`player_profile_id`)
+		REFERENCES `player_profile` (`id`)
 		ON DELETE CASCADE,
-	INDEX `avatar_grupo_FI_2` (`grupo_id`),
-	CONSTRAINT `avatar_grupo_FK_2`
+	INDEX `player_profile_grupo_FI_2` (`grupo_id`),
+	CONSTRAINT `player_profile_grupo_FK_2`
 		FOREIGN KEY (`grupo_id`)
 		REFERENCES `grupo` (`id`)
 		ON DELETE CASCADE

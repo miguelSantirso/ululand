@@ -13,10 +13,10 @@
 		if(count($owners)) echo "Propietarios: <br/>";
 		foreach ($owners as $owner)
 		{
-			echo $owner->getProfileLink();
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($owner->getId()));//$owner->getProfileLink();
 			if ($profile==$owner) 
 			{
-				echo " ", link_to("(Abandonar)", 'group/reject?group='.$group->getId().'&avatar='.$owner->getId());
+				echo " ", link_to("(Abandonar)", 'group/reject?group='.$group->getId().'&player='.$owner->getId());
 				$belongs = true;
 				$isowner = true; 
 			} 
@@ -29,13 +29,13 @@
 		if(count($avatars)) echo "Resto de miembros: <br/>";
 		foreach ($avatars as $avatar)
 		{  
-			echo $avatar->getProfileLink(); 
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($avatar->getId()));//$avatar->getProfileLink(); 
 			if ($profile==$avatar) 
 			{ 
-				echo " ", link_to("Abandonar", 'group/reject?group='.$group->getId().'&avatar='.$avatar->getId()); 
+				echo " ", link_to("Abandonar", 'group/reject?group='.$group->getId().'&player='.$avatar->getId()); 
 				$belongs = true; 
 			} 
-			if ($isowner) echo " ", link_to("Expulsar", 'group/reject?group='.$group->getId().'&avatar='.$avatar->getId()); 
+			if ($isowner) echo " ", link_to("Expulsar", 'group/reject?group='.$group->getId().'&player='.$avatar->getId()); 
 		}
 	?> 
 	</p>
@@ -45,13 +45,13 @@
 		if(count($peticiones)) echo "Peticiones de ingreso: <br/>"; 
 		foreach ($peticiones as $petition)
 		{
-			echo $petition->getProfileLink();
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($petition->getId()));//$petition->getProfileLink();
 			if ($profile==$petition) 
 			{
-				echo " ", link_to("Eliminar petici&oacute;n", 'group/reject?group='.$group->getId().'&avatar='.$petition->getId()); 
+				echo " ", link_to("Eliminar petici&oacute;n", 'group/reject?group='.$group->getId().'&player='.$petition->getId()); 
 				$ispetition = true; 
 			} 
-			if ($isowner) echo " ", link_to("Aceptar", 'group/accept?group='.$group->getId().'&avatar='.$petition->getId()), " ", link_to("Rechazar", 'group/reject?group='.$group->getId().'&avatar='.$petition->getId()); 
+			if ($isowner) echo " ", link_to("Aceptar", 'group/accept?group='.$group->getId().'&player='.$petition->getId()), " ", link_to("Rechazar", 'group/reject?group='.$group->getId().'&player='.$petition->getId()); 
 		}
 	?>
 	</p>

@@ -22,7 +22,7 @@
 		</li>
 		<li><?php echo link_to('Administrar grupos', 'group'); ?>
 			<ul>
-				<li><?php echo link_to('Administrar relaci&oacute;n grupos y avatares', 'avatar_group'); ?></li>
+				<li><?php echo link_to('Administrar relaci&oacute;n grupos y jugadores', 'playerprofile_group'); ?></li>
 			</ul>
 		<li><?php echo link_to('Administrar juegos', 'game'); ?>
 				<ul><li><?php echo link_to('Administrar comentarios de los juegos', 'comment'); ?></li></ul>

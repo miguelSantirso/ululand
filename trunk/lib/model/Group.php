@@ -18,29 +18,29 @@ class Group extends BaseGroup
 		return $this->name;
 	}
 	
-	public function getAvatars()
+	public function getPlayerProfiles()
 	{
-		// Obtener todas las relaciones de avatar con este grupo
-		$avatarships = Group::getAvatar_Groups();
+		// Obtener todas las relaciones de jugador con este grupo
+		$playerships = Group::getPlayerProfile_Groups();
 
-		$avatars = Array();
+		$players = Array();
 		$owner = Array();
-		foreach($avatarships as $avatarship) // Para cada relaci�n
+		foreach($playerships as $playership) // Para cada relaci�n
 		{
-					if(!$avatarship->getIsOwner() && $avatarship->getIsApproved()) $avatars[] = $avatarship->getAvatar();
+					if(!$playership->getIsOwner() && $playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
 		}
-		return $avatars;
+		return $players;
 	}
 	
 	public function getOwners()
 	{
-		// Obtener todas las relaciones de avatar con este grupo
-		$ownerships = Group::getAvatar_Groups();
+		// Obtener todas las relaciones de jugador con este grupo
+		$ownerships = Group::getPlayerProfile_Groups();
 
 		$owners = Array();
 		foreach($ownerships as $ownership) // Para cada relaci�n
 		{
-					if($ownership->getIsOwner() && $ownership->getIsApproved()) $owners[] = $ownership->getAvatar();
+					if($ownership->getIsOwner() && $ownership->getIsApproved()) $owners[] = $ownership->getPlayerProfile();
 		}
 		return $owners;
 	}
@@ -48,14 +48,14 @@ class Group extends BaseGroup
     public function getPeticiones()
 	{
 		// Obtener todas las peticiones a este grupo
-		$avatarships = Group::getAvatar_Groups();
+		$playerships = Group::getPlayerProfile_Groups();
 
-		$avatars = Array();
+		$players = Array();
 		$owner = Array();
-		foreach($avatarships as $avatarship) // Para cada relaci�n
+		foreach($playerships as $playership) // Para cada relaci�n
 		{
-					if(!$avatarship->getIsApproved()) $avatars[] = $avatarship->getAvatar();
+					if(!$playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
 		}
-		return $avatars;
+		return $players;
 	}
 }

@@ -37,10 +37,10 @@ propel:
     name:               { type: varchar(64) , required: true }
     description:        { type: varchar(255), required: false }
     
-  avatar_grupo:
-    _attributes: { phpName: Avatar_Group }
+  player_profile_grupo:
+    _attributes: { phpName: PlayerProfile_Group }
     id:
-    avatar_id:       { type: integer, foreignTable: avatar, foreignReference: id, onDelete: cascade }
+    player_profile_id:       { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
     grupo_id:        { type: integer, foreignTable: grupo, foreignReference: id, onDelete: cascade }
     is_owner:        { type: boolean, required: false, default: false }
     is_approved:     { type: boolean, required: false, default: false }

@@ -50,24 +50,24 @@ class groupActions extends sfActions
 		$this->newGroup->save();
 		
 		// Obtener el avatar del perfil
-		$this->profile = AvatarPeer::retrieveByPk($this->getUser()->getAttribute('avatarId'));
+		$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
 		$this->forward404Unless($this->profile);
 		
 		// Obtener el grupo del perfil
 		$groupid = $this->newGroup->GetId();
 		
 		// Crear un nuevo objeto Avatar_Group
-		$this->newAvatar_Group = new Avatar_Group();
+		$this->newPlayerProfile_Group = new PlayerProfile_Group();
 		
 		
 		// Modificar adecuadamente el objeto
-		$this->newAvatar_Group->setAvatarId($this->profile);
-		$this->newAvatar_Group->setGrupoId($groupid);
-		$this->newAvatar_Group->setIsOwner(true);
-		$this->newAvatar_Group->setIsApproved(true);
+		$this->newPlayerProfile_Group->setPlayerProfileId($this->profile->getId());
+		$this->newPlayerProfile_Group->setGrupoId($groupid);
+		$this->newPlayerProfile_Group->setIsOwner(true);
+		$this->newPlayerProfile_Group->setIsApproved(true);
 		
 		// Grabarlo en la base de datos
-		$this->newAvatar_Group->save();
+		$this->newPlayerProfile_Group->save();
 		
 		
     	$this->setFlash('success', 'Grupo creado con &eacute;xito.');
@@ -105,7 +105,7 @@ class groupActions extends sfActions
   public function executeList()
   {
   	// Obtener el avatar del perfil
-	$this->profile = AvatarPeer::retrieveByPk($this->getUser()->getAttribute('avatarId'));
+	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
 	$this->forward404Unless($this->profile);
 	
   	// Obtenemos los grupos del avatar
@@ -115,7 +115,7 @@ class groupActions extends sfActions
   public function executeShow()
   {
   	// Obtener el avatar del perfil
-	$this->profile = AvatarPeer::retrieveByPk($this->getUser()->getAttribute('avatarId'));
+	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
 	$this->forward404Unless($this->profile);
   	
     $this->group = GroupPeer::retrieveByPk($this->getRequestParameter('group'));
@@ -124,7 +124,7 @@ class groupActions extends sfActions
     $this->description = $this->group->getDescription();
     
     // Obtenemos los avatares y las peticiones del grupo
-    $this->avatars = $this->group->getAvatars();
+    $this->avatars = $this->group->getPlayerProfiles();
     $this->owners = $this->group->getOwners();
     $this->peticiones = $this->group->getPeticiones();
     
@@ -133,7 +133,7 @@ class groupActions extends sfActions
   public function executeUnion()
   {
   	// Obtener el avatar del perfil
-	$this->profile = AvatarPeer::retrieveByPk($this->getUser()->getAttribute('avatarId'));
+	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
 	$this->forward404Unless($this->profile);
 	
   	// Obtener el grupo al que se quiere unir
@@ -141,41 +141,40 @@ class groupActions extends sfActions
     $this->forward404Unless($this->group);
     
     // Crear un nuevo objeto Avatar_Group
-	$this->newAvatar_Group = new Avatar_Group();
+	$this->newPlayerProfile_Group = new PlayerProfile_Group();
 		
 		
 	// Modificar adecuadamente el objeto
-	$this->newAvatar_Group->setAvatarId($this->profile->GetId());
-	$this->newAvatar_Group->setGrupoId($this->group->GetId());
-	$this->newAvatar_Group->setIsOwner(false);
-	$this->newAvatar_Group->setIsApproved(false);
+	$this->newPlayerProfile_Group->setPlayerProfileId($this->profile->GetId());
+	$this->newPlayerProfile_Group->setGrupoId($this->group->GetId());
+	$this->newPlayerProfile_Group->setIsOwner(false);
+	$this->newPlayerProfile_Group->setIsApproved(false);
 		
 	// Grabarlo en la base de datos
-	$this->newAvatar_Group->save();
+	$this->newPlayerProfile_Group->save();
   	
   	return $this->forward('group', 'list');
   }
   
   public function executeAccept()
   {
-  	// Obtener el avatar 
-	$avatar = $this->getRequestParameter('avatar');
+  	// Obtener el jugador 
+	$player = $this->getRequestParameter('player');
 	
   	// Obtener el grupo
   	$group = $this->getRequestParameter('group');
   	
   	$c = new Criteria();
-  	$c->add(AvatarPeer::ID, $avatar);
+  	$c->add(PlayerProfilePeer::ID, $player);
   	$c->add(GroupPeer::ID, $group);
   	
-  	$this->avatars_groups = Avatar_GroupPeer::doSelectJoinAll($c);
+  	$this->players_groups = PlayerProfile_GroupPeer::doSelectJoinAll($c);
   	
-  	echo count($this->avatars_groups);
-  	foreach ($this->avatars_groups as $this->avatar_group):
+  	foreach ($this->players_groups as $this->player_group):
   	
   	// Aceptar al avatar en el grupo
-    $this->avatar_group->setIsApproved(true);
-    $this->avatar_group->save();
+    $this->player_group->setIsApproved(true);
+    $this->player_group->save();
     
     endforeach;
   	
@@ -185,22 +184,22 @@ class groupActions extends sfActions
   public function executeReject()
   {
   	// Obtener el avatar 
-	$avatar = $this->getRequestParameter('avatar');
+	$player = $this->getRequestParameter('player');
 	
   	// Obtener el grupo
   	$group = $this->getRequestParameter('group');
   	
   	$c = new Criteria();
-  	$c->add(AvatarPeer::ID, $avatar);
+  	$c->add(PlayerProfilePeer::ID, $player);
   	$c->add(GroupPeer::ID, $group);
   	
-  	$this->avatars_groups = Avatar_GroupPeer::doSelectJoinAll($c);
+  	$this->players_groups = PlayerProfile_GroupPeer::doSelectJoinAll($c);
   	
   	
-  	foreach ($this->avatars_groups as $this->avatar_group):
+  	foreach ($this->players_groups as $this->player_group):
   	
   	// Eliminar la petici�n
-    $this->avatar_group->delete();
+    $this->player_group->delete();
     
     endforeach;
   	
