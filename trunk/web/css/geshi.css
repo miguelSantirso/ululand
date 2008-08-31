@@ -1,0 +1,131 @@
+
+/* Global geshi styles */
+
+.ulSyntaxHighlighter {
+	margin: 2em 0 0 0;
+	line-height: 1.2em;
+	font-size: 12px;
+	font-family: "Consolas","Courier New",Courier,mono,serif !important;
+	white-space: normal;
+	padding: 0;
+	background: #E7E5DC;
+	border: 1px solid #c0c0c0;
+}
+.ulSyntaxHighlighter .head { 
+	border-bottom: 1px solid #ccc; 
+	font-size: 15px; 
+	text-align: center; 
+	padding: 0.2em;
+}
+.ulSyntaxHighlighter pre {
+	margin: 0;
+}
+.ulSyntaxHighlighter ol {
+	color: #5c5c5c;
+	list-style: decimal;
+	list-style-position: outside;
+	padding: 0;
+	margin: 0;
+}
+.ulSyntaxHighlighter ol li {
+	margin: 0 0 0 40px;
+	padding: 0;
+	clear: none;
+}
+.ulSyntaxHighlighter ol li div {
+	color:#000;
+}
+
+
+/* php */
+.ulSyntaxHighlighter[lang=php] ol div,
+.ulSyntaxHighlighter.php ol div {
+	color:#fd1435;
+}
+/* Line highlights */
+.ulSyntaxHighlighter .li1, .ulSyntaxHighlighter .li2 {
+	border-left: 3px solid #00aaff;
+	padding-left: 12px;
+	}
+	.ulSyntaxHighlighter ol li.li1 {
+		background: #f8f8f8;
+	}
+	.ulSyntaxHighlighter ol li.li2 {
+		background: #fefefe;
+	}
+
+/* comments */
+.ulSyntaxHighlighter .co1,
+.ulSyntaxHighlighter .coMULTI {
+	color:#5c9dff;
+	font-style: italic;
+}
+/* methods */
+.ulSyntaxHighlighter .me1{
+	color:#000;
+}
+.ulSyntaxHighlighter .me0 {	
+
+}
+.ulSyntaxHighlighter .me2 {	
+	color:#000;
+}
+
+/* brackets */
+.ulSyntaxHighlighter .br0 {
+	color:#222;
+}
+
+/* strings */
+.ulSyntaxHighlighter .st0 {
+	color:#b701bb;
+}
+
+/* keywords */
+.ulSyntaxHighlighter .kw1 {
+	color: #fd1435;
+}
+.ulSyntaxHighlighter .kw2 {
+	color:#6266f5;		
+}
+
+.ulSyntaxHighlighter .kw3 {
+	color:#505e80;
+}
+
+/* numbers */
+.ulSyntaxHighlighter .nu0 {
+	color:#0a0aa5;
+}
+
+/* vars */
+.ulSyntaxHighlighter .re0 {
+	color:#059532;
+}
+
+
+/* 
+* CSS selectors 
+*****************/
+/* classnames */
+
+.ulSyntaxHighlighter [lang=css] .kw2,
+.ulSyntaxHighlighter .css .kw2 {
+	color:#0a0aa5;
+}
+.ulSyntaxHighlighter .re1 {
+	color: #b701bb;
+}
+/* px values */
+.ulSyntaxHighlighter [lang=css] .re3,
+.ulSyntaxHighlighter .css .re3 {
+	color:#059532;
+}
+
+/*
+* Javascript
+****************/
+.ulSyntaxHighlighter [lang=javascript] .me1,
+.ulSyntaxHighlighter .javascript .me1 {
+	color:#505e80;
+}

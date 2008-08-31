@@ -4,8 +4,6 @@ security:
 #  class: sfGuardBasicSecurityFilter
 
 # generally, you will want to insert your own filters here
-sf_syntax_highlighter_plugin:
-  class: sfSyntaxHighlighterFilter
 ul_custom_filter:
   class: ulCustomFilter
   

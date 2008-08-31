@@ -57,7 +57,7 @@ class recipeActions extends sfActions
   public function executePreview()
   {
   	$this->title = $this->getRequestParameter('title');
-  	$this->source = $this->getRequestParameter('source');
+  	$this->source = ulGeshiToolkit::transformToHtml($this->getRequestParameter('source'));
   }
   
   public function executeEmbed()

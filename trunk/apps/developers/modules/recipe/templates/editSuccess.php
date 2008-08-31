@@ -1,4 +1,4 @@
-<?php use_helper('Object', 'Validation', 'Javascript', 'ModalBox', 'SyntaxHighlighter'); ?>
+<?php use_helper('Object', 'Validation', 'Javascript', 'ModalBox', 'ulMisc'); ?>
 
 <div id="pageContent">
 
@@ -38,7 +38,7 @@
 			<!-- insert code box -->
 			<div id="codeSnippetInsertion" class="contentColumn wide alignCenter" style="display: none;">
 				<h5 class="header"><strong>1. </strong><?php echo __('Select a programming language'); ?></h5>
-				<?php echo select_programming_language_tag('programming language', null, array('id' => 'programmingLanguage', 'class' => 'large') ); ?>
+				<?php  echo  select_programming_language_tag('programming language', null, array('id' => 'programmingLanguage', 'class' => 'large') ); ?>
 				<br/>
 				<h5 class="header"><strong>2. </strong><?php echo __('Paste or write the code'); ?></h5>
 				<textarea id="codeToAdd" cols="80" rows="18" name="codeToAdd"></textarea>

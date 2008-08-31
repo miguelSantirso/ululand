@@ -199,6 +199,7 @@ CREATE TABLE `code_piece`
 	`title` VARCHAR(75)  NOT NULL,
 	`stripped_title` VARCHAR(75)  NOT NULL,
 	`source` TEXT  NOT NULL,
+	`html_source` TEXT  NOT NULL,
 	PRIMARY KEY (`id`),
 	INDEX `code_piece_FI_1` (`created_by`),
 	CONSTRAINT `code_piece_FK_1`

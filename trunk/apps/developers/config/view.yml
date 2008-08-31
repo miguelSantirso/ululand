@@ -9,7 +9,7 @@ default:
     keywords:     ululand, flash development, desarrollo, flash, desarrolladores, developers, desarrollo juegos flash, comunidad desarrolladores, flash games development
     language:     es
 
-  stylesheets:    [main]
+  stylesheets:    [main, geshi]
 
   javascripts:    [behaviors]
 

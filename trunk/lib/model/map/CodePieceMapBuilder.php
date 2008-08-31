@@ -48,5 +48,7 @@ class CodePieceMapBuilder {
 
 		$tMap->addColumn('SOURCE', 'Source', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
+		$tMap->addColumn('HTML_SOURCE', 'HtmlSource', 'string', CreoleTypes::LONGVARCHAR, true, null);
+
 	} 
 } 

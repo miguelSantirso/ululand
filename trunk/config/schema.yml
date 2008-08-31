@@ -81,6 +81,7 @@ propel:
     title:          { type: varchar(75), required: true }
     stripped_title: { type: varchar(75), required: true }
     source:         { type: longvarchar, required: true }
+    html_source:    { type: longvarchar, required: true }
     
   itemtype:
     _attributes: { phpName: ItemType }

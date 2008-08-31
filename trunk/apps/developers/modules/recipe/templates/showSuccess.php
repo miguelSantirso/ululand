@@ -26,7 +26,7 @@
 									format_date($code_piece->getCreatedAt()) ); ?></p>
 				</div>
 				
-				<?php echo sfMarkdown::doConvert( $code_piece->getSource() ); ?>
+				<?php echo $code_piece->getHtmlSource(); ?>
 				
 			</div>
 			
