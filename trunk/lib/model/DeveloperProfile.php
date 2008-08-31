@@ -16,7 +16,7 @@ class DeveloperProfile extends BaseDeveloperProfile
 	public function getNbRecipes()
 	{
 		$c = new Criteria();
-		$c->add(CodePiecePeer::CREATED_BY, $this->getUserProfileId());
+		$c->add(CodePiecePeer::CREATED_BY, $this->getsfGuardUserProfile()->getsfGuardUser()->getId());
 		return count(CodePiecePeer::doSelect($c));
 	}
 	
@@ -27,7 +27,7 @@ class DeveloperProfile extends BaseDeveloperProfile
 	public function getNbCollaborations()
 	{
 		$c = new Criteria();
-		$c->add(CollaborationOfferPeer::CREATED_BY, $this->getUserProfileId());
+		$c->add(CollaborationOfferPeer::CREATED_BY, $this->getsfGuardUserProfile()->getsfGuardUser()->getId());
 		return count(CollaborationOfferPeer::doSelect($c));
 	}
 	
