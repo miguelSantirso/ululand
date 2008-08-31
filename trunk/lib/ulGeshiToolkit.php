@@ -88,9 +88,6 @@ class ulGeshiToolkit
 		}
 
 		// Markdown formatting
-//		require_once('markdown.php');
-//		$html = markdown($string);
-
 		$html = sfMarkdown::doConvert($string);
 
 		// syntax highlighting
