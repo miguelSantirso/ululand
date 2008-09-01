@@ -59,3 +59,5 @@ class Group extends BaseGroup
 		return $players;
 	}
 }
+
+sfPropelBehavior::add('Group', array('sfPropelActAsCommentableBehavior'));

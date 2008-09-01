@@ -31,3 +31,43 @@ all:
     allow_new_topic_outside_forum: true
     user_class:              Account         # name of the class used to manage users
     retrieve_by_name_method: retrieveByUsername  # name of the static method used to retrieve a user by its username
+    
+      sfPropelActAsCommentableBehaviorPlugin:
+    allowed_tags:
+      a:              <a>
+      blockquote:     <blockquote>
+      code:           <code>
+      em:             <em>
+      i:              <i>
+      p:              <p>
+      strong:         <strong>
+    anonymous:
+      enabled:        false
+      layout:
+        name:         required
+        email:        required
+        website:      optional
+        title:        optional
+        comment:      required
+      name:           Anonymous User
+    css:              false
+    count:
+      enabled:        true
+      method:         setSfCommentCount
+      namespace:      frontend
+    date_format:      words
+    hide_form:        true
+    namespaces:
+      backend:        administrator
+    use_ajax:         true
+    use_gravatar:     true
+    user:
+      enabled:        true
+      layout:
+#        title:        optional
+        comment:      required
+      table:          sf_guard_user
+      id:             id
+      class:          sfGuardUser
+      id_method:      getId
+      toString:       __toString

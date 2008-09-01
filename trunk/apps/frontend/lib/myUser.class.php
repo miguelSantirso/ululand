@@ -7,4 +7,13 @@ class myUser extends sfGuardSecurityUser
 		return sfContext::getInstance()->getUser()->getAttribute('avatarId');
 	}
 
+	public function __toString()
+	{
+		return $this->getGuardUser()->getProfile()->__toString();
+	}
+	
+	public function getId() 
+	{
+		return $this->getGuardUser()->getId();
+	}
 }

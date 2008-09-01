@@ -68,5 +68,14 @@
 		if ($ispetition == false && $belongs == false) echo link_to("Unirse al grupo", 'group/union?group='.$group->getId()); 
 	?>
 	</p>
+	
+	</div>
+			<div class="contentBox" id="postComment">
+			<h4 class="header small"><?php echo __('Comments:') ?></h4>
+			<?php
+				include_component('sfComment', 'commentForm', array('object' => $group, 'order' => 'desc'));
+				include_component('sfComment', 'commentList', array('object' => $group, 'order' => 'desc'));
+			?>
+			</div>
 	<div class="clearFloat"></div>
 </div>
