@@ -8,6 +8,7 @@
 	<ul>
 		<li><?php echo link_to('Administrar cuentas de usuario', 'sfGuardUser'); ?>
 			<ul>
+			    <li><?php echo link_to('Administrar jugadores', 'playerprofile'); ?></li>
 				<li><?php echo link_to('Administrar grupos de usuarios', 'sfGuardGroup'); ?></li>
 				<li><?php echo link_to('Administrar permisos de usuarios', 'sfGuardPermission'); ?></li>
 			</ul>

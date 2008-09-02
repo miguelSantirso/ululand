@@ -49,4 +49,56 @@ class PlayerProfile extends BasePlayerProfile
 			'</span>'
 			);
 	}
+	
+/**
+	 * Retorna los créditos disponibles del avatar
+	 *
+	 * @return ingeger créditos disponibles del avatar
+	 */
+	public function getAvailableCredits()
+	{
+		return $this->getTotalCredits() - $this->getSpentCredits();
+	}
+	
+/**
+	 * Añade los créditos pasados como parámetro al número total de créditos. Esta función es la forma adecuada de aumentar los créditos disponibles.
+	 *
+	 * @param number $amount Cantidad de créditos a añadir.
+	 * @return number Nueva cantidad de créditos.
+	 */
+	public function addCredits($amount)
+	{
+		$totalCredits = $this->setTotalCredits($this->getTotalCredits() + $amount);
+		$this->save();
+		return $totalCredits;
+	}
+	
+	/**
+	 * Añade los créditos correspondientes al tiempo jugado en segundos.
+	 *
+	 * @param number $secondsPlayed Número de segundos jugados.
+	 * @return number Cantidad total de créditos disponibles después de la operación.
+	 */
+	public function addCreditsForPlayedTime($secondsPlayed)
+	{
+		if($secondsPlayed > 0)
+		{
+			return $this->addCredits($secondsPlayed * 0.03);
+		}
+		//@todo: �lanzar un error aqu�?
+		return $this->getTotalCredits();
+	}
+	
+	/**
+	 * Añade los créditos pasados como parámetro al número de créditos gastados. Esta función es la forma adecuada de restar créditos a un avatar.
+	 *
+	 * @param integer $amount Cantidad de créditos a restar al avatar
+	 * @return integer Nuevo número de créditos gastados del avatar.
+	 */
+	public function substractCredits($amount)
+	{
+		$spentCredits = $this->setSpentCredits($this->getSpentCredits() + $amount);
+		$this->save();
+		return $spentCredits;
+	}
 }

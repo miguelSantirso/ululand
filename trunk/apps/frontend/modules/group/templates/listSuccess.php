@@ -22,4 +22,4 @@
 <?php } ?>
 
 
-<?php echo link_to('&laquo; Todos los grupos', 'group/listall', array('class' => 'navigation')) ?>
+<?php echo link_to(__('All groups'), 'group/listall', array('class' => 'navigation')) ?>

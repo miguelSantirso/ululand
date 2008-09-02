@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<xliff version="1.0">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-09-02T01:09:23Z">
+    <body>
+
+<trans-unit id="1">
+<source>Logout</source>
+<target>Salir</target>
+</trans-unit>
+
+<trans-unit id="2">
+<source>Login</source>
+<target>Entrar</target>
+</trans-unit>
+
+<trans-unit id="3">
+<source>Register</source>
+<target>Registrarte</target>
+</trans-unit>
+
+<trans-unit id="4">
+<source>Name</source>
+<target>Nombre</target>
+</trans-unit>
+
+<trans-unit id="5">
+<source>Description</source>
+<target>Descripción</target>
+</trans-unit>
+
+<trans-unit id="6">
+<source>Create group</source>
+<target>Crear grupo</target>
+</trans-unit>
+
+<trans-unit id="7">
+<source>Create group</source>
+<target>Crear grupo</target>
+</trans-unit>
+
+<trans-unit id="8">
+<source>All groups</source>
+<target>Todos los grupos</target>
+</trans-unit>
+
+<trans-unit id="9">
+<source>Group</source>
+<target>Grupo</target>
+</trans-unit>
+
+<trans-unit id="10">
+<source>Owners</source>
+<target>Propietarios</target>
+</trans-unit>
+
+<trans-unit id="11">
+<source>Leave</source>
+<target>Abandonar</target>
+</trans-unit>
+
+<trans-unit id="12">
+<source>Other members</source>
+<target>Otros miembros</target>
+</trans-unit>
+
+<trans-unit id="13">
+<source>Expel</source>
+<target>Rechazar</target>
+</trans-unit>
+
+<trans-unit id="14">
+<source>Requests </source>
+<target>Peticiones</target>
+</trans-unit>
+
+<trans-unit id="15">
+<source>Delete request</source>
+<target>Eliminar petici&#xF3;n</target>
+</trans-unit>
+
+<trans-unit id="16">
+<source>Accept request</source>
+<target>Aceptar petici&#xF3;n</target>
+</trans-unit>
+
+<trans-unit id="17">
+<source>Your request is being tried</source>
+<target>Tu petici&#xF3;n est&#xE1; siendo estudiada</target>
+</trans-unit>
+
+<trans-unit id="18">
+<source>Join group</source>
+<target>Unirse al grupo</target>
+</trans-unit>
+
+<trans-unit id="19">
+<source>Comments:</source>
+<target>Comentarios:</target>
+</trans-unit>
+
+<trans-unit id="31">
+<source>General Data</source>
+<target>Informaci&#xF3;n General</target>
+</trans-unit>
+
+<trans-unit id="32">
+<source>Nick:</source>
+<target>Alias:</target>
+</trans-unit>
+
+<trans-unit id="33">
+<source>Don't use your team name. You will be able to create it after.</source>
+<target>No uses el nombre de tu equipo. Podr&#xE1;s crearlo m&#xE1;s adelante.</target>
+</trans-unit>
+
+<trans-unit id="34">
+<source>Language:</source>
+<target>Idioma:</target>
+</trans-unit>
+
+<trans-unit id="35">
+<source>Write whatever you want. Accepts %s.</source>
+<target>Escribe lo que quieras. Acepta Markdown.</target>
+</trans-unit>
+
+<trans-unit id="36">
+<source>update preview</source>
+<target>actualizar vista previa</target>
+</trans-unit>
+
+<trans-unit id="37">
+<source>Preview</source>
+<target>Vista Previa</target>
+</trans-unit>
+
+<trans-unit id="38">
+<source>save</source>
+<target>salvar</target>
+</trans-unit>
+
+<trans-unit id="39">
+<source>cancel</source>
+<target>cancelar</target>
+</trans-unit>
+
+<trans-unit id="40">
+<source>There is no description for this user</source>
+<target>No hay descripci&#xF3;n para este usuario</target>
+</trans-unit>
+
+<trans-unit id="41">
+<source>List</source>
+<target>Listado</target>
+</trans-unit>
+
+<trans-unit id="42">
+<source>You must %s or %s to comment!</source>
+<target>&#xA1;Debes %s o %s para comentar!</target>
+</trans-unit>
+
+<trans-unit id="43">
+<source>log in</source>
+<target>iniciar sesi&#xF3;n</target>
+</trans-unit>
+
+<trans-unit id="44">
+<source>Post this comment</source>
+<target>Enviar este comentario</target>
+</trans-unit>
+
+<trans-unit id="45">
+<source>Submit</source>
+<target>Enviar</target>
+</trans-unit>
+
+<trans-unit id="46">
+<source>Accepts %s.</source>
+<target>Acepta %s.</target>
+</trans-unit>
+
+<trans-unit id="47">
+<source>There is no comment for the moment.</source>
+<target>No hay comentarios todav&#xED;a</target>
+</trans-unit>
+
+<trans-unit id="48">
+<source>Remove</source>
+<target>Eliminar</target>
+</trans-unit>
+
+<trans-unit id="49">
+<source>%1% ago</source>
+<target>hace %1%</target>
+</trans-unit>
+
+<trans-unit id="50">
+<source>wrote:</source>
+<target>escribi&#xF3;:</target>
+</trans-unit>
+
+<trans-unit id="51">
+<source>See Profile</source>
+<target>Ver perfil</target>
+</trans-unit>
+
+<trans-unit id="52">
+<source>Leave %s a note</source>
+<target>Dejar una nota a %s</target>
+</trans-unit>
+
+<trans-unit id="53">
+<source>Join us!</source>
+<target>&#xA1;&#xDA;nete!</target>
+</trans-unit>
+
+<trans-unit id="54">
+<source>Email</source>
+<target>Correo Electr&#xF3;nico</target>
+</trans-unit>
+
+<trans-unit id="55">
+<source>Password</source>
+<target>Contrase&#xF1;a</target>
+</trans-unit>
+
+<trans-unit id="56">
+<source>Retype password</source>
+<target>Reescribe la contrase&#xF1;a</target>
+</trans-unit>
+
+<trans-unit id="57">
+<source>Create account</source>
+<target>Crear cuenta</target>
+</trans-unit>
+
+<trans-unit id="58">
+<source>This field is required!</source>
+<target>&#xA1;Este campo es obligatorio!</target>
+</trans-unit>
+
+<trans-unit id="59">
+<source>That is not a valid email!</source>
+<target>&#xA1;Ese email no es v&#xE1;lido!</target>
+</trans-unit>
+
+<trans-unit id="60">
+<source>This username is already taken!</source>
+<target>&#xA1;Ese nombre de usuario ya est&#xE1; cogido!</target>
+</trans-unit>
+
+<trans-unit id="61">
+<source>The password is too short (5 characters minimum)</source>
+<target>La contrase&#xF1;a es demasiado corta (5 caracteres m&#xED;nimo)</target>
+</trans-unit>
+
+<trans-unit id="62">
+<source>The password is too long. (25 characters maximum)</source>
+<target>La contrase&#xF1;a es demasiado larga (25 caracteres m&#xE1;ximo)</target>
+</trans-unit>
+
+<trans-unit id="63">
+<source>The passwords don't match!</source>
+<target>&#xA1;Las contrase&#xF1;as no coinciden!</target>
+</trans-unit>
+
+</body>
+  </file>
+</xliff>

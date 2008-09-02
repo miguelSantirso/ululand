@@ -21,6 +21,8 @@ propel:
     id:
     user_profile_id: { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
     description:     { type: longvarchar, required: false }
+    total_credits:   { type: integer, required: false, default: 0 }
+    spent_credits:   { type: integer, required: false, default: 0 }
     
   avatar:
     _attributes: { phpName: Avatar }

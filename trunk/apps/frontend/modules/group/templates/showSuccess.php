@@ -2,7 +2,7 @@
 <?php use_helper('nahoWiki'); ?>
 
 <div class="contentColumn wide normalBox subtle">
-	<h2 class="alignCenter"><?php echo "Grupo: ", $group;?></h2>
+	<h2 class="alignCenter"><?php echo __('Group'), ": ", $group;?></h2>
 	<p class="alignCenter"><?php echo $description;?></p>
 </div>
 
@@ -10,13 +10,13 @@
 	<?php $belongs = false; $ispetition = false; $isowner = false; ?>
 	<p>
 	<?php 
-		if(count($owners)) echo "Propietarios: <br/>";
+		if(count($owners)) echo __('Owners'); echo "<br/>";
 		foreach ($owners as $owner)
 		{
 			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($owner->getId()));//$owner->getProfileLink();
 			if ($profile==$owner) 
 			{
-				echo " ", link_to("(Abandonar)", 'group/reject?group='.$group->getId().'&player='.$owner->getId());
+				echo " ", link_to(__('Leave'), 'group/reject?group='.$group->getId().'&player='.$owner->getId());
 				$belongs = true;
 				$isowner = true; 
 			} 
@@ -26,32 +26,32 @@
 	
 	<p>
 	<?php 
-		if(count($avatars)) echo "Resto de miembros: <br/>";
+		if(count($avatars)) echo __('Other members'); echo "<br/>";
 		foreach ($avatars as $avatar)
 		{  
 			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($avatar->getId()));//$avatar->getProfileLink(); 
 			if ($profile==$avatar) 
 			{ 
-				echo " ", link_to("Abandonar", 'group/reject?group='.$group->getId().'&player='.$avatar->getId()); 
+				echo " ", link_to(__('Leave'), 'group/reject?group='.$group->getId().'&player='.$avatar->getId()); 
 				$belongs = true; 
 			} 
-			if ($isowner) echo " ", link_to("Expulsar", 'group/reject?group='.$group->getId().'&player='.$avatar->getId()); 
+			if ($isowner) echo " ", link_to(__('Expel'), 'group/reject?group='.$group->getId().'&player='.$avatar->getId()); 
 		}
 	?> 
 	</p>
 		
 	<p>
 	<?php 
-		if(count($peticiones)) echo "Peticiones de ingreso: <br/>"; 
-		foreach ($peticiones as $petition)
+		if(count($requests)) echo __('Requests '); echo "<br/>"; 
+		foreach ($requests as $request)
 		{
-			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($petition->getId()));//$petition->getProfileLink();
-			if ($profile==$petition) 
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($request->getId()));//$petition->getProfileLink();
+			if ($profile==$request) 
 			{
-				echo " ", link_to("Eliminar petici&oacute;n", 'group/reject?group='.$group->getId().'&player='.$petition->getId()); 
+				echo " ", link_to(__('Delete request'), 'group/reject?group='.$group->getId().'&player='.$request->getId()); 
 				$ispetition = true; 
 			} 
-			if ($isowner) echo " ", link_to("Aceptar", 'group/accept?group='.$group->getId().'&player='.$petition->getId()), " ", link_to("Rechazar", 'group/reject?group='.$group->getId().'&player='.$petition->getId()); 
+			if ($isowner) echo " ", link_to(__('Accept request'), 'group/accept?group='.$group->getId().'&player='.$request->getId()), " ", link_to("Rechazar", 'group/reject?group='.$group->getId().'&player='.$request->getId()); 
 		}
 	?>
 	</p>
@@ -59,17 +59,30 @@
 	<p>
 	
 	<?php 
-		if ($ispetition == true) echo "T&uacute; petici&oacute;n de uni&oacute;n al grupo est&aacute; siendo estudiada"; 
+		if ($ispetition == true) echo __('Your request is being tried'); 
 	?>
 	</p>
 	
 	<p>
 	<?php 
-		if ($ispetition == false && $belongs == false) echo link_to("Unirse al grupo", 'group/union?group='.$group->getId()); 
+		if ($ispetition == false && $belongs == false) echo link_to(__('Join group'), 'group/union?group='.$group->getId()); 
+	?>
+	</p>
+</div>
+	
+	<div class="contentColumn wide normalBox subtle">
+	<p>
+	<?php 
+		if(count($members)) echo __('Ranking'); echo "<br/>";
+		foreach ($members as $member)
+		{
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($member->getId())), " ", $member->getTotalCredits();
+			echo "<br/>";
+		} 
 	?>
 	</p>
 	
-	</div>
+</div>
 			<div class="contentBox" id="postComment">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>
 			<?php

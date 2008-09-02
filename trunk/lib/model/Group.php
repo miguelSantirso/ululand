@@ -45,7 +45,7 @@ class Group extends BaseGroup
 		return $owners;
 	}
 	
-    public function getPeticiones()
+    public function getRequests()
 	{
 		// Obtener todas las peticiones a este grupo
 		$playerships = Group::getPlayerProfile_Groups();
@@ -55,6 +55,22 @@ class Group extends BaseGroup
 		foreach($playerships as $playership) // Para cada relaci�n
 		{
 					if(!$playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
+		}
+		return $players;
+	}
+	
+	public function getMembers()
+	{	
+		// Obtener todas las relaciones de jugador con este grupo
+		$c = new Criteria();
+		$c->addDescendingOrderByColumn(PlayerProfilePeer::TOTAL_CREDITS);
+		$playerships = Group::getPlayerProfile_GroupsJoinPlayerProfile($c);
+
+		$players = Array();
+		$owner = Array();
+		foreach($playerships as $playership) // Para cada relaci�n
+		{
+					if($playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
 		}
 		return $players;
 	}

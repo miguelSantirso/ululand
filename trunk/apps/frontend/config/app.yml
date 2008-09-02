@@ -32,7 +32,7 @@ all:
     user_class:              Account         # name of the class used to manage users
     retrieve_by_name_method: retrieveByUsername  # name of the static method used to retrieve a user by its username
     
-      sfPropelActAsCommentableBehaviorPlugin:
+  sfPropelActAsCommentableBehaviorPlugin:
     allowed_tags:
       a:              <a>
       blockquote:     <blockquote>

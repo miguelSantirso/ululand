@@ -60,6 +60,8 @@ CREATE TABLE `player_profile`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`user_profile_id` INTEGER  NOT NULL,
 	`description` TEXT,
+	`total_credits` INTEGER default 0,
+	`spent_credits` INTEGER default 0,
 	PRIMARY KEY (`id`),
 	INDEX `player_profile_FI_1` (`user_profile_id`),
 	CONSTRAINT `player_profile_FK_1`

@@ -26,5 +26,5 @@
 
 <div class="contentColumn medium normalBox subtle alignRight">
 <h3>Crear un grupo:</h3>
-<?php echo link_to('Crear un grupo &raquo;', 'group/create', array('class' => 'navigation')) ?>
+<?php echo link_to(__('Create group'), 'group/create', array('class' => 'navigation')) ?>
 </div>

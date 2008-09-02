@@ -38,5 +38,9 @@ class PlayerProfileMapBuilder {
 
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
+		$tMap->addColumn('TOTAL_CREDITS', 'TotalCredits', 'int', CreoleTypes::INTEGER, false, null);
+
+		$tMap->addColumn('SPENT_CREDITS', 'SpentCredits', 'int', CreoleTypes::INTEGER, false, null);
+
 	} 
 } 

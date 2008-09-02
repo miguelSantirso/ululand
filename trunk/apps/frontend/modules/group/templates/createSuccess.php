@@ -11,16 +11,16 @@
 		<ol class="large">
 			<li>
 			  <?php echo form_error('namegroup', array("class" => "small subtleEmphasis")) ?>
-			  <?php echo label_for('namegroup', 'Nombre') ?>
+			  <?php echo label_for('namegroup', __('Name')) ?>
 			  <?php echo input_tag('namegroup', null, array("class" => "large")) ?>
 		  	</li>
 		  	<li>
 		  	  <?php echo form_error('description', array("class" => "small subtleEmphasis")) ?>
-			  <?php echo label_for('description', 'Descripcion') ?>
+			  <?php echo label_for('description', __('Description')) ?>
 			  <?php echo input_tag('description', null, array("class" => "large")) ?>
 		  	</li>
 		</ol>
-	<?php echo submit_tag('Crear grupo', array('class' => 'submit wide large')) ?>
+	<?php echo submit_tag(__('Create group'), array('class' => 'submit wide large')) ?>
 	</fieldset>
 		<?php $referer = $sf_params->get('referer') ? $sf_params->get('referer') : $sf_request->getUri(); ?>
 	    <?php echo input_hidden_tag('referer', $referer) ?>    

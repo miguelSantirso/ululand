@@ -49,7 +49,7 @@
 				'before'  => "Element.show('loadIndicator'); Element.setOpacity('profilePreview', 0.5);",
 				'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('profilePreview', 1);",
 			    'with'      => $with)) ?>
-			<?php echo link_to_remote(__('update preview &raquo;'), array(
+			<?php echo link_to_remote(__('update preview'), array(
 				'update'  => 'profilePreview',
 				'url'     => 'profile/preview',
 				'before'  => "Element.show('loadIndicator'); Element.setOpacity('profilePreview', 0.5);",

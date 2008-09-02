@@ -126,7 +126,8 @@ class groupActions extends sfActions
     // Obtenemos los avatares y las peticiones del grupo
     $this->avatars = $this->group->getPlayerProfiles();
     $this->owners = $this->group->getOwners();
-    $this->peticiones = $this->group->getPeticiones();
+    $this->requests = $this->group->getRequests();
+    $this->members = $this->group->getMembers();
     
   }
   
