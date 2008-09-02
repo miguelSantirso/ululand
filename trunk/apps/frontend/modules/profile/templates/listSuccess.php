@@ -1,23 +1,28 @@
-<div class="contentColumn wide normalBox subtle">
-	<h2 class="alignCenter">Las habitaciones</h2>
-	<p class="alignCenter">Aqu&iacute; estamos todos.</p>
+<?php use_helper('PagerNavigation', 'Partial'); ?>
+
+<div id="pageContent">
+
+	<div class="contentColumn wide alignLeft">
+		<?php if(isset($search)) : ?>
+			<h3 class="header"><?php echo sprintf(__('Developers whose name is similar to %1$s (%2$s)'), link_to($search, 'profile/list?search='.$search), link_to('show all', 'profile/list')); ?></h3>
+		<?php endif; ?>
+			
+		<?php include_component('profile', 'list'); ?>		
+
+	</div>
+	
+	
+	<div class="contentColumn quarter alignRight">
+	<?php if($sf_user->isAuthenticated() && !$sf_user->getProfile()->isFilledIn()) { ?>
+		<div class="contentBox light">
+			<h4 class="header small"><?php echo link_to(__("Fill in your profile now!"), 'profile/edit?id='.$sf_user->getProfile()->getId()); ?></h4>
+			<p class="small"><?php echo __("Your profile is not filled in and you will not be listed here."); ?></p>
+			<p class=""><?php echo link_to(__("Fill in your profile &raquo;"), 'profile/edit?id='.$sf_user->getProfile()->getId()); ?></p>
+		</div>
+	<?php } ?>
+		<div class="">
+			<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
+		</div>
+	</div>
+
 </div>
-
-<?php use_helper('PagerNavigation') ?>
-
-<?php echo pager_navigation($profilesPager, 'profile/list') ?>
-
-<ul class="normalList subtle">
-<?php $alt = ""; ?>
-<?php foreach ($profilesPager->getResults() as $profile): ?>
-	<li class="<?php echo $alt; ?>">
-		<h4 class=""><?php echo linkToProfile($profile); ?></h4>
-		<br style="clear:both" />
-	</li>
-	<?php $alt = $alt == "" ? "alt" : ""; ?>
-<?php endforeach; ?>
-</ul>
-
-<?php echo pager_navigation($profilesPager, 'profile/list') ?>
-
-<?php echo link_to('&laquo; Portada', 'home/Welcome', array('class' => 'navigation')) ?>

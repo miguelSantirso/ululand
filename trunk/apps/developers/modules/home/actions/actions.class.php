@@ -21,10 +21,14 @@ class homeActions extends sfActions
 	
 	public function executeLatestNews()
 	{
-		if($this->getUser()->getCulture() == 'es')
-			$this->feed = sfFeedPeer::createFromWeb('http://blog.pncil.com/feed/');
-		else
-			$this->feed = sfFeedPeer::createFromWeb('http://blog.pncil.com/en/feed/');
+		try
+		{
+			if($this->getUser()->getCulture() == 'es')
+				$this->feed = sfFeedPeer::createFromWeb('http://blog.pncil.com/feed/');
+			else
+				$this->feed = sfFeedPeer::createFromWeb('http://blog.pncil.com/en/feed/');
+		}
+		catch (Exception $e) { return sfView::ERROR; }
 	}
 	
 	public function executeDisabled()

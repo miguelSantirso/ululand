@@ -5,9 +5,9 @@
 function addCodeAndClose()
 {
 	newValue = $("codeToAdd").value;
-	newValue = newValue.replace(/</g,'&lt;');
+	//newValue = newValue.replace(/</g,'&lt;');
 	
-	insertAtCursor($("source"), "\n[code=" + $("programmingLanguage").value + "]\n" + newValue + "\n[/code]\n");
+	insertAtCursor($("source"), "\n[code " + $("programmingLanguage").value + "]\n" + newValue + "\n[/code]\n");
 	
 	Modalbox.hide();
 }

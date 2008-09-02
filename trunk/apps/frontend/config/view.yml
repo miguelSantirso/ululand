@@ -10,7 +10,7 @@ default:
     language:     es
     encoding:     utf8
 
-  stylesheets:    [positions, appearance, colors, prototip]
+  stylesheets:    [main, prototip]
 
   javascripts: [prototip, behaviors]
   

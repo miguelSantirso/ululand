@@ -1,8 +1,46 @@
 <?php use_helper('Validation'); ?>
-	<div class="contentColumn wide normalBox subtle">
-		<h2 class="alignCenter">&iexcl;Bienvenido!</h2>
-		<p class="alignCenter">Esto es <strong>ulu</strong>land</p>
+
+<div id="pageContent">
+
+	<div class="contentRow">
+		<div class="contentColumn half alignLeft">
+			<?php if(!$sf_user->isAuthenticated()) : ?>
+			<br/>
+			<?php echo image_tag('bienvenido.png', array('alt' => 'Bienvenido a Ululand')) ?>
+			<br/>
+			<div class="center large" style="background: #8fceff; padding: 0.5em; -moz-border-radius: 5px;">
+				<?php echo link_to(__('Register'), '@register'); ?> - 
+				<?php echo link_to(__('Log in'), '@sf_guard_signin'); ?>
+			</div>
+			<?php else: ?>
+				<div class="contentBox">
+					<h3 class="header">
+						<?php echo __('Your profile'); ?> <?php echo "(".linkToEditProfile($sf_user->getProfile(), array(), __('edit')).")" ?>:
+					</h3>
+					
+					<?php include_partial('profile/badge', array('profile' => $sf_user->getProfile()) ); ?>
+					
+					<div class="clearFloat"></div>
+				</div>
+			<?php endif; ?>
+		</div>
+			
+		<div class="contentColumn half alignRight">
+			<div class="contentBox bordered">
+				<h3 class="header"><?php echo __('Quick Links'); ?></h3>
+				<a href="<?php echo url_for('profile/list'); ?>" class="bigBox">
+					<span class="large"><?php echo __('Registered People'); ?></span>
+				</a>
+				<a href="<?php echo url_for('game/list'); ?>" class="bigBox">
+					<span class="large"><?php echo __('Games'); ?></span>
+				</a>
+			</div>
+		</div>
+		
 	</div>
+
+</div>
+	<!-- 
 	
 	<?php if( !$sf_user->isAuthenticated() ): ?>
 		<div class="contentColumn medium alignRight">
@@ -64,3 +102,5 @@
 		</div>
 		<?php endif; ?>
 	<?php endif; ?>
+	
+	 -->

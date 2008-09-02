@@ -23,13 +23,11 @@ class profileActions extends sfActions
 
 	public function executeList()
 	{
-		//$this->profiles = AvatarPeer::doSelect(new Criteria());
-
-		$pager = new sfPropelPager('sfGuardUserProfile', sfConfig::get('app_pager_profile'));
-		$pager->setPage($this->getRequestParameter('page', 1));
-		$pager->init();
-
-		$this->profilesPager = $pager;
+		$search = $this->getRequestParameter('search');
+		if($search)
+		{
+			$this->search = $search;
+		}
 	}
 
 /**
