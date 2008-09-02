@@ -36,7 +36,7 @@
 	<div id="content">
 		<?php include_partial('global/mainHeader') ?>
 		
-		<?php // @todo mover la condici�n del if a una funci�n en alg�n sitio decente ?>
+		<?php // @todo mover la condición del if a una funci�n en alg�n sitio decente ?>
 		<?php if (is_readable($sf_context->getModuleDirectory() . DIRECTORY_SEPARATOR ."templates". DIRECTORY_SEPARATOR ."_". "header" .".php")) : ?>
 			<?php include_partial($sf_context->getModuleName() . '/header') ?>
 		<?php endif; ?>

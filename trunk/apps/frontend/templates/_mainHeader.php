@@ -6,10 +6,7 @@ $isHome = $module == 'home' || $module == 'sfGuardAuth';
 
 $isGames = $module == 'game';
 
-$isCommunity = $module == 'nahoWiki' ||
-	$module == 'collaboration' ||
-	$module == 'recipe' ||
-	$module == 'community' ||
+$isCommunity = $module == 'group' ||
 	$module == 'profile';
 
 ?>
@@ -17,6 +14,7 @@ $isCommunity = $module == 'nahoWiki' ||
 	<?php if($isCommunity) : ?>
 	<ul>
 		<li><?php echo link_to(__('People'), 'profile', array('class' => $module == "profile" ? 'selected' : '')); ?></li>
+		<li><?php echo link_to(__('Groups'), 'group', array('class' => $module == "group" ? 'selected' : '')); ?></li>
 	</ul>
 	<?php endif; ?>
 	
