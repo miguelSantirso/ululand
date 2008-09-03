@@ -106,7 +106,7 @@
 	}
 	
 	/**
-	 * Retorna el c�digo html de un enlace al men� de edici�n de la receta pasada como par�metro
+	 * Retorna el código html de un enlace al men� de edici�n de la receta pasada como par�metro
 	 *
 	 * @param CodePiece $recipe Receta a la que se desea enlazar
 	 * @param array $options opciones que se a�adir�n al link_to
@@ -118,3 +118,19 @@
 		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
 		return link_to($linkText, "recipe/edit?stripped_title=".$recipe->getStrippedTitle(), $options);
 	}
+	
+		/**
+	 * Retorna el código html de un enlace al grupo pasado como parámetro
+	 *
+	 * @param Group $group Grupo al que se desea enlazar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace al grupo pasado como parámetro
+	 */
+	function linkToGroup($group, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $group->getName() : $customText;
+		return link_to($linkText, "group/show?group=".$group->getId(), $options);
+	}
+	
+	

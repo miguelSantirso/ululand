@@ -23,7 +23,7 @@ class PlayerProfile extends BasePlayerProfile
 	public function getGroups()
 	{
 		// Obtener todas las relaciones de grupo en las que participa el jugador
-		$groupships = PlayerProfile::getPlayerProfile_Groups();
+		$groupships = $this->getPlayerProfile_Groups();
 
 		$groups = Array();
 		foreach($groupships as $groupship) // Para cada relaci�n

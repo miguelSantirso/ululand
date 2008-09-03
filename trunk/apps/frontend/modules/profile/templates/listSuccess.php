@@ -4,7 +4,7 @@
 
 	<div class="contentColumn wide alignLeft">
 		<?php if(isset($search)) : ?>
-			<h3 class="header"><?php echo sprintf(__('Developers whose name is similar to %1$s (%2$s)'), link_to($search, 'profile/list?search='.$search), link_to('show all', 'profile/list')); ?></h3>
+			<h3 class="header"><?php echo sprintf(__('Players whose name is similar to %1$s (%2$s)'), link_to($search, 'profile/list?search='.$search), link_to('show all', 'profile/list')); ?></h3>
 		<?php endif; ?>
 			
 		<?php include_component('profile', 'list'); ?>		

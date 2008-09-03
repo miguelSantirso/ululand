@@ -30,7 +30,7 @@ class profileActions extends sfActions
 		}
 	}
 
-/**
+	/**
 	 * Muestra la información de un perfil
 	 *
 	 */
@@ -60,7 +60,7 @@ class profileActions extends sfActions
 		$this->description = $this->getRequestParameter('description');
 	}
 	
-	 /* Muestra el formulario de edición de un perfil
+	/* Muestra el formulario de edición de un perfil
 	 *
 	 */
 	public function executeEdit()
@@ -92,7 +92,7 @@ class profileActions extends sfActions
 		$this->forward404Unless($this->sf_guard_user_profile);
 	}
 	
-	 /* Actualiza un perfil según los datos recibidos como parámetros
+	/* Actualiza un perfil según los datos recibidos como parámetros
 	 *
 	 * @return unknown
 	 */

@@ -104,12 +104,11 @@ class groupActions extends sfActions
   
   public function executeList()
   {
-  	// Obtener el avatar del perfil
-	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
-	$this->forward404Unless($this->profile);
-	
-  	// Obtenemos los grupos del avatar
-    $this->groups = $this->profile->getGroups();	
+  	$search = $this->getRequestParameter('search');
+  	if($search)
+  	{
+  		$this->search = $search;
+  	}
   }
   
   public function executeShow()

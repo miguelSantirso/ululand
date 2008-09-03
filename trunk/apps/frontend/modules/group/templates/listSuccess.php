@@ -1,25 +1,33 @@
-<?php use_helper('Tooltip'); ?>
-<?php use_helper('nahoWiki'); ?>
+<?php use_helper('Partial'); ?>
 
-<div class="contentColumn wide normalBox subtle">
-	<h2 class="alignCenter">Tus grupos</h2>
-	<p class="alignCenter"><?php echo "&iexcl;T&iacute;o, est&aacute;s en ", count($groups), " grupos!"; ?></p>
+<div id="pageContent">
+
+	<?php if(isset($search)) : ?>
+		<div class="contentColumn half alignCenter">
+			<div class="contentBox light">
+				<p class="noSpace center"><?php echo sprintf(__('Search results for %1$s (%2$s)'), link_to($search, 'group/list?search='.$search), link_to('clear', 'group/list')); ?></p>
+			</div>
+		</div>
+	<?php endif; ?>
+	
+	<div class="contentColumn wide alignLeft">
+
+		<?php include_component('group', 'list', array('player' => $sf_user->getProfile()) ); ?>
+		
+		<?php if($sf_user->isAuthenticated()) : ?>
+			<?php echo link_to(__('Create your own &raquo;'), 'group/create', array('class' => 'button')); ?>
+		<?php else :  ?>
+			<p class="center">
+				(<?php echo sprintf(__('requires %s or %s'), link_to(__('log in'), '@sf_guard_signin'), link_to(__('register'), '@register')) ?>)
+				<?php echo link_to(__('Create your own &raquo;'), 'group/create', array('class' => '')); ?> 
+			</p>
+		<?php endif; ?>
+	</div>
+	
+	<div class="contentColumn quarter alignRight">
+		
+		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
+		
+	</div>
+	
 </div>
-
-<?php if(count($groups) == 0) { ?>
-	<p>A&uacute;n no est&aacute;s en ning&uacute;n grupo. <?php echo link_to('Ver todos los grupos', 'group/listall') ?>.</p>
-<? } else { ?>
-	<h3>Listado de tus grupos</h3>
-	<ul class="normalList subtle">
-	<?php $alt = ""; ?>
-	<?php foreach ($groups as $group): ?>
-		<li class="<?php echo $alt; ?>">
-		<p><?php echo link_to($group->getName(), 'group/show?group='.$group->getId()), "<br/>"; ?></p>
-		</li>
-		<?php $alt = $alt == "" ? "alt" : ""; ?>
-	<?php endforeach; ?>
-	</ul>
-<?php } ?>
-
-
-<?php echo link_to(__('All groups'), 'group/listall', array('class' => 'navigation')) ?>
