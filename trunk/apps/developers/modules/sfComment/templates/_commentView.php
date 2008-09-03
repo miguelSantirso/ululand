@@ -11,7 +11,8 @@
 	<?php
 		$linkToRemove = link_to_remote(__('Remove'), array(
     			'update' => "comment_".$comment['Id'],
-    			'url'    => 'sfComment/remove?id='.$comment['Id']),
+    			'url'    => 'sfComment/remove?id='.$comment['Id'],
+				'complete' => 'new Effect.Highlight("comment_'.$comment['Id'].'" , { startcolor: "#CD0000" });'),
     		array('class' => ''));
 	?>
 

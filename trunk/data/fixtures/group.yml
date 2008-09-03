@@ -1,0 +1,47 @@
+# GRUPOS
+##########
+
+sfGuardUser:
+  prueba:
+    username:       prueba@prueba.com
+    password:       prueba
+    is_super_admin: false
+  jugador:
+    username:       jugador@jugador.com
+    password:       jugador
+    is_super_admin: false
+  
+sfGuardUserProfile:
+  prueba:
+    username: prueba
+    culture: es
+    user_id: prueba
+  jugador:
+    username: jugador
+    culture: es
+    user_id: jugador
+    
+PlayerProfile:
+  prueba:
+    user_profile_id: prueba
+    description: Solo soy una prueba
+  jugador:
+    user_profile_id: jugador
+    description: Soy un jugador
+    
+Group:
+  Administracion:
+    name: Administracion
+    description: El grupo de los que mandan
+
+PlayerProfile_Group:
+  prueba_Administracion:
+    player_profile_id: prueba
+    grupo_id: Administracion
+    is_owner: true
+    is_approved: true
+  jugador_Administracion:
+    player_profile_id: jugador
+    grupo_id: Administracion
+    is_owner: false
+    is_approved: false

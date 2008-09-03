@@ -50,7 +50,7 @@ class groupActions extends sfActions
 		$this->newGroup->save();
 		
 		// Obtener el avatar del perfil
-		$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
+		$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
 		$this->forward404Unless($this->profile);
 		
 		// Obtener el grupo del perfil
@@ -113,8 +113,8 @@ class groupActions extends sfActions
   
   public function executeShow()
   {
-  	// Obtener el avatar del perfil
-	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
+  	// Obtener el jugador del perfil
+	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
 	$this->forward404Unless($this->profile);
   	
     $this->group = GroupPeer::retrieveByPk($this->getRequestParameter('group'));
@@ -122,7 +122,7 @@ class groupActions extends sfActions
     
     $this->description = $this->group->getDescription();
     
-    // Obtenemos los avatares y las peticiones del grupo
+    // Obtenemos los jugadores y las peticiones del grupo
     $this->avatars = $this->group->getPlayerProfiles();
     $this->owners = $this->group->getOwners();
     $this->requests = $this->group->getRequests();
@@ -132,15 +132,15 @@ class groupActions extends sfActions
   
   public function executeUnion()
   {
-  	// Obtener el avatar del perfil
-	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getProfile()->getId());
+  	// Obtener el jugador del perfil
+	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
 	$this->forward404Unless($this->profile);
 	
   	// Obtener el grupo al que se quiere unir
   	$this->group = GroupPeer::retrieveByPk($this->getRequestParameter('group'));
     $this->forward404Unless($this->group);
     
-    // Crear un nuevo objeto Avatar_Group
+    // Crear un nuevo objeto PlayerProfile_Group
 	$this->newPlayerProfile_Group = new PlayerProfile_Group();
 		
 		
@@ -183,7 +183,7 @@ class groupActions extends sfActions
   
   public function executeReject()
   {
-  	// Obtener el avatar 
+  	// Obtener el jugador
 	$player = $this->getRequestParameter('player');
 	
   	// Obtener el grupo

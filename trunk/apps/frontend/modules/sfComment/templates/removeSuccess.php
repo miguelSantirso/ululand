@@ -1,1 +1,1 @@
-<p class="small noSpace">Esta funcionalidad no est&aacute; implementada todav&iacute;a</p>
+<p class="small noSpace">Comentario borrado</p>

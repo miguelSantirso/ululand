@@ -31,8 +31,8 @@
 			<div class="contentBox" id="postComment">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>
 			<?php
-				// include_component('sfComment', 'commentForm', array('object' => $playerProfile, 'order' => 'desc'));
-				// include_component('sfComment', 'commentList', array('object' => $playerProfile, 'order' => 'desc'));
+				 include_component('sfComment', 'commentForm', array('object' => $playerProfile, 'order' => 'desc'));
+				 include_component('sfComment', 'commentList', array('object' => $playerProfile, 'order' => 'desc'));
 			?>
 			</div>
 		</div>

@@ -16,4 +16,9 @@ class myUser extends sfGuardSecurityUser
 	{
 		return $this->getGuardUser()->getId();
 	}
+	
+	public function getPlayerProfile()
+	{
+		return $this->getProfile()->getPlayerProfile();
+	}
 }

@@ -14,6 +14,16 @@ class sfCommentActions extends BasesfCommentActions
 {
 	public function executeRemove()
 	{
-		/* not implemented yet */
+		$commentId = $this->getRequestParameter('id');
+		if (!$commentId)
+		{
+			return sfView::NONE;
+		}
+			
+		$comment = sfCommentPeer::retrieveByPK($commentId);
+		$comment->delete();
+
+		return sfView::SUCCESS;
+		
 	}
 }

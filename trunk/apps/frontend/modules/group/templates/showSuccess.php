@@ -13,12 +13,12 @@
 		if(count($owners)) echo __('Owners'); echo "<br/>";
 		foreach ($owners as $owner)
 		{
-			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($owner->getId()));//$owner->getProfileLink();
-			if ($profile==$owner) 
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($owner->getUserProfileId()));
+			if ($profile==$owner)
 			{
 				echo " ", link_to(__('Leave'), 'group/reject?group='.$group->getId().'&player='.$owner->getId());
 				$belongs = true;
-				$isowner = true; 
+				$isowner = true;
 			} 
 		} 
 	?>
@@ -29,7 +29,7 @@
 		if(count($avatars)) echo __('Other members'); echo "<br/>";
 		foreach ($avatars as $avatar)
 		{  
-			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($avatar->getId()));//$avatar->getProfileLink(); 
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($avatar->getUserProfileId()));
 			if ($profile==$avatar) 
 			{ 
 				echo " ", link_to(__('Leave'), 'group/reject?group='.$group->getId().'&player='.$avatar->getId()); 
@@ -45,7 +45,7 @@
 		if(count($requests)) echo __('Requests '); echo "<br/>"; 
 		foreach ($requests as $request)
 		{
-			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($request->getId()));//$petition->getProfileLink();
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($request->getUserProfileId()));
 			if ($profile==$request) 
 			{
 				echo " ", link_to(__('Delete request'), 'group/reject?group='.$group->getId().'&player='.$request->getId()); 
@@ -76,7 +76,7 @@
 		if(count($members)) echo __('Ranking'); echo "<br/>";
 		foreach ($members as $member)
 		{
-			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($member->getId())), " ", $member->getTotalCredits();
+			echo linkToProfile(sfGuardUserProfilePeer::retrieveByPk($member->getUserProfileId())), " ", $member->getTotalCredits();
 			echo "<br/>";
 		} 
 	?>
