@@ -16,7 +16,7 @@
 				<div class="xSmall alignLeft">
 					<p class="noSpace">
 						<a href="#recipeDetails"><?php echo __('Embed &amp; details'); ?></a>
-						| <a href="#comments"><?php echo __('Post a comment'); ?></a>
+						| <a href="#comments"><?php echo __('Comment'); ?></a>
 					</p>
 				</div>
 				<div class="xSmall right">

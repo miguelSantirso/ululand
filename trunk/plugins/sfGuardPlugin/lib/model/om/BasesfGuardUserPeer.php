@@ -394,6 +394,13 @@ abstract class BasesfGuardUserPeer {
 			$c->add(CodePiecePeer::CREATED_BY, $obj->getId());
 			$affectedRows += CodePiecePeer::doDelete($c, $con);
 
+			include_once 'lib/model/Game.php';
+
+						$c = new Criteria();
+			
+			$c->add(GamePeer::CREATED_BY, $obj->getId());
+			$affectedRows += GamePeer::doDelete($c, $con);
+
 			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardUserPermission.php';
 
 						$c = new Criteria();

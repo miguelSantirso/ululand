@@ -144,12 +144,13 @@ propel:
     api_key:           { type: varchar(13),  required: false }
     name:              { type: varchar(255), required: true }
     description:       { type: longvarchar,  required: false }
+    created_by:        { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    created_at: ~
+    updated_at: ~ 
     thumbnail_path:    { type: varchar(255), required: false}
     url:               { type: varchar(255), required: true }
     width:             { type: integer,      required: true }
-    height:            { type: integer,      required: true }    
-    bgcolor:           { type: varchar(8),   required: false }
-    gameplays:         { type: integer,      required: false, default: 0 }
+    height:            { type: integer,      required: true }
     
   widget:
     _attributes: { phpName: Widget }
@@ -163,25 +164,7 @@ propel:
     height:            { type: integer,      required: true }    
     bgcolor:           { type: varchar(8),   required: false }
     
-  comment:
-    _attributes: {phpName: Comment}
-    id:                ~
-    id_avatar:         { type: integer, required: true }
-    id_game:           { type: integer, required: true }
-    text:              { type: longvarchar, required: true }
-    created_at:        ~
-    _foreignKeys: 
-      -
-        foreignTable: game
-        onDelete:     cascade
-        references: 
-          - { local: id_game, foreign: id }
-      -
-        foreignTable: avatar
-        onDelete:     cascade
-        references: 
-          - { local: id_avatar, foreign: id }
-          
+    
   message:
     _attributes: {phpName: Message}
     id:                ~

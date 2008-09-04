@@ -9,6 +9,11 @@
  */ 
 class DeveloperProfile extends BaseDeveloperProfile
 {
+	public function __toString()
+	{
+		$this->getsfGuardUserProfile()->__toString();		
+	}
+	
 	/**
 	 * Retorna el número de recetas enviadas al Cookbook de código flash
 	 *

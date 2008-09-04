@@ -1,5 +1,4 @@
 
-
 # USUARIOS
 ##########
 
@@ -56,5 +55,34 @@ CodePiece:
   AddChild:
     created_by: miguelSantirso
     title: Uso de AddChild
-    source: <pre name="code" class="as3">this.AddChild(new MyBitmap());</pre>
+    source: Source Code
     tags: as3, actionscript, addchild, bitmap
+
+
+
+# GAMES
+#######
+
+Game:
+  arkanoid:
+    privileges_level: 1
+    name: Arkanoid
+    description: Un arkanoid muy sencillo
+    created_by: miguelSantirso
+    thumbnail_path: thumbnail.gif
+    url: arkanoid.swf
+    width: 640
+    height: 480
+    tags: arkanoid, sencillo, adictivo
+    
+  snail_alert:
+    privileges_level: 1
+    name: Snail Alert 2
+    description: La Joya de la Corona
+    created_by: miguelSantirso
+    thumbnail_path: thumbnail.png
+    url: snail alert 2.swf
+    width: 640
+    height: 480
+    tags: pncil, adictivo, caracoles, agua, fisicas
+    

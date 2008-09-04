@@ -77,7 +77,7 @@ class Game extends BaseGame
 		}
 	}
 	
-	public function getCommentsAmount()
+	public function getNbComments()
 	{
 		return count($this->getComments());
 	}
@@ -116,9 +116,44 @@ class Game extends BaseGame
 		}
 		parent::save($con);
 	}
+	
+	/**
+	 * Retorna una cadena con todos los tags del objeto separados por comas.
+	 *
+	 * @todo Buscar la forma de que esta función esté en el ámbito del plugin en lugar de en el de cada clase
+	 * @return Cadena con todos los tags del objeto separados por comas.
+	 */
+	public function getTagsString()
+	{
+		$tags = $this->getTags();
+		$tagsString = "";
+		foreach($tags as $tag)
+		{
+			$tagsString .= $tag; 
+			$tagsString .= ", ";
+		}
+		
+		return trim($tagsString, " ,");
+	}
+	
+	public function getLinkedTagsString()
+	{
+		$tags = $this->getTags();
+		$tagsString = "";
+		foreach($tags as $tag)
+		{
+			$tagsString .= link_to($tag, 'game/list?tag='.$tag);
+			$tagsString .= ', ';
+		}
+		
+		return trim($tagsString, " ,");
+	}
 
 }
 
+sfPropelBehavior::add('Game', array('sfPropelActAsSignableBehavior' => array()));
+sfPropelBehavior::add('Game', array('sfPropelActAsCountableBehavior'));
+sfPropelBehavior::add('Game', array('sfPropelActAsCommentableBehavior'));
 sfPropelBehavior::add('Game', array('sfPropelActAsTaggableBehavior'));
 sfPropelBehavior::add(
   'Game', 

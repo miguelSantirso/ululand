@@ -12,7 +12,7 @@
 	
 	<div class="contentColumn wide alignLeft">
 
-		<?php include_component('group', 'list', array('player' => $sf_user->getProfile()) ); ?>
+		<?php include_component('group', 'list'); ?>
 		
 		<?php if($sf_user->isAuthenticated()) : ?>
 			<?php echo link_to(__('Create your own &raquo;'), 'group/create', array('class' => 'button')); ?>

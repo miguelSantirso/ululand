@@ -16,6 +16,7 @@ sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
 
+
 # Messages and comments
 add_message:
   url:   /add_message

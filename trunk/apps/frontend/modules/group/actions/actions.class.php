@@ -76,8 +76,8 @@ class groupActions extends sfActions
   }
   
   /**
-   * Funci�n que se ocupa de gestionar los posibles errores de validaci�n del formulario de creación de un grupo.
-   * Lo �nico que hace es redirigir a la p�gina de donde se ven�a para que el usuario pueda corregir
+   * Función que se ocupa de gestionar los posibles errores de validación del formulario de creación de un grupo.
+   * Lo único que hace es redirigir a la página de donde se venía para que el usuario pueda corregir
    * los errores que haya cometido al rellenar el formulario.
    *
    * @return void
@@ -90,18 +90,6 @@ class groupActions extends sfActions
     return sfView::SUCCESS;
   }
   
-  public function executeListall()
-  {
-  	$pager = new sfPropelPager('Group', sfConfig::get('app_pager_profile'));
-	$c = new Criteria();
-	$c->addDescendingOrderByColumn(GroupPeer::NAME);
-	$pager->setCriteria($c);
-	$pager->setPage($this->getRequestParameter('page', 1));
-	$pager->init();
-	
-	$this->groupsPager = $pager;		
-  }
-  
   public function executeList()
   {
   	$search = $this->getRequestParameter('search');
@@ -109,26 +97,19 @@ class groupActions extends sfActions
   	{
   		$this->search = $search;
   	}
+  	$username = $this->getRequestParameter('username');
+  	if($username)
+  	{
+  		$this->username = $username;
+  	}
   }
   
   public function executeShow()
-  {
-  	// Obtener el jugador del perfil
-	$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
-	$this->forward404Unless($this->profile);
-  	
+  {  	
     $this->group = GroupPeer::retrieveByPk($this->getRequestParameter('group'));
     $this->forward404Unless($this->group);
     
-    $this->description = $this->group->getDescription();
-    
-    // Obtenemos los jugadores y las peticiones del grupo
-    $this->avatars = $this->group->getPlayerProfiles();
-    $this->owners = $this->group->getOwners();
-    $this->requests = $this->group->getRequests();
-    $this->members = $this->group->getMembers();
-    $this->group->incrementCounter(); // Una visita m�s
-    
+    $this->group->incrementCounter(); // Una visita más
   }
   
   public function executeUnion()

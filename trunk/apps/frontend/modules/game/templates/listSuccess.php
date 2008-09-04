@@ -1,36 +1,35 @@
+<?php use_helper('Partial'); ?>
 
-<div class="contentColumn wide normalBox subtle">
-	<h2 class="alignCenter">La sala de m&aacute;quinas</h2>
-	<p class="alignCenter">Elige un juego. Divi&eacute;rtete. Esto es <strong>ulu</strong>land; esta es tu casa.</p>
-</div>
+<div id="pageContent">
 
-<?php if(isset($tag)) { ?>
-	<div class="normalBox normal">
-		<h3 class="small alignCenter">Mostrando juegos etiquetados con "<strong><?php echo $tag; ?></strong>" (<?php echo link_to("mostrar todos", "game/list"); ?>)</h3>
+	<?php if(isset($tag)) : ?>
+		<div class="contentColumn half alignCenter">
+			<div class="light contentBox">
+				<p class="noSpace center"><?php echo sprintf(__('Showing games tagged with %1$s (%2$s)'), link_to($tag, 'game/list?tag='.$tag), link_to('show all', 'game/list')); ?></p>
+			</div>
+		</div>
+	<?php endif; ?>
+	<?php if(isset($search)) : ?>
+		<div class="contentColumn half alignCenter">
+			<div class="contentBox light">
+				<p class="noSpace center"><?php echo sprintf(__('Search results for %1$s (%2$s)'), link_to($search, 'game/list?search='.$search), link_to('clear', 'game/list')); ?></p>
+			</div>
+		</div>
+	<?php endif; ?>
+	
+	<div class="contentColumn wide alignLeft">
+		<div class="contentBox">
+			<?php include_component('game', 'list'); ?>
+		</div>
 	</div>
-<?php } ?>
 
-<?php use_helper('PagerNavigation') ?>
-
-<?php echo pager_navigation($gamesPager, 'game/list') ?>
-<?php $alt = ""; ?>
-<ul class="normalList subtle">
-<?php foreach ($gamesPager->getResults() as $game): ?>
-	<li class=<?php echo $alt; ?>>
-		<?php echo link_to(
-			image_tag($game->getThumbnailUrl(), array('alt' => 'Game Logo', 'class' => 'gameThumbnail')),
-			'game/show?id='.$game->getId(), array('class' => "alignLeft")); ?>
-		<h4 class="xLarge"><?php echo link_to($game->getName(), 'game/show?id='.$game->getId()); ?></h4>
-		<p class=""><?php echo $game->getDescription(); ?></p>
-		<p class="small">Puntuaci&oacute;n: <?php echo $game->getRating(); ?> de 5</p>
-		<p class="small"><?php echo $game->getCommentsAmount(); ?> comentarios</p>
-		<p class="small"><?php echo $game->getGameplays(); ?> partidas jugadas</p>
-		<div style="clear: both;"></div>
-	</li>
-	<?php $alt = $alt == "" ? "alt" : ""; ?>
-<?php endforeach; ?>
-</ul>
-
-<?php echo pager_navigation($gamesPager, 'game/list') ?>
-
-<?php echo link_to('&laquo; Portada', 'home/Welcome', array('class' => 'navigation')) ?>
+	<div class="contentColumn quarter alignRight">
+		
+		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
+		
+		<div class="">
+			<?php include_partial('tagCloud'); ?>
+		</div>
+	</div>
+	
+</div>

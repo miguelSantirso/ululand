@@ -42,6 +42,12 @@ class GameMapBuilder {
 
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
+		$tMap->addForeignKey('CREATED_BY', 'CreatedBy', 'int', CreoleTypes::INTEGER, 'sf_guard_user', 'ID', false, null);
+
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+
+		$tMap->addColumn('UPDATED_AT', 'UpdatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+
 		$tMap->addColumn('THUMBNAIL_PATH', 'ThumbnailPath', 'string', CreoleTypes::VARCHAR, false, 255);
 
 		$tMap->addColumn('URL', 'Url', 'string', CreoleTypes::VARCHAR, true, 255);
@@ -49,10 +55,6 @@ class GameMapBuilder {
 		$tMap->addColumn('WIDTH', 'Width', 'int', CreoleTypes::INTEGER, true, null);
 
 		$tMap->addColumn('HEIGHT', 'Height', 'int', CreoleTypes::INTEGER, true, null);
-
-		$tMap->addColumn('BGCOLOR', 'Bgcolor', 'string', CreoleTypes::VARCHAR, false, 8);
-
-		$tMap->addColumn('GAMEPLAYS', 'Gameplays', 'int', CreoleTypes::INTEGER, false, null);
 
 	} 
 } 

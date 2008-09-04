@@ -9,17 +9,16 @@
  */ 
 class PlayerProfile extends BasePlayerProfile
 {
-/**
-	 * __toString: Función auxiliar "mágica" que retorna una cadena que representa al objeto.
-	 *
-	 * @return string Cadena representando al objeto
-	 **/
 	public function __toString()
 	{
-		return $this->name;
+		$this->getsfGuardUserProfile()->__toString();		
 	}
 	
-// Retorna una lista con los grupos del jugador
+	/**
+	 * Retorna una lista con todos los grupos del jugador
+	 *
+	 * @return unknown
+	 */
 	public function getGroups()
 	{
 		// Obtener todas las relaciones de grupo en las que participa el jugador

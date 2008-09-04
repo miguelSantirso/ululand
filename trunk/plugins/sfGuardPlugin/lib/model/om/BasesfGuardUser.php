@@ -62,6 +62,12 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	protected $lastCodePieceCriteria = null;
 
 	
+	protected $collGames;
+
+	
+	protected $lastGameCriteria = null;
+
+	
 	protected $collsfGuardUserPermissions;
 
 	
@@ -469,6 +475,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collGames !== null) {
+				foreach($this->collGames as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collsfGuardUserPermissions !== null) {
 				foreach($this->collsfGuardUserPermissions as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -552,6 +566,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 				if ($this->collCodePieces !== null) {
 					foreach($this->collCodePieces as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collGames !== null) {
+					foreach($this->collGames as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -780,6 +802,10 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 			foreach($this->getCodePieces() as $relObj) {
 				$copyObj->addCodePiece($relObj->copy($deepCopy));
+			}
+
+			foreach($this->getGames() as $relObj) {
+				$copyObj->addGame($relObj->copy($deepCopy));
 			}
 
 			foreach($this->getsfGuardUserPermissions() as $relObj) {
@@ -1026,6 +1052,76 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	public function addCodePiece(CodePiece $l)
 	{
 		$this->collCodePieces[] = $l;
+		$l->setsfGuardUser($this);
+	}
+
+	
+	public function initGames()
+	{
+		if ($this->collGames === null) {
+			$this->collGames = array();
+		}
+	}
+
+	
+	public function getGames($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseGamePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collGames === null) {
+			if ($this->isNew()) {
+			   $this->collGames = array();
+			} else {
+
+				$criteria->add(GamePeer::CREATED_BY, $this->getId());
+
+				GamePeer::addSelectColumns($criteria);
+				$this->collGames = GamePeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(GamePeer::CREATED_BY, $this->getId());
+
+				GamePeer::addSelectColumns($criteria);
+				if (!isset($this->lastGameCriteria) || !$this->lastGameCriteria->equals($criteria)) {
+					$this->collGames = GamePeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastGameCriteria = $criteria;
+		return $this->collGames;
+	}
+
+	
+	public function countGames($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseGamePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(GamePeer::CREATED_BY, $this->getId());
+
+		return GamePeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addGame(Game $l)
+	{
+		$this->collGames[] = $l;
 		$l->setsfGuardUser($this);
 	}
 

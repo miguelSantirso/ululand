@@ -320,13 +320,19 @@ CREATE TABLE `game`
 	`api_key` VARCHAR(13),
 	`name` VARCHAR(255)  NOT NULL,
 	`description` TEXT,
+	`created_by` INTEGER,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
 	`thumbnail_path` VARCHAR(255),
 	`url` VARCHAR(255)  NOT NULL,
 	`width` INTEGER  NOT NULL,
 	`height` INTEGER  NOT NULL,
-	`bgcolor` VARCHAR(8),
-	`gameplays` INTEGER default 0,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	INDEX `game_FI_1` (`created_by`),
+	CONSTRAINT `game_FK_1`
+		FOREIGN KEY (`created_by`)
+		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
@@ -348,33 +354,6 @@ CREATE TABLE `widget`
 	`height` INTEGER  NOT NULL,
 	`bgcolor` VARCHAR(8),
 	PRIMARY KEY (`id`)
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- comment
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `comment`;
-
-
-CREATE TABLE `comment`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`id_avatar` INTEGER  NOT NULL,
-	`id_game` INTEGER  NOT NULL,
-	`text` TEXT  NOT NULL,
-	`created_at` DATETIME,
-	PRIMARY KEY (`id`),
-	INDEX `comment_FI_1` (`id_game`),
-	CONSTRAINT `comment_FK_1`
-		FOREIGN KEY (`id_game`)
-		REFERENCES `game` (`id`)
-		ON DELETE CASCADE,
-	INDEX `comment_FI_2` (`id_avatar`),
-	CONSTRAINT `comment_FK_2`
-		FOREIGN KEY (`id_avatar`)
-		REFERENCES `avatar` (`id`)
-		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

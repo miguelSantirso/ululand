@@ -67,8 +67,7 @@ class Group extends BaseGroup
 		$playerships = Group::getPlayerProfile_GroupsJoinPlayerProfile($c);
 
 		$players = Array();
-		$owner = Array();
-		foreach($playerships as $playership) // Para cada relaci�n
+		foreach($playerships as $playership) // Para cada relación
 		{
 					if($playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
 		}

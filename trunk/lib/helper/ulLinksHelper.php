@@ -42,7 +42,7 @@
 		return link_to($linkText, "profile/edit?username=".$sfGuardUserProfile->getUsername(), $options);
 	}
 	
-		/**
+	/**
 	 * Retorna el c�digo html de un enlace al perfil del usuario pasado como par�metro, incluyendo el gravatar
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
@@ -119,7 +119,7 @@
 		return link_to($linkText, "recipe/edit?stripped_title=".$recipe->getStrippedTitle(), $options);
 	}
 	
-		/**
+	/**
 	 * Retorna el código html de un enlace al grupo pasado como parámetro
 	 *
 	 * @param Group $group Grupo al que se desea enlazar
@@ -133,4 +133,35 @@
 		return link_to($linkText, "group/show?group=".$group->getId(), $options);
 	}
 	
+	/**
+	 * Retorna el código html de un enlace al juego pasado como parámetro
+	 *
+	 * @param Game $game Juego al que se desea enlazar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace al grupo pasado como parámetro
+	 */
+	function linkToGame($game, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $game->getName() : $customText;
+		return link_to($linkText, "game/show?id=".$game->getId(), $options);
+	}
+	
+	/**
+	 * Retorna el código html de un enlace al juego pasado como parámetro, incluyendo el thumbnail
+	 *
+	 * @param Game $game Juego al que se desea enlazar
+	 * @param int $size Tamaño del thumbnail
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace al grupo pasado como parámetro
+	 */
+	function linkToGameWithThumbnail($game, $size = 100, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $game->getName() : $customText;
+		$imageTag = image_tag($game->getThumbnailUrl(), array('alt' => $game, 'title' => $game));
+		$linkText = '<span class="gravatar">'.$imageTag.'</span>'.$linkText;
+		
+		return '<span class="linkToProfileWithGravatar">'.linkToGame($game, $options, $linkText ).'</span>';
+	}
 	

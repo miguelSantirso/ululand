@@ -36,9 +36,7 @@
 		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
 		
 		<div class="">
-
 			<?php include_partial('tagCloud'); ?>
-
 		</div>
 	</div>
 	

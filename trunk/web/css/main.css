@@ -431,14 +431,16 @@ div.contentColumn.wide
 {
 	width: 720px;
 }
+div.contentColumn.twoThirds
+{
+	width: 640px;
+}
 div.contentColumn.half
 {
 	width: 480px;
 }
-div.contentColumn.third
-{
-	width: 320px;
-}
+div.contentColumn.halfWide { width: 360px }
+div.contentColumn.third { width: 320px; }
 div.contentColumn.quarter
 {
 	width: 240px;

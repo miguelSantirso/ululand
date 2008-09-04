@@ -56,6 +56,7 @@ class GamePeer extends BaseGamePeer
 	    srand((double)microtime()*1000000); 
 	    $i = 0;
 	
+	    $string = "";
 	    while ($i <= $length)
 	    { 
 	        $num = rand() % 35; 

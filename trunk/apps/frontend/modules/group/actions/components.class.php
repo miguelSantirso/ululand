@@ -26,13 +26,13 @@ class groupComponents extends sfComponents
 		{
 			$c->setLimit($this->limit);
 		}
-		$this->player = isset($this->player) ? $this->player : $this->getRequestParameter('player');
-		if($this->player)
+		$this->username = isset($this->username) ? $this->username : $this->getRequestParameter('username');
+		if($this->username)
 		{
 			$c->addJoin(GroupPeer::ID, PlayerProfile_GroupPeer::GRUPO_ID);
 			$c->addJoin(PlayerProfile_GroupPeer::PLAYER_PROFILE_ID, PlayerProfilePeer::ID);
 			$c->addJoin(PlayerProfilePeer::USER_PROFILE_ID, sfGuardUserProfilePeer::ID);
-			$c->add(sfGuardUserProfilePeer::USERNAME, $this->player);
+			$c->add(sfGuardUserProfilePeer::USERNAME, $this->username);
 
 		}
 		

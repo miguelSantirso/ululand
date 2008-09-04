@@ -23,21 +23,16 @@ class gameActions extends sfActions
 
   public function executeList()
   {
-		$pager = new sfPropelPager('Game', sfConfig::get('app_pager_profile'));
-		$c = new Criteria();
-		$tag = $this->getRequestParameter('tag');
+    	$tag = $this->getRequestParameter('tag');
 		if($tag)
 		{
 			$this->tag = $tag;
-			$c = TagPeer::getTaggedWithCriteria('Game', $tag);
 		}
-		
-		$c->addDescendingOrderByColumn(GamePeer::NAME);
-		$pager->setCriteria($c);
-		$pager->setPage($this->getRequestParameter('page', 1));
-		$pager->init();
-
-		$this->gamesPager = $pager;
+  		$search = $this->getRequestParameter('search');
+		if($search)
+		{
+			$this->search = $search;
+		}
   }
 
   public function executeShow()
@@ -46,8 +41,7 @@ class gameActions extends sfActions
     $this->forward404Unless($this->game);
     
     // Aumentar en uno las partidas jugadas del juego
-    $this->game->setGameplays($this->game->getGameplays()+1);
-    $this->game->save();
+    $this->game->incrementCounter();
     
     // Cargar los gamestats del juego para mostrarlos en el template
     $this->gamestats = $this->game->getGameStats();
