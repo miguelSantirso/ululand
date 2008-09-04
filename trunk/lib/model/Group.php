@@ -77,3 +77,4 @@ class Group extends BaseGroup
 }
 
 sfPropelBehavior::add('Group', array('sfPropelActAsCommentableBehavior'));
+sfPropelBehavior::add('Group', array('sfPropelActAsCountableBehavior'));

@@ -127,6 +127,7 @@ class groupActions extends sfActions
     $this->owners = $this->group->getOwners();
     $this->requests = $this->group->getRequests();
     $this->members = $this->group->getMembers();
+    $this->group->incrementCounter(); // Una visita más
     
   }
   

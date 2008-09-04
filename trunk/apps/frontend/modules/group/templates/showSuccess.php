@@ -4,6 +4,7 @@
 <div class="contentColumn wide normalBox subtle">
 	<h2 class="alignCenter"><?php echo __('Group'), ": ", $group;?></h2>
 	<p class="alignCenter"><?php echo $description;?></p>
+	<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $group->getCounter(); ?></p>
 </div>
 
 <div class="contentColumn wide normalBox subtle">

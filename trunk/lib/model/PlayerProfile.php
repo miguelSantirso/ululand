@@ -104,3 +104,4 @@ class PlayerProfile extends BasePlayerProfile
 }
 
 sfPropelBehavior::add('PlayerProfile', array('sfPropelActAsCommentableBehavior'));
+sfPropelBehavior::add('PlayerProfile', array('sfPropelActAsCountableBehavior'));

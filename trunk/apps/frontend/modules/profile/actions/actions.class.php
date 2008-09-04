@@ -49,8 +49,10 @@ class profileActions extends sfActions
 		}
 		
 		$this->playerProfile = $this->sf_guard_user_profile->getPlayerProfile(true);
+		$this->playerProfile->incrementCounter(); // Una visita más
 		
 		$this->forward404Unless($this->sf_guard_user_profile);
+		
 	}
 	
 	

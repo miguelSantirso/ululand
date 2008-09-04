@@ -23,6 +23,7 @@
 			<h4 class="header small"><?php echo __('Profile Details:') ?></h4>
 			<p class="noSpace small"><?php echo __('Available credits'); ?>: <strong><?php echo $playerProfile->getAvailableCredits(); ?></strong></p>
 			<p class="noSpace small"><?php echo __('Total earned credits'); ?>: <strong><?php echo $playerProfile->getTotalCredits(); ?></strong></p>
+			<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $playerProfile->getCounter(); ?></p>
 			
 			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 				<p class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></p>
