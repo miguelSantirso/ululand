@@ -29,6 +29,19 @@
 				<p class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></p>
 			<?php } ?>
 			</div>
+			
+			<div class="contentBox" id="rankings">
+				<h4 class="header small"><?php echo __('Friends:') ?></h4>
+				<?php $friends = $playerProfile->getFriends(); 
+				if (count($friends)!=0) { ?>
+				<ul class="tags xLarge">
+					<?php foreach($friends as $friend) : ?>
+					<li><?php echo linkToProfileWithGravatar($friend->getsfGuardUserProfile(), 25); ?></li>
+					<?php endforeach; ?>
+				</ul>
+				<?php } ?>
+			</div>
+			
 			<div class="contentBox" id="postComment">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>
 			<?php

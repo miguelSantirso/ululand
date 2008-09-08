@@ -34,13 +34,11 @@ class FriendshipMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addForeignKey('ID_AVATAR_A', 'IdAvatarA', 'int', CreoleTypes::INTEGER, 'avatar', 'ID', true, null);
+		$tMap->addForeignKey('PLAYER_PROFILE_ID_A', 'PlayerProfileIdA', 'int', CreoleTypes::INTEGER, 'player_profile', 'ID', false, null);
 
-		$tMap->addColumn('A_CONFIRMED', 'AConfirmed', 'boolean', CreoleTypes::BOOLEAN, false, null);
+		$tMap->addForeignKey('PLAYER_PROFILE_ID_B', 'PlayerProfileIdB', 'int', CreoleTypes::INTEGER, 'player_profile', 'ID', false, null);
 
-		$tMap->addForeignKey('ID_AVATAR_B', 'IdAvatarB', 'int', CreoleTypes::INTEGER, 'avatar', 'ID', true, null);
-
-		$tMap->addColumn('B_CONFIRMED', 'BConfirmed', 'boolean', CreoleTypes::BOOLEAN, false, null);
+		$tMap->addColumn('IS_CONFIRMED', 'IsConfirmed', 'boolean', CreoleTypes::BOOLEAN, false, null);
 
 	} 
 } 

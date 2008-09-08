@@ -145,19 +145,20 @@ DROP TABLE IF EXISTS `friendship`;
 CREATE TABLE `friendship`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`id_avatar_a` INTEGER  NOT NULL,
-	`a_confirmed` INTEGER default 0,
-	`id_avatar_b` INTEGER  NOT NULL,
-	`b_confirmed` INTEGER default 0,
+	`player_profile_id_a` INTEGER,
+	`player_profile_id_b` INTEGER,
+	`is_confirmed` INTEGER default 0,
 	PRIMARY KEY (`id`),
-	INDEX `friendship_FI_1` (`id_avatar_a`),
+	INDEX `friendship_FI_1` (`player_profile_id_a`),
 	CONSTRAINT `friendship_FK_1`
-		FOREIGN KEY (`id_avatar_a`)
-		REFERENCES `avatar` (`id`),
-	INDEX `friendship_FI_2` (`id_avatar_b`),
+		FOREIGN KEY (`player_profile_id_a`)
+		REFERENCES `player_profile` (`id`)
+		ON DELETE CASCADE,
+	INDEX `friendship_FI_2` (`player_profile_id_b`),
 	CONSTRAINT `friendship_FK_2`
-		FOREIGN KEY (`id_avatar_b`)
-		REFERENCES `avatar` (`id`)
+		FOREIGN KEY (`player_profile_id_b`)
+		REFERENCES `player_profile` (`id`)
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

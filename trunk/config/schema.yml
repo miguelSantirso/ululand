@@ -49,20 +49,10 @@ propel:
     
   friendship:
     _attributes: { phpName: Friendship }
-    id:                 ~
-    id_avatar_a:        { type: integer     , required: true }
-    a_confirmed:        { type: boolean     , required: false, default: false }
-    id_avatar_b:        { type: integer     , required: true }
-    b_confirmed:        { type: boolean     , required: false, default: false }
-    _foreignKeys:
-      -
-        foreignTable: avatar
-        references:
-          - { local: id_avatar_a, foreign: id }
-      -
-        foreignTable: avatar
-        references:
-          - { local: id_avatar_b, foreign: id }
+    id:
+    player_profile_id_a:       { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
+    player_profile_id_b:       { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
+    is_confirmed:              { type: boolean, required: false, default: false }
     
   collaboration_offer:
     _attributes:    { phpName: CollaborationOffer }

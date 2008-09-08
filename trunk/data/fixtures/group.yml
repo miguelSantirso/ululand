@@ -10,7 +10,19 @@ sfGuardUser:
     username:       jugador@jugador.com
     password:       jugador
     is_super_admin: false
-  
+  amistad1:
+    username:       amistad1@amistad.com
+    password:       amistad1
+    is_super_admin: false
+  amistad2:
+    username:       amistad2@amistad.com
+    password:       amistad2
+    is_super_admin: false
+  amistad3:
+    username:       amistad3@amistad.com
+    password:       amistad3
+    is_super_admin: false
+    
 sfGuardUserProfile:
   prueba:
     username: prueba
@@ -20,6 +32,18 @@ sfGuardUserProfile:
     username: jugador
     culture: es
     user_id: jugador
+  amistad1:
+    username: amistad1
+    culture: es
+    user_id: amistad1
+  amistad2:
+    username: amistad2
+    culture: es
+    user_id: amistad2
+  amistad3:
+    username: amistad3
+    culture: es
+    user_id: amistad3
     
 PlayerProfile:
   prueba:
@@ -28,6 +52,15 @@ PlayerProfile:
   jugador:
     user_profile_id: jugador
     description: Soy un jugador
+  amistad1:
+    user_profile_id: amistad1
+    description: Soy una amistad
+  amistad2:
+    user_profile_id: amistad2
+    description: Soy una amistad
+  amistad3:
+    user_profile_id: amistad3
+    description: Soy una amistad
     
 Group:
   Administracion:
@@ -45,3 +78,21 @@ PlayerProfile_Group:
     grupo_id: Administracion
     is_owner: false
     is_approved: false
+
+Friendship:
+  amistad:
+    player_profile_id_a: prueba
+    player_profile_id_b: jugador
+    is_confirmed: true
+  amistadamistad1:
+    player_profile_id_a: prueba
+    player_profile_id_b: amistad1
+    is_confirmed: true
+  amistadamistad2:
+    player_profile_id_a: amistad2
+    player_profile_id_b: prueba
+    is_confirmed: true
+  amistadamistad3:
+    player_profile_id_a: prueba
+    player_profile_id_b: amistad3
+    is_confirmed: false

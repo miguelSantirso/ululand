@@ -15,6 +15,32 @@ class PlayerProfile extends BasePlayerProfile
 	}
 	
 	/**
+	 * Retorna una lista con todos los amigos del jugador
+	 *
+	 * @return unknown
+	 */
+	public function getFriends()
+	{
+		// Obtener todas las relaciones de jugador con otro jugador iniciadas por él mismo
+		$friendships = $this->getFriendshipsRelatedByPlayerProfileIdA();
+
+		$friends = Array();
+		foreach($friendships as $friendship) // Para cada relaciï¿½n
+		{
+					if($friendship->getIsConfirmed()) $friends[] = $friendship->getPlayerProfileRelatedByPlayerProfileIdB();
+		}
+		
+		// Obtener todas las relaciones de jugador con otro jugador iniciadas por otro
+		$friendships = $this->getFriendshipsRelatedByPlayerProfileIdB();
+
+		foreach($friendships as $friendship) // Para cada relaciï¿½n
+		{
+					if($friendship->getIsConfirmed()) $friends[] = $friendship->getPlayerProfileRelatedByPlayerProfileIdA();
+		}
+		return $friends;
+	}
+	
+	/**
 	 * Retorna una lista con todos los grupos del jugador
 	 *
 	 * @return unknown
