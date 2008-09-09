@@ -126,6 +126,7 @@ class PlayerProfile extends BasePlayerProfile
 		$this->save();
 		return $spentCredits;
 	}
+	
 }
 
 sfPropelBehavior::add('PlayerProfile', array('sfPropelActAsCommentableBehavior'));

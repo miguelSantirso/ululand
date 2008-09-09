@@ -5,10 +5,10 @@ generator:
     theme:            default
 
     fields:
-      grupo_id:         {name: Grupo}
-      player_profile_id:        {name: Avatar}
-      is_owner:         {name: Propietario}
-      is_approved:      {name: Admitido}
+      grupo_id:          {name: Grupo}
+      player_profile_id: {name: Jugador}
+      is_owner:          {name: Propietario}
+      is_approved:       {name: Admitido}
 
     list:
       title: Listado de la relacion de grupos y avatares

@@ -130,7 +130,7 @@
 	function linkToGroup($group, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $group->getName() : $customText;
-		return link_to($linkText, "group/show?group=".$group->getId(), $options);
+		return link_to($linkText, "group/show?id=".$group->getId(), $options);
 	}
 	
 	/**

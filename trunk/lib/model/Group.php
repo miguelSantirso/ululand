@@ -9,7 +9,7 @@
  */ 
 class Group extends BaseGroup
 {
-	 /** __toString: FunciÃ³n auxiliar "mÃ¡gica" que retorna una cadena que representa al objeto.
+	 /** __toString: Función auxiliar "mágica" que retorna una cadena que representa al objeto.
 	 *
 	 * @return string Cadena representando al objeto
 	 **/
@@ -18,60 +18,38 @@ class Group extends BaseGroup
 		return $this->name;
 	}
 	
-	public function getPlayerProfiles()
-	{
-		// Obtener todas las relaciones de jugador con este grupo
-		$playerships = Group::getPlayerProfile_Groups();
-
-		$players = Array();
-		$owner = Array();
-		foreach($playerships as $playership) // Para cada relaciï¿½n
-		{
-					if(!$playership->getIsOwner() && $playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
-		}
-		return $players;
-	}
-	
-	public function getOwners()
-	{
-		// Obtener todas las relaciones de jugador con este grupo
-		$ownerships = Group::getPlayerProfile_Groups();
-
-		$owners = Array();
-		foreach($ownerships as $ownership) // Para cada relaciï¿½n
-		{
-					if($ownership->getIsOwner() && $ownership->getIsApproved()) $owners[] = $ownership->getPlayerProfile();
-		}
-		return $owners;
-	}
-	
-    public function getRequests()
-	{
-		// Obtener todas las peticiones a este grupo
-		$playerships = Group::getPlayerProfile_Groups();
-
-		$players = Array();
-		$owner = Array();
-		foreach($playerships as $playership) // Para cada relaciï¿½n
-		{
-					if(!$playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
-		}
-		return $players;
-	}
-	
-	public function getMembers()
+	/**
+	 * Devuelve los miembros de un grupo
+	 *
+	 * @param Criteria $c criteria que se añadirá al select
+	 * @return Array array de jugadores de acuerdo al criteria pasado como parámetro
+	 */
+	public function getMembers($c = null)
 	{	
-		// Obtener todas las relaciones de jugador con este grupo
+		if (!$c) $c = new Criteria();
+		$c->addJoin(PlayerProfilePeer::ID, PlayerProfile_GroupPeer::PLAYER_PROFILE_ID);
+		$c->addJoin(PlayerProfilePeer::USER_PROFILE_ID, sfGuardUserProfilePeer::ID);
+		
+		return PlayerProfilePeer::doSelect($c);
+	}
+	
+	public function getStatus($player)
+	{
 		$c = new Criteria();
-		$c->addDescendingOrderByColumn(PlayerProfilePeer::TOTAL_CREDITS);
-		$playerships = Group::getPlayerProfile_GroupsJoinPlayerProfile($c);
-
-		$players = Array();
-		foreach($playerships as $playership) // Para cada relaciÃ³n
+		$c->add(PlayerProfile_GroupPeer::PLAYER_PROFILE_ID, $player->getId());
+		$c->add(PlayerProfile_GroupPeer::GRUPO_ID, $this->getId());
+		$relationship = PlayerProfile_GroupPeer::doSelectOne($c);
+		$status = GroupPeer::NOT_MEMBER;
+		if ($relationship)
 		{
-					if($playership->getIsApproved()) $players[] = $playership->getPlayerProfile();
+			if ($relationship->getIsApproved())
+			{
+				if ($relationship->getIsOwner()) $status = GroupPeer::OWNER;
+				else $status = GroupPeer::MEMBER;
+			}
+			else $status = GroupPeer::PENDING;
 		}
-		return $players;
+		return $status;
 	}
 }
 

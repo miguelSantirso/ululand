@@ -42,5 +42,56 @@ class groupComponents extends sfComponents
 
 		$this->groupsPager = $pager;
 	}
+	
+	/**
+	 * Componente que lista los miembros de un grupo
+	 * Admite los siguientes filtros booleanos: onlyOwners, excludeOwners, pending, showAll
+	 * Filtros string para ordenar: orderDescendingBy, orderAscendingBy
+	 */
+	public function executeListMembers()
+	{
+		if (!$this->group)
+		{
+			throw new sfException("No existe el grupo");
+		}
+		
+		$c = new Criteria();
+		$this->onlyOwners = isset($this->onlyOwners) ? $this->onlyOwners : $this->getRequestParameter('onlyOwners');
+		if($this->onlyOwners)
+		{
+			$c->add(PlayerProfile_GroupPeer::IS_OWNER, true);
+		}
+	
+		$this->excludeOwners = isset($this->excludeOwners) ? $this->excludeOwners : $this->getRequestParameter('excludeOwners');
+		if($this->excludeOwners)
+		{
+			$c->add(PlayerProfile_GroupPeer::IS_OWNER, false);
+		}
+		
+		$this->pending = isset($this->pending) ? $this->pending : $this->getRequestParameter('pending');
+		if($this->pending)
+		{
+			$c->add(PlayerProfile_GroupPeer::IS_APPROVED, false);
+		}
+		else if (!$this->showAll)
+		{
+			$c->add(PlayerProfile_GroupPeer::IS_APPROVED, true);
+		}
+		
+		$this->orderDescendingBy = isset($this->orderDescendingBy) ? $this->orderDescendingBy : $this->getRequestParameter('orderDescendingBy');
+		if($this->orderDescendingBy)
+		{
+			$c->addDescendingOrderByColumn($this->orderDescendingBy);
+		}
+		
+		$this->orderAscendingBy = isset($this->orderAscendingBy) ? $this->orderAscendingBy : $this->getRequestParameter('orderAscendingBy');
+		if($this->orderAscendingBy)
+		{
+			$c->addAscendingOrderByColumn($this->orderAscendingBy);
+		}
+		
+		$this->members = $this->group->getMembers($c);
+		
+	}
 
 }

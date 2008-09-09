@@ -18,61 +18,21 @@ class groupActions extends sfActions
   {
   	return $this->forward('group', 'list');
   }
-  
-  public function executeCreate()
+
+  public function executeEdit()
   {
-  // Si el m�todo de la petici�n es POST, quiere decir que NO se deben procesar los datos del formulario de registro
-	if ($this->getRequest()->getMethod() != sfRequest::POST)
-	{
-		$this->sfContext = $this->getContext();
-		
-		// Display the form
-		return sfView::SUCCESS;
-	}
-	else // el m�todo de la petici�n es GET. Es necesario procesar el formulario
-	{
-		// no hace falta comprobar errores porque eso ya se hace mediante los m�todos
-		// validate autom�ticos. Ver validate\group.yml
-		 
-		// TODO HA IDO BIEN. CREAR EL GRUPO
-		$this->name = $this->getRequestParameter('namegroup');
-		$this->description = $this->getRequestParameter('description');
-		
-		// Crear un nuevo objeto Group
-		$this->newGroup = new Group();
-		
-		
-		// Modificar adecuadamente el objeto
-		$this->newGroup->setName($this->name);
-		$this->newGroup->setDescription($this->description);
-		
-		// Grabarlo en la base de datos
-		$this->newGroup->save();
-		
-		// Obtener el avatar del perfil
-		$this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
-		$this->forward404Unless($this->profile);
-		
-		// Obtener el grupo del perfil
-		$groupid = $this->newGroup->GetId();
-		
-		// Crear un nuevo objeto Avatar_Group
-		$this->newPlayerProfile_Group = new PlayerProfile_Group();
-		
-		
-		// Modificar adecuadamente el objeto
-		$this->newPlayerProfile_Group->setPlayerProfileId($this->profile->getId());
-		$this->newPlayerProfile_Group->setGrupoId($groupid);
-		$this->newPlayerProfile_Group->setIsOwner(true);
-		$this->newPlayerProfile_Group->setIsApproved(true);
-		
-		// Grabarlo en la base de datos
-		$this->newPlayerProfile_Group->save();
-		
-		
-    	$this->setFlash('success', 'Grupo creado con &eacute;xito.');
-		$this->redirect('group/listall');
-	}
+  	// Obtener el id del grupo a editar
+  	$groupId = $this->getRequestParameter('id');
+  	// Obtener el objeto del grupo a editar
+  	$this->group = GroupPeer::retrieveByPk($groupId);
+  	$this->forward404Unless($this->group);
+
+  	// Comprobar que el usuario está editando su propio perfil y no otro
+  	if($this->group->getStatus($this->getUser()->getPlayerProfile()) != GroupPeer::OWNER)
+  	{
+  		$this->setFlash('error', 'No tienes permisos para editar este grupo');
+  		$this->redirect('group/list');
+  	}
   }
   
   /**
@@ -82,7 +42,7 @@ class groupActions extends sfActions
    *
    * @return void
    **/
-  public function handleErrorCreate()
+  public function handleErrorEdit()
   {
   	$this->sfContext = $this->getContext();
   	$this->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario para crear el grupo.', false);
@@ -106,12 +66,18 @@ class groupActions extends sfActions
   
   public function executeShow()
   {  	
-    $this->group = GroupPeer::retrieveByPk($this->getRequestParameter('group'));
+    $this->group = GroupPeer::retrieveByPk($this->getRequestParameter('id'));
     $this->forward404Unless($this->group);
     
     $this->group->incrementCounter(); // Una visita más
   }
   
+  public function executePreview()
+  {
+  	$this->name = $this->getRequestParameter('name');
+  	$this->description = $this->getRequestParameter('description');
+  }
+
   public function executeUnion()
   {
   	// Obtener el jugador del perfil
@@ -187,5 +153,31 @@ class groupActions extends sfActions
   	
   	return $this->forward('group', 'list');
   }
-  
+
+  public function executeUpdate()
+  {
+  	if($this->getRequest()->getMethod() == sfRequest::POST)
+  	{
+  		// Obtener el id del perfil a editar
+  		$groupId = $this->getRequestParameter('id');
+  		// Obtener el objeto del perfil de usuario a editar
+  		$group = GroupPeer::retrieveByPk($groupId);
+  		$this->forward404Unless($group);
+  		
+  		// Comprobar que el usuario está editando su propio perfil y no otro
+  		if($group->getStatus($this->getUser()->getPlayerProfile()) != GroupPeer::OWNER)
+  		{
+  			// @todo Mensaje no internacionalizado
+  			$this->setFlash('warning', 'No tienes permisos para editar este grupo');
+  			$this->forward('group', 'list');
+  		}
+  		
+
+  		$group->setName($this->getRequestParameter('name'));
+  		$group->setDescription($this->getRequestParameter('description'));
+  		$group->save();
+  	}
+
+  	return $this->redirect('group/show?id='.$groupId);
+  }
 }
