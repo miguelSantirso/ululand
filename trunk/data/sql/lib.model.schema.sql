@@ -212,44 +212,6 @@ CREATE TABLE `code_piece`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- itemtype
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `itemtype`;
-
-
-CREATE TABLE `itemtype`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(64)  NOT NULL,
-	PRIMARY KEY (`id`)
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- item
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `item`;
-
-
-CREATE TABLE `item`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(64)  NOT NULL,
-	`gender` INTEGER  NOT NULL,
-	`id_itemtype` INTEGER  NOT NULL,
-	`url` VARCHAR(255)  NOT NULL,
-	`description` VARCHAR(255),
-	`price` INTEGER default 0,
-	PRIMARY KEY (`id`),
-	INDEX `item_FI_1` (`id_itemtype`),
-	CONSTRAINT `item_FK_1`
-		FOREIGN KEY (`id_itemtype`)
-		REFERENCES `itemtype` (`id`)
-		ON DELETE CASCADE
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
 #-- avatarpiece
 #-----------------------------------------------------------------------------
 
@@ -282,32 +244,6 @@ CREATE TABLE `avatarpiece`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- avatar_item
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `avatar_item`;
-
-
-CREATE TABLE `avatar_item`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`id_avatar` INTEGER  NOT NULL,
-	`id_item` INTEGER  NOT NULL,
-	`active` INTEGER  NOT NULL,
-	PRIMARY KEY (`id`),
-	INDEX `avatar_item_FI_1` (`id_item`),
-	CONSTRAINT `avatar_item_FK_1`
-		FOREIGN KEY (`id_item`)
-		REFERENCES `item` (`id`)
-		ON DELETE CASCADE,
-	INDEX `avatar_item_FI_2` (`id_avatar`),
-	CONSTRAINT `avatar_item_FK_2`
-		FOREIGN KEY (`id_avatar`)
-		REFERENCES `avatar` (`id`)
-		ON DELETE CASCADE
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
 #-- game
 #-----------------------------------------------------------------------------
 
@@ -317,23 +253,76 @@ DROP TABLE IF EXISTS `game`;
 CREATE TABLE `game`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`uuid` VARCHAR(36)  NOT NULL,
 	`privileges_level` INTEGER default 2 NOT NULL,
-	`api_key` VARCHAR(13),
-	`name` VARCHAR(255)  NOT NULL,
+	`name` VARCHAR(80)  NOT NULL,
+	`stripped_name` VARCHAR(80)  NOT NULL,
 	`description` TEXT,
+	`instructions` TEXT,
 	`created_by` INTEGER,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	`thumbnail_path` VARCHAR(255),
-	`url` VARCHAR(255)  NOT NULL,
-	`width` INTEGER  NOT NULL,
-	`height` INTEGER  NOT NULL,
+	`active_release_id` INTEGER,
 	PRIMARY KEY (`id`),
 	INDEX `game_FI_1` (`created_by`),
 	CONSTRAINT `game_FK_1`
 		FOREIGN KEY (`created_by`)
 		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE,
+	INDEX `game_FI_2` (`active_release_id`),
+	CONSTRAINT `game_FK_2`
+		FOREIGN KEY (`active_release_id`)
+		REFERENCES `gamerelease` (`id`)
+		ON DELETE SET NULL
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- gamerelease
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `gamerelease`;
+
+
+CREATE TABLE `gamerelease`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`game_id` INTEGER,
+	`gamereleasestatus_id` VARCHAR(15)  NOT NULL,
+	`name` VARCHAR(80)  NOT NULL,
+	`stripped_name` VARCHAR(80)  NOT NULL,
+	`description` TEXT,
+	`is_public` INTEGER default 0 NOT NULL,
+	`created_by` INTEGER,
+	`created_at` DATETIME,
+	`game_path` VARCHAR(255)  NOT NULL,
+	`width` INTEGER,
+	`height` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `gamerelease_FI_1` (`game_id`),
+	CONSTRAINT `gamerelease_FK_1`
+		FOREIGN KEY (`game_id`)
+		REFERENCES `game` (`id`),
+	INDEX `gamerelease_FI_2` (`created_by`),
+	CONSTRAINT `gamerelease_FK_2`
+		FOREIGN KEY (`created_by`)
+		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- gamereleasestatus
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `gamereleasestatus`;
+
+
+CREATE TABLE `gamereleasestatus`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(80)  NOT NULL,
+	`description` TEXT,
+	PRIMARY KEY (`id`)
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
@@ -355,33 +344,6 @@ CREATE TABLE `widget`
 	`height` INTEGER  NOT NULL,
 	`bgcolor` VARCHAR(8),
 	PRIMARY KEY (`id`)
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- message
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `message`;
-
-
-CREATE TABLE `message`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`id_sender` INTEGER  NOT NULL,
-	`id_recipient` INTEGER  NOT NULL,
-	`text` TEXT  NOT NULL,
-	`created_at` DATETIME,
-	PRIMARY KEY (`id`),
-	INDEX `message_FI_1` (`id_sender`),
-	CONSTRAINT `message_FK_1`
-		FOREIGN KEY (`id_sender`)
-		REFERENCES `avatar` (`id`)
-		ON DELETE CASCADE,
-	INDEX `message_FI_2` (`id_recipient`),
-	CONSTRAINT `message_FK_2`
-		FOREIGN KEY (`id_recipient`)
-		REFERENCES `avatar` (`id`)
-		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

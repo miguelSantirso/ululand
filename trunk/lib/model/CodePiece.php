@@ -42,7 +42,7 @@ class CodePiece extends BaseCodePiece
 	}
 
 	/**
-	 * Modificación de la funci�n autom�tica setTitle para que se establezca el campo stripped_title cuando valga null.
+	 * Modificación de la función automática setTitle para que se establezca el campo stripped_title cuando valga null.
 	 * Esto es necesario para el funcionamiento de los permalinks
 	 *
 	 * @param unknown_type $v

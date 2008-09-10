@@ -74,27 +74,6 @@ propel:
     stripped_title: { type: varchar(75), required: true }
     source:         { type: longvarchar, required: true }
     html_source:    { type: longvarchar, required: true }
-    
-  itemtype:
-    _attributes: { phpName: ItemType }
-    id:
-    name:               { type: varchar(64) , required: true }
-    
-  item:
-    _attributes: { phpName: Item }
-    id:
-    name:               { type: varchar(64) , required: true }
-    gender:             { type: integer     , required: true }
-    id_itemtype:        { type: integer     , required: true }
-    url:                { type: varchar(255), required: true }
-    description:        { type: varchar(255), required: false }
-    price:              { type: integer     , required: false, default: 0 }
-    _foreignKeys:
-      -
-        foreignTable: itemtype
-        onDelete:     cascade
-        references:
-          - { local: id_itemtype, foreign: id }
           
   avatarpiece:
     _attributes: { phpName: AvatarPiece }
@@ -109,38 +88,43 @@ propel:
     in_use:             { type: boolean     , default: false }
     created_at:
     
-  avatar_item:
-    _attributes: { phpName: Avatar_Item }
-    id:
-    id_avatar:          { type: integer, required: true }
-    id_item:            { type: integer, required: true }
-    active:             { type: boolean, required: true }
-    _foreignKeys:
-      -
-        foreignTable: item
-        onDelete:     cascade
-        references:
-          - { local: id_item, foreign: id }
-      -
-        foreignTable: avatar
-        onDelete:     cascade
-        references:
-          - { local: id_avatar, foreign: id }
-          
+    
   game:
     _attributes: { phpName: Game}
-    id:
+    id: ~
+    uuid:              { type: varchar(36), required: true }
     privileges_level:  { type: integer,      required: true, default: 2 }
-    api_key:           { type: varchar(13),  required: false }
-    name:              { type: varchar(255), required: true }
+    name:              { type: varchar(80),  required: true }
+    stripped_name:     { type: varchar(80),  required: true }
     description:       { type: longvarchar,  required: false }
+    instructions:      { type: longvarchar,  required: false }
     created_by:        { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     updated_at: ~ 
     thumbnail_path:    { type: varchar(255), required: false}
-    url:               { type: varchar(255), required: true }
-    width:             { type: integer,      required: true }
-    height:            { type: integer,      required: true }
+    active_release_id: { type: integer, foreignTable: gamerelease, foreignReference: id, onDelete: setnull }
+    
+  gamerelease:
+    _attributes: { phpName: GameRelease }
+    id: ~
+    game_id: ~
+    gamereleasestatus_id: ~
+    name:                 { type: varchar(80),  required: true }
+    stripped_name:        { type: varchar(80),  required: true }
+    description:          { type: longvarchar,  required: false }
+    is_public:            { type: boolean,     required: true, default: false }
+    created_by:           { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    created_at: ~
+    game_path:            { type: varchar(255), required: true }
+    width:                { type: integer, required: false }
+    height:               { type: integer, required: false } 
+    
+  gamereleasestatus:
+    _attributes: { phpName: GameReleaseStatus }
+    id: ~
+    name:        { type: varchar(80), required: true }
+    description: { type: longvarchar, required: false }
+    
     
   widget:
     _attributes: { phpName: Widget }
@@ -155,24 +139,6 @@ propel:
     bgcolor:           { type: varchar(8),   required: false }
     
     
-  message:
-    _attributes: {phpName: Message}
-    id:                ~
-    id_sender:         { type: integer, required: true }
-    id_recipient:      { type: integer, required: true }
-    text:              { type: longvarchar, required: true }
-    created_at:        ~
-    _foreignKeys: 
-      -
-        foreignTable: avatar
-        onDelete:     cascade
-        references: 
-          - { local: id_sender, foreign: id }
-      -
-        foreignTable: avatar
-        onDelete:     cascade
-        references: 
-          - { local: id_recipient, foreign: id }
           
   apisession:
     _attributes:  {phpName: ApiSession}

@@ -2,10 +2,10 @@
 
 
 
-class GameMapBuilder {
+class GameReleaseMapBuilder {
 
 	
-	const CLASS_NAME = 'lib.model.map.GameMapBuilder';
+	const CLASS_NAME = 'lib.model.map.GameReleaseMapBuilder';
 
 	
 	private $dbMap;
@@ -27,16 +27,16 @@ class GameMapBuilder {
 	{
 		$this->dbMap = Propel::getDatabaseMap('propel');
 
-		$tMap = $this->dbMap->addTable('game');
-		$tMap->setPhpName('Game');
+		$tMap = $this->dbMap->addTable('gamerelease');
+		$tMap->setPhpName('GameRelease');
 
 		$tMap->setUseIdGenerator(true);
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
+		$tMap->addForeignKey('GAME_ID', 'GameId', 'int', CreoleTypes::INTEGER, 'game', 'ID', false, null);
 
-		$tMap->addColumn('PRIVILEGES_LEVEL', 'PrivilegesLevel', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addColumn('GAMERELEASESTATUS_ID', 'GamereleasestatusId', 'string', CreoleTypes::VARCHAR, true, 15);
 
 		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 80);
 
@@ -44,17 +44,17 @@ class GameMapBuilder {
 
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
-		$tMap->addColumn('INSTRUCTIONS', 'Instructions', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('IS_PUBLIC', 'IsPublic', 'boolean', CreoleTypes::BOOLEAN, true, null);
 
 		$tMap->addForeignKey('CREATED_BY', 'CreatedBy', 'int', CreoleTypes::INTEGER, 'sf_guard_user', 'ID', false, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 
-		$tMap->addColumn('UPDATED_AT', 'UpdatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+		$tMap->addColumn('GAME_PATH', 'GamePath', 'string', CreoleTypes::VARCHAR, true, 255);
 
-		$tMap->addColumn('THUMBNAIL_PATH', 'ThumbnailPath', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addColumn('WIDTH', 'Width', 'int', CreoleTypes::INTEGER, false, null);
 
-		$tMap->addForeignKey('ACTIVE_RELEASE_ID', 'ActiveReleaseId', 'int', CreoleTypes::INTEGER, 'gamerelease', 'ID', false, null);
+		$tMap->addColumn('HEIGHT', 'Height', 'int', CreoleTypes::INTEGER, false, null);
 
 	} 
 } 

@@ -1,5 +1,5 @@
 generator:
   class:              sfPropelAdminGenerator
   param:
-    model_class:      Comment
+    model_class:      GameReleaseStatus
     theme:            default

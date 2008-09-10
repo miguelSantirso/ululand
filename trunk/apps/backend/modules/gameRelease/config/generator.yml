@@ -1,5 +1,5 @@
 generator:
   class:              sfPropelAdminGenerator
   param:
-    model_class:      Message
+    model_class:      GameRelease
     theme:            default

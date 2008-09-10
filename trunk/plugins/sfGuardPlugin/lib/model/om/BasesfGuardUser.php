@@ -68,6 +68,12 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	protected $lastGameCriteria = null;
 
 	
+	protected $collGameReleases;
+
+	
+	protected $lastGameReleaseCriteria = null;
+
+	
 	protected $collsfGuardUserPermissions;
 
 	
@@ -483,6 +489,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collGameReleases !== null) {
+				foreach($this->collGameReleases as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collsfGuardUserPermissions !== null) {
 				foreach($this->collsfGuardUserPermissions as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -574,6 +588,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 				if ($this->collGames !== null) {
 					foreach($this->collGames as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collGameReleases !== null) {
+					foreach($this->collGameReleases as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -806,6 +828,10 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 			foreach($this->getGames() as $relObj) {
 				$copyObj->addGame($relObj->copy($deepCopy));
+			}
+
+			foreach($this->getGameReleases() as $relObj) {
+				$copyObj->addGameRelease($relObj->copy($deepCopy));
 			}
 
 			foreach($this->getsfGuardUserPermissions() as $relObj) {
@@ -1123,6 +1149,146 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	{
 		$this->collGames[] = $l;
 		$l->setsfGuardUser($this);
+	}
+
+
+	
+	public function getGamesJoinGameRelease($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseGamePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collGames === null) {
+			if ($this->isNew()) {
+				$this->collGames = array();
+			} else {
+
+				$criteria->add(GamePeer::CREATED_BY, $this->getId());
+
+				$this->collGames = GamePeer::doSelectJoinGameRelease($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(GamePeer::CREATED_BY, $this->getId());
+
+			if (!isset($this->lastGameCriteria) || !$this->lastGameCriteria->equals($criteria)) {
+				$this->collGames = GamePeer::doSelectJoinGameRelease($criteria, $con);
+			}
+		}
+		$this->lastGameCriteria = $criteria;
+
+		return $this->collGames;
+	}
+
+	
+	public function initGameReleases()
+	{
+		if ($this->collGameReleases === null) {
+			$this->collGameReleases = array();
+		}
+	}
+
+	
+	public function getGameReleases($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseGameReleasePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collGameReleases === null) {
+			if ($this->isNew()) {
+			   $this->collGameReleases = array();
+			} else {
+
+				$criteria->add(GameReleasePeer::CREATED_BY, $this->getId());
+
+				GameReleasePeer::addSelectColumns($criteria);
+				$this->collGameReleases = GameReleasePeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(GameReleasePeer::CREATED_BY, $this->getId());
+
+				GameReleasePeer::addSelectColumns($criteria);
+				if (!isset($this->lastGameReleaseCriteria) || !$this->lastGameReleaseCriteria->equals($criteria)) {
+					$this->collGameReleases = GameReleasePeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastGameReleaseCriteria = $criteria;
+		return $this->collGameReleases;
+	}
+
+	
+	public function countGameReleases($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseGameReleasePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(GameReleasePeer::CREATED_BY, $this->getId());
+
+		return GameReleasePeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addGameRelease(GameRelease $l)
+	{
+		$this->collGameReleases[] = $l;
+		$l->setsfGuardUser($this);
+	}
+
+
+	
+	public function getGameReleasesJoinGame($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseGameReleasePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collGameReleases === null) {
+			if ($this->isNew()) {
+				$this->collGameReleases = array();
+			} else {
+
+				$criteria->add(GameReleasePeer::CREATED_BY, $this->getId());
+
+				$this->collGameReleases = GameReleasePeer::doSelectJoinGame($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(GameReleasePeer::CREATED_BY, $this->getId());
+
+			if (!isset($this->lastGameReleaseCriteria) || !$this->lastGameReleaseCriteria->equals($criteria)) {
+				$this->collGameReleases = GameReleasePeer::doSelectJoinGame($criteria, $con);
+			}
+		}
+		$this->lastGameReleaseCriteria = $criteria;
+
+		return $this->collGameReleases;
 	}
 
 	

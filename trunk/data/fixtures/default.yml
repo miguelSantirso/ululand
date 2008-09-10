@@ -58,31 +58,24 @@ CodePiece:
     source: Source Code
     tags: as3, actionscript, addchild, bitmap
 
-
-
-# GAMES
-#######
-
-Game:
-  arkanoid:
-    privileges_level: 1
-    name: Arkanoid
-    description: Un arkanoid muy sencillo
-    created_by: miguelSantirso
-    thumbnail_path: thumbnail.gif
-    url: arkanoid.swf
-    width: 640
-    height: 480
-    tags: arkanoid, sencillo, adictivo
     
-  snail_alert:
-    privileges_level: 1
-    name: Snail Alert 2
-    description: La Joya de la Corona
-    created_by: miguelSantirso
-    thumbnail_path: thumbnail.png
-    url: snail alert 2.swf
-    width: 640
-    height: 480
-    tags: pncil, adictivo, caracoles, agua, fisicas
     
+# GAME RELEASES STATUS
+######################
+
+GameReleaseStatus:
+  Alfa:
+    name: Alfa
+    description: The game is visible only to the developers
+    
+  Beta:
+    name: Beta
+    description: The game is visible to developers and to some external beta testers
+    
+  RC:
+    name: Release Candidate
+    description: The game is visible to a lot of people, but is not officially released yet
+    
+  Published:
+    name: Published
+    description: The game is finished and officially released to the public
