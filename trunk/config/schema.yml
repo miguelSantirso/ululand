@@ -101,13 +101,13 @@ propel:
     created_by:        { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     updated_at: ~ 
-    thumbnail_path:    { type: varchar(255), required: false}
+    thumbnail_path:    { type: varchar(255) }
     active_release_id: { type: integer, foreignTable: gamerelease, foreignReference: id, onDelete: setnull }
     
   gamerelease:
     _attributes: { phpName: GameRelease }
     id: ~
-    game_id: ~
+    game_id:              { type: integer, foreignTable: game, foreignReference: id, onDelete: cascade }
     gamereleasestatus_id: ~
     name:                 { type: varchar(80),  required: true }
     stripped_name:        { type: varchar(80),  required: true }

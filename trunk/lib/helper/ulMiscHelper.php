@@ -90,10 +90,12 @@ function currentPageURL()
 		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 	}
 	return $pageURL;
+	
+	/*
+	 * @todo estilo symfony:
+	 * 
+	 * $url = 'http'.($request->isSecure() ? 's' : '').'://'.$request->getHost();
+	 */
 }
 
-function gravatar_tag($email, $size = 80, $options = array())
-{
-	$grav_url = "http://www.gravatar.com/avatar/".md5($email).'?s='.$size;
-	return image_tag($grav_url, $options);
-}
+

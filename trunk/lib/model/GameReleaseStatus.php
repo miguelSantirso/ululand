@@ -9,4 +9,8 @@
  */ 
 class GameReleaseStatus extends BaseGameReleaseStatus
 {
+	public function __toString()
+	{
+		return $this->name;
+	}
 }

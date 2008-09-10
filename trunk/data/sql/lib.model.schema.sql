@@ -288,7 +288,7 @@ CREATE TABLE `gamerelease`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`game_id` INTEGER,
-	`gamereleasestatus_id` VARCHAR(15)  NOT NULL,
+	`gamereleasestatus_id` INTEGER,
 	`name` VARCHAR(80)  NOT NULL,
 	`stripped_name` VARCHAR(80)  NOT NULL,
 	`description` TEXT,
@@ -302,9 +302,14 @@ CREATE TABLE `gamerelease`
 	INDEX `gamerelease_FI_1` (`game_id`),
 	CONSTRAINT `gamerelease_FK_1`
 		FOREIGN KEY (`game_id`)
-		REFERENCES `game` (`id`),
-	INDEX `gamerelease_FI_2` (`created_by`),
+		REFERENCES `game` (`id`)
+		ON DELETE CASCADE,
+	INDEX `gamerelease_FI_2` (`gamereleasestatus_id`),
 	CONSTRAINT `gamerelease_FK_2`
+		FOREIGN KEY (`gamereleasestatus_id`)
+		REFERENCES `gamereleasestatus` (`id`),
+	INDEX `gamerelease_FI_3` (`created_by`),
+	CONSTRAINT `gamerelease_FK_3`
 		FOREIGN KEY (`created_by`)
 		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE

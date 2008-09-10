@@ -24,9 +24,18 @@ class Game extends BaseGame
 		return count($this->getComments());
 	}
 	
-	public function getThumbnailUrl()
+	public function setThumbnailPath($v)
 	{
-		return "/".sfConfig::get('sf_upload_dir_name')."/".sfConfig::get('app_dir_game')."/".$this->getName()."/".$this->getThumbnailPath();
+		parent::setThumbnailPath($v); 
+ 		$this->generateThumbnail($v);
+	}
+	
+	public function generateThumbnail($value)
+	{
+		$uploadDir = $this->getUploadDir();
+		$thumbnail = new sfThumbnail(150, 150, true, false);
+		$thumbnail->loadFile($uploadDir.'/'.$this->getThumbnailPath());
+		$thumbnail->save($uploadDir.'/'.'thumb_'.$this->getThumbnailPath(), 'image/png');
 	}
 	
 	/**
@@ -61,20 +70,30 @@ class Game extends BaseGame
 		return trim($tagsString, " ,");
 	}
 
+	public function getUploadDir()
+	{
+		return sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_game')."/".$this->getStrippedName();
+	}
+	public function getUploadDirName()
+	{
+		return sfConfig::get('sf_upload_dir_name')."/".sfConfig::get('app_dir_game')."/".$this->getStrippedName();
+	}
+	
 	/**
-	 * Modificación de la función automática setTitle para que se establezca el campo stripped_title cuando corresponda.
+	 * Modificación de la función automática setName para que se establezca el campo stripped_name cuando corresponda.
 	 * Esto es necesario para el funcionamiento de los permalinks
 	 *
 	 * @param unknown_type $v
 	 */
-	public function setTitle($v)
+	public function setName($v)
 	{
-		parent::setTitle($v);
+		parent::setName($v);
 		
 		//if(!$this->getStrippedTitle())
 		// @todo habría que hacer que el título no se modifique cuando el juego esté ya publicado
-		$this->setStrippedTitle(ulToolkit::stripText($v));
+		$this->setStrippedName(ulToolkit::stripText($v));
 	}
+	
 }
 
 sfPropelBehavior::add('Game', array('sfPropelActAsSignableBehavior' => array()));

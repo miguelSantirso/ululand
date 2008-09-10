@@ -57,7 +57,6 @@ CodePiece:
     title: Uso de AddChild
     source: Source Code
     tags: as3, actionscript, addchild, bitmap
-
     
     
 # GAME RELEASES STATUS
@@ -79,3 +78,24 @@ GameReleaseStatus:
   Published:
     name: Published
     description: The game is finished and officially released to the public
+    
+# GAMES
+#######
+
+Game:
+  SnailAlert2:
+    name: Snail Alert 2
+    created_by: miguelSantirso
+    description: La **Joya** de la corona. Un juego adictivo, entretenido y más *cúnder* que cualquier otra cosa que hayas visto jamás...
+    instructions: Cursores para mover la nave
+    thumbnail_path: snail-alert-2.png
+    
+GameRelease:
+  FirstRelease:
+    name: First Release
+    game_id: SnailAlert2
+    description: First Release of this game
+    created_by: miguelSantirso
+    is_public: true
+    gamereleasestatus_id: Published
+    game_path: snail-alert-2_first-release.swf

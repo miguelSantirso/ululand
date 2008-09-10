@@ -3,3 +3,14 @@ generator:
   param:
     model_class:      Game
     theme:            default
+    list:
+      display: [=_thumbnail, =name, created_by, created_at, updated_at, description, privileges_level, active_release_id]
+    edit: 
+      display: [name, stripped_name, created_by, created_at, updated_at, description, instructions, privileges_level, thumbnail_path, _thumbnail, active_release_id]
+      fields:
+        stripped_name:
+          params: disabled=true
+        thumbnail_path: 
+          type:       admin_input_file_tag
+          upload_dir: UploadedGames/%%stripped_name%%
+          filename:   %%stripped_name%%

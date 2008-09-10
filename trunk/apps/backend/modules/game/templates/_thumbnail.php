@@ -1,0 +1,1 @@
+<?php echo gameThumbnail_tag($game); ?>

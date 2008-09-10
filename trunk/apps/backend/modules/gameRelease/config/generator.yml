@@ -3,3 +3,18 @@ generator:
   param:
     model_class:      GameRelease
     theme:            default
+      
+    edit:
+      display: [name, stripped_name, game_id, gamereleasestatus_id, description, is_public, created_by, created_at, game_path, width, height]
+      fields:
+        stripped_name: 
+          params: disabled=true
+        width: 
+          params: disabled=true
+        height: 
+          params: disabled=true
+        game_path:
+          type:       admin_input_file_tag
+          upload_dir: UploadedGames/%%game_stripped_name%%
+          filename:   %%game_stripped_name%%_%%stripped_name%%
+        

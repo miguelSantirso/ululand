@@ -36,7 +36,7 @@ class GameReleaseMapBuilder {
 
 		$tMap->addForeignKey('GAME_ID', 'GameId', 'int', CreoleTypes::INTEGER, 'game', 'ID', false, null);
 
-		$tMap->addColumn('GAMERELEASESTATUS_ID', 'GamereleasestatusId', 'string', CreoleTypes::VARCHAR, true, 15);
+		$tMap->addForeignKey('GAMERELEASESTATUS_ID', 'GamereleasestatusId', 'int', CreoleTypes::INTEGER, 'gamereleasestatus', 'ID', false, null);
 
 		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 80);
 

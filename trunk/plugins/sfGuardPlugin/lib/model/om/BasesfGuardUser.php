@@ -1291,6 +1291,41 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 		return $this->collGameReleases;
 	}
 
+
+	
+	public function getGameReleasesJoinGameReleaseStatus($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseGameReleasePeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collGameReleases === null) {
+			if ($this->isNew()) {
+				$this->collGameReleases = array();
+			} else {
+
+				$criteria->add(GameReleasePeer::CREATED_BY, $this->getId());
+
+				$this->collGameReleases = GameReleasePeer::doSelectJoinGameReleaseStatus($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(GameReleasePeer::CREATED_BY, $this->getId());
+
+			if (!isset($this->lastGameReleaseCriteria) || !$this->lastGameReleaseCriteria->equals($criteria)) {
+				$this->collGameReleases = GameReleasePeer::doSelectJoinGameReleaseStatus($criteria, $con);
+			}
+		}
+		$this->lastGameReleaseCriteria = $criteria;
+
+		return $this->collGameReleases;
+	}
+
 	
 	public function initsfGuardUserPermissions()
 	{

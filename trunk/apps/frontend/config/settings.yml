@@ -82,7 +82,7 @@ all:
 #    web_debug_web_dir:      /sf/sf_web_debug
 #
     # Helpers included in all templates by default
-    standard_helpers:  [I18N, Partial, Cache, Form, ModalBox, ulLinks]
+    standard_helpers:  [I18N, Partial, Cache, Form, ModalBox, ulLinks, ulImages]
 #    
     # Activated modules from plugins or from the symfony core
     enabled_modules:   [ default, sfEmail, sfApprovable, sfRating, sfGuardAuth, sfComment]
