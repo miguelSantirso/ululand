@@ -33,6 +33,10 @@ class GameRelease extends BaseGameRelease
 	{
 		return sfConfig::get('sf_upload_dir_name')."/".sfConfig::get('app_dir_game')."/".$this->getGameStrippedName();
 	}
+	public function getCompleteUrl()
+	{
+		return '/' . $this->getUploadDirName() . '/' . $this->getGamePath();
+	}
 	
 	/**
 	 * Modificación de la función automática setName para que se establezca el campo stripped_name cuando corresponda.

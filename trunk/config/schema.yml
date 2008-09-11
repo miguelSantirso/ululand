@@ -1,13 +1,15 @@
 propel:
   sf_guard_user_profile:
     _attributes: { phpName: sfGuardUserProfile }
-    id:
+    id: ~
+    uuid:        { type: varchar(36), required: true }
     user_id:     { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
     username:    varchar(30)
     first_name:  varchar(20)
     last_name:   varchar(20)
     culture:     varchar(8)
-    
+
+
   developer_profile:
     _attributes: { phpName: DeveloperProfile }
     id:
@@ -15,7 +17,8 @@ propel:
     url:             { type: varchar(64), required: false }
     description:     { type: longvarchar, required: false }
     is_free:         { type: boolean, required: false, default: false }
-    
+
+
   player_profile:
     _attributes: { phpName: PlayerProfile }
     id:
@@ -23,7 +26,8 @@ propel:
     description:     { type: longvarchar, required: false }
     total_credits:   { type: integer, required: false, default: 0 }
     spent_credits:   { type: integer, required: false, default: 0 }
-    
+
+
   avatar:
     _attributes: { phpName: Avatar }
     id:
@@ -32,13 +36,15 @@ propel:
     gender:             { type: integer     , required: true }
     total_credits:      { type: integer     , required: false, default: 0 }
     spent_credits:      { type: integer     , required: false, default: 0 }
-    
+
+
   grupo:
     _attributes: { phpName: Group }
     id:
     name:               { type: varchar(64) , required: true }
     description:        { type: varchar(255), required: false }
-    
+
+
   player_profile_grupo:
     _attributes: { phpName: PlayerProfile_Group }
     id:
@@ -46,14 +52,16 @@ propel:
     grupo_id:        { type: integer, foreignTable: grupo, foreignReference: id, onDelete: cascade }
     is_owner:        { type: boolean, required: false, default: false }
     is_approved:     { type: boolean, required: false, default: false }
-    
+
+
   friendship:
     _attributes: { phpName: Friendship }
     id:
     player_profile_id_a:       { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
     player_profile_id_b:       { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
     is_confirmed:              { type: boolean, required: false, default: false }
-    
+
+
   collaboration_offer:
     _attributes:    { phpName: CollaborationOffer }
     created_by:     { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
@@ -62,7 +70,8 @@ propel:
     title:          { type: varchar(75), required: true }
     stripped_title: { type: varchar(75), required: true }
     description:    { type: longvarchar, required: true }
-    
+
+
   code_piece:
     _attributes:    { phpName: CodePiece }
     id: ~
@@ -74,7 +83,8 @@ propel:
     stripped_title: { type: varchar(75), required: true }
     source:         { type: longvarchar, required: true }
     html_source:    { type: longvarchar, required: true }
-          
+
+
   avatarpiece:
     _attributes: { phpName: AvatarPiece }
     id:
@@ -87,12 +97,12 @@ propel:
     type:               { type: varchar(64) , required: true }
     in_use:             { type: boolean     , default: false }
     created_at:
-    
-    
+
+
   game:
     _attributes: { phpName: Game}
     id: ~
-    uuid:              { type: varchar(36), required: true }
+    uuid:              { type: varchar(36),  required: true }
     privileges_level:  { type: integer,      required: true, default: 2 }
     name:              { type: varchar(80),  required: true }
     stripped_name:     { type: varchar(80),  required: true }
@@ -103,7 +113,8 @@ propel:
     updated_at: ~ 
     thumbnail_path:    { type: varchar(255) }
     active_release_id: { type: integer, foreignTable: gamerelease, foreignReference: id, onDelete: setnull }
-    
+
+
   gamerelease:
     _attributes: { phpName: GameRelease }
     id: ~
@@ -118,14 +129,15 @@ propel:
     game_path:            { type: varchar(255), required: true }
     width:                { type: integer, required: false }
     height:               { type: integer, required: false } 
-    
+
+
   gamereleasestatus:
     _attributes: { phpName: GameReleaseStatus }
     id: ~
     name:        { type: varchar(80), required: true }
     description: { type: longvarchar, required: false }
-    
-    
+
+
   widget:
     _attributes: { phpName: Widget }
     id:
@@ -137,18 +149,18 @@ propel:
     width:             { type: integer,      required: true }
     height:            { type: integer,      required: true }    
     bgcolor:           { type: varchar(8),   required: false }
-    
-    
-          
+
+
   apisession:
     _attributes:  {phpName: ApiSession}
     id:                ~
     session_id:        { type: varchar(12),  required: true }
-    avatar_apikey:     { type: varchar(13),  required: true }
-    api_key:           { type: varchar(13),  required: true }
+    user_uuid:         { type: varchar(36),  required: true }
+    client_uuid:       { type: varchar(36),  required: true }
     privileges_level:  { type: integer,      required: true }
     created_at:        ~
-          
+
+   
   gamestat:
     _attributes: { phpName: GameStat }
     id:                ~
@@ -156,28 +168,32 @@ propel:
     gamestattype_id:   { type: integer,      foreignTable: gamestattype, foreignReference: id, onDelete: setnull }
     name:              { type: varchar(255), required: true }
     description:       { type: longvarchar }
-  
+
+
   gamestattype:
     _attributes: { phpName: GameStatType }
     id:                ~
     name:              { type: varchar(255), required: true }
     description:       { type: longvarchar,  required: false }
-    
-  gamestat_avatar:
-    _attributes: { phpName: GameStat_Avatar }
+
+
+  gamestat_player_profile:
+    _attributes: { phpName: GameStat_PlayerProfile }
     id:                ~
     gamestat_id:       { type: integer, foreignTable: gamestat, foreignReference: id, onDelete: cascade }
-    avatar_id:         { type: integer, foreignTable: avatar, foreignReference: id, onDelete: cascade }
+    player_profile_id: { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
     value:             { type: integer,      required: true }
     created_at:        ~
-    
+
+
   chat_message:
     _attributes: { phpName: ChatMessage }
     id:
     user_id:           { type: varchar(37),  required: true }
     created_at:        ~
     chat_message:      { type: longvarchar,  required: true }
-  
+
+
   chat_useronline:
     _attributes: {phpName: ChatUserOnline }
     id:

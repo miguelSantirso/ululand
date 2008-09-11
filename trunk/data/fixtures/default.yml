@@ -83,19 +83,32 @@ GameReleaseStatus:
 #######
 
 Game:
-  SnailAlert2:
-    name: Snail Alert 2
+  Arkanoid:
+    name: Simple Arkanoid
     created_by: miguelSantirso
-    description: La **Joya** de la corona. Un juego adictivo, entretenido y más *cúnder* que cualquier otra cosa que hayas visto jamás...
-    instructions: Cursores para mover la nave
-    thumbnail_path: snail-alert-2.png
+    description: Un **arkanoid** muy, muy sencillo
+    instructions: Rat&oacute;n para mover la paleta
+    thumbnail_path: arkanoid.jpg
+    tags: addictive, funny, simple, arkanoid 
     
 GameRelease:
-  FirstRelease:
-    name: First Release
-    game_id: SnailAlert2
-    description: First Release of this game
+  Final:
+    name: Final
+    game_id: Arkanoid
+    description: Simple Arkanoid's final release
     created_by: miguelSantirso
     is_public: true
     gamereleasestatus_id: Published
-    game_path: snail-alert-2_first-release.swf
+    game_path: arkanoid_final.swf
+    
+    
+# GAMESTATS TYPES
+#################
+
+GameStatType:
+  Max:
+    name: max
+  Min:
+    name: min
+  Add:
+    name: add

@@ -10,25 +10,25 @@
 class GameStat extends BaseGameStat
 {
 	/**
-	 * Añade o modifica un valor de un gamestat para cierto avatar.
+	 * Añade o modifica un valor de un gamestat para cierto jugador.
 	 *
-	 * @param integer $avatarId Id del avatar al que pertenece el nuevo valor del gamestat
+	 * @param integer $playerId Id del jugador al que pertenece el nuevo valor del gamestat
 	 * @param integer $value Nuevo valor del gamestat
 	 */
-	public function setValueForAvatar($avatarId, $value)
+	public function setValueForPlayer($playerId, $value)
 	{
 		// Obtener el valor del gamestat para el avatar indicado
 		$c = new Criteria();
-		$c->add(GameStat_AvatarPeer::AVATAR_ID, $avatarId);
-		$c->add(GameStat_AvatarPeer::GAMESTAT_ID, $this->getId());
-		$gameStatValue = GameStat_AvatarPeer::doSelectOne($c);
+		$c->add(GameStat_PlayerProfilePeer::PLAYER_PROFILE_ID, $playerId);
+		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $this->getId());
+		$gameStatValue = GameStat_PlayerProfilePeer::doSelectOne($c);
 		
 		// Comprobamos si el avatar ya tiene un valor para este gamestat 
 		if(!$gameStatValue)
 		{
 			// El avatar no tenía ningún valor, así que creamos uno nuevo
-			$newValue = new GameStat_Avatar();
-			$newValue->setAvatarId($avatarId);
+			$newValue = new GameStat_PlayerProfile();
+			$newValue->setPlayerProfileId($playerId);
 			$newValue->setGamestat($this);
 			$newValue->setValue($value);
 			

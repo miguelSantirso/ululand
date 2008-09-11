@@ -9,12 +9,12 @@
  */ 
 class ApiSessionPeer extends BaseApiSessionPeer
 {
-	public static function createNew($apiKey, $avatarApiKey, $privilegesLevel)
+	public static function createNew($clientUuid, $userUuid, $privilegesLevel)
 	{
 		$newApiSession = new ApiSession();
 		$newApiSession->setSessionId(ApiSessionPeer::generateRandomString(12));
-		$newApiSession->setApiKey($apiKey);
-		$newApiSession->setAvatarApikey($avatarApiKey);
+		$newApiSession->setClientUuid($clientUuid);
+		$newApiSession->setUserUuid($userUuid);
 		$newApiSession->setPrivilegesLevel($privilegesLevel);
 		
 		$newApiSession->save();

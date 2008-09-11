@@ -2,10 +2,10 @@
 
 
 
-class GameStat_AvatarMapBuilder {
+class GameStat_PlayerProfileMapBuilder {
 
 	
-	const CLASS_NAME = 'lib.model.map.GameStat_AvatarMapBuilder';
+	const CLASS_NAME = 'lib.model.map.GameStat_PlayerProfileMapBuilder';
 
 	
 	private $dbMap;
@@ -27,8 +27,8 @@ class GameStat_AvatarMapBuilder {
 	{
 		$this->dbMap = Propel::getDatabaseMap('propel');
 
-		$tMap = $this->dbMap->addTable('gamestat_avatar');
-		$tMap->setPhpName('GameStat_Avatar');
+		$tMap = $this->dbMap->addTable('gamestat_player_profile');
+		$tMap->setPhpName('GameStat_PlayerProfile');
 
 		$tMap->setUseIdGenerator(true);
 
@@ -36,7 +36,7 @@ class GameStat_AvatarMapBuilder {
 
 		$tMap->addForeignKey('GAMESTAT_ID', 'GamestatId', 'int', CreoleTypes::INTEGER, 'gamestat', 'ID', false, null);
 
-		$tMap->addForeignKey('AVATAR_ID', 'AvatarId', 'int', CreoleTypes::INTEGER, 'avatar', 'ID', false, null);
+		$tMap->addForeignKey('PLAYER_PROFILE_ID', 'PlayerProfileId', 'int', CreoleTypes::INTEGER, 'player_profile', 'ID', false, null);
 
 		$tMap->addColumn('VALUE', 'Value', 'int', CreoleTypes::INTEGER, true, null);
 

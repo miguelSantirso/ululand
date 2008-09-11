@@ -36,9 +36,9 @@ class ApiSessionMapBuilder {
 
 		$tMap->addColumn('SESSION_ID', 'SessionId', 'string', CreoleTypes::VARCHAR, true, 12);
 
-		$tMap->addColumn('AVATAR_APIKEY', 'AvatarApikey', 'string', CreoleTypes::VARCHAR, true, 13);
+		$tMap->addColumn('USER_UUID', 'UserUuid', 'string', CreoleTypes::VARCHAR, true, 36);
 
-		$tMap->addColumn('API_KEY', 'ApiKey', 'string', CreoleTypes::VARCHAR, true, 13);
+		$tMap->addColumn('CLIENT_UUID', 'ClientUuid', 'string', CreoleTypes::VARCHAR, true, 36);
 
 		$tMap->addColumn('PRIVILEGES_LEVEL', 'PrivilegesLevel', 'int', CreoleTypes::INTEGER, true, null);
 

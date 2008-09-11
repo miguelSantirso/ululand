@@ -38,6 +38,11 @@ class Game extends BaseGame
 		$thumbnail->save($uploadDir.'/'.'thumb_'.$this->getThumbnailPath(), 'image/png');
 	}
 	
+	public function getActiveRelease()
+	{
+		return GameReleasePeer::retrieveByPK( $this->getActiveReleaseId() );		
+	}
+	
 	/**
 	 * Retorna una cadena con todos los tags del objeto separados por comas.
 	 *

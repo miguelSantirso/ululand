@@ -81,3 +81,5 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 		}
 	}
 }
+
+sfPropelBehavior::add('sfGuardUserProfile', array('sfPropelUuidBehavior'));

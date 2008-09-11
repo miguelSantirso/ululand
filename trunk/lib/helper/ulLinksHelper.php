@@ -159,7 +159,7 @@
 	function linkToGameWithThumbnail($game, $size = 100, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $game->getName() : $customText;
-		$imageTag = image_tag($game->getThumbnailUrl(), array('alt' => $game, 'title' => $game));
+		$imageTag = gameThumbnail_tag($game, array('alt' => $game, 'title' => $game, 'width' => 100));
 		$linkText = '<span class="gravatar">'.$imageTag.'</span>'.$linkText;
 		
 		return '<span class="linkToProfileWithGravatar">'.linkToGame($game, $options, $linkText ).'</span>';

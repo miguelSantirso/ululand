@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS `sf_guard_user_profile`;
 CREATE TABLE `sf_guard_user_profile`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`uuid` VARCHAR(36)  NOT NULL,
 	`user_id` INTEGER  NOT NULL,
 	`username` VARCHAR(30),
 	`first_name` VARCHAR(20),
@@ -362,8 +363,8 @@ CREATE TABLE `apisession`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`session_id` VARCHAR(12)  NOT NULL,
-	`avatar_apikey` VARCHAR(13)  NOT NULL,
-	`api_key` VARCHAR(13)  NOT NULL,
+	`user_uuid` VARCHAR(36)  NOT NULL,
+	`client_uuid` VARCHAR(36)  NOT NULL,
 	`privileges_level` INTEGER  NOT NULL,
 	`created_at` DATETIME,
 	PRIMARY KEY (`id`)
@@ -412,29 +413,29 @@ CREATE TABLE `gamestattype`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- gamestat_avatar
+#-- gamestat_player_profile
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `gamestat_avatar`;
+DROP TABLE IF EXISTS `gamestat_player_profile`;
 
 
-CREATE TABLE `gamestat_avatar`
+CREATE TABLE `gamestat_player_profile`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`gamestat_id` INTEGER,
-	`avatar_id` INTEGER,
+	`player_profile_id` INTEGER,
 	`value` INTEGER  NOT NULL,
 	`created_at` DATETIME,
 	PRIMARY KEY (`id`),
-	INDEX `gamestat_avatar_FI_1` (`gamestat_id`),
-	CONSTRAINT `gamestat_avatar_FK_1`
+	INDEX `gamestat_player_profile_FI_1` (`gamestat_id`),
+	CONSTRAINT `gamestat_player_profile_FK_1`
 		FOREIGN KEY (`gamestat_id`)
 		REFERENCES `gamestat` (`id`)
 		ON DELETE CASCADE,
-	INDEX `gamestat_avatar_FI_2` (`avatar_id`),
-	CONSTRAINT `gamestat_avatar_FK_2`
-		FOREIGN KEY (`avatar_id`)
-		REFERENCES `avatar` (`id`)
+	INDEX `gamestat_player_profile_FI_2` (`player_profile_id`),
+	CONSTRAINT `gamestat_player_profile_FK_2`
+		FOREIGN KEY (`player_profile_id`)
+		REFERENCES `player_profile` (`id`)
 		ON DELETE CASCADE
 )Type=MyISAM;
 

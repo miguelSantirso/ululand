@@ -29,9 +29,9 @@ class apiCommonActions extends sfActions
 	}
 	
 	/**
-	 * Retorna el avatar que est� ejecutando el juego.
+	 * Retorna el avatar que está ejecutando el juego.
 	 *
-	 * @return Avatar Avatar que est� ejecutando el juego
+	 * @return Avatar Avatar que está ejecutando el juego
 	 */
 	protected function getActiveAvatar()
 	{

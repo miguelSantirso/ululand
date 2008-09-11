@@ -11,7 +11,7 @@
 		switch($action) 
 		{
 			case "list":
-				echo $moduleIndex . $separator . link_to(__('List'), 'profile/list');
+				echo $moduleIndex . $separator . link_to(__('List'), 'game/list');
 				break;
 			case "show":
 				echo $moduleIndex . $separator . __('Play');

@@ -2,19 +2,19 @@
 	
 	<?php
 		if(!isset($width))
-			$width = $game->getWidth().'px';
+			$width = $gameRelease->getWidth().'px';
 		if(!isset($height))
-			$height = $game->getHeight().'px';
+			$height = $gameRelease->getHeight().'px';
 	?>
 	
-	<object id='widget-<?php echo $game->getId(); ?>' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'
+	<object id='game-<?php echo $gameRelease->getStrippedName(); ?>' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'
 		codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/
 			swflash.cab#version=9,0,0,0'
 		width='<?php echo $width; ?>' height='<?php echo $height; ?>'>
-		<param name='src' value='<?php echo $game->getGameUrl(); ?>' />
+		<param name='src' value='<?php echo $gameRelease->getCompleteUrl(); ?>' />
 		<param name="wmode" value="transparent">
 		<param name='flashVars' value='<?php echo($flashVars); ?>' />
-		<embed name='mySwf' src='<?php echo $game->getGameUrl(); ?>'
+		<embed name='mySwf' src='<?php echo $gameRelease->getCompleteUrl(); ?>'
 			pluginspage='http://
 			www.macromedia.com/shockwave/download/
 			index.cgi?P1_Prod_Version=ShockwaveFlash'
