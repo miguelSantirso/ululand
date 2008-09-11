@@ -24,13 +24,13 @@ class gamestatActions extends apiCommonActions
 	/**
 	 * Retorna el valor de un gamestat para cierto avatar
 	 * Requiere como parámetros:
-	 *  - 'gameApiKey' -- ApiKey del juego del que se desea obtener un gamestat
-	 *  - 'avatarApiKey' -- ApiKey del avatar del que se desea obtener un gamestat
+	 *  - 'gameUuid' -- Uuid del juego del que se desea obtener un gamestat
+	 *  - 'userUuid' -- Uuid del usuario del que se desea obtener un gamestat
 	 *  - 'gamestatName' -- Nombre del gamestat que se desea obtener
 	 * 
 	 * Retorna un array con el siguiente formato:
 	 *  array('gameName' => <Nombre del juego>,
-	 *  'avatarName' => <nombre del avatar>,
+	 *  'username' => <nombre del usuario>,
 	 *  'gamestatName' => <nombre del gamestat>,
 	 *  'gamestatValue' => <valor del gamestat>)
 	 * 
@@ -38,27 +38,27 @@ class gamestatActions extends apiCommonActions
 	public function executeGetValue()
 	{
 		// Comprobar que se nos han pasado todos los par�metros necesarios
-		$this->checkRequiredParameters( array("gameApiKey", "avatarApiKey", "gamestatName") );
+		$this->checkRequiredParameters( array("gameUuid", "userUuid", "gamestatName") );
 
-		// Obtener el juego con la apikey recibida
-		$game = GamePeer::retrieveByApiKey($this->getRequestParameter('gameApiKey'));
+		// Obtener el juego con la uuid recibida
+		$game = GamePeer::retrieveByUuid($this->getRequestParameter('gameUuid'));
 
 		// Comprobar que existe el juego
 		if(!$game)
 		{
 			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'gameApiKey'. There is not a game whose apikey is ".$this->getRequestParameter('gameApiKey'));
+			$this->setFlash('api_error_message', "Unexpected value for 'gameUuid'. There is not a game whose uuid is ".$this->getRequestParameter('gameUuid'));
 			$this->forward('output', 'error');
 		}
 		
-		// Obtener el avatar con la apikey recibida
-		$avatar = AvatarPeer::retrieveByApiKey($this->getRequestParameter('avatarApiKey'));
+		// Obtener el usuario con la uuid recibida
+		$user = sfGuardUserProfile::retrieveByUuid($this->getRequestParameter('userUuid'));
 
-		// Comprobar que el avatar existe
-		if(!$avatar)
+		// Comprobar que el usuario existe
+		if(!$user)
 		{
 			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'avatarApiKey'. There is not an avatar whose apikey is ".$this->getRequestParameter('avatarApiKey'));
+			$this->setFlash('api_error_message', "Unexpected value for 'userUuid'. There is not a user whose uuid is ".$this->getRequestParameter('userUuid'));
 			$this->forward('output', 'error');
 		}
 
@@ -78,16 +78,18 @@ class gamestatActions extends apiCommonActions
 
 		// Finalmente, obtener el valor del gamestat para el avatar indicado
 		$c = new Criteria();
-		$c->add(GameStat_AvatarPeer::AVATAR_ID, $avatar->getId());
-		$c->add(GameStat_AvatarPeer::GAMESTAT_ID, $gamestat->getId());
-		$result = GameStat_AvatarPeer::doSelectOne($c);
+		$c->add(GameStat_PlayerProfilePeer::PLAYER_PROFILE_ID, $avatar->getPlayerProfile()->getId());
+		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $gamestat->getId());
+		$result = GameStat_PlayerProfilePeer::doSelectOne($c);
 
 		$this->returnApi( array(
 					'gameName' => $game->getName(),
-					'avatarName' => $avatar->getName(),
+					'username' => $user->getUsername(),
 					'gamestatName' => $gamestat->getName(),
 					'gamestatValue' => $result ? $result->getValue() : 0 )); // Retornamos cero si el avatar no tiene ningún gamestat
 	}
+	
+	
 
 
 	/**
@@ -103,26 +105,26 @@ class gamestatActions extends apiCommonActions
 		// Comprobar que se han recibido los parámetros requeridos
 		$this->checkRequiredParameters( array('gamestatName', 'value') );
 		
-		if($this->getRequestParameter('avatarApiKey'))
+		if($this->getRequestParameter('userUuid'))
 		{
 			// Obtener el avatar cuyo apikey es el recibido
-			$avatar = AvatarPeer::retrieveByApiKey($this->getRequestParameter('avatarApiKey'));
+			$user = sfGuardUserProfile::retrieveByUuid($this->getRequestParameter('userUuid'));
 		}
 		else
 		{
-			$avatar = $this->getActiveAvatar();
+			$user = $this->getActiveUser();
 		}
 		
 		// Comprobar que el avatar existe
-		if(!$avatar)
+		if(!$user)
 		{
 			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'avatarApiKey'. There is not an avatar whose apikey is ".$this->getRequestParameter('avatarApiKey'));
+			$this->setFlash('api_error_message', "Unexpected value for 'userUuid'. There is not a user whose uuid is ".$this->getRequestParameter('userUuid'));
 			$this->forward('output', 'error');
 		}
 		
 		// Comprobar que se dispone de suficientes privilegios como para realizar la operación
-		$this->breakIfNotAllowed(1, $avatar->getApiKey());
+		$this->breakIfNotAllowed(1, $user->getUuid());
 		
 		// Obtenemos el juego que inició la petición
 		$game = $this->getActiveGame();
@@ -130,7 +132,7 @@ class gamestatActions extends apiCommonActions
 		if(!$game)
 		{
 			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'apiSessionId'. This session was not started by a game, and that is required by this function.");
+			$this->setFlash('api_error_message', "Unexpected value for 'apiSessionId'. This session was not started by a game, and that is required to use this function.");
 			$this->forward('output', 'error');
 		}
 		
@@ -148,10 +150,11 @@ class gamestatActions extends apiCommonActions
 			$this->forward('output', 'error');
 		}
 		
-		// Finalmente, enviamos el nuevo valor
-		$gamestat->setValueForAvatar($avatar->getId(), $this->getRequestParameter('value'));
 		
-		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for avatar ".$avatar->getName());
+		// Finalmente, enviamos el nuevo valor
+		$gamestat->setValueForPlayer($user->getPlayerProfile()->getId(), $this->getRequestParameter('value'));
+		
+		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getName());
 		$this->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}

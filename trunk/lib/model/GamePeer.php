@@ -10,15 +10,15 @@
 class GamePeer extends BaseGamePeer
 {
 	/**
-	 * Retorna un juego identificado por su apikey 
+	 * Retorna un juego identificado por su uuid 
 	 *
-	 * @param varchar(13) $apikey
-	 * @return juego cuyo apikey es el pasado como parámetro
+	 * @param varchar(36) $uuid
+	 * @return juego cuyo uuid es el pasado como parámetro
 	 */
-	public static function retrieveByApiKey($apikey)
+	public static function retrieveByUuid($uuid)
 	{
 		$c = new Criteria();
-		$c->add(GamePeer::API_KEY, $apikey);
+		$c->add(GamePeer::UUID, $uuid);
 
 		return GamePeer::doSelectOne($c);
 	}

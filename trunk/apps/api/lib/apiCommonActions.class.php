@@ -25,15 +25,15 @@ class apiCommonActions extends sfActions
 		}
 		
 		// retornamos el juego que inició la sesión con la api o null si no es un juego.
-		return GamePeer::retrieveByApiKey($apiSession->getApiKey());
+		return GamePeer::retrieveByUuid($apiSession->getClientUuid());
 	}
 	
 	/**
-	 * Retorna el avatar que está ejecutando el juego.
+	 * Retorna el usuario que está ejecutando el juego.
 	 *
-	 * @return Avatar Avatar que está ejecutando el juego
+	 * @return sfGuardUserProfile Usuario que está ejecutando el juego
 	 */
-	protected function getActiveAvatar()
+	protected function getActiveUser()
 	{
 		// Comprobar que se ha recibido la id de la sesión como parámetro
 		$this->checkRequiredParameters( array('apiSessionId') );
@@ -50,7 +50,7 @@ class apiCommonActions extends sfActions
 		}
 
 		// retornamos el avatar que inició la sesión con la api.
-		return AvatarPeer::retrieveByApiKey($apiSession->getAvatarApiKey());
+		return sfGuardUserProfile::retrieveByUuid($apiSession->getUserUuid());
 	}	
 	
 	/**
@@ -128,10 +128,10 @@ class apiCommonActions extends sfActions
 	}
 
 	/**
-	 * Comprueba que se han pasado todos los par�metros indicados en el array $requiredParameters.
-	 * Si falta alguno, lanza el error avisando de que falta ese par�metro.
+	 * Comprueba que se han pasado todos los parámetros indicados en el array $requiredParameters.
+	 * Si falta alguno, lanza el error avisando de que falta ese parámetro.
 	 *
-	 * @param array $requiredParameters array con los strings que representan a cada par�metro.
+	 * @param array $requiredParameters array con los strings que representan a cada parámetro.
 	 */
 	protected function checkRequiredParameters($requiredParameters)
 	{
@@ -154,7 +154,7 @@ class apiCommonActions extends sfActions
 	 * @param integer $requiredPrivileges Privilegios exigidos {0|1|2}
 	 * @param integer $avatarApiKey ApiKey del avatar que se modificará en la operación. Si se da el valor '-1' a este parámetro, se interpretará que no se modifica ningún avatar 
 	 */
-	protected function breakIfNotAllowed($requiredPrivileges, $avatarApiKey)
+	protected function breakIfNotAllowed($requiredPrivileges, $userUuid)
 	{
 		// Si los privilegios exigidos son mayores que 2 retornamos ya que eso quiere decir que no hay restricciones de seguridad
 		if($requiredPrivileges >= 2)
@@ -193,10 +193,10 @@ class apiCommonActions extends sfActions
 		}
 
 		// Caso especial de privilegios de tipo 1
-		// Hay que comprobar que el avatar al que se está accediendo sea el que inició la operación
+		// Hay que comprobar que el usuario al que se está accediendo sea el que inició la operación
 		if($sessionPrivileges == 1)
 		{
-			if($avatarApiKey != -1 && $apiSession->getAvatarApiKey() != $avatarApiKey)
+			if($userUuid != -1 && $apiSession->getUserUuid() != $userUuid)
 			{
 				$this->setFlash('api_error_code', 0);
 				$this->setFlash('api_error_message', "ERROR: Access denied. You don't have permission to modify that avatar.");

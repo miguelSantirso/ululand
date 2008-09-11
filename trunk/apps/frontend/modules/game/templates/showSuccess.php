@@ -75,7 +75,7 @@
 					<h5 class="header medium"><?php echo $gamestat; ?></h5>
 					<ol class="normalList normal">
 						<?php foreach($gamestat->getOrderedValues(10) as $value) : ?>
-						<li><?php echo $value->getAvatar()->getProfileLink(); ?>: <?php echo $value->getValue(); ?></li>
+						<li><?php echo linkToProfile($value->getPlayerProfile()->getsfGuardUserProfile()); ?>: <?php echo $value->getValue(); ?></li>
 						<?php endforeach; ?>
 					</ol>
 					<?php endforeach; ?>

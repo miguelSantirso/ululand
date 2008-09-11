@@ -44,25 +44,25 @@ class GameStat extends BaseGameStat
 	public function getOrderedValues($limit = 0)
 	{
 		$c = new Criteria();
-		$c->add(GameStat_AvatarPeer::GAMESTAT_ID, $this->getId());
+		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $this->getId());
 		if($limit > 0)
 			$c->setLimit($limit);
 		switch ($this->getGameStatType())
 		{
 			case 'max':
-				$c->addDescendingOrderByColumn(GameStat_AvatarPeer::VALUE);
+				$c->addDescendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
 			case 'min':
-				$c->addAscendingOrderByColumn(GameStat_AvatarPeer::VALUE);
+				$c->addAscendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
 			case 'add':
-				$c->addDescendingOrderByColumn(GameStat_AvatarPeer::VALUE);
+				$c->addDescendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
 			default:
-				$c->addDescendingOrderByColumn(GameStat_AvatarPeer::VALUE);
+				$c->addDescendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
 		}
-		return GameStat_AvatarPeer::doSelect($c);
+		return Gamestat_PlayerProfilePeer::doSelect($c);
 	}
 	
 	/**

@@ -47,4 +47,6 @@ class GameStat_PlayerProfile extends BaseGameStat_PlayerProfile
 		$this->save();
 		return $this->getValue();
 	}
+
+	
 }

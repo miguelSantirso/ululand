@@ -27,6 +27,20 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 	}
 
 	/**
+	 * Retorna un juego identificado por su uuid 
+	 *
+	 * @param varchar(36) $uuid
+	 * @return juego cuyo uuid es el pasado como parámetro
+	 */
+	public static function retrieveByUuid($uuid)
+	{
+		$c = new Criteria();
+		$c->add(sfGuardUserProfilePeer::UUID, $uuid);
+
+		return sfGuardUserProfilePeer::doSelectOne($c);
+	}
+	
+	/**
 	 * Retorna el perfil de desarrollador asociado al perfil de usuario o null si no existe.
 	 *
 	 * @param boolean $forceCreation Si vale true, crea un perfil de desarrollador en caso de no existir.
