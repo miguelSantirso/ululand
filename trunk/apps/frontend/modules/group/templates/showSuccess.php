@@ -3,7 +3,7 @@
 	<div class = "contentColumn quarter alignLeft">
 		<div class = "contentBox">
 			<?php if($sf_user->isAuthenticated()) : ?>
-			<?php $status = $group->getStatus($sf_user->getPlayerProfile()); ?>
+			<?php $status = $group->getStatus($sf_user->getPlayerProfile()); echo $status;?>
 				<?php if($status == GroupPeer::OWNER) : ?>
 					<?php echo link_to(__("Admin"), 'group/edit?id='.$group->getId()); ?>
 				<?php endif; ?>

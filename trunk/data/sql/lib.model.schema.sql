@@ -106,6 +106,7 @@ CREATE TABLE `grupo`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(64)  NOT NULL,
 	`description` VARCHAR(255),
+	`created_at` DATETIME,
 	PRIMARY KEY (`id`)
 )Type=MyISAM;
 
@@ -123,6 +124,7 @@ CREATE TABLE `player_profile_grupo`
 	`grupo_id` INTEGER,
 	`is_owner` INTEGER default 0,
 	`is_approved` INTEGER default 0,
+	`created_at` DATETIME,
 	PRIMARY KEY (`id`),
 	INDEX `player_profile_grupo_FI_1` (`player_profile_id`),
 	CONSTRAINT `player_profile_grupo_FK_1`

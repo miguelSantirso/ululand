@@ -22,17 +22,55 @@ class groupActions extends sfActions
   public function executeEdit()
   {
   	// Obtener el id del grupo a editar
-  	$groupId = $this->getRequestParameter('id');
-  	// Obtener el objeto del grupo a editar
-  	$this->group = GroupPeer::retrieveByPk($groupId);
-  	$this->forward404Unless($this->group);
-
-  	// Comprobar que el usuario está editando su propio perfil y no otro
-  	if($this->group->getStatus($this->getUser()->getPlayerProfile()) != GroupPeer::OWNER)
+  	if($this->getRequestParameter('id'))
   	{
-  		$this->setFlash('error', 'No tienes permisos para editar este grupo');
-  		$this->redirect('group/list');
+  		$this->groupId = $this->getRequestParameter('id');
   	}
+  	else
+  	{
+  		// Crear un nuevo objeto Group
+	 	$this->newGroup = new Group();
+		        
+	 	        
+		// Modificar adecuadamente el objeto
+		$this->newGroup->setName("hola");
+		$this->newGroup->setDescription("hola");
+	 	        
+		// Grabarlo en la base de datos
+		$this->newGroup->save();
+		
+		$this->groupId = $this->newGroup->GetId();
+		
+  	 	// Obtener el jugador del perfil
+	    $this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
+ 	    $this->forward404Unless($this->profile);
+ 	        
+	    // Crear un nuevo objeto PlayerProfile_Group
+ 	    $this->newPlayerProfile_Group = new PlayerProfile_Group();
+	        
+	        
+	    // Modificar adecuadamente el objeto
+	    $this->newPlayerProfile_Group->setPlayerProfileId($this->profile->getId());
+ 	    $this->newPlayerProfile_Group->setGrupoId($this->groupId);
+	    $this->newPlayerProfile_Group->setIsOwner(true);
+	    $this->newPlayerProfile_Group->setIsApproved(true);
+	        
+	    // Grabarlo en la base de datos
+	    $this->newPlayerProfile_Group->save();
+		
+		$this->redirect('group/edit?id='.$this->groupId);
+  	}
+  	
+   	// Obtener el objeto del grupo a editar
+	$this->group = GroupPeer::retrieveByPk($this->groupId);
+	$this->forward404Unless($this->group);
+  	
+	// Comprobar que el usuario está editando su propio perfil y no otro
+	if($this->group->getStatus($this->getUser()->getPlayerProfile()) != GroupPeer::OWNER)
+	{
+		$this->setFlash('error', 'No tienes permisos para editar este grupo');
+		$this->redirect('group/list');
+	}
   }
   
   /**

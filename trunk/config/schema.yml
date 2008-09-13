@@ -43,6 +43,7 @@ propel:
     id:
     name:               { type: varchar(64) , required: true }
     description:        { type: varchar(255), required: false }
+    created_at:
 
 
   player_profile_grupo:
@@ -52,6 +53,8 @@ propel:
     grupo_id:        { type: integer, foreignTable: grupo, foreignReference: id, onDelete: cascade }
     is_owner:        { type: boolean, required: false, default: false }
     is_approved:     { type: boolean, required: false, default: false }
+    created_at:
+
 
 
   friendship:

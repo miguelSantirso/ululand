@@ -42,5 +42,7 @@ class PlayerProfile_GroupMapBuilder {
 
 		$tMap->addColumn('IS_APPROVED', 'IsApproved', 'boolean', CreoleTypes::BOOLEAN, false, null);
 
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+
 	} 
 } 

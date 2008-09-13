@@ -15,11 +15,11 @@
 		<?php include_component('group', 'list'); ?>
 		
 		<?php if($sf_user->isAuthenticated()) : ?>
-			<?php echo link_to(__('Create your own &raquo;'), 'group/create', array('class' => 'button')); ?>
+			<?php echo link_to(__('Create your own &raquo;'), 'group/edit', array('class' => 'button')); ?>
 		<?php else :  ?>
 			<p class="center">
 				(<?php echo sprintf(__('requires %s or %s'), link_to(__('log in'), '@sf_guard_signin'), link_to(__('register'), '@register')) ?>)
-				<?php echo link_to(__('Create your own &raquo;'), 'group/create', array('class' => '')); ?> 
+				<?php echo link_to(__('Create your own &raquo;'), 'group/edit', array('class' => '')); ?> 
 			</p>
 		<?php endif; ?>
 	</div>
