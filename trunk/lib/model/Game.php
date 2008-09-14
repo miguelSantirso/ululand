@@ -24,6 +24,17 @@ class Game extends BaseGame
 		return count($this->getComments());
 	}
 	
+	public function getNbRatings()
+	{
+		$ratingDetails = $this->getRatingDetails();
+		$ratingsCount = 0;
+		foreach($ratingDetails as $ratingDetail)
+		{
+			$ratingsCount += $ratingDetail;
+		}
+		return $ratingsCount;
+	}
+	
 	public function setThumbnailPath($v)
 	{
 		parent::setThumbnailPath($v); 
@@ -41,6 +52,11 @@ class Game extends BaseGame
 	public function getActiveRelease()
 	{
 		return GameReleasePeer::retrieveByPK( $this->getActiveReleaseId() );		
+	}
+	
+	public function isPublished()
+	{
+		return !is_null($this->getActiveRelease());
 	}
 	
 	/**

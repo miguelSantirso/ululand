@@ -18,6 +18,9 @@
 	<?php endif; ?>
 	
 	<div class="contentColumn wide alignLeft">
+		<?php if(isset($userFiltered)) : ?>
+		<h4 class="header"><?php echo sprintf(__('Showing collaboration offers submitted by %1$s (%2$s)'), linkToProfile($userFiltered), link_to('clear', 'collaboration/list')); ?></h4>
+		<?php endif; ?>
 		
 		<?php include_component('collaboration', 'list'); ?>
 		

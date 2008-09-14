@@ -27,6 +27,24 @@ class recipeComponents extends sfComponents
 			$c->add(CodePiecePeer::TITLE, '%'.$search.'%', Criteria::LIKE);
 		}
 		
+		$this->filterByUsername = isset($this->filterByUsername) ? $this->filterByUsername : $this->getRequestParameter('filterByUsername');
+		if($this->filterByUsername)
+		{
+			$c->addJoin(CodePiecePeer::CREATED_BY, sfGuardUserPeer::ID);
+			$c->addJoin(sfGuardUserPeer::ID, sfGuardUserProfilePeer::USER_ID);
+			$c->add(sfGuardUserProfilePeer::USERNAME, $this->filterByUsername);
+		}
+		$this->orderDescendingBy = isset($this->orderDescendingBy) ? $this->orderDescendingBy : $this->getRequestParameter('orderDescendingBy');
+		if($this->orderDescendingBy)
+		{
+			$c->addDescendingOrderByColumn($this->orderDescendingBy);
+		}
+		$this->orderAscendingBy = isset($this->orderAscendingBy) ? $this->orderAscendingBy : $this->getRequestParameter('orderAscendingBy');
+		if($this->orderAscendingBy)
+		{
+			$c->addAscendingOrderByColumn($this->orderAscendingBy);
+		}
+		
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));
 		$pager->init();

@@ -45,8 +45,6 @@ class gameActions extends sfActions
     
     // Cargar los gamestats del juego para mostrarlos en el template
     $this->gamestats = $this->game->getGameStats();
-    
-    $this->avatarApiKey = $this->getUser()->getAttribute('avatarApiKey');
   }
 
 }

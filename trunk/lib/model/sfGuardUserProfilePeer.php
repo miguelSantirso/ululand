@@ -9,4 +9,10 @@
  */ 
 class sfGuardUserProfilePeer extends BasesfGuardUserProfilePeer
 {
+	public static function retrieveByUsername($username)
+	{
+		$c = new Criteria();
+		$c->add(sfGuardUserProfilePeer::USERNAME, $username);
+		return sfGuardUserProfilePeer::doSelectOne($c);
+	}
 }

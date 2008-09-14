@@ -26,6 +26,11 @@ class collaborationActions extends sfActions
 		{
 			$this->search = $search;
 		}
+		$filterByUsername = $this->getRequestParameter('filterByUsername');
+		if($filterByUsername)
+		{
+			$this->userFiltered = sfGuardUserProfilePeer::retrieveByUsername($filterByUsername);
+		}
   }
 
   public function executeShow()
@@ -43,7 +48,7 @@ class collaborationActions extends sfActions
 	}
 	
     $this->forward404Unless($this->collaboration_offer);
-    $this->collaboration_offer->incrementCounter(); // Una visita más
+    $this->collaboration_offer->incrementCounter(); // Una visita mï¿½s
   }
 
   public function executePreview()

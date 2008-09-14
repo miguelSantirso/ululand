@@ -35,6 +35,17 @@ class groupComponents extends sfComponents
 			$c->add(sfGuardUserProfilePeer::USERNAME, $this->username);
 
 		}
+		$this->orderDescendingBy = isset($this->orderDescendingBy) ? $this->orderDescendingBy : $this->getRequestParameter('orderDescendingBy');
+		if($this->orderDescendingBy)
+		{
+			$c->addDescendingOrderByColumn($this->orderDescendingBy);
+		}
+		
+		$this->orderAscendingBy = isset($this->orderAscendingBy) ? $this->orderAscendingBy : $this->getRequestParameter('orderAscendingBy');
+		if($this->orderAscendingBy)
+		{
+			$c->addAscendingOrderByColumn($this->orderAscendingBy);
+		}
 		
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));

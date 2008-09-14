@@ -18,7 +18,10 @@
 	<?php endif; ?>
 	
 	<div class="contentColumn wide alignLeft">
-
+		<?php if(isset($userFiltered)) : ?>
+		<h4 class="header"><?php echo sprintf(__('Showing recipes submitted by %1$s (%2$s)'), linkToProfile($userFiltered), link_to('clear', 'recipe/list')); ?></h4>
+		<?php endif; ?>
+		
 		<?php include_component('recipe', 'list'); ?>
 		
 		<?php if($sf_user->isAuthenticated()) : ?>

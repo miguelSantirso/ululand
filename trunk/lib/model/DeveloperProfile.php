@@ -15,6 +15,17 @@ class DeveloperProfile extends BaseDeveloperProfile
 	}
 	
 	/**
+	 * Retorna el número de juegos enviados al sistema
+	 *
+	 */
+	public function getNbGames()
+	{
+		$c = new Criteria();
+		$c->add(GamePeer::CREATED_BY, $this->getsfGuardUserProfile()->getsfGuardUser()->getId());
+		return GamePeer::doCount($c);
+	}
+	
+	/**
 	 * Retorna el número de recetas enviadas al Cookbook de código flash
 	 *
 	 */
@@ -22,22 +33,22 @@ class DeveloperProfile extends BaseDeveloperProfile
 	{
 		$c = new Criteria();
 		$c->add(CodePiecePeer::CREATED_BY, $this->getsfGuardUserProfile()->getsfGuardUser()->getId());
-		return count(CodePiecePeer::doSelect($c));
+		return CodePiecePeer::doCount($c);
 	}
 	
 	/**
-	 * Retorna el número de recetas enviadas al Cookbook de código flash
+	 * Retorna el número de ofertas de colaboración enviadas
 	 *
 	 */
 	public function getNbCollaborations()
 	{
 		$c = new Criteria();
 		$c->add(CollaborationOfferPeer::CREATED_BY, $this->getsfGuardUserProfile()->getsfGuardUser()->getId());
-		return count(CollaborationOfferPeer::doSelect($c));
+		return CollaborationOfferPeer::doCount($c);
 	}
 	
 	/**
-	 * Retorna el número de recetas enviadas al Cookbook de código flash
+	 * Retorna el número de comentarios en el perfil
 	 *
 	 */
 	public function getNbCommentsInProfile()

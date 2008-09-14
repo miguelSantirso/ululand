@@ -28,7 +28,25 @@ class gameComponents extends sfComponents
 			$this->tag = $tag;
 			$c = TagPeer::getTaggedWithCriteria('Game', $tag);
 		}
-
+		
+		$this->username = isset($this->username) ? $this->username : $this->getRequestParameter('username');
+		if($this->username)
+		{
+			$c->addJoin(GamePeer::CREATED_BY, sfGuardUserPeer::ID);
+			$c->addJoin(sfGuardUserPeer::ID, sfGuardUserProfilePeer::USER_ID);
+			$c->add(sfGuardUserProfilePeer::USERNAME, $this->username);
+		}
+		$this->orderDescendingBy = isset($this->orderDescendingBy) ? $this->orderDescendingBy : $this->getRequestParameter('orderDescendingBy');
+		if($this->orderDescendingBy)
+		{
+			$c->addDescendingOrderByColumn($this->orderDescendingBy);
+		}
+		$this->orderAscendingBy = isset($this->orderAscendingBy) ? $this->orderAscendingBy : $this->getRequestParameter('orderAscendingBy');
+		if($this->orderAscendingBy)
+		{
+			$c->addAscendingOrderByColumn($this->orderAscendingBy);
+		}
+		
 		$c->addDescendingOrderByColumn(GamePeer::NAME);
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));
@@ -54,21 +72,11 @@ class gameComponents extends sfComponents
 		
 		$this->objects = GamePeer::doSelect($c);
 	}
-	/*
-	public function executeRelease()
+	
+	public function executeGame()
 	{
 		// Cargar el juego
 		$this->game = GamePeer::retrieveByPK($this->gameId);
 		$this->gameRelease = $this->game->getActiveRelease();
-		if($this->game && $this->gameRelease && $this->getUser()->isAuthenticated())
-		{
-			// Iniciar la sesi�n de la api
-			$newApiSession = ApiSessionPeer::createNew($this->game->getUuid(), 
-				$this->getUser()->getProfile()->getUuid(),
-				$this->game->getPrivilegesLevel());    // Iniciar la sesión de la api
-			 
-			// A�adimos el sessionId al principio de los flashVars para pas�rselo al objeto flash.
-			$this->flashVars = 'apiSessionId='.$newApiSession->getSessionId().'&'.$this->flashVars;
-		}
-	}*/
+	}
 }

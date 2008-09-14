@@ -7,10 +7,11 @@
 		
 		<ul class="compound">
 			<?php foreach ($games as $game): ?>
-				<?php if($game->isPublished()) : ?>
 				<li class="">
 					<?php echo linkToGameWithThumbnail($game, 100, array('class' => 'firstRow xLarge')); ?>
 					<div class="lastRow">
+						
+						<p class="small noSpace"><?php echo __('Submitted by') ?> <strong><?php echo linkToProfile($game->getsfGuardUser()->getProfile()); ?></strong></p>
 						
 						<?php if($game->hasBeenRated()) : ?>
 						<p class="xSmall noSpace"><?php echo __('Rating') ?>: <strong><?php echo $game->getRating(); ?></strong></p>
@@ -28,7 +29,6 @@
 					</div>
 					<div class="clearFloat"></div>
 				</li>
-				<?php endif; ?>
 			<?php endforeach; ?>
 		</ul>
 	

@@ -1,0 +1,14 @@
+update:
+  is_secure: on
+
+edit:
+  is_secure: on
+
+union:
+  is_secure: on
+
+accept:
+  is_secure: on
+
+reject:
+  is_secure: on  

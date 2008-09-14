@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Retorna el c�digo html de un enlace al perfil del usuario pasado como par�metro
+	 * Retorna el código html de un enlace al perfil del usuario pasado como par�metro
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
 	 * @param array $options opciones que se a�adir�n al link_to
@@ -43,7 +43,7 @@
 	}
 	
 	/**
-	 * Retorna el c�digo html de un enlace al perfil del usuario pasado como par�metro, incluyendo el gravatar
+	 * Retorna el código html de un enlace al perfil del usuario pasado como par�metro, incluyendo el gravatar
 	 *
 	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil al que se desea enlazar
 	 * @param int $size tama�o del gravatar
@@ -76,6 +76,12 @@
 		return link_to($linkText, "collaboration/show?stripped_title=".$collaborationOffer->getStrippedTitle(), $options);
 	}
 	
+	function linkToCollaborationOffersByUser($sfGuardUserProfile, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? sprintf(__('list %s\'s collaboration offers'), $sfGuardUserProfile->getUsername()) : $customText;
+		return link_to($linkText, "collaboration/list?filterByUsername=".$sfGuardUserProfile->getUsername(), $options);
+	}
+	
 	/**
 	 * Retorna el c�digo html de un enlace a la oferta de colaboraci�n pasada como par�metro
 	 *
@@ -90,7 +96,6 @@
 		return link_to($linkText, "collaboration/edit?stripped_title=".$collaborationOffer->getStrippedTitle(), $options);
 	}
 	
-	
 	/**
 	 * Retorna el c�digo html de un enlace a la receta pasada como par�metro
 	 *
@@ -103,6 +108,12 @@
 	{
 		$linkText = $customText == "" ? $recipe->getTitle() : $customText;
 		return link_to($linkText, "recipe/show?stripped_title=".$recipe->getStrippedTitle(), $options);
+	}
+	
+	function linkToRecipesByUser($sfGuardUserProfile, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? sprintf(__('list %s\'s recipes'), $sfGuardUserProfile->getUsername()) : $customText;
+		return link_to($linkText, "recipe/list?filterByUsername=".$sfGuardUserProfile->getUsername(), $options);
 	}
 	
 	/**
@@ -144,7 +155,7 @@
 	function linkToGame($game, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $game->getName() : $customText;
-		return link_to($linkText, "game/show?id=".$game->getId(), $options);
+		return link_to($linkText, "game/show?stripped_name=".$game->getStrippedName(), $options);
 	}
 	
 	/**
@@ -159,9 +170,58 @@
 	function linkToGameWithThumbnail($game, $size = 100, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $game->getName() : $customText;
-		$imageTag = gameThumbnail_tag($game, array('alt' => $game, 'title' => $game, 'width' => 100));
+		$imageTag = gameThumbnail_tag($game, array('alt' => $game, 'title' => $game, 'width' => $size));
 		$linkText = '<span class="gravatar">'.$imageTag.'</span>'.$linkText;
 		
 		return '<span class="linkToProfileWithGravatar">'.linkToGame($game, $options, $linkText ).'</span>';
 	}
 	
+	/**
+	 * Retorna el código html de un enlace al menú de edición del juego pasado como parámetro
+	 *
+	 * @param Game $game Juego al que se desea enlazar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace al grupo pasado como parámetro
+	 */
+	function linkToEditGame($game, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? __('edit') : $customText;
+		return link_to($linkText, "game/edit?stripped_name=".$game->getStrippedName(), $options);
+	}
+	
+	function linkToGamesByUser($sfGuardUserProfile, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? sprintf(__('list %s\'s games'), $sfGuardUserProfile->getUsername()) : $customText;
+		return link_to($linkText, "game/list?filterByUsername=".$sfGuardUserProfile->getUsername(), $options);
+	}
+
+	/**
+	 * Retorna un enlace a la release pasada como parámetro
+	 *
+	 * @param GameRelease $gameRelease
+	 * @param array $options
+	 * @param string $customText
+	 * @return string
+	 */
+	function linkToGameRelease($gameRelease, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $gameRelease->getName() : $customText;
+		$game = $gameRelease->getGame();
+		return link_to($linkText, "game/showRelease?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
+	}
+	
+		/**
+	 * Retorna un enlace a la pantalla de edición de la release pasada como parámetro
+	 *
+	 * @param GameRelease $gameRelease
+	 * @param array $options
+	 * @param string $customText
+	 * @return string
+	 */
+	function linkToEditGameRelease($gameRelease, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? 'edit' : $customText;
+		$game = $gameRelease->getGame();
+		return link_to($linkText, "game/editRelease?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
+	}

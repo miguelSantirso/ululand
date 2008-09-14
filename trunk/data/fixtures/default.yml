@@ -75,8 +75,8 @@ GameReleaseStatus:
     name: Release Candidate
     description: The game is visible to a lot of people, but is not officially released yet
     
-  Published:
-    name: Published
+  Final:
+    name: Final
     description: The game is finished and officially released to the public
     
 # GAMES
@@ -98,7 +98,7 @@ GameRelease:
     description: Simple Arkanoid's final release
     created_by: miguelSantirso
     is_public: true
-    gamereleasestatus_id: Published
+    gamereleasestatus_id: Beta
     game_path: arkanoid_final.swf
     
     

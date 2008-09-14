@@ -1,14 +1,21 @@
 # default values
 all:
+  apikeylength: 12 # este valor debe ser igual al de la base de datos
+  dir:
+    asset:   "assets"
+    game:    "UploadedGames"
+    widget:  "UploadedWidgets"
+    avatarPiece: "UploadedPieces"
+
   pager:
     profile: 12
     collaboration: 20
     recipe: 15
-    
+
   sf_guard_plugin:
      remember_key_expiration_age:  2592000   # 30 days in seconds
      remember_cookie_name:         ululandRememberMe
-     
+
   sfPropelActAsCommentableBehaviorPlugin:
     allowed_tags:
       a:              <a>

@@ -24,6 +24,7 @@
 			</div>
 			<div class="contentBox light bordered">
 			<h4 class="header small"><?php echo __('Developer Details:') ?></h4>
+			
 			<?php if($developerProfile->getUrl() != '') : ?>
 				<p class="noSpace small"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
 			<?php endif; ?>

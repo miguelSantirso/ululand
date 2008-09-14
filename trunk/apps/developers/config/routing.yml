@@ -1,4 +1,34 @@
 
+# games
+
+game_list:
+  url: /games
+  param: { module: game, action: list }
+
+game_list_tag:
+  url: /games/tag/:tag
+  param: { module: game, action: list }
+
+game_list_search:
+  url: /games/search/:search
+  param: { module: game, action: list }
+
+game_show:
+  url: /games/:stripped_name
+  param: { module: game, action: show }
+
+game_edit:
+  url: /games/:stripped_name/edit
+  param: { module: game, action: edit }
+
+game_release_show:
+  url: /games/:game_stripped_name/:release_stripped_name
+  param: { module: game, action: showRelease }
+
+game_release_edit:
+  url: /games/:game_stripped_name/:release_stripped_name/edit
+  param: { module: game, action: editRelease }
+
 # code recipes
 
 recipe_list:
@@ -28,7 +58,7 @@ recipe_embed:
 recipe_edit:
   url: /recipes/:stripped_title/edit
   param: { module: recipe, action: edit }
-  
+
 # collaboration offers
 
 collaboration_index:

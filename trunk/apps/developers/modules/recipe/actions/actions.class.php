@@ -18,14 +18,19 @@ class recipeActions extends sfActions
   public function executeList()
   {
   	$tag = $this->getRequestParameter('tag');
-	if($tag)
+  	if($tag)
+  	{
+  		$this->tag = $tag;
+  	}
+  	$search = $this->getRequestParameter('search');
+  	if($search)
+  	{
+  		$this->search = $search;
+  	}
+	$filterByUsername = $this->getRequestParameter('filterByUsername');
+	if($filterByUsername)
 	{
-		$this->tag = $tag;
-	}
-	$search = $this->getRequestParameter('search');
-	if($search)
-	{
-		$this->search = $search;
+		$this->userFiltered = sfGuardUserProfilePeer::retrieveByUsername($filterByUsername);
 	}
   }
 

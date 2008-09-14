@@ -12,6 +12,7 @@ require_once(sfConfig::get('sf_plugins_dir').'/sfGuardPlugin/modules/sfGuardAuth
  */
 class sfGuardAuthActions extends BasesfGuardAuthActions
 {
+	
 	public function executeRegister()
 	{
 		if ($this->getRequest()->getMethod() != sfRequest::POST)
@@ -61,6 +62,9 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 			
 			// Iniciar automaticamente la sesión para el usuario que se acaba de registrar
 			$this->getContext()->getUser()->signIn($user, true);
+			
+			// test: crear usuario de foro
+			
 			
 			// @todo mensaje no internacionalizado
 			$this->setFlash('success', 'Registro completado con éxito');
