@@ -49,7 +49,9 @@ class profileActions extends sfActions
 		}
 		
 		$this->playerProfile = $this->sf_guard_user_profile->getPlayerProfile(true);
-		$this->playerProfile->incrementCounter(); // Una visita m�s
+		// Obtenemos la hipotï¿½tica relaciï¿½n de amistad entre el avatar del usuario y el avatar del perfil
+		$this->friendship = FriendshipPeer::getFriendshipBetween($this->playerProfile->getId(), $this->getUser()->getPlayerProfile()->getId());
+		$this->playerProfile->incrementCounter(); // Una visita m�s
 		
 		$this->forward404Unless($this->sf_guard_user_profile);
 		
@@ -135,6 +137,34 @@ class profileActions extends sfActions
 		}
 		
 		return $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
+	}
+	
+/**
+	 * AcciÃ³n que aÃ±ade una relaciÃ³n de amistad
+	 *
+	 */
+	public function executeAddFriend()
+	{
+		// Obtener los ids de los dos jugadores
+		$this->playerAId = $this->getUser()->getPlayerProfile()->getId();
+		
+		$this->playerBId = $this->getRequestParameter('id');
+		
+		// Crear un nuevo objeto Friendship
+ 	    $this->newFriendship = new Friendship();
+	        
+	    // Modificar adecuadamente el objeto
+	    $this->newFriendship->setPlayerProfileIdA($this->playerAId);
+ 	    $this->newFriendship->setPlayerProfileIdB($this->playerBId);
+	    $this->newFriendship->setIsConfirmed(false);
+	    
+	    // Grabarlo en la base de datos
+	    $this->newFriendship->save();
+	    
+	    // Obtener el objeto del perfil de usuario
+		$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk(PlayerProfilePeer::retrieveByPk($this->playerBId)->getUserProfileId());
+	    
+	    $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 	}
 	
 }

@@ -7,6 +7,9 @@
 				<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 				<span class="">(<?php echo linkToEditProfile($sf_guard_user_profile); ?>)</span>
 				<?php } ?>
+				<?php if($sf_guard_user_profile->getId() != $sf_user->getProfile()->getId() && !$friendship) { ?>
+				<?php echo "No somos amigos"; echo link_to('A&ntilde;adir como amigo', 'profile/addFriend?id='.$playerProfile->getId()); ?> 
+				<?php } ?>
 			</h3>
 			<small class="noSpace subtitle"><?php echo sprintf(__("Profile for %s"), linkToProfile($sf_guard_user_profile)); ?></small>
 			<div style="clear: both"></div>
@@ -30,18 +33,6 @@
 			<?php } ?>
 			</div>
 			
-			<div class="contentBox" id="rankings">
-				<h4 class="header small"><?php echo __('Friends:') ?></h4>
-				<?php $friends = $playerProfile->getFriends(); 
-				if (count($friends)!=0) { ?>
-				<ul class="tags xLarge">
-					<?php foreach($friends as $friend) : ?>
-					<li><?php echo linkToProfileWithGravatar($friend->getsfGuardUserProfile(), 25); ?></li>
-					<?php endforeach; ?>
-				</ul>
-				<?php } ?>
-			</div>
-			
 			<div class="contentBox" id="postComment">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>
 			<?php
@@ -54,6 +45,18 @@
 
 	<div class="contentColumn quarter alignLeft">
 		<?php include_partial('searchForm'); ?>
+		
+		<div class="contentBox">
+				<?php $friends = $playerProfile->getFriends(); ?>
+				<?php if (count($friends)!=0) { ?>
+				<h4 class="header small"><?php echo __('Friends:') ?></h4>
+				<ul class="tags xLarge">
+					<?php foreach($friends as $friend) : ?>
+					<li><?php echo linkToProfileWithGravatar($friend->getsfGuardUserProfile(), 25); ?></li>
+					<?php endforeach; ?>
+				</ul>
+				<?php } ?>
+		</div>
 		
 	</div>
 	
