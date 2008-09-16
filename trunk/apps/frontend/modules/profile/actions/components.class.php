@@ -34,5 +34,33 @@ class profileComponents extends sfComponents
 
 		$this->profilesPager = $pager;
 	}
+	
+/**
+	 * Componente que lista los amigos de un jugador
+	 * Admite los siguientes filtros booleanos: onlyFriends, pending
+	 */
+	public function executeListFriends()
+	{
+		if (!$this->playerProfile)
+		{
+			throw new sfException("No existe el jugador");
+		}
+		
+		$c = new Criteria();
+		$this->onlyFriends = isset($this->onlyFriends) ? $this->onlyFriends : $this->getRequestParameter('onlyFriends');
+		if($this->onlyFriends)
+		{
+			$c->add(FriendshipPeer::IS_CONFIRMED, true);
+		}
+		
+		$this->pending = isset($this->pending) ? $this->pending : $this->getRequestParameter('pending');
+		if($this->pending)
+		{
+			$c->add(FriendshipPeer::IS_CONFIRMED, false);
+		}
+		
+		$this->friends = $this->playerProfile->getFriends($c);
+		
+	}
 
 }

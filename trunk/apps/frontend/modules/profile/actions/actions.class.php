@@ -167,4 +167,65 @@ class profileActions extends sfActions
 	    $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 	}
 	
+/**
+	 * AcciÃ³n que acepta una relaciÃ³n de amistad
+	 *
+	 */
+	public function executeAcceptFriend()
+	{
+		// Obtener los ids de los dos jugadores
+		$this->playerBId = $this->getUser()->getPlayerProfile()->getId();
+		
+		$this->playerAId = $this->getRequestParameter('id');
+		
+		$c = new Criteria();
+	  	$c->add(FriendshipPeer::PLAYER_PROFILE_ID_A, $this->playerAId);
+	  	$c->add(FriendshipPeer::PLAYER_PROFILE_ID_B, $this->playerBId);
+	  	
+	  	$this->friendships = FriendshipPeer::doSelect($c);
+	  	
+	  	foreach ($this->friendships as $this->friendship):
+	  	
+	  	// Aceptar la relación de amistad
+	    $this->friendship->setIsConfirmed(true);
+	    $this->friendship->save();
+	    
+	    endforeach;
+	  	
+	  	// Obtener el objeto del perfil de usuario
+		$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk(PlayerProfilePeer::retrieveByPk($this->playerBId)->getUserProfileId());
+	    
+	    $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
+	}
+	
+/**
+	 * AcciÃ³n que rechaza una relaciÃ³n de amistad
+	 *
+	 */
+	public function executeRejectFriend()
+	{
+		// Obtener los ids de los dos jugadores
+		$this->playerBId = $this->getUser()->getPlayerProfile()->getId();
+		
+		$this->playerAId = $this->getRequestParameter('id');
+		
+		$c = new Criteria();
+	  	$c->add(FriendshipPeer::PLAYER_PROFILE_ID_A, $this->playerAId);
+	  	$c->add(FriendshipPeer::PLAYER_PROFILE_ID_B, $this->playerBId);
+	  	
+	  	$this->friendships = FriendshipPeer::doSelect($c);
+	  	
+	  	foreach ($this->friendships as $this->friendship):
+	  	
+	  	// Eliminar la relación de amistad
+	    $this->friendship->delete();
+	    
+	    endforeach;
+	  	
+	  	// Obtener el objeto del perfil de usuario
+		$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk(PlayerProfilePeer::retrieveByPk($this->playerBId)->getUserProfileId());
+	    
+	    $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
+	}
+	
 }

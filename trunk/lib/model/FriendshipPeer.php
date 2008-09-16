@@ -21,10 +21,11 @@ class FriendshipPeer extends BaseFriendshipPeer
 		
 		$criterionA->addOr($criterionB);
 		$c->add($criterionA);
-		$c->add(FriendshipPeer::IS_CONFIRMED, true);
 		
 		$friendship = FriendshipPeer::doSelectOne($c);
-
-		return $friendship;
+		if (!$friendship) return "NO_FRIENDS";
+		if ($friendship->getIsConfirmed()) return "FRIENDS";
+		if (!$friendship->getIsConfirmed() && $friendship->getPlayerProfileIdB() == $idPlayerB) return "PENDINGA";
+		else return "PENDINGB";
 	}
 }

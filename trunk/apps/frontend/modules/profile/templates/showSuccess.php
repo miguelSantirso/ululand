@@ -7,8 +7,15 @@
 				<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 				<span class="">(<?php echo linkToEditProfile($sf_guard_user_profile); ?>)</span>
 				<?php } ?>
-				<?php if($sf_guard_user_profile->getId() != $sf_user->getProfile()->getId() && !$friendship) { ?>
-				<?php echo "No somos amigos"; echo link_to('A&ntilde;adir como amigo', 'profile/addFriend?id='.$playerProfile->getId()); ?> 
+				<?php if($sf_guard_user_profile->getId() != $sf_user->getProfile()->getId() && $friendship == "NO_FRIENDS") { ?>
+				<?php echo link_to('A&ntilde;adir como amigo', 'profile/addFriend?id='.$playerProfile->getId()); ?> 
+				<?php } ?>
+				<?php if($sf_guard_user_profile->getId() != $sf_user->getProfile()->getId() && $friendship == "FRIENDS") { ?>
+				<?php echo "Ya somos amigos"; ?> 
+				<?php } ?>
+				<?php if($sf_guard_user_profile->getId() != $sf_user->getProfile()->getId() && $friendship == "PENDINGA") { ?>
+				<?php echo link_to('Confirmar amistad', 'profile/acceptFriend?id='.$playerProfile->getId()); ?> 
+				<?php echo link_to('Rechazar amistad', 'profile/rejectFriend?id='.$playerProfile->getId()); ?> 
 				<?php } ?>
 			</h3>
 			<small class="noSpace subtitle"><?php echo sprintf(__("Profile for %s"), linkToProfile($sf_guard_user_profile)); ?></small>
@@ -47,15 +54,17 @@
 		<?php include_partial('searchForm'); ?>
 		
 		<div class="contentBox">
-				<?php $friends = $playerProfile->getFriends(); ?>
-				<?php if (count($friends)!=0) { ?>
 				<h4 class="header small"><?php echo __('Friends:') ?></h4>
-				<ul class="tags xLarge">
-					<?php foreach($friends as $friend) : ?>
-					<li><?php echo linkToProfileWithGravatar($friend->getsfGuardUserProfile(), 25); ?></li>
-					<?php endforeach; ?>
-				</ul>
-				<?php } ?>
+				<?php
+				 include_component('profile', 'listFriends', array('playerProfile' => $playerProfile, 'onlyFriends' => true));
+				?>
+		</div>
+		
+		<div class="contentBox">
+				<h4 class="header small"><?php echo __('Pending:') ?></h4>
+				<?php
+				 include_component('profile', 'listFriends', array('playerProfile' => $playerProfile, 'pending' => true));
+				?>
 		</div>
 		
 	</div>
