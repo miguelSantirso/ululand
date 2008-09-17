@@ -3,7 +3,7 @@
 	<ul>
 		<li><?php echo link_to(__('Index'), 'group', array('class' => $action == "index" ? 'selected' : '')); ?></li>
 		<li><?php echo link_to(__('List'), 'group/list', array('class' => $action == "list" ? 'selected' : '')); ?></li>
-		<li><?php echo link_to(__('New Group'), 'group/create', array('class' => $action == "create" ? 'selected' : '')); ?></li>
+		<li><?php echo link_to(__('New Group'), 'group/edit', array('class' => $action == "edit" ? 'selected' : '')); ?></li>
 	</ul>
 	
 	<h3>
@@ -18,8 +18,8 @@
 			case "show":
 				echo $moduleIndex . $separator . __('Show');
 				break;
-			case "create":
-				echo $moduleIndex . $separator . __('Create');
+			case "edit":
+				echo $moduleIndex . $separator . __('Edit');
 				break;
 			default:
 				echo $moduleIndex;

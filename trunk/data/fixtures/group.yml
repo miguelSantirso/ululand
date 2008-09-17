@@ -49,18 +49,23 @@ PlayerProfile:
   prueba:
     user_profile_id: prueba
     description: Solo soy una prueba
+    total_credits: 500
   jugador:
     user_profile_id: jugador
     description: Soy un jugador
+    total_credits: 1000
   amistad1:
     user_profile_id: amistad1
     description: Soy una amistad
+    total_credits: 400
   amistad2:
     user_profile_id: amistad2
     description: Soy una amistad
+    total_credits: 600
   amistad3:
     user_profile_id: amistad3
     description: Soy una amistad
+    total_credits: 2000
     
 Group:
   Administracion:
@@ -77,7 +82,12 @@ PlayerProfile_Group:
     player_profile_id: jugador
     grupo_id: Administracion
     is_owner: false
-    is_approved: false
+    is_approved: true
+  amistad1_Administracion:
+    player_profile_id: amistad1
+    grupo_id: Administracion
+    is_owner: false
+    is_approved: true
 
 Friendship:
   amistad:

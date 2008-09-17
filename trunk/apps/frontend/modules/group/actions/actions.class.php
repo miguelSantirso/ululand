@@ -33,8 +33,8 @@ class groupActions extends sfActions
 		        
 	 	        
 		// Modificar adecuadamente el objeto
-		$this->newGroup->setName("hola");
-		$this->newGroup->setDescription("hola");
+		$this->newGroup->setName("Name");
+		$this->newGroup->setDescription("Description");
 	 	        
 		// Grabarlo en la base de datos
 		$this->newGroup->save();

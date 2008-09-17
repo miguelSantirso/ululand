@@ -263,6 +263,171 @@
 <target>&#xA1;Las contrase&#xF1;as no coinciden!</target>
 </trans-unit>
 
+<trans-unit id="64">
+<source>Add as friend</source>
+<target>A&#xF1;adir como amigo</target>
+</trans-unit>
+
+<trans-unit id="65">
+<source>We are friends</source>
+<target>Ya somos amigos</target>
+</trans-unit>
+
+<trans-unit id="66">
+<source>Accept as friend</source>
+<target>Aceptar como amigo</target>
+</trans-unit>
+
+<trans-unit id="67">
+<source>Reject as friend</source>
+<target>Rechazar como amigo</target>
+</trans-unit>
+
+<trans-unit id="68">
+<source>I must confirm your friendship</source>
+<target>Debo confirmar tu amistad</target>
+</trans-unit>
+
+<trans-unit id="69">
+<source>Admin</source>
+<target>Administrar</target>
+</trans-unit>
+
+<trans-unit id="70">
+<source>Leave group</source>
+<target>Abandonar grupo</target>
+</trans-unit>
+
+<trans-unit id="71">
+<source>You must be approved by one of the owners</source>
+<target>Debes ser aceptado por uno de los propietarios</target>
+</trans-unit>
+
+<trans-unit id="72">
+<source>Members:</source>
+<target>Miembros:</target>
+</trans-unit>
+
+<trans-unit id="73">
+<source>Visits:</source>
+<target>Visitas:</target>
+</trans-unit>
+
+<trans-unit id="74">
+<source>Profile Details:</source>
+<target>Detalles del perfil:</target>
+</trans-unit>
+
+<trans-unit id="75">
+<source>Available credits</source>
+<target>Créditos disponibles</target>
+</trans-unit>
+
+<trans-unit id="76">
+<source>Total earned credits</source>
+<target>Créditos totales</target>
+</trans-unit>
+
+<trans-unit id="77">
+<source>Friends</source>
+<target>Amigos</target>
+</trans-unit>
+
+<trans-unit id="78">
+<source>Pending</source>
+<target>Pendientes</target>
+</trans-unit>
+
+<trans-unit id="79">
+<source>edit</source>
+<target>editar</target>
+</trans-unit>
+
+<trans-unit id="80">
+<source>Profile for %s</source>
+<target>Perfil de %s</target>
+</trans-unit>
+
+<trans-unit id="81">
+<source>Search</source>
+<target>Búsqueda</target>
+</trans-unit>
+
+<trans-unit id="82">
+<source>Search!</source>
+<target>&#xA1;Buscar!</target>
+</trans-unit>
+
+<trans-unit id="83">
+<source>Group Info</source>
+<target>Información del grupo</target>
+</trans-unit>
+
+<trans-unit id="84">
+<source>Group Name</source>
+<target>Nombre del grupo</target>
+</trans-unit>
+
+<trans-unit id="85">
+<source>Group Description</source>
+<target>Descripción del grupo</target>
+</trans-unit>
+
+<trans-unit id="87">
+<source>People</source>
+<target>Gente</target>
+</trans-unit>
+
+<trans-unit id="88">
+<source>Groups</source>
+<target>Grupos</target>
+</trans-unit>
+
+<trans-unit id="89">
+<source>Games</source>
+<target>Juegos</target>
+</trans-unit>
+
+<trans-unit id="90">
+<source>Community</source>
+<target>Comunidad</target>
+</trans-unit>
+
+<trans-unit id="91">
+<source>Registered people</source>
+<target>Gente registrada</target>
+</trans-unit>
+
+<trans-unit id="92">
+<source>Welcome back, %1$s! %2$s?</source>
+<target>&#xA1;Hola de nuevo, %1$s! &#xBF;%2$s?</target>
+</trans-unit>
+
+<trans-unit id="93">
+<source>New Group</source>
+<target>Nuevo Grupo</target>
+</trans-unit>
+
+<trans-unit id="94">
+<source>Index</source>
+<target>Índice</target>
+</trans-unit>
+
+<trans-unit id="95">
+<source>Create your own &amp;raquo;</source>
+<target>Crea tu propio grupo &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="96">
+<source>Show</source>
+<target>Perfil</target>
+</trans-unit>
+
+<trans-unit id="97">
+<source>Edit</source>
+<target>Editar</target>
+</trans-unit>
+
 </body>
   </file>
 </xliff>

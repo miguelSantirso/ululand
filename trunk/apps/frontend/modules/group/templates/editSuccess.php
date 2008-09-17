@@ -10,14 +10,14 @@
 
 					<h3 class="header"><?php echo __('Group Info'); ?>:</h3>
 					
-					<p class="noSpace"><?php echo label_for('name', __('Group Name:')); ?></p>
+					<p class="noSpace"><?php echo label_for('name', __('Group Name')); ?>:</p>
 					<?php echo object_input_tag($group, 'getName', array (
 				  		'size' => 20,
 						'class' => 'grande',
 						)) ?>
 					<br/>
 
-					<p class="noSpace"><?php echo label_for('description', __('Group Description:')); ?></p>
+					<p class="noSpace"><?php echo label_for('description', __('Group Description')); ?>:</p>
 					<?php echo object_textarea_tag($group, 'getDescription', array (
 					  'rows' => 15,
 					  'cols' => 51

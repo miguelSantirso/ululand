@@ -27,6 +27,7 @@ class Group extends BaseGroup
 	public function getMembers($c = null)
 	{	
 		if (!$c) $c = new Criteria();
+		$c->add(PlayerProfile_GroupPeer::GRUPO_ID, $this->getId());
 		$c->addJoin(PlayerProfilePeer::ID, PlayerProfile_GroupPeer::PLAYER_PROFILE_ID);
 		$c->addJoin(PlayerProfilePeer::USER_PROFILE_ID, sfGuardUserProfilePeer::ID);
 		
