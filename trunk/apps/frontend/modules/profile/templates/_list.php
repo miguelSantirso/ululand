@@ -5,6 +5,7 @@
 		<?php $profiles = $profilesPager->getResults(); ?>
 		<?php sfPropelActAsTaggableBehavior::preloadTags($profiles); ?>
 		
+		<?php if(count($profiles) != 0){ ?>
 		<ul class="compound">
 			<?php foreach ($profiles as $profile): ?>
 				<?php $userProfile = $profile->getsfGuardUserProfile(); ?>
@@ -21,5 +22,6 @@
 				<?php } ?>
 			<?php endforeach; ?>
 		</ul>
+		<?php } else echo __("There are no players still"); ?>
 	
 		<div class="center"><?php echo pager_navigation($profilesPager, 'profile/list'); ?></div>

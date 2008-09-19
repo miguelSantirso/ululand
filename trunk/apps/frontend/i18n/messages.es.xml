@@ -428,6 +428,26 @@
 <target>Editar</target>
 </trans-unit>
 
+<trans-unit id="98">
+<source>You don't have them</source>
+<target>No tienes</target>
+</trans-unit>
+
+<trans-unit id="99">
+<source>There are no groups still</source>
+<target>Aún no hay grupos</target>
+</trans-unit>
+
+<trans-unit id="100">
+<source>There are no players still</source>
+<target>Aún no hay jugadores</target>
+</trans-unit>
+
+<trans-unit id="101">
+<source>There are no games still</source>
+<target>Aún no hay juegos</target>
+</trans-unit>
+
 </body>
   </file>
 </xliff>

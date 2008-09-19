@@ -5,6 +5,7 @@
 		<?php $games = $gamesPager->getResults(); ?>
 		<?php sfPropelActAsTaggableBehavior::preloadTags($games); ?>
 		
+		<?php if(count($games) != 0){ ?>
 		<ul class="compound">
 			<?php foreach ($games as $game): ?>
 				<?php if($game->isPublished()) : ?>
@@ -31,5 +32,6 @@
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</ul>
+		<?php } else echo __("There are no games still"); ?>
 	
 		<div class="center"><?php echo pager_navigation($gamesPager, 'profile/list'); ?></div>

@@ -5,6 +5,7 @@
 		<?php $groups = $groupsPager->getResults(); ?>
 		<?php //sfPropelActAsTaggableBehavior::preloadTags($profiles); ?>
 		
+		<?php if(count($groups) != 0){ ?>
 		<ul class="compound">
 			<?php foreach ($groups as $group): ?>
 				<li class="">
@@ -16,5 +17,6 @@
 				</li>
 			<?php endforeach; ?>
 		</ul>
+		<?php } else echo __("There are no groups still"); ?>
 	
 		<div class="center"><?php echo pager_navigation($groupsPager, 'profile/list'); ?></div>
