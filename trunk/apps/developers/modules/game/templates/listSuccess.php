@@ -28,8 +28,17 @@
 		<div class="contentBox">
 			<?php include_component('game', 'list'); ?>
 		</div>
+		
+		<?php if($sf_user->isAuthenticated()) : ?>
+			<?php echo link_to(__('Submit your own &raquo;'), 'game/create', array('class' => 'button')); ?>
+		<?php else :  ?>
+			<p class="center">
+				(<?php echo sprintf(__('requires %s or %s'), link_to(__('log in'), '@sf_guard_signin'), link_to(__('register'), '@register')) ?>)
+				<?php echo link_to(__('Submit your own &raquo;'), 'game/create', array('class' => '')); ?> 
+			</p>
+		<?php endif; ?>
 	</div>
-
+		
 	<div class="contentColumn quarter alignRight">
 		
 		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>

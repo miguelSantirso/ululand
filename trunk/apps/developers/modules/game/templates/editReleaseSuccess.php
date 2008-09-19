@@ -7,7 +7,8 @@
 			<h3 class="header"><?php echo __('Game Release Info:'); ?></h3>
 			<?php echo form_tag('game/updateRelease', 'multipart=true') ?>
 			
-			<?php echo object_input_hidden_tag($gameRelease, 'getId') ?>
+			<input type="hidden" name="gameReleaseId" id="gameReleaseId" value="<?php echo $gameRelease->getId(); ?>" />
+			<input type="hidden" name="gameId" id="gameId" value="<?php echo $game->getId(); ?>" />
 			
 			<p class="noSpace"><?php echo label_for('name', __('Release Name:')); ?></p>
 			<?php echo form_error("name"); ?>
@@ -15,6 +16,11 @@
 			  'size' => 65, 'maxlength' => 75
 			)) ?>
 			<br/>
+			<br/>
+			<p class="noSpace"><?php echo label_for('game_path', __('Release file:')); ?></p>
+			<?php echo form_error("game_path"); ?>
+			<?php echo input_file_tag("game_path"); ?>
+			<p class="noSpace"><small><?php echo __('Single file (for now). SWF format. The dimensions will be automatically detected.'); ?></small></p>
 			<br/>
 			<p class="noSpace"><?php echo label_for('releaseStatusId', __('Release Status:')); ?></p>
 			<?php echo form_error("releaseStatusId"); ?>
@@ -32,10 +38,10 @@
 			<br/>
 			<br/>
 			<?php echo submit_tag(__('submit')) ?>
-			<?php if ($game->getId()): ?>
+			<?php if ($gameRelease->getId()): ?>
 			  &nbsp;<?php echo linkToGameRelease($gameRelease, array(), 'cancel'); ?>
 			<?php else: ?>
-			  &nbsp;<?php echo link_to(__('cancel'), 'game/list') ?>
+			  &nbsp;<?php echo linkToGame($game, array(), __('cancel')); ?>
 			<?php endif; ?>
 			<div class="clearFloat"></div>
 			</form>

@@ -57,6 +57,13 @@
 					'before'  => "Element.show('loadIndicator'); Element.setOpacity('gamePreview', 0.5);",
 					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('gamePreview', 1);",
 				    'with'      => $with)) ?>
+			<?php echo observe_field('instructions', array(
+					'frequency' => '5',
+					'update'  => 'gamePreview',
+					'url'     => 'game/preview',
+					'before'  => "Element.show('loadIndicator'); Element.setOpacity('gamePreview', 0.5);",
+					'complete'=> "Element.hide('loadIndicator'); Element.setOpacity('gamePreview', 1);",
+				    'with'      => $with)) ?>
 			
 			<?php echo link_to_remote(__('update preview &raquo;'), array(
 					'update'  => 'gamePreview',

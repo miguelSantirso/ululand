@@ -51,12 +51,18 @@ class gameActions extends sfActions
 		$this->forward404Unless($this->game);
 	}
 
-	
 	public function executePreview()
 	{
 		$this->name = $this->getRequestParameter('name');
 		$this->description = sfMarkdown::doConvert($this->getRequestParameter('description'));
 		$this->instructions = sfMarkdown::doConvert($this->getRequestParameter('instructions'));
+	}
+
+	public function executeCreate()
+	{
+		$this->game = new Game();
+
+		$this->setTemplate('edit');
 	}
 
 	public function executeEdit()
@@ -132,6 +138,7 @@ class gameActions extends sfActions
 		if($this->getRequestParameter('release_id'))
 		{
 			$this->gameRelease = GameReleasePeer::retrieveByPk($this->getRequestParameter('release_id'));
+			if(!$this->game) $this->game = $this->gameRelease->getGame();
 			$needRedirect = true;
 		}
 		else if($this->getRequestParameter('release_stripped_name'))
@@ -168,6 +175,7 @@ class gameActions extends sfActions
 		if($this->getRequestParameter('release_id'))
 		{
 			$this->gameRelease = GameReleasePeer::retrieveByPk($this->getRequestParameter('release_id'));
+			if(!$this->game) $this->game = $this->gameRelease->getGame();
 			$needRedirect = true;
 		}
 		else if($this->getRequestParameter('release_stripped_name'))
@@ -191,34 +199,42 @@ class gameActions extends sfActions
 			$this->redirect('gameRelease/show?id='.$this->gameRelease->getId());
 		}
 	}
-/*
+
 	public function executeUpdateRelease()
 	{
-		if (!$this->getRequestParameter('id'))
+		if (!$this->getRequestParameter('gameId'))
 		{
-			$game = new Game();
+			throw new sfException('Missing "gameId" parameter');
+		}
+		$game = GamePeer::retrieveByPk($this->getRequestParameter('gameId'));
+		$this->forward404Unless($game);
+			
+		if (!$this->getRequestParameter('gameReleaseId'))
+		{
+			$gameRelease = new GameRelease();
+			$gameRelease->setGame($game);
 		}
 		else
 		{
-			$game = GamePeer::retrieveByPk($this->getRequestParameter('id'));
-			$this->forward404Unless($game);
+			$gameRelease = GameReleasePeer::retrieveByPk($this->getRequestParameter('gameReleaseId'));
+			$this->forward404Unless($gameRelease);
+			if(!$game) $game = $gameRelease->getGame();
 		}
 
-		$game->setName($this->getRequestParameter('name'));
-		$game->setDescription($this->getRequestParameter('description'));
-		$game->setInstructions($this->getRequestParameter('instructions'));
-		$game->setTags($this->getRequestParameter('tags_string'));
-
-		$game->save();
+		$gameRelease->setName($this->getRequestParameter('name'));
+		$gameRelease->setDescription($this->getRequestParameter('description'));
+		$gameRelease->setGamereleasestatusId($this->getRequestParameter('game_release_status_id'));
+		$gameRelease->setIsPublic($this->getRequestParameter('is_null', false));
 		
-		if($this->getRequest()->getFileSize('thumbnail_path'))
-			$this->updateThumbnail($game);
+		$gameRelease->save();
+		
+		if($this->getRequest()->getFileSize('game_path'))
+			$this->updateGameFile($gameRelease);
       
-		$game->save();
+		$gameRelease->save();
 
-		return $this->redirect('game/show?id='.$game->getId());
+		return $this->redirect('game/showRelease?release_id='.$gameRelease->getId());
 	}
-	*/
 	
 	
 	private function updateThumbnail($game)
@@ -234,5 +250,23 @@ class gameActions extends sfActions
 		$thumbnailPath = $this->getRequest()->getFileName('thumbnail_path');
       	$this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_game')."/{$game->getStrippedName()}/".$fileName.$ext);
       	$game->setThumbnailPath($fileName.$ext);
+	}
+	
+	private function updateGameFile($gameRelease)
+	{
+		$game = $gameRelease->getGame();
+		
+		$currentGameFile = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_game')."/{$game->getStrippedName()}/".$gameRelease->getGamePath();
+
+		if (is_file($currentGameFile))
+		{
+			unlink($currentGameFile);
+		}
+		
+		$fileName = "{$game->getStrippedName()}_{$gameRelease->getStrippedName()}";
+		$ext = $this->getRequest()->getFileExtension('game_path');
+		$gamePath = $this->getRequest()->getFileName('game_path');
+      	$this->getRequest()->moveFile('game_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_game')."/{$game->getStrippedName()}/".$fileName.$ext);
+      	$gameRelease->setGamePath($fileName.$ext);
 	}
 }
