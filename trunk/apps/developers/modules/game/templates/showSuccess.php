@@ -8,7 +8,7 @@
 		<div class="contentBox">
 			<h4 class="header"><?php echo __('Owner options'); ?></h4>
 			<?php echo linkToEditGame($game, array('class' => 'bigBox')); ?>
-			<?php echo link_to('Submit release', 'game/createRelease?game_stripped_name='.$game->getStrippedName(), array('class' => 'bigBox')); ?>
+			<?php echo linkToCreateGameRelease($game, array('class' => 'bigBox')); ?>
 		</div>
 		<?php endif; ?>
 		
@@ -45,7 +45,7 @@
 			<?php endforeach; ?>
 			</ul>
 			<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $game->getCreatedBy()) : ?>
-				<p class="right"><?php echo link_to(__('Submit new release').' &raquo;', 'game/createRelease?game_stripped_name='.$game->getStrippedName()); ?></p>
+				<p class="right"><?php echo linkToCreateGameRelease($game, array(), __('Submit new release') . ' &raquo;'); ?></p>
 			<?php endif; ?>
 		</div>
 		

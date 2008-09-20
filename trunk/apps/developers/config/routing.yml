@@ -21,13 +21,19 @@ game_edit:
   url: /games/:stripped_name/edit
   param: { module: game, action: edit }
 
+# game releases
+
 game_release_show:
   url: /games/:game_stripped_name/:release_stripped_name
-  param: { module: game, action: showRelease }
+  param: { module: gameRelease, action: show }
+
+game_release_create:
+  url: /games/:game_stripped_name/newRelease/create
+  param: { module: gameRelease, action: create }
 
 game_release_edit:
   url: /games/:game_stripped_name/:release_stripped_name/edit
-  param: { module: game, action: editRelease }
+  param: { module: gameRelease, action: edit }
 
 # code recipes
 
