@@ -4,7 +4,7 @@ $module = $sf_context->getModuleName();
 
 $isHome = $module == 'home' || $module == 'sfGuardAuth';
 
-$isGames = $module == 'game';
+$isGames = $module == 'game' || $module == 'gameRelease';
 
 $isCommunity = $module == 'nahoWiki' ||
 	$module == 'collaboration' ||
@@ -22,8 +22,7 @@ $isCommunity = $module == 'nahoWiki' ||
 		<li><?php echo link_to(__('Wiki'), '@wiki_home', array('class' => $module == "nahoWiki" ? 'selected' : '')); ?></li>
 	</ul>
 	<?php endif; ?>
-	
-	
+
 	<h2>
 		<?php if($isHome) : ?>
 		<?php echo link_to(__('Home'), 'home'); ?>

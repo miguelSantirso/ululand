@@ -208,10 +208,10 @@
 	{
 		$linkText = $customText == "" ? $gameRelease->getName() : $customText;
 		$game = $gameRelease->getGame();
-		return link_to($linkText, "game/showRelease?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
+		return link_to($linkText, "gameRelease/show?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
 	}
 	
-		/**
+	/**
 	 * Retorna un enlace a la pantalla de edición de la release pasada como parámetro
 	 *
 	 * @param GameRelease $gameRelease
@@ -223,5 +223,20 @@
 	{
 		$linkText = $customText == "" ? 'edit' : $customText;
 		$game = $gameRelease->getGame();
-		return link_to($linkText, "game/editRelease?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
+		return link_to($linkText, "gameRelease/edit?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
+	}
+	
+	/**
+	 * Retorna un enlace a la pantalla de edición de la release pasada como parámetro
+	 *
+	 * @param GameRelease $gameRelease
+	 * @param array $options
+	 * @param string $customText
+	 * @return string
+	 */
+	function linkToEditGameRelease($gameRelease, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? 'edit' : $customText;
+		$game = $gameRelease->getGame();
+		return link_to($linkText, "gameRelease/edit?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
 	}

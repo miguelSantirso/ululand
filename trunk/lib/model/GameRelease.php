@@ -76,4 +76,4 @@ class GameRelease extends BaseGameRelease
 		}
 	}
 }
-sfPropelBehavior::add('Game', array('sfPropelActAsSignableBehavior' => array()));
+sfPropelBehavior::add('GameRelease', array('sfPropelActAsSignableBehavior' => array()));

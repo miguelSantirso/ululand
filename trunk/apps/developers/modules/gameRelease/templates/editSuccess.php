@@ -5,7 +5,7 @@
 	<div class="contentColumn">
 		<div class="contentBox light">
 			<h3 class="header"><?php echo __('Game Release Info:'); ?></h3>
-			<?php echo form_tag('game/updateRelease', 'multipart=true') ?>
+			<?php echo form_tag('gameRelease/update', 'multipart=true') ?>
 			
 			<input type="hidden" name="gameReleaseId" id="gameReleaseId" value="<?php echo $gameRelease->getId(); ?>" />
 			<input type="hidden" name="gameId" id="gameId" value="<?php echo $game->getId(); ?>" />

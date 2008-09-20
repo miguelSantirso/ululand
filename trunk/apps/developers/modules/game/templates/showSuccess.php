@@ -8,6 +8,7 @@
 		<div class="contentBox">
 			<h4 class="header"><?php echo __('Owner options'); ?></h4>
 			<?php echo linkToEditGame($game, array('class' => 'bigBox')); ?>
+			<?php echo link_to('Submit release', 'game/createRelease?game_stripped_name='.$game->getStrippedName(), array('class' => 'bigBox')); ?>
 		</div>
 		<?php endif; ?>
 		
@@ -36,13 +37,16 @@
 		<div class="contentBox">
 			<h4 class="header large"><?php echo __('Game releases') ?></h4>
 			<?php $gameReleases = $game->getGameReleases(); ?>
+			<ul class="full">
 			<?php foreach($gameReleases as $gameRelease) : ?>
-				<ul class="full">
-					<li><?php echo linkToGameRelease($gameRelease); ?> - <?php echo $gameRelease->getGameReleaseStatus() ?>
-					(<?php echo format_date($gameRelease->getCreatedAt()); ?>)
-					</li>
-				</ul>
+				<li><?php echo linkToGameRelease($gameRelease); ?> - <?php echo $gameRelease->getGameReleaseStatus() ?>
+				(<?php echo format_date($gameRelease->getCreatedAt()); ?>)
+				</li>
 			<?php endforeach; ?>
+			</ul>
+			<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $game->getCreatedBy()) : ?>
+				<p class="right"><?php echo link_to(__('Submit new release').' &raquo;', 'game/createRelease?game_stripped_name='.$game->getStrippedName()); ?></p>
+			<?php endif; ?>
 		</div>
 		
 	</div>
