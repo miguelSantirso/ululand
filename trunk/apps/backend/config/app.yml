@@ -6,4 +6,5 @@ all:
     game:    "UploadedGames"
     widget:  "UploadedWidgets"
     avatarPiece: "UploadedPieces"
+    groupIcons:  "GroupIcons"
     

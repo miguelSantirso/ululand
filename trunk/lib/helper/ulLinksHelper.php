@@ -145,6 +145,24 @@
 	}
 	
 	/**
+	 * Retorna el código html de un enlace al grupo pasado como parámetro, incluyendo el thumbnail
+	 *
+	 * @param Group $group Grupo al que se desea enlazar
+	 * @param int $size Tamaño del thumbnail
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace al grupo pasado como parámetro
+	 */
+	function linkToGroupWithThumbnail($group, $size = 100, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $group->getName() : $customText;
+		$imageTag = groupThumbnail_tag($group, array('alt' => $group, 'title' => $group, 'width' => $size));
+		$linkText = '<span class="gravatar">'.$imageTag.'</span>'.$linkText;
+		
+		return '<span class="linkToProfileWithGravatar">'.linkToGroup($group, $options, $linkText ).'</span>';
+	}
+	
+	/**
 	 * Retorna el código html de un enlace al juego pasado como parámetro
 	 *
 	 * @param Game $game Juego al que se desea enlazar
@@ -175,6 +193,7 @@
 		
 		return '<span class="linkToProfileWithGravatar">'.linkToGame($game, $options, $linkText ).'</span>';
 	}
+	
 	
 	/**
 	 * Retorna el código html de un enlace al menú de edición del juego pasado como parámetro

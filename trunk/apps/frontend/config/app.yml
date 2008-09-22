@@ -12,6 +12,7 @@ all:
     game:        "UploadedGames"
     widget:      "UploadedWidgets"
     avatarPiece: "UploadedPieces"
+    groupIcons:  "GroupIcons"
   
   rating:
     user_id_getter:      [myUser, getConnectedAvatarId] 

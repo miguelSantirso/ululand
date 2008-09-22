@@ -52,6 +52,44 @@ class Group extends BaseGroup
 		}
 		return $status;
 	}
+	
+	public function setThumbnailPath($v)
+	{
+		parent::setThumbnailPath($v); 
+ 		$this->generateThumbnail($v);
+	}
+	
+	protected function generateThumbnail($value)
+	{
+		$uploadDir = $this->getUploadDir();
+		$thumbnail = new sfThumbnail(200, 200, true, false);
+		$thumbnail->loadFile($uploadDir.'/'.$this->getThumbnailPath());
+		$thumbnail->save($uploadDir.'/'.'thumb_'.$this->getThumbnailPath(), 'image/png');
+	}
+	
+	public function getUploadDir()
+	{
+		return sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_groupIcons');
+	}
+	public function getUploadDirName()
+	{
+		return sfConfig::get('sf_upload_dir_name')."/".sfConfig::get('app_dir_groupIcons');
+	}
+	
+	/**
+	 * Modificación de la función automática setName para que se establezca el campo stripped_name cuando corresponda.
+	 * Esto es necesario para el funcionamiento de los permalinks
+	 *
+	 * @param unknown_type $v
+	 */
+	public function setName($v)
+	{
+		parent::setName($v);
+		
+		//if(!$this->getStrippedTitle())
+		// @todo habría que hacer que el título no se modifique cuando el juego esté ya publicado
+		$this->setStrippedName(ulToolkit::stripText($v));
+	}
 }
 
 sfPropelBehavior::add('Group', array('sfPropelActAsCommentableBehavior'));

@@ -64,6 +64,21 @@
 			    'with'    => $with
 			  ))
 			) ?>
+			
+		<div class="contentBox">
+			<h4 class="header small"><?php echo __('Members:') ?></h4>
+			<?php
+				 include_component('group', 'listMembers', array('group' => $group, 'excludeOwners' => true, 'edit' => true, 'orderDescendingBy' => PlayerProfile_GroupPeer::CREATED_AT));
+			?>
+		</div>
+		
+		<div class="contentBox">
+			<h4 class="header small"><?php echo __('Pending') ?>:</h4>
+			<?php
+				 include_component('group', 'listMembers', array('group' => $group, 'pending' => true, 'edit' => true, 'orderDescendingBy' => PlayerProfile_GroupPeer::CREATED_AT));
+			?>
+		</div>
+		
 	</div>
 	
 	<div class="clearFloat"></div>

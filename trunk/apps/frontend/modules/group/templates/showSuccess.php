@@ -2,10 +2,14 @@
 	
 	<div class = "contentColumn quarter alignLeft">
 		<div class = "contentBox">
+			<?php echo linkToGroupWithThumbnail($group, 200, array('class' => 'firstRow xLarge')); ?>
+		</div>
+		
+		<div class = "contentBox">
 			<?php if($sf_user->isAuthenticated()) : ?>
 			<?php $status = $group->getStatus($sf_user->getPlayerProfile()); ?>
 				<?php if($status == GroupPeer::OWNER) : ?>
-					<?php echo link_to(__("Admin"), 'group/edit?id='.$group->getId()); ?>
+					<p><?php echo link_to(__("Admin"), 'group/edit?id='.$group->getId()); ?></p>
 				<?php endif; ?>
 				
 				<?php if($status == GroupPeer::MEMBER || $status == GroupPeer::OWNER) : ?>
@@ -17,6 +21,7 @@
 				<?php endif; ?>
 			<?php endif; ?>
 		</div>
+		
 		<div class = "contentBox bordered">
 			<p class="noSpace small"><strong><?php echo __('Visits:'); ?></strong> <?php echo $group->getCounter(); ?></p>
 		</div>

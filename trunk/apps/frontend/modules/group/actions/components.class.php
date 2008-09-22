@@ -56,7 +56,7 @@ class groupComponents extends sfComponents
 	
 	/**
 	 * Componente que lista los miembros de un grupo
-	 * Admite los siguientes filtros booleanos: onlyOwners, excludeOwners, pending, showAll
+	 * Admite los siguientes filtros booleanos: onlyOwners, excludeOwners, pending, showAll, edit
 	 * Filtros string para ordenar: orderDescendingBy, orderAscendingBy
 	 */
 	public function executeListMembers()
@@ -101,6 +101,7 @@ class groupComponents extends sfComponents
 			$c->addAscendingOrderByColumn($this->orderAscendingBy);
 		}
 		
+		$this->edit = isset($this->edit) ? $this->edit : $this->getRequestParameter('edit');
 		$this->members = $this->group->getMembers($c);
 		
 	}

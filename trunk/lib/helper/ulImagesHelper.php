@@ -19,3 +19,16 @@
 		return image_tag($imageUrl, $options);
 	}
 	
+	/**
+	 * Retorna el código html de una imagen del thumbnail de un grupo
+	 *
+	 * @param Group $group grupo del que se desea imprimir su thumbnail
+	 * @param Array $options opciones que se pasarán a la función image_tag de symfony
+	 * @return string código html de una imagen del thumbnail de un grupo
+	 */
+	function groupThumbnail_tag($group, $options = array())
+	{
+		$imageUrl = '/' . $group->getUploadDirName() . '/' . 'thumb_' . $group->getThumbnailPath();
+		return image_tag($imageUrl, $options);
+	}
+	

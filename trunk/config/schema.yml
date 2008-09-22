@@ -43,6 +43,8 @@ propel:
     id:
     name:               { type: varchar(64) , required: true }
     description:        { type: varchar(255), required: false }
+    stripped_name:      { type: varchar(80),  required: true }
+    thumbnail_path:     { type: varchar(255) }
     created_at:
 
 

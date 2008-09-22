@@ -65,7 +65,7 @@
 
 <trans-unit id="13">
 <source>Expel</source>
-<target>Rechazar</target>
+<target>Expulsar</target>
 </trans-unit>
 
 <trans-unit id="14">
@@ -446,6 +446,16 @@
 <trans-unit id="101">
 <source>There are no games still</source>
 <target>Aún no hay juegos</target>
+</trans-unit>
+
+<trans-unit id="101">
+<source>Accept</source>
+<target>Aceptar</target>
+</trans-unit>
+
+<trans-unit id="101">
+<source>Make owner</source>
+<target>Hacer propietario</target>
 </trans-unit>
 
 </body>

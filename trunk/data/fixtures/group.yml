@@ -71,6 +71,8 @@ Group:
   Administracion:
     name: Administracion
     description: El grupo de los que mandan
+    stripped_name: administracion
+    thumbnail_path: administracion.jpg
 
 PlayerProfile_Group:
   prueba_Administracion:
@@ -87,7 +89,7 @@ PlayerProfile_Group:
     player_profile_id: amistad1
     grupo_id: Administracion
     is_owner: false
-    is_approved: true
+    is_approved: false
 
 Friendship:
   amistad:

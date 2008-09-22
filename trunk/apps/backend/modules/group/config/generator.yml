@@ -8,15 +8,25 @@ generator:
       id:
       name:              {name: Nombre}
       description:       {name: Descripci&oacute;n}
+      stripped_name:     {name: Nombre pelado}
+      thumbnail_path:    {name: Icono}
+      created_at:        {name: Fecha creación}
 
     list:
       title: Listado de grupos
-      display: [id, name, description]
-      filters: [id, name, description]
+      display: [id, name, description, stripped_name, thumbnail_path, created_at]
+      filters: [id, name, description, stripped_name, thumbnail_path, created_at]
       object_actions:
         _edit:      ~
         _delete:    ~
         
     edit:
       title: Editar un grupo
-      display: [id, name, description]
+      display: [id, name, description, stripped_name, thumbnail_path, created_at]
+      fields:
+        stripped_name:
+          params: disabled=true
+        thumbnail_path:
+          type:       admin_input_file_tag 
+          upload_dir: GroupIcons
+          filename:   %%stripped_name%%

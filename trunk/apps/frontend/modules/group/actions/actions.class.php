@@ -139,7 +139,7 @@ class groupActions extends sfActions
 	// Grabarlo en la base de datos
 	$this->newPlayerProfile_Group->save();
   	
-  	return $this->forward('group', 'list');
+  	return $this->redirect('group/show?id='.$this->group->getId());
   }
   
   public function executeAccept()
@@ -164,7 +164,7 @@ class groupActions extends sfActions
     
     endforeach;
   	
-  	return $this->forward('group', 'list');
+  	return $this->redirect('group/edit?id='.$group);
   }
   
   public function executeReject()
@@ -189,7 +189,7 @@ class groupActions extends sfActions
     
     endforeach;
   	
-  	return $this->forward('group', 'list');
+  	return $this->redirect('group/edit?id='.$group);
   }
 
   public function executeUpdate()
@@ -217,5 +217,30 @@ class groupActions extends sfActions
   	}
 
   	return $this->redirect('group/show?id='.$groupId);
+  }
+  
+  public function executeMakeOwner()
+  {
+  	// Obtener el jugador 
+	$player = $this->getRequestParameter('player');
+	
+  	// Obtener el grupo
+  	$group = $this->getRequestParameter('group');
+  	
+  	$c = new Criteria();
+  	$c->add(PlayerProfilePeer::ID, $player);
+  	$c->add(GroupPeer::ID, $group);
+  	
+  	$this->players_groups = PlayerProfile_GroupPeer::doSelectJoinAll($c);
+  	
+  	foreach ($this->players_groups as $this->player_group):
+  	
+  	// Convertir al jugador en propietario del grupo
+    $this->player_group->setIsOwner(true);
+    $this->player_group->save();
+    
+    endforeach;
+  	
+  	return $this->redirect('group/edit?id='.$group);
   }
 }

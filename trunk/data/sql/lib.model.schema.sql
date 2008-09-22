@@ -106,6 +106,8 @@ CREATE TABLE `grupo`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(64)  NOT NULL,
 	`description` VARCHAR(255),
+	`stripped_name` VARCHAR(80)  NOT NULL,
+	`thumbnail_path` VARCHAR(255),
 	`created_at` DATETIME,
 	PRIMARY KEY (`id`)
 )Type=MyISAM;
