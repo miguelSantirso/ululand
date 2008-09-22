@@ -37,14 +37,25 @@ class gameActions extends sfActions
 
   public function executeShow()
   {
-    $this->game = GamePeer::retrieveByPk($this->getRequestParameter('id'));
-    $this->forward404Unless($this->game);
-    
-    // Aumentar en uno las partidas jugadas del juego
-    $this->game->incrementCounter();
-    
-    // Cargar los gamestats del juego para mostrarlos en el template
-    $this->gamestats = $this->game->getGameStats();
+  	if($this->getRequestParameter('id'))
+  	{
+  		$game = GamePeer::retrieveByPk($this->getRequestParameter('id'));
+  		$this->redirect('game/show?stripped_name='.$game->getStrippedName());
+  	}
+  	else if($this->getRequestParameter('stripped_name'))
+  	{
+  		$c = new Criteria();
+  		$c->add(GamePeer::STRIPPED_NAME, $this->getRequestParameter('stripped_name'));
+  		$this->game = GamePeer::doSelectOne($c);
+  	}
+
+  	$this->forward404Unless($this->game);
+
+  	// Aumentar en uno las partidas jugadas del juego
+  	$this->game->incrementCounter();
+
+  	// Cargar los gamestats del juego para mostrarlos en el template
+  	$this->gamestats = $this->game->getGameStats();
   }
 
 }

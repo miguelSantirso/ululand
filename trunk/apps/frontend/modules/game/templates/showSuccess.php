@@ -25,7 +25,7 @@
 				<div class="clearFloat"></div>
 				<br/>
 				<div class="center">
-					<?php include_component('game', 'game', array('gameId' => $game->getId())) ?>
+					<?php include_component('game', 'release', array('gameId' => $game->getId())) ?>
 				</div>
 			</div>
 			<!-- descripción -->

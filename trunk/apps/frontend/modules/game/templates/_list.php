@@ -32,6 +32,6 @@
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</ul>
-		<?php } else echo __("There are no games still"); ?>
+		<?php } else echo __("There are no games yet"); ?>
 	
 		<div class="center"><?php echo pager_navigation($gamesPager, 'profile/list'); ?></div>

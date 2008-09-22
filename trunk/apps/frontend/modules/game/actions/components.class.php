@@ -54,7 +54,7 @@ class gameComponents extends sfComponents
 		
 		$this->objects = GamePeer::doSelect($c);
 	}
-	/*
+	
 	public function executeRelease()
 	{
 		// Cargar el juego
@@ -70,5 +70,5 @@ class gameComponents extends sfComponents
 			// A�adimos el sessionId al principio de los flashVars para pas�rselo al objeto flash.
 			$this->flashVars = 'apiSessionId='.$newApiSession->getSessionId().'&'.$this->flashVars;
 		}
-	}*/
+	}
 }

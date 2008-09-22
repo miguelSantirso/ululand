@@ -115,6 +115,27 @@ class gameActions extends sfActions
 		return $this->redirect('game/show?id='.$game->getId());
 	}
 
+	public function executeUpdateActiveRelease()
+	{
+		// Obtener el juego y la versión del juego que se desean asociar
+		$game = GamePeer::retrieveByPk($this->getRequestParameter('id'));
+		$this->forward404Unless($game);
+		$gameRelease = GameReleasePeer::retrieveByPk($this->getRequestParameter('activeReleaseId'));
+		
+		// Comprobar que, efectivamente, la versión pertenece al juego
+		if(!is_null($gameRelease) && $gameRelease->getGameId() != $game->getId())
+		{
+			// la release no pertenece al juego. Error:
+			$this->setFlash('error', $gameRelease . ' is not a release of ' . $game);
+			return $this->redirect('game/show?id='.$game->getId());
+		}
+		
+		$game->setActiveReleaseId($gameRelease ? $gameRelease->getId() : null );
+		$game->save();
+		
+		return $this->redirect('game/show?id='.$game->getId());
+	}
+	
 	private function updateThumbnail($game)
 	{
 		$currentThumbnail = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_game')."/{$game->getStrippedName()}/".$game->getThumbnailPath();
