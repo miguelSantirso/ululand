@@ -13,6 +13,10 @@ game_list_search:
   url: /games/search/:search
   param: { module: game, action: list }
 
+game_list_username:
+  url: /games/filterByDeveloper/:filterByUsername
+  param: { module: game, action: list }
+
 game_show:
   url: /games/:stripped_name
   param: { module: game, action: show }

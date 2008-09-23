@@ -29,26 +29,32 @@
 				<?php echo $code_piece->getHtmlSource(); ?>
 				
 			</div>
-			
-			<div id="recipeDetails" class="contentBox bordered light">
-				<h4 class="header"><?php echo __('Embed:'); ?></h4>
-				<?php
-					$url = url_for('recipe/embed?r='.$code_piece->getUuid(), true); 
-					$embedCode = '<script type="text/javascript" language="javascript" charset="utf-8" src="'.$url.'"></script>';
-				?>
-				<input name="embedCode" id="embedCode" type="text" readonly="" onclick="javascript:$('embedCode').focus();$('embedCode').select();" value='<?php echo $embedCode; ?>' />
-				<h4 class="header"><?php echo __('Recipe details'); ?></h4>
-				<p class="noSpace small"><?php echo __('Tags'); ?>: <strong><?php echo $code_piece->getLinkedTagsString(); ?></strong></p>
-				<?php if($code_piece->hasBeenRated()) : ?>
-				<p class="noSpace small"><?php echo __('Rating'); ?>: <strong><?php echo sprintf(__('%s out of %s'), $code_piece->getRating(), $code_piece->getMaxRating()); ?></strong></p>
-				<?php endif; ?>
-				<p class="noSpace small"><?php echo __('Autor'); ?>: <strong><?php echo linkToProfile($code_piece->getsfGuardUser()->getProfile(), 15); ?></strong></p>
-				<p class="noSpace small"><?php echo __('Date'); ?>: <strong><?php echo format_date($code_piece->getCreatedAt()); ?></strong></p>
-				<p class="noSpace small"><?php echo __('Visits'); ?>: <strong><?php echo $code_piece->getCounter(); ?></strong></p>
-				<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $code_piece->getCreatedBy()) : ?>
-						<p class="small"><strong><?php echo linkToEditRecipe($code_piece, array(), __('edit')); ?></strong></p>
-				<?php endif; ?>
+			<div class="contentBox light">
+				<div class="contentColumn half alignLeft">
+					<div id="recipeDetails" class="">
+						<h4 class="header"><?php echo __('Embed:'); ?></h4>
+						<?php
+							$url = url_for('recipe/embed?r='.$code_piece->getUuid(), true); 
+							$embedCode = '<script type="text/javascript" language="javascript" charset="utf-8" src="'.$url.'"></script>';
+						?>
+						<input name="embedCode" id="embedCode" type="text" readonly="" onclick="javascript:$('embedCode').focus();$('embedCode').select();" value='<?php echo $embedCode; ?>' />
+						<h4 class="header"><?php echo __('Recipe details'); ?></h4>
+						<p class="noSpace small"><?php echo __('Tags'); ?>: <strong><?php echo $code_piece->getLinkedTagsString(); ?></strong></p>
+						<p class="noSpace small"><?php echo __('Autor'); ?>: <strong><?php echo linkToProfile($code_piece->getsfGuardUser()->getProfile(), 15); ?></strong></p>
+						<p class="noSpace small"><?php echo __('Date'); ?>: <strong><?php echo format_date($code_piece->getCreatedAt()); ?></strong></p>
+						<p class="noSpace small"><?php echo __('Visits'); ?>: <strong><?php echo $code_piece->getCounter(); ?></strong></p>
+						<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $code_piece->getCreatedBy()) : ?>
+								<p class="small"><strong><?php echo linkToEditRecipe($code_piece, array(), __('edit')); ?></strong></p>
+						<?php endif; ?>
+					</div>
+				</div>
+				<div class="contentColumn alignRight">
+					<h4 class="header"><?php echo __('Detailed ratings'); ?></h4>
+					<?php include_component('sfRating', 'ratingDetails', array('object' => $code_piece)); ?>
+				</div>
+				<div class="clearFloat"></div>
 			</div>
+			
 			<div id="comments" class="contentBox">
 				<h4 class="header small"><?php echo __('Comments:') ?></h4>
 				<?php

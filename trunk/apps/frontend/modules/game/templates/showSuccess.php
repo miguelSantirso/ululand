@@ -30,17 +30,24 @@
 			</div>
 			<!-- descripción -->
 			<div id="description" class="contentBox light">
-				<h4 class="header"><?php echo __('Description') ?>:</h4>
-				<div class="small"><?php echo sfMarkdown::doConvert($game->getDescription()); ?></div>
+				<h4 class="header"><?php echo __('Instructions') ?>:</h4>
+				<div class="small"><?php echo sfMarkdown::doConvert($game->getInstructions()); ?></div>
 			</div>
 			<!-- detalles del juego -->
 			<div id="gameDetails" class="contentBox bordered light">
-				<h4 class="header"><?php echo __('Game Details'); ?>:</h4>
-				<p class="noSpace small"><?php echo __('Tags') ?>: <strong><?php echo $game->getLinkedTagsString(); ?></strong></p>
-				<?php if($game->hasBeenRated()) : ?>
-				<p class="noSpace small"><?php echo __('Rating'); ?>: <strong><?php echo sprintf(__('%s out of %s'), $game->getRating(), $game->getMaxRating()); ?></strong></p>
-				<?php endif; ?>
-				<p class="noSpace small"><?php echo sprintf(__('%s gameplays'), '<strong>'.$game->getCounter().'</strong>'); ?></p>
+				<div class="contentColumn alignLeft half">
+					<h4 class="header"><?php echo __('Game Details'); ?>:</h4>
+					<p class="noSpace small"><?php echo __('Tags') ?>: <strong><?php echo $game->getLinkedTagsString(); ?></strong></p>
+					<?php if($game->hasBeenRated()) : ?>
+					<p class="noSpace small"><?php echo __('Rating'); ?>: <strong><?php echo sprintf(__('%s out of %s'), $game->getRating(), $game->getMaxRating()); ?></strong></p>
+					<?php endif; ?>
+					<p class="noSpace small"><?php echo sprintf(__('%s gameplays'), '<strong>'.$game->getCounter().'</strong>'); ?></p>
+				</div>
+				<div class="contentColumn alignLeft">
+					<h4 class="header"><?php echo __('Detailed ratings'); ?></h4>
+					<?php include_component('sfRating', 'ratingDetails', array('object' => $game)); ?>
+				</div>
+				<div class="clearFloat"></div>
 			</div>
 		</div>
 		

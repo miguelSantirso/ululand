@@ -89,8 +89,6 @@ class gamestatActions extends apiCommonActions
 					'gamestatValue' => $result ? $result->getValue() : 0 )); // Retornamos cero si el avatar no tiene ningún gamestat
 	}
 	
-	
-
 
 	/**
 	 * Modifica, o añade, el valor de un gamestat para cierto avatar

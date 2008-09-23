@@ -15,6 +15,19 @@ class gameActions extends sfActions
 		return $this->forward('game', 'list');
 	}
 
+	public function executeMyGames()
+	{
+		if($this->getUser()->isAuthenticated())
+		{
+			$this->getRequest()->setParameter('filterByUsername', $this->getUser()->getProfile()->getUsername());
+			$this->forward('game', 'list');
+		}
+		else
+		{
+			$this->redirect('game');
+		}
+	}
+	
 	public function executeList()
 	{
 		$tag = $this->getRequestParameter('tag');
@@ -150,5 +163,5 @@ class gameActions extends sfActions
       	$this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_game')."/{$game->getStrippedName()}/".$fileName.$ext);
       	$game->setThumbnailPath($fileName.$ext);
 	}
-	
+
 }

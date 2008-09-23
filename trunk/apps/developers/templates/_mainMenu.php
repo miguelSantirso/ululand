@@ -4,8 +4,18 @@
 			<li class="<?php echo $sf_context->getModuleName() == 'home' ? 'selected' : '' ?>">
 				<?php echo link_to(__("Home"), "@homepage"); ?>
 			</li>
-			<li class="<?php echo $sf_context->getModuleName() == 'game' ? 'selected' : '' ?>">
+			<?php $selected = $sf_context->getModuleName() == 'game' ||
+								$sf_context->getModuleName() == 'gameRelease'; ?>
+			<li class="<?php echo $selected ? 'selected' : '' ?>">
 				<?php echo link_to(__("Games"), '/game'); ?>
+				<ul>
+					<li><?php echo link_to(__("Games List"), "game/list"); ?></li>
+					<?php if($sf_user->isAuthenticated()) : ?>
+					<li><hr/></li>
+					<li><?php echo link_to(__("My Games"), "game/myGames"); ?></li>
+					<li><?php echo link_to(__("Submit a new game"), "game/create"); ?></li>
+					<?php endif; ?>
+				</ul>
 			</li>
 			<?php $selected = $sf_context->getModuleName() == 'nahoWiki' ||
 								$sf_context->getModuleName() == 'collaboration' ||

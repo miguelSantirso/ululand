@@ -1,5 +1,6 @@
 <?php use_helper('Date', 'sfRating', 'Javascript', 'Object'); ?>
 <?php $isOwner = $sf_user->isAuthenticated() && $sf_user->getId() == $game->getCreatedBy(); ?>
+<?php $noReleases = count($game->getGameReleases()) == 0 ? true : false; ?>
 
 <div id="pageContent">
 	
@@ -21,7 +22,8 @@
 			<h5 class="header"><?php echo __('Stats') ?></h5>
 			<p class="noSpace small"><?php echo sprintf(__('Played %s times'), '<strong>'.$game->getCounter().'</strong>'); ?></p>
 			<p class="noSpace small"><?php echo sprintf(__('Commented %s times'), '<strong>'.$game->getNbComments().'</strong>'); ?></p>
-			<p class="noSpace small"><?php echo sprintf(__('Rated %s times'), '<strong>'.$game->getNbRatings().'</strong>'); ?></p>
+			<h5 class="header"><?php echo __('Rating details') ?></h5>
+			<?php include_component('sfRating', 'ratingDetails', array('object' => $game)); ?>
 		</div>
 		
 	</div>
@@ -44,28 +46,31 @@
 				
 				<?php if($isOwner) : ?>
 					<h5 class="header"><?php echo __('Choose the active version for the game') ?></h5>
-					<div class="contentBox light">
-					<?php echo form_tag('game/updateActiveRelease', array('center')); ?>
-						<?php echo object_input_hidden_tag($game, 'getId') ?>					
-						<?php echo select_tag('activeReleaseId', objects_for_select($game->getGameReleases(), 'getId', 'getName', $activeRelease ? $activeRelease->getId() : null, array('include_blank' => true) )); ?>
-						<?php echo submit_tag(__('Save')); ?>
-						<p class="noSpace"><small><?php echo sprintf(__('The active version will be playable from the players area'), link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax')); ?></small></p>
-					</form>
+					<div class="contentBox light bordered">
+					<?php if($noReleases) : ?>
+						<p class="large center"><strong><?php echo __("You have not uploaded any version of this game yet!"); ?></strong></p>
+						<p class="center"><?php echo sprintf(__("The game won't be playable until you %s for this game."), linkToCreateGameRelease($game, array(), __('upload a new version'))); ?></p>
+					<?php else : ?>
+						<?php echo form_tag('game/updateActiveRelease'); ?>
+							<?php echo object_input_hidden_tag($game, 'getId') ?>					
+							<?php echo select_tag('activeReleaseId', objects_for_select($game->getGameReleases(), 'getId', 'getName', $activeRelease ? $activeRelease->getId() : null, array('include_blank' => true) )); ?>
+							<?php echo submit_tag(__('Save')); ?>
+							<p class="noSpace"><small><?php echo sprintf(__('The active version will be playable from the players area'), link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax')); ?></small></p>
+						</form>
+					<?php endif; ?>
 					</div>
 				<?php endif; ?>
 			
 			<!-- All releases -->
-			<h4 class="header large"><?php echo __('All versions') ?></h4>
-			<?php $gameReleases = $game->getGameReleases(); ?>
-			<?php include_partial('gameRelease/detailedList', array('gameReleases' => $gameReleases)) ?>
-			<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $game->getCreatedBy()) : ?>
-				<p class="right"><?php echo linkToCreateGameRelease($game, array(), __('Submit new release') . ' &raquo;'); ?></p>
+			<? if(! $noReleases) : ?>
+				<h4 class="header large"><?php echo __('All versions') ?></h4>
+				<?php $gameReleases = $game->getGameReleases(); ?>
+				<?php include_partial('gameRelease/detailedList', array('gameReleases' => $gameReleases)) ?>
+				<?php if($isOwner) : ?>
+					<p class="right"><?php echo linkToCreateGameRelease($game, array(), __('Upload new release') . ' &raquo;'); ?></p>
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
-		
-		<h5 class="header"><?php echo __('Rating details') ?></h5>
-		<p class="noSpace small"><?php echo sprintf(__('Average rating: %s'), '<strong>'.$game->getRating().'</strong>'); ?></p>
-		<?php include_component('sfRating', 'ratingDetails', array('object' => $game)); ?>
 			
 	</div>
 	

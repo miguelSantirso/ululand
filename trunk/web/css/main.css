@@ -613,6 +613,17 @@ table.releasesList tbody tr.release-candidate { border-left: 5px solid #999933; 
 table.releasesList tbody tr.final { border-left: 5px solid #669933; }
 	table.releasesList tbody tr:hover.final { border-left: 5px solid #99ff00; }
 
+/* rating details table */
+
+table.ratingDetailsTable { float: left; border: 1px solid #ddd; margin-right: 6px; padding: 0 4px; width: 75px; -moz-border-radius: 4px; -webkit-border-radius: 4px; background-color: #fcfcfc; }
+	table.ratingDetailsTable tr td { vertical-align: bottom; margin: 0; padding: 0;}
+	table.ratingDetailsTable tr td.ratingBarBackground div { background-color: #80C65A; min-height: 2px; text-align: center; }
+	table.ratingDetailsTable tr td.ratingBarLegend { text-align: center; font-size: small; color: #696969; }
+
+/* rating details info */
+
+ul.ratingDetailsInfo { float: left; list-style-type: none; padding-left: 0; }
+	ul.ratingDetailsInfo li { font-size: small; }
 
 /* comments */
 
