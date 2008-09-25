@@ -129,7 +129,7 @@ class profileActions extends sfActions
 			$developerProfile = $sf_guard_user_profile->getDeveloperProfile();
 			$this->forward404Unless($developerProfile);
 	
-			$developerProfile->setUrl($this->getRequestParameter('url'));
+			$developerProfile->setUrl($this->processUrl($this->getRequestParameter('url')));
 			$developerProfile->setIsFree($this->getRequestParameter('is_free'));
 			$developerProfile->setTags($this->getRequestParameter('tags_string'));
 			$developerProfile->setDescription($this->getRequestParameter('description'));
@@ -141,6 +141,18 @@ class profileActions extends sfActions
 		}
 		
 		return $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
+	}
+	
+	protected function processUrl($url)
+	{
+		if(strncasecmp($url, 'http', 4) == 0)
+		{
+			return $url;
+		}
+		else
+		{
+			return 'http://'.$url;
+		}
 	}
 
 }

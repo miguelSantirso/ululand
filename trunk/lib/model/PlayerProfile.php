@@ -21,7 +21,7 @@ class PlayerProfile extends BasePlayerProfile
 	 */
 	public function getFriends($c = null)
 	{	
-		// Obtener todas las relaciones de jugador con otro jugador iniciadas por �l mismo
+		// Obtener todas las relaciones de jugador con otro jugador iniciadas por �l mismo
 		$friendships = $this->getFriendshipsRelatedByPlayerProfileIdA($c);
 
 		$friends = Array();
@@ -41,11 +41,22 @@ class PlayerProfile extends BasePlayerProfile
 	}
 	
 	/**
+	 * Retorna el número de amigos del jugador
+	 *
+	 * @return integer número de amigos del jugador
+	 */
+	public function getNbFriends()
+	{
+		return count($this->getFriends());		
+	}
+	
+	/**
 	 * Retorna una lista con todos los grupos del jugador
 	 *
+	 * @deprecated Creo que ya no se usa
 	 * @return unknown
 	 */
-	public function getGroups()
+	/*public function getGroups()
 	{
 		// Obtener todas las relaciones de grupo en las que participa el jugador
 		$groupships = $this->getPlayerProfile_Groups();
@@ -56,16 +67,29 @@ class PlayerProfile extends BasePlayerProfile
 					$groups[] = $groupship->getGroup();
 		}
 		return $groups;
+	}*/
+	
+	/**
+	 * Retorna el número de grupos a los que pertenece el jugador
+	 *
+	 * @return Integer número de grupos a los que pertenece el jugador
+	 */
+	public function getNbGroups()
+	{
+		$c = new Criteria();
+		$c->add(PlayerProfile_GroupPeer::PLAYER_PROFILE_ID, $this->getsfGuardUserProfile()->getId());
+		
+		return PlayerProfile_GroupPeer::doCount($c);
 	}
 	
 /**
 	 * Retorna un enlace al perfil del avatar
 	 *
 	 * @todo ¿esto quizás estaría mejor en un helper?
-	 * 
+	 * @deprecated ya no se usa
 	 * @return enlace al perfil del avatar formateado correctamente
 	 */
-	public function getProfileLink()
+	/*public function getProfileLink()
 	{
 		return (
 			'<span class="extensible">' . 
@@ -73,6 +97,16 @@ class PlayerProfile extends BasePlayerProfile
 			'<img class="more" src="/images/more.gif" onMouseOver="javascript:swapMoreImage(this, 0);" onClick="javascript:swapMoreImage(this, 1); showMoreMenu(\'' . url_for("/profile/quickActions?id=".$this->getId()) . '\');" onMouseOut="javascript:swapMoreImage(this, 2);" />'.
 			'</span>'
 			);
+	}*/
+	
+	
+	/**
+	 * Retorna el número de comentarios en el perfil
+	 *
+	 */
+	public function getNbCommentsInProfile()
+	{
+		return count($this->getComments());
 	}
 	
 /**
@@ -110,7 +144,7 @@ class PlayerProfile extends BasePlayerProfile
 		{
 			return $this->addCredits($secondsPlayed * 0.03);
 		}
-		//@todo: �lanzar un error aqu�?
+		//@todo: ¿lanzar un error aquí?
 		return $this->getTotalCredits();
 	}
 	

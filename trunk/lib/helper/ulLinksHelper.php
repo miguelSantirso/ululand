@@ -61,6 +61,20 @@
 		return '<span class="linkToProfileWithGravatar">'.linkToProfile($sfGuardUserProfile, $options, $linkText ).'</span>';
 	}
 	
+	/**
+	 * Retorna el código html de un enlace al listado de grupos a los que pertenece cierto usuario
+	 *
+	 * @param sfGuardUserProfile $sfGuardUserProfile Perfil cuyos grupos se desean listar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * 
+	 * @return string código html del enlace a a la lista de grupos del usuario pasado como parámetro
+	 */
+	function linkToGroupsForProfile($sfGuardUserProfile, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? sprintf(__('%s\'s groups'), $sfGuardUserProfile) : $customText;
+		return link_to($linkText, "groups/list?username=".$sfGuardUserProfile->getUsername(), $options);
+	}
 	
 	/**
 	 * Retorna el c�digo html de un enlace a la oferta de colaboraci�n pasada como par�metro

@@ -3,7 +3,6 @@
 		<div class="center"><?php echo pager_navigation($groupsPager, 'group/list'); ?></div>
 		
 		<?php $groups = $groupsPager->getResults(); ?>
-		<?php //sfPropelActAsTaggableBehavior::preloadTags($profiles); ?>
 		
 		<?php if(count($groups) != 0){ ?>
 		<ul class="compound">
@@ -11,12 +10,12 @@
 				<li class="">
 					<?php echo linkToGroup($group, array('class' => 'firstRow')); ?>
 					<div class="lastRow">
-						<?php //if($sf_user->isAuthenticated() && $userProfile->getId() == $sf_user->getProfile()->getId()) { echo linkToEditProfile($sf_user->getProfile(), array('class' => 'alignRight xSmall')); } ?>
+						<p class="noSpace small"><?php echo sprintf(__('This group has %s members'), '<strong>'.$group->getNbMembers().'</strong>'); ?></p>
 					</div>
 					<div class="clearFloat"></div>
 				</li>
 			<?php endforeach; ?>
 		</ul>
-		<?php } else echo __("There are no groups still"); ?>
+		<?php } else echo __("There are no groups yet"); ?>
 	
-		<div class="center"><?php echo pager_navigation($groupsPager, 'profile/list'); ?></div>
+		<div class="center"><?php echo pager_navigation($groupsPager, 'group/list'); ?></div>

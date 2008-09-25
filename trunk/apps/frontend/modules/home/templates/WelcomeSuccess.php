@@ -34,6 +34,9 @@
 				<a href="<?php echo url_for('game/list'); ?>" class="bigBox">
 					<span class="large"><?php echo __('Games'); ?></span>
 				</a>
+				<a href="<?php echo url_for('group/list'); ?>" class="bigBox">
+					<span class="large"><?php echo __('Groups'); ?></span>
+				</a>
 			</div>
 		</div>
 		

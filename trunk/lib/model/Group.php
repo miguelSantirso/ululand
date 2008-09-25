@@ -9,7 +9,7 @@
  */ 
 class Group extends BaseGroup
 {
-	 /** __toString: Función auxiliar "mágica" que retorna una cadena que representa al objeto.
+	 /** __toString: Funciï¿½n auxiliar "mï¿½gica" que retorna una cadena que representa al objeto.
 	 *
 	 * @return string Cadena representando al objeto
 	 **/
@@ -21,8 +21,8 @@ class Group extends BaseGroup
 	/**
 	 * Devuelve los miembros de un grupo
 	 *
-	 * @param Criteria $c criteria que se añadirá al select
-	 * @return Array array de jugadores de acuerdo al criteria pasado como parámetro
+	 * @param Criteria $c criteria que se aï¿½adirï¿½ al select
+	 * @return Array array de jugadores de acuerdo al criteria pasado como parï¿½metro
 	 */
 	public function getMembers($c = null)
 	{	
@@ -32,6 +32,19 @@ class Group extends BaseGroup
 		$c->addJoin(PlayerProfilePeer::USER_PROFILE_ID, sfGuardUserProfilePeer::ID);
 		
 		return PlayerProfilePeer::doSelect($c);
+	}
+	
+	/**
+	 * Devuelve el nÃºmero de miembros de un grupo
+	 *
+	 * @return Integer nÃºmero de miembros de un grupo
+	 */
+	public function getNbMembers()
+	{	
+		$c = new Criteria();
+		$c->add(PlayerProfile_GroupPeer::GRUPO_ID, $this->getId());
+		
+		return PlayerProfile_GroupPeer::doCount($c);
 	}
 	
 	public function getStatus($player)

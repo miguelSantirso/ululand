@@ -25,21 +25,27 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 	{
 		return $this->getUsername();
 	}
-
+	
 	/**
-	 * Retorna un juego identificado por su uuid 
+	 * Retorna true si el usuario tiene cuenta de desarrollador 
 	 *
-	 * @param varchar(36) $uuid
-	 * @return juego cuyo uuid es el pasado como parámetro
+	 * @return unknown
 	 */
-	public static function retrieveByUuid($uuid)
+	public function isDeveloper()
 	{
-		$c = new Criteria();
-		$c->add(sfGuardUserProfilePeer::UUID, $uuid);
-
-		return sfGuardUserProfilePeer::doSelectOne($c);
+			return count($this->getDeveloperProfiles()) > 0;
 	}
 	
+	/**
+	 * Retorna true si el usuario tiene cuenta de jugador
+	 *
+	 * @return unknown
+	 */
+	public function isPlayer()
+	{
+			return count($this->getPlayerProfiles()) > 0;
+	}
+		
 	/**
 	 * Retorna el perfil de desarrollador asociado al perfil de usuario o null si no existe.
 	 *
@@ -93,33 +99,6 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 			// Retornar el nuevo perfil de jugador
 			return $playerProfile;
 		}
-	}
-	
-
-	/**
-	 * Retorna true si el usuario tiene cuenta de jugador 
-	 *
-	 * @return bool
-	 */
-	public function isPlayer()
-	{
-		$c = new Criteria();
-		$c->add(PlayerProfilePeer::USER_PROFILE_ID, $this->getId());
-
-		return !is_null(PlayerProfilePeer::doSelectOne($c));
-	}
-	
-	/**
-	 * Retorna true si el usuario tiene cuenta de desarrollador 
-	 *
-	 * @return bool
-	 */
-	public function isDeveloper()
-	{
-		$c = new Criteria();
-		$c->add(DeveloperProfilePeer::ID, $this->getId());
-
-		return !is_null(DeveloperProfilePeer::doSelectOne($c));
 	}
 }
 

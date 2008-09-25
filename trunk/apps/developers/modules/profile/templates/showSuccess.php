@@ -26,11 +26,11 @@
 			<h4 class="header small"><?php echo __('Developer Details:') ?></h4>
 			
 			<?php if($developerProfile->getUrl() != '') : ?>
-				<p class="noSpace small"><strong><?php echo __('Url') ?>:</strong> <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
+				<p class="noSpace small"><?php echo __('Url') ?>: <?php echo link_to($developerProfile->getUrl(), $developerProfile->getUrl()); ?></p>
 			<?php endif; ?>
-			<p class="noSpace small"><strong><?php echo __('Tags'); ?>:</strong> <?php echo $developerProfile->getLinkedTagsString(); ?></p>
-			<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $developerProfile->getCounter(); ?></p>
-			<p class="small"><strong><?php echo __('Wiki'); ?>:</strong> <?php echo link_to_wiki_user($sf_guard_user_profile, $sf_guard_user_profile); ?></p>
+			<p class="noSpace small"><?php echo __('Tags'); ?>: <?php echo $developerProfile->getLinkedTagsString(); ?></p>
+			<p class="noSpace small"><?php echo __('Visits'); ?>: <strong><?php echo $developerProfile->getCounter(); ?></strong></p>
+			<p class="small"><?php echo __('Wiki'); ?>: <?php echo link_to_wiki_user($sf_guard_user_profile, $sf_guard_user_profile); ?></p>
 			
 			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 				<span class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></span>
