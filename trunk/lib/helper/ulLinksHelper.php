@@ -225,7 +225,11 @@
 	 */
 	function linkToGameRelease($gameRelease, $options = array(), $customText = "")
 	{
-		$linkText = $customText == "" ? $gameRelease->getName() : $customText;
+		$linkText = "";
+		if($customText == "" && !$gameRelease->getIsPublic())
+			$linkText = image_tag('lock.png', array('title' => __('This version is private'), 'alt' => __('This version is private')));
+		
+		$linkText .= $customText == "" ? $gameRelease->getName() : $customText;
 		$game = $gameRelease->getGame();
 		return link_to($linkText, "gameRelease/show?game_stripped_name=".$game->getStrippedName()."&release_stripped_name=".$gameRelease->getStrippedName(), $options);
 	}
@@ -255,6 +259,6 @@
 	 */
 	function linkToCreateGameRelease($game, $options = array(), $customText = "")
 	{
-		$linkText = $customText == "" ? __('submit release') : $customText;
+		$linkText = $customText == "" ? __('upload new version') : $customText;
 		return link_to($linkText, "gameRelease/create?game_stripped_name=".$game->getStrippedName(), $options);
 	}

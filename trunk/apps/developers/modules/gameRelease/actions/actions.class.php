@@ -49,6 +49,15 @@ class gameReleaseActions extends sfActions
 
 		$this->forward404Unless($this->game && $this->gameRelease);
 
+		if(!$this->gameRelease->getIsPublic())
+		{
+			if(!$this->getUser()->isAuthenticated() || ($this->getUser()->isAuthenticated() && $this->getUser()->getId() != $this->gameRelease->getCreatedBy()))
+			{
+				$this->setFlash('error', 'This version of the game is private. You don\'t have permission to see it');
+				$this->redirect('game/show?id='.$this->game->getId());
+			}
+		}
+		
 		if($needRedirect)
 		{
 			$this->redirect('gameRelease/show?game_stripped_name='.$this->game->getStrippedName().'&release_stripped_name='.$this->gameRelease->getStrippedName());
@@ -139,9 +148,13 @@ class gameReleaseActions extends sfActions
 		$gameRelease->setName($this->getRequestParameter('name'));
 		$gameRelease->setDescription($this->getRequestParameter('description'));
 		$gameRelease->setGamereleasestatusId($this->getRequestParameter('game_release_status_id'));
-		$gameRelease->setIsPublic($this->getRequestParameter('is_public', false));
-
-		$gameRelease->save();
+		if($game->getActiveReleaseId() == $gameRelease->getId() && !$this->getRequestParameter('is_public', false))
+			$this->setFlash('error', 'The privacity of the active version of the game cannot be changed.');
+		else
+		{
+			$gameRelease->setIsPublic($this->getRequestParameter('is_public', false));
+			$gameRelease->save();
+		}
 
 		if($this->getRequest()->getFileSize('game_path'))
 		$this->updateGameFile($gameRelease);
