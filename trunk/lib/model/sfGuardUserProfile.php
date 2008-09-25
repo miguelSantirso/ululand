@@ -94,6 +94,33 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 			return $playerProfile;
 		}
 	}
+	
+
+	/**
+	 * Retorna true si el usuario tiene cuenta de jugador 
+	 *
+	 * @return bool
+	 */
+	public function isPlayer()
+	{
+		$c = new Criteria();
+		$c->add(PlayerProfilePeer::USER_PROFILE_ID, $this->getId());
+
+		return !is_null(PlayerProfilePeer::doSelectOne($c));
+	}
+	
+	/**
+	 * Retorna true si el usuario tiene cuenta de desarrollador 
+	 *
+	 * @return bool
+	 */
+	public function isDeveloper()
+	{
+		$c = new Criteria();
+		$c->add(DeveloperProfilePeer::ID, $this->getId());
+
+		return !is_null(DeveloperProfilePeer::doSelectOne($c));
+	}
 }
 
 sfPropelBehavior::add('sfGuardUserProfile', array('sfPropelUuidBehavior'));
