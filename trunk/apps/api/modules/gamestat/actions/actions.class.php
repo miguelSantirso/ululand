@@ -77,10 +77,7 @@ class gamestatActions extends apiCommonActions
 		}
 
 		// Finalmente, obtener el valor del gamestat para el avatar indicado
-		$c = new Criteria();
-		$c->add(GameStat_PlayerProfilePeer::PLAYER_PROFILE_ID, $avatar->getPlayerProfile()->getId());
-		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $gamestat->getId());
-		$result = GameStat_PlayerProfilePeer::doSelectOne($c);
+		$result = $gamestat->getBestValueForPlayer($user->getPlayerProfile());
 
 		$this->returnApi( array(
 					'gameName' => $game->getName(),
@@ -150,7 +147,7 @@ class gamestatActions extends apiCommonActions
 		
 		
 		// Finalmente, enviamos el nuevo valor
-		$gamestat->setValueForPlayer($user->getPlayerProfile()->getId(), $this->getRequestParameter('value'));
+		$gamestat->addGameStatValueForPlayer($this->getRequestParameter('value'), $user->getPlayerProfile()->getId());
 		
 		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getName());
 		$this->setFlash('responseType', "Content-Type: plain/text");

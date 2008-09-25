@@ -22,6 +22,12 @@ DeveloperProfile:
     tags: programador, as3
     is_free: true
 
+PlayerProfile:
+  miguelSantirso:
+    user_profile_id: miguelSantirso
+    description: Hola
+    total_credits: 500
+
 
 
 # COLLABORATION OFFERS
@@ -112,3 +118,29 @@ GameStatType:
     name: min
   Add:
     name: add
+
+# GAMESTATS
+#################
+
+GameStat:
+  TotalBlocksDestroyed:
+    game_id: Arkanoid
+    gamestattype_id: Add
+    name: TotalBlocksDestroyed
+ 
+# GAMESTATS VALUES
+#################
+
+GameStat_PlayerProfile:
+  Score1:
+    gamestat_id: TotalBlocksDestroyed
+    player_profile_id: miguelSantirso
+    value: 1000
+  Score2:
+    gamestat_id: TotalBlocksDestroyed
+    player_profile_id: miguelSantirso
+    value: 500
+  Score3:
+    gamestat_id: TotalBlocksDestroyed
+    player_profile_id: miguelSantirso
+    value: 2000

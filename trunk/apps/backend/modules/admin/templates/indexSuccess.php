@@ -37,6 +37,11 @@
 				<li><?php echo link_to('Administrar tipos de estad&iacute;sticas de partida', 'gamestattype'); ?></li>
 			</ul>
 		</li>
+		<li><?php echo link_to('Administrar competiciones', 'competition'); ?>
+			<ul>
+				<li><?php echo link_to('Administrar relaci&oacute;n competiciones y jugadores', 'competition_playerprofile'); ?></li>
+			</ul>
+		</li>
 		<li><?php echo link_to('Administrar widgets', 'widget'); ?>
 		</li>
 		<li><?php echo link_to('Administrar ofertas de colaboración', 'collaboration'); ?></li>

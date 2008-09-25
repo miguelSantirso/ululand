@@ -1,0 +1,10 @@
+generator:
+  class:              sfPropelAdminGenerator
+  param:
+    model_class:      Competition
+    theme:            default
+    
+    edit:
+      fields:
+        stripped_name:
+          params: disabled=true

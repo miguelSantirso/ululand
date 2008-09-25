@@ -190,6 +190,24 @@ propel:
     value:             { type: integer,      required: true }
     created_at:        ~
 
+  competition:
+    _attributes: { phpName: Competition }
+    id:                ~
+    name:                 { type: varchar(80),  required: true }
+    stripped_name:        { type: varchar(80),  required: true }
+    description:          { type: longvarchar,  required: false }
+    gamestat_id:       ~
+    created_by:           { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    created_at:        ~
+    starts_at:            { type: timestamp,  required: true }
+    finishes_at:          { type: timestamp,  required: true }
+
+  competition_player_profile:
+    _attributes: { phpName: Competition_PlayerProfile }
+    id:                ~
+    competition_id:    ~
+    player_profile_id: ~
+    is_confirmed:          { type: boolean, required: false, default: false }
 
   chat_message:
     _attributes: { phpName: ChatMessage }

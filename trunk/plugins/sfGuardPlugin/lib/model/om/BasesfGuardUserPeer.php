@@ -408,6 +408,13 @@ abstract class BasesfGuardUserPeer {
 			$c->add(GameReleasePeer::CREATED_BY, $obj->getId());
 			$affectedRows += GameReleasePeer::doDelete($c, $con);
 
+			include_once 'lib/model/Competition.php';
+
+						$c = new Criteria();
+			
+			$c->add(CompetitionPeer::CREATED_BY, $obj->getId());
+			$affectedRows += CompetitionPeer::doDelete($c, $con);
+
 			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardUserPermission.php';
 
 						$c = new Criteria();

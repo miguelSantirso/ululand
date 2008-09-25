@@ -448,12 +448,12 @@
 <target>Aún no hay juegos</target>
 </trans-unit>
 
-<trans-unit id="101">
+<trans-unit id="102">
 <source>Accept</source>
 <target>Aceptar</target>
 </trans-unit>
 
-<trans-unit id="101">
+<trans-unit id="103">
 <source>Make owner</source>
 <target>Hacer propietario</target>
 </trans-unit>

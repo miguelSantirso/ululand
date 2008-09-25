@@ -62,7 +62,7 @@ class Group extends BaseGroup
 	protected function generateThumbnail($value)
 	{
 		$uploadDir = $this->getUploadDir();
-		$thumbnail = new sfThumbnail(200, 200, true, false);
+		$thumbnail = new sfThumbnail(150, 150, true, false);
 		$thumbnail->loadFile($uploadDir.'/'.$this->getThumbnailPath());
 		$thumbnail->save($uploadDir.'/'.'thumb_'.$this->getThumbnailPath(), 'image/png');
 	}

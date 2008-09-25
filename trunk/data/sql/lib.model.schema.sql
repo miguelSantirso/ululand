@@ -444,6 +444,60 @@ CREATE TABLE `gamestat_player_profile`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
+#-- competition
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `competition`;
+
+
+CREATE TABLE `competition`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(80)  NOT NULL,
+	`stripped_name` VARCHAR(80)  NOT NULL,
+	`description` TEXT,
+	`gamestat_id` INTEGER,
+	`created_by` INTEGER,
+	`created_at` DATETIME,
+	`starts_at` DATETIME  NOT NULL,
+	`finishes_at` DATETIME  NOT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `competition_FI_1` (`gamestat_id`),
+	CONSTRAINT `competition_FK_1`
+		FOREIGN KEY (`gamestat_id`)
+		REFERENCES `gamestat` (`id`),
+	INDEX `competition_FI_2` (`created_by`),
+	CONSTRAINT `competition_FK_2`
+		FOREIGN KEY (`created_by`)
+		REFERENCES `sf_guard_user` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- competition_player_profile
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `competition_player_profile`;
+
+
+CREATE TABLE `competition_player_profile`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`competition_id` INTEGER,
+	`player_profile_id` INTEGER,
+	`is_confirmed` INTEGER default 0,
+	PRIMARY KEY (`id`),
+	INDEX `competition_player_profile_FI_1` (`competition_id`),
+	CONSTRAINT `competition_player_profile_FK_1`
+		FOREIGN KEY (`competition_id`)
+		REFERENCES `competition` (`id`),
+	INDEX `competition_player_profile_FI_2` (`player_profile_id`),
+	CONSTRAINT `competition_player_profile_FK_2`
+		FOREIGN KEY (`player_profile_id`)
+		REFERENCES `player_profile` (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
 #-- chat_message
 #-----------------------------------------------------------------------------
 

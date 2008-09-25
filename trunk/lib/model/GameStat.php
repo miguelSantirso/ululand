@@ -10,35 +10,29 @@
 class GameStat extends BaseGameStat
 {
 	/**
-	 * Añade o modifica un valor de un gamestat para cierto jugador.
+	 * __toString: Función auxiliar "mágica" que retorna una cadena que representa al objeto.
 	 *
-	 * @param integer $playerId Id del jugador al que pertenece el nuevo valor del gamestat
-	 * @param integer $value Nuevo valor del gamestat
-	 */
-	public function setValueForPlayer($playerId, $value)
+	 * @return string Cadena representando al objeto
+	 **/
+	public function __toString()
 	{
-		// Obtener el valor del gamestat para el avatar indicado
-		$c = new Criteria();
-		$c->add(GameStat_PlayerProfilePeer::PLAYER_PROFILE_ID, $playerId);
-		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $this->getId());
-		$gameStatValue = GameStat_PlayerProfilePeer::doSelectOne($c);
-		
-		// Comprobamos si el avatar ya tiene un valor para este gamestat 
-		if(!$gameStatValue)
-		{
-			// El avatar no tenía ningún valor, así que creamos uno nuevo
-			$newValue = new GameStat_PlayerProfile();
-			$newValue->setPlayerProfileId($playerId);
-			$newValue->setGamestat($this);
-			$newValue->setValue($value);
+		return $this->name." (".$this->getGame().")";
+	}
+	
+	/**
+	 * A�ade un valor de una estad�stica de partida para un jugador
+	 *
+	 * @param integer $value Valor de la estad�stica de partida
+	 * @param integer $playerId Identificador del jugador
+	 */
+	public function addGameStatValueForPlayer($value, $playerId)
+	{
+		$newValue = new GameStat_PlayerProfile();
+		$newValue->setPlayerProfileId($playerId);
+		$newValue->setGamestat($this);
+		$newValue->setValue($value);
 			
-			$newValue->save();
-		}
-		else
-		{
-			// El avatar ya tenía uno, así que lo modificamos solo si procede según el tipo de gamestat
-			$gameStatValue->setValueIfBetter($value, $this->getGameStatType());
-		}
+		$newValue->save();
 	}
 	
 	public function getOrderedValues($limit = 0)
@@ -47,7 +41,39 @@ class GameStat extends BaseGameStat
 		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $this->getId());
 		if($limit > 0)
 			$c->setLimit($limit);
-		switch ($this->getGameStatType())
+		$c = GameStat::addOrderToCriteria($c, $this->getGameStatType());
+		return Gamestat_PlayerProfilePeer::doSelect($c);
+	}
+	
+	/**
+	 * Retorna la mejor estad�stica de un jugador
+	 *
+	 * @param PlayerProfile $playerProfile
+	 * @param String $startDate
+	 * @param String $endDate
+	 * @return GameStat_PlayerProfile
+	 */
+	public function getBestValueForPlayer($playerProfile, $startDate = null, $endDate = null)
+	{
+		$c = new Criteria();
+		$c->add(PlayerProfilePeer::ID, $playerProfile->getId());
+		if (!is_null($startDate)) $c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $startDate, Criteria::GREATER_EQUAL);
+		if (!is_null($endDate)) $c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $endDate, Criteria::LESS_EQUAL);
+		$c = GameStat::addOrderToCriteria($c, $this->getGameStatType());
+		
+		return GameStat_PlayerProfilePeer::doSelectOne($c);
+	}
+
+	/**
+	 * Retorna el criteria modificado para que ordene los valores adecuadamente
+	 *
+	 * @param Criteria $c criteria a modificar
+	 * @param GameStatType $gamestatType
+	 * @return Criteria
+	 */
+	protected static function addOrderToCriteria($c = null, $gamestatType)
+	{
+		switch ($gamestatType)
 		{
 			case 'max':
 				$c->addDescendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
@@ -62,16 +88,6 @@ class GameStat extends BaseGameStat
 				$c->addDescendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
 		}
-		return Gamestat_PlayerProfilePeer::doSelect($c);
-	}
-	
-	/**
-	 * __toString: Función auxiliar "mágica" que retorna una cadena que representa al objeto.
-	 *
-	 * @return string Cadena representando al objeto
-	 **/
-	public function __toString()
-	{
-		return $this->name." (".$this->getGame().")";
+		return $c;
 	}
 }

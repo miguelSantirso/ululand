@@ -74,6 +74,12 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 	protected $lastGameReleaseCriteria = null;
 
 	
+	protected $collCompetitions;
+
+	
+	protected $lastCompetitionCriteria = null;
+
+	
 	protected $collsfGuardUserPermissions;
 
 	
@@ -497,6 +503,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->collCompetitions !== null) {
+				foreach($this->collCompetitions as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			if ($this->collsfGuardUserPermissions !== null) {
 				foreach($this->collsfGuardUserPermissions as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
@@ -596,6 +610,14 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 				if ($this->collGameReleases !== null) {
 					foreach($this->collGameReleases as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
+
+				if ($this->collCompetitions !== null) {
+					foreach($this->collCompetitions as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -832,6 +854,10 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 
 			foreach($this->getGameReleases() as $relObj) {
 				$copyObj->addGameRelease($relObj->copy($deepCopy));
+			}
+
+			foreach($this->getCompetitions() as $relObj) {
+				$copyObj->addCompetition($relObj->copy($deepCopy));
 			}
 
 			foreach($this->getsfGuardUserPermissions() as $relObj) {
@@ -1324,6 +1350,111 @@ abstract class BasesfGuardUser extends BaseObject  implements Persistent {
 		$this->lastGameReleaseCriteria = $criteria;
 
 		return $this->collGameReleases;
+	}
+
+	
+	public function initCompetitions()
+	{
+		if ($this->collCompetitions === null) {
+			$this->collCompetitions = array();
+		}
+	}
+
+	
+	public function getCompetitions($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseCompetitionPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collCompetitions === null) {
+			if ($this->isNew()) {
+			   $this->collCompetitions = array();
+			} else {
+
+				$criteria->add(CompetitionPeer::CREATED_BY, $this->getId());
+
+				CompetitionPeer::addSelectColumns($criteria);
+				$this->collCompetitions = CompetitionPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(CompetitionPeer::CREATED_BY, $this->getId());
+
+				CompetitionPeer::addSelectColumns($criteria);
+				if (!isset($this->lastCompetitionCriteria) || !$this->lastCompetitionCriteria->equals($criteria)) {
+					$this->collCompetitions = CompetitionPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastCompetitionCriteria = $criteria;
+		return $this->collCompetitions;
+	}
+
+	
+	public function countCompetitions($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseCompetitionPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(CompetitionPeer::CREATED_BY, $this->getId());
+
+		return CompetitionPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addCompetition(Competition $l)
+	{
+		$this->collCompetitions[] = $l;
+		$l->setsfGuardUser($this);
+	}
+
+
+	
+	public function getCompetitionsJoinGameStat($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseCompetitionPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collCompetitions === null) {
+			if ($this->isNew()) {
+				$this->collCompetitions = array();
+			} else {
+
+				$criteria->add(CompetitionPeer::CREATED_BY, $this->getId());
+
+				$this->collCompetitions = CompetitionPeer::doSelectJoinGameStat($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(CompetitionPeer::CREATED_BY, $this->getId());
+
+			if (!isset($this->lastCompetitionCriteria) || !$this->lastCompetitionCriteria->equals($criteria)) {
+				$this->collCompetitions = CompetitionPeer::doSelectJoinGameStat($criteria, $con);
+			}
+		}
+		$this->lastCompetitionCriteria = $criteria;
+
+		return $this->collCompetitions;
 	}
 
 	
