@@ -112,9 +112,12 @@ Friendship:
 Competition:
   Competition1:
     name: Competition1
-    description: La mejor competición
+    description: La mejor competicion
     stripped_name: competition1
+    gamestat_id: TotalBlocksDestroyed
     created_by: prueba
+    starts_at: 2008-09-25 00:00:00
+    finishes_at: 2008-09-30 00:00:00
     
 Competition_PlayerProfile:
   prueba_competition1:
@@ -132,3 +135,20 @@ Competition_PlayerProfile:
     player_profile_id: amistad1
     is_owner: false
     is_confirmed: false
+    
+GameStat_PlayerProfile:
+  Score4:
+    gamestat_id: TotalBlocksDestroyed
+    player_profile_id: prueba
+    created_at: 2008-09-29 00:00:00
+    value: 1000
+  Score5:
+    gamestat_id: TotalBlocksDestroyed
+    player_profile_id: jugador
+    created_at: 2008-09-28 00:00:00
+    value: 500
+  Score6:
+    gamestat_id: TotalBlocksDestroyed
+    player_profile_id: prueba
+    created_at: 2008-09-23 00:00:00
+    value: 2000

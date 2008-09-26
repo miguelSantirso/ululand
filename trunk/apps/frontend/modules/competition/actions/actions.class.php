@@ -47,9 +47,22 @@ class competitionActions extends sfActions
   	if($this->getRequestParameter('id'))
   	{
   		$this->competitionId = $this->getRequestParameter('id');
+	  	// Obtener el id del juego de la competición a editar
+		if($this->getRequestParameter('game'))
+		{
+			echo $this->gameId = $this->getRequestParameter('game');
+			echo $this->game = GamePeer::retrieveByPK($this->gameId);
+		}
   	}
   	else
   	{
+	  	// Obtener el id del juego de la competición a editar
+		if($this->getRequestParameter('game'))
+		{
+			echo $this->gameId = $this->getRequestParameter('game');
+			echo $this->game = GamePeer::retrieveByPK($this->gameId);
+		}
+  		
   		// Obtener el jugador del perfil
 	    $this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
  	    $this->forward404Unless($this->profile);
@@ -62,7 +75,7 @@ class competitionActions extends sfActions
 		$this->newCompetition->setName("Name");
 		$this->newCompetition->setDescription("Description");
 		$this->newCompetition->setCreatedBy($this->profile->getId());
-	 	        
+	 	
 		// Grabarlo en la base de datos
 		$this->newCompetition->save();
 		
@@ -81,8 +94,9 @@ class competitionActions extends sfActions
 	    // Grabarlo en la base de datos
 	    $this->newCompetition_PlayerProfile->save();
 		
-		$this->redirect('competition/edit?id='.$this->competitionId);
+		$this->redirect('competition/edit?id='.$this->competitionId.'&game='.$this->gameId);
   	}
+  	
   	
    	// Obtener el objeto de la competición a editar
 	$this->competition = CompetitionPeer::retrieveByPk($this->competitionId);
@@ -114,10 +128,18 @@ class competitionActions extends sfActions
   			$this->forward('competition', 'list');
   		}
   		
+  		
 
   		$competition->setName($this->getRequestParameter('name'));
   		$competition->setDescription($this->getRequestParameter('description'));
-  		$competition->save();
+  		echo $this->getRequestParameter('gamesStatId');
+  		$competition->setGameStatId($this->getRequestParameter('gameStatId'));
+  		if($this->getRequest()->getFileSize('thumbnail_path'))
+  		{
+			$this->updateThumbnail($competition);
+			echo "update";
+  		}
+		$competition->save();
   	}
 
   	return $this->redirect('competition/show?id='.$competitionId);
@@ -228,6 +250,22 @@ class competitionActions extends sfActions
     endforeach;
   	
   	return $this->redirect('competition/edit?id='.$competition);
+  }
+  
+  private function updateThumbnail($competition)
+  {
+  	echo "entre";
+	$currentThumbnail = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_competitionIcons')."/{$competition->getStrippedName()}/".$competition->getThumbnailPath();
+
+	if (is_file($currentThumbnail))
+	{
+		unlink($currentThumbnail);
+	}
+	$fileName = "{$competition->getStrippedName()}";
+	$ext = $this->getRequest()->getFileExtension('thumbnail_path');
+	$thumbnailPath = $this->getRequest()->getFileName('thumbnail_path');
+    $this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_competitionIcons')."/{$competition->getStrippedName()}/".$fileName.$ext);
+    $competition->setThumbnailPath($fileName.$ext);
   }
   
 }

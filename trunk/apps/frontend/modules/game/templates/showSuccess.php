@@ -10,6 +10,7 @@
 			<div class="contentBox">
 				<div class="alignRight"><?php echo sf_rater($game) ?></div>
 				<h3 class="large header"><?php echo linkToGame($game); ?></h3>
+				<?php echo link_to(__('Create Competition for this game'), 'competition/edit?game='.$game->getId()); ?>
 				<div class="xSmall alignLeft">
 					<p class="noSpace">
 						<a href="#description"><?php echo __('Instructions & Details'); ?></a>

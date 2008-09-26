@@ -55,7 +55,7 @@
 				<ul class="tags">
 					<?php $linkText = ""; ?>
 					<?php foreach($gamestat_players as $gamestat_player) : ?>
-					<?php $linkText = $gamestat_player->getPlayerProfile()->getsfGuardUserProfile() . " (" . sprintf(__('%s points'), $gamestat_player->getValue()) . ") " . $gamestat_player->getCreatedAt(); ?>
+					<?php $linkText = $gamestat_player->getPlayerProfile()->getsfGuardUserProfile() . " (" . sprintf(__('%s points'), $gamestat_player->getValue()) . ") "; ?>
 					<li><?php echo linkToProfileWithGravatar($gamestat_player->getPlayerProfile()->getsfGuardUserProfile(), 35, array(), $linkText); ?>	</li>
 					<?php endforeach; ?>
 				</ul>

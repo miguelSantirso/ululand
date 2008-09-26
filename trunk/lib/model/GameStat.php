@@ -19,6 +19,16 @@ class GameStat extends BaseGameStat
 		return $this->name." (".$this->getGame().")";
 	}
 	
+    public function getGameStatForGame($game)
+	{
+		$newValue = new GameStat_PlayerProfile();
+		$newValue->setPlayerProfileId($playerId);
+		$newValue->setGamestat($this);
+		$newValue->setValue($value);
+			
+		$newValue->save();
+	}
+	
 	/**
 	 * Añade un valor de una estadística de partida para un jugador
 	 *

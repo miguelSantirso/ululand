@@ -7,14 +7,26 @@
 	
 		<div class="contentColumn half alignLeft">
 			<div class="contentBox light">
-
+					<?php $gameStat = $competition->getGameStat(); ?>
 					<h3 class="header"><?php echo __('Competition Info'); ?>:</h3>
+					<?php echo form_tag('competition/update', 'multipart=true') ?>
 					
 					<p class="noSpace"><?php echo label_for('name', __('Competition Name')); ?>:</p>
 					<?php echo object_input_tag($competition, 'getName', array (
 				  		'size' => 20,
 						'class' => 'grande',
 						)) ?>
+					<br/>
+					<br/>
+					
+					<p class="noSpace"><?php echo label_for('thumbnail_path', __('Thumbnail:')); ?></p>
+					<?php echo input_file_tag("thumbnail_path"); ?>
+					<br/>
+					<br/>
+
+					<?php echo select_tag('gameStatId', objects_for_select($game->getGameStats(), 'getId', 'getName', $gameStat ? $gameStat->getId() : null, array('include_blank' => true) )); ?>
+
+					<br/>
 					<br/>
 
 					<p class="noSpace"><?php echo label_for('description', __('Competition Description')); ?>:</p>

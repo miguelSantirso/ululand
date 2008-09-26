@@ -5,7 +5,7 @@
 	<?php if(isset($search)) : ?>
 		<div class="contentColumn half alignCenter">
 			<div class="contentBox light">
-				<p class="noSpace center"><?php echo sprintf(__('Search results for %1$s (%2$s)'), link_to($search, 'group/list?search='.$search), link_to('clear', 'group/list')); ?></p>
+				<p class="noSpace center"><?php echo sprintf(__('Search results for %1$s (%2$s)'), link_to($search, 'competition/list?search='.$search), link_to('clear', 'competition/list')); ?></p>
 			</div>
 		</div>
 	<?php endif; ?>
