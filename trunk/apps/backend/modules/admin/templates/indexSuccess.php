@@ -33,7 +33,7 @@
 		</li>
 		<li><?php echo link_to('Administrar estad&iacute;sticas de partida', 'gamestat'); ?>
 			<ul>
-				<li><?php echo link_to('Administrar valores de las estad&iacute;sticas de partida', 'gamestat_avatar'); ?></li>
+				<li><?php echo link_to('Administrar valores de las estad&iacute;sticas de partida', 'gamestat_playerprofile'); ?></li>
 				<li><?php echo link_to('Administrar tipos de estad&iacute;sticas de partida', 'gamestattype'); ?></li>
 			</ul>
 		</li>

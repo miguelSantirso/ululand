@@ -108,3 +108,27 @@ Friendship:
     player_profile_id_a: prueba
     player_profile_id_b: amistad3
     is_confirmed: false
+    
+Competition:
+  Competition1:
+    name: Competition1
+    description: La mejor competición
+    stripped_name: competition1
+    created_by: prueba
+    
+Competition_PlayerProfile:
+  prueba_competition1:
+    competition_id: Competition1
+    player_profile_id: prueba
+    is_owner: true
+    is_confirmed: true
+  jugador_competition1:
+    competition_id: Competition1
+    player_profile_id: jugador
+    is_owner: false
+    is_confirmed: true
+  amistad1_competition1:
+    competition_id: Competition1
+    player_profile_id: amistad1
+    is_owner: false
+    is_confirmed: false

@@ -455,6 +455,7 @@ CREATE TABLE `competition`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(80)  NOT NULL,
 	`stripped_name` VARCHAR(80)  NOT NULL,
+	`thumbnail_path` VARCHAR(255),
 	`description` TEXT,
 	`gamestat_id` INTEGER,
 	`created_by` INTEGER,
@@ -485,7 +486,9 @@ CREATE TABLE `competition_player_profile`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`competition_id` INTEGER,
 	`player_profile_id` INTEGER,
+	`is_owner` INTEGER default 0,
 	`is_confirmed` INTEGER default 0,
+	`created_at` DATETIME,
 	PRIMARY KEY (`id`),
 	INDEX `competition_player_profile_FI_1` (`competition_id`),
 	CONSTRAINT `competition_player_profile_FK_1`

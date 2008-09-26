@@ -38,6 +38,8 @@ class CompetitionMapBuilder {
 
 		$tMap->addColumn('STRIPPED_NAME', 'StrippedName', 'string', CreoleTypes::VARCHAR, true, 80);
 
+		$tMap->addColumn('THUMBNAIL_PATH', 'ThumbnailPath', 'string', CreoleTypes::VARCHAR, false, 255);
+
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
 		$tMap->addForeignKey('GAMESTAT_ID', 'GamestatId', 'int', CreoleTypes::INTEGER, 'gamestat', 'ID', false, null);

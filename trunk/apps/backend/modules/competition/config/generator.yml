@@ -8,3 +8,7 @@ generator:
       fields:
         stripped_name:
           params: disabled=true
+        thumbnail_path:
+          type:       admin_input_file_tag 
+          upload_dir: CompetitionIcons
+          filename:   %%stripped_name%%

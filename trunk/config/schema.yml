@@ -195,6 +195,7 @@ propel:
     id:                ~
     name:                 { type: varchar(80),  required: true }
     stripped_name:        { type: varchar(80),  required: true }
+    thumbnail_path:       { type: varchar(255) }
     description:          { type: longvarchar,  required: false }
     gamestat_id:       ~
     created_by:           { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
@@ -207,7 +208,9 @@ propel:
     id:                ~
     competition_id:    ~
     player_profile_id: ~
+    is_owner:              { type: boolean, required: false, default: false }
     is_confirmed:          { type: boolean, required: false, default: false }
+    created_at:
 
   chat_message:
     _attributes: { phpName: ChatMessage }

@@ -177,6 +177,38 @@
 	}
 	
 	/**
+	 * Retorna el código html de un enlace a la competici�n pasada como parámetro
+	 *
+	 * @param Competition $competition Competici�n a la que se desea enlazar
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace al grupo pasado como parámetro
+	 */
+	function linkToCompetition($competition, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $competition->getName() : $customText;
+		return link_to($linkText, "competition/show?id=".$competition->getId(), $options);
+	}
+	
+	/**
+	 * Retorna el código html de un enlace a la competici�n pasada como parámetro, incluyendo el thumbnail
+	 *
+	 * @param Competition $competition Competici�n a la que se desea enlazar
+	 * @param int $size Tamaño del thumbnail
+	 * @param array $options opciones que se añadirán al link_to
+	 * @param string $customText Texto personalizado para el enlace
+	 * @return string código html del enlace a la competici�n pasada como parámetro
+	 */
+	function linkToCompetitionWithThumbnail($competition, $size = 100, $options = array(), $customText = "")
+	{
+		$linkText = $customText == "" ? $competition->getName() : $customText;
+		$imageTag = competitionThumbnail_tag($competition, array('alt' => $competition, 'title' => $competition, 'width' => $size));
+		$linkText = '<span class="gravatar">'.$imageTag.'</span>'.$linkText;
+		
+		return '<span class="linkToProfileWithGravatar">'.linkToCompetition($competition, $options, $linkText ).'</span>';
+	}
+	
+	/**
 	 * Retorna el código html de un enlace al juego pasado como parámetro
 	 *
 	 * @param Game $game Juego al que se desea enlazar

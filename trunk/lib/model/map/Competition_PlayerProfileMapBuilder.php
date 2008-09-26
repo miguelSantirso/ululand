@@ -38,7 +38,11 @@ class Competition_PlayerProfileMapBuilder {
 
 		$tMap->addForeignKey('PLAYER_PROFILE_ID', 'PlayerProfileId', 'int', CreoleTypes::INTEGER, 'player_profile', 'ID', false, null);
 
+		$tMap->addColumn('IS_OWNER', 'IsOwner', 'boolean', CreoleTypes::BOOLEAN, false, null);
+
 		$tMap->addColumn('IS_CONFIRMED', 'IsConfirmed', 'boolean', CreoleTypes::BOOLEAN, false, null);
+
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 
 	} 
 } 

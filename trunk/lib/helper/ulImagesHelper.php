@@ -32,3 +32,16 @@
 		return image_tag($imageUrl, $options);
 	}
 	
+	/**
+	 * Retorna el código html de una imagen del thumbnail de una competici�n
+	 *
+	 * @param Competition $competition Competici�n de la que se desea imprimir su thumbnail
+	 * @param Array $options opciones que se pasarán a la función image_tag de symfony
+	 * @return string código html de una imagen del thumbnail de una competici�n
+	 */
+	function competitionThumbnail_tag($competition, $options = array())
+	{
+		$imageUrl = '/' . $competition->getUploadDirName() . '/' . 'thumb_' . $competition->getThumbnailPath();
+		return image_tag($imageUrl, $options);
+	}
+	

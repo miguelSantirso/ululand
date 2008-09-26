@@ -9,4 +9,8 @@
  */ 
 class CompetitionPeer extends BaseCompetitionPeer
 {
+	const PENDING = 'pending';
+	const OWNER = 'owner';
+	const MEMBER = 'member';
+	const NOT_MEMBER = 'notMember';
 }

@@ -35,13 +35,17 @@ class GameStat extends BaseGameStat
 		$newValue->save();
 	}
 	
-	public function getOrderedValues($limit = 0)
+	public function getOrderedValues($limit = 0, $startDate = null, $endDate = null)
 	{
 		$c = new Criteria();
 		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $this->getId());
 		if($limit > 0)
 			$c->setLimit($limit);
 		$c = GameStat::addOrderToCriteria($c, $this->getGameStatType());
+		if (!is_null($startDate)) 
+			$c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $startDate, Criteria::GREATER_EQUAL);
+		if (!is_null($endDate)) 
+			$c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $endDate, Criteria::LESS_EQUAL);
 		return Gamestat_PlayerProfilePeer::doSelect($c);
 	}
 	
@@ -57,8 +61,10 @@ class GameStat extends BaseGameStat
 	{
 		$c = new Criteria();
 		$c->add(PlayerProfilePeer::ID, $playerProfile->getId());
-		if (!is_null($startDate)) $c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $startDate, Criteria::GREATER_EQUAL);
-		if (!is_null($endDate)) $c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $endDate, Criteria::LESS_EQUAL);
+		if (!is_null($startDate)) 
+			$c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $startDate, Criteria::GREATER_EQUAL);
+		if (!is_null($endDate)) 
+			$c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $endDate, Criteria::LESS_EQUAL);
 		$c = GameStat::addOrderToCriteria($c, $this->getGameStatType());
 		
 		return GameStat_PlayerProfilePeer::doSelectOne($c);
@@ -71,7 +77,7 @@ class GameStat extends BaseGameStat
 	 * @param GameStatType $gamestatType
 	 * @return Criteria
 	 */
-	protected static function addOrderToCriteria($c = null, $gamestatType)
+	public static function addOrderToCriteria($c = null, $gamestatType)
 	{
 		switch ($gamestatType)
 		{
