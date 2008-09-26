@@ -7,6 +7,9 @@
 			<li class="<?php echo $sf_context->getModuleName() == 'game' ? 'selected' : '' ?>">
 				<?php echo link_to(__("Games"), '/game'); ?>
 			</li>
+			<li class="<?php echo $sf_context->getModuleName() == 'competition' ? 'selected' : '' ?>">
+				<?php echo link_to(__("Competitions"), '/competition'); ?>
+			</li>
 			<?php $selected = $sf_context->getModuleName() == 'group' || 
 								$sf_context->getModuleName() == 'profile'; ?>
 			<li class="<?php echo $selected ? 'selected' : '' ?>">

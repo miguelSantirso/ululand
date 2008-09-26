@@ -206,8 +206,8 @@ propel:
   competition_player_profile:
     _attributes: { phpName: Competition_PlayerProfile }
     id:                ~
-    competition_id:    ~
-    player_profile_id: ~
+    competition_id:        { type: integer, foreignTable: competition, foreignReference: id, onDelete: cascade }
+    player_profile_id:     { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
     is_owner:              { type: boolean, required: false, default: false }
     is_confirmed:          { type: boolean, required: false, default: false }
     created_at:

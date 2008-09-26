@@ -69,7 +69,7 @@ class Competition extends BaseCompetition
 	}
 	
 /**
-	 * Devuelve los miembros de un competición
+	 * Devuelve los miembros de un competición ordenados según su puntuación
 	 *
 	 * @param Criteria $c criteria que se añadirá al select
 	 * @return Array array de jugadores de acuerdo al criteria pasado como parámetro
@@ -84,11 +84,24 @@ class Competition extends BaseCompetition
 		$c->add(GameStatPeer::ID, $this->getGamestatId());
 		
 		$c->add(GameStat_PlayerProfilePeer::GAMESTAT_ID, $this->getGamestatId());
-		$c = GameStat::addOrderToCriteria($c, $this->getGameStat()->getGameStatType()); 
+		$c = GameStat::addOrderToCriteria($c, $this->getGameStat()->getGameStatType());
 		
 		$c->addAnd($c->getNewCriterion(Gamestat_PlayerProfilePeer::CREATED_AT, $this->getStartsAt(), Criteria::GREATER_THAN)); 
 		$c->addAnd($c->getNewCriterion(Gamestat_PlayerProfilePeer::CREATED_AT, $this->getFinishesAt(), Criteria::LESS_THAN));
-		return Gamestat_PlayerProfilePeer::doSelect($c);
+		$gamestat_players = Gamestat_PlayerProfilePeer::doSelect($c);
+		$array = array();
+		for( $i=0; $i<count($gamestat_players); $i++)
+		{
+			$var = true;
+			for( $j=$i-1; $j>=0; $j--)
+			{
+				if ($gamestat_players[$i]->getPlayerProfileId() == $gamestat_players[$j]->getPlayerProfileId())
+					$var = false;
+			}
+			if ($var) $array[] = $gamestat_players[$i];
+		}
+		return $array;
+		
 	}
 	
 	public function setThumbnailPath($v)

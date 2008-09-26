@@ -205,4 +205,29 @@ class competitionActions extends sfActions
   	return $this->redirect('competition/edit?id='.$competition);
   }
   
+  public function executeMakeOwner()
+  {
+  	// Obtener el jugador 
+	$player = $this->getRequestParameter('player');
+	
+  	// Obtener el grupo
+  	$competition = $this->getRequestParameter('competition');
+  	
+  	$c = new Criteria();
+  	$c->add(PlayerProfilePeer::ID, $player);
+  	$c->add(CompetitionPeer::ID, $competition);
+  	
+  	$this->players_competitions = Competition_PlayerProfilePeer::doSelectJoinAll($c);
+  	
+  	foreach ($this->players_competitions as $this->player_competition):
+  	
+  	// Convertir al jugador en propietario del grupo
+    $this->player_competition->setIsOwner(true);
+    $this->player_competition->save();
+    
+    endforeach;
+  	
+  	return $this->redirect('competition/edit?id='.$competition);
+  }
+  
 }

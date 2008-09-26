@@ -493,11 +493,13 @@ CREATE TABLE `competition_player_profile`
 	INDEX `competition_player_profile_FI_1` (`competition_id`),
 	CONSTRAINT `competition_player_profile_FK_1`
 		FOREIGN KEY (`competition_id`)
-		REFERENCES `competition` (`id`),
+		REFERENCES `competition` (`id`)
+		ON DELETE CASCADE,
 	INDEX `competition_player_profile_FI_2` (`player_profile_id`),
 	CONSTRAINT `competition_player_profile_FK_2`
 		FOREIGN KEY (`player_profile_id`)
 		REFERENCES `player_profile` (`id`)
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

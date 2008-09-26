@@ -6,6 +6,8 @@ $isHome = $module == 'home' || $module == 'sfGuardAuth';
 
 $isGames = $module == 'game';
 
+$isCompetitions = $module == 'competition';
+
 $isCommunity = $module == 'group' ||
 	$module == 'profile';
 
@@ -26,6 +28,10 @@ $isCommunity = $module == 'group' ||
 		
 		<?php if($isGames) : ?>
 		<?php echo link_to(__('Games'), 'game'); ?>
+		<?php endif; ?>
+		
+		<?php if($isCompetitions) : ?>
+		<?php echo link_to(__('Competition'), 'competition'); ?>
 		<?php endif; ?>
 		
 		<?php if($isCommunity) : ?>
