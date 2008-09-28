@@ -124,4 +124,14 @@ class collaborationActions extends sfActions
 		return $this->forward('collaboration', $redirectTo);
   }
 
+  public function executeDelete()
+  {
+    $collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));
+
+    $this->forward404Unless($collaboration_offer);
+
+    $collaboration_offer->delete();
+
+    return $this->redirect('collaboration/list');
+  }
 }

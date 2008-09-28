@@ -14,12 +14,17 @@ html, body {
 	margin-top: 0;
 }
 
-a 
-{ color: #006eb3; }
-a:hover
-{ color: #003e66; }
-a:active
-{ color: #007ccb; }
+/* default links */
+
+a { color: #006eb3; }
+a:hover { color: #003e66; }
+a:active { color: #007ccb; }
+
+/* links to delete actions */
+
+a.delete { red; padding: 4px; margin: -4px; }
+a.delete:hover { color: #ffffff; background-color: #ff0000; border: 1px solid #c90000; }
+a.delete:active { color: red; background-color: black; }
 
 h1,h2,h3,h4,h5,h6 {
 	margin-top: 0.6em;
@@ -85,12 +90,10 @@ a.bigBox {
 	margin-bottom: 1em;
 	display: block;
 }
-a.bigBox:hover {
-	background-color: #fafafa;
-}
-a.bigBox:active {
-	background-color: #eee;
-}
+a.bigBox:hover { background-color: #fafafa; }
+a.bigBox.delete:hover { background-color: red; border: 0; }
+a.bigBox.delete:active { background-color: black; border: 0; }
+a.bigBox:active { background-color: #eee; }
 a.bigBox span.header {
 	display: block;
 	margin-bottom: 0.6em;

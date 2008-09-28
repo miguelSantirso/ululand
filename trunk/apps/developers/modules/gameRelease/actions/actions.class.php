@@ -163,7 +163,20 @@ class gameReleaseActions extends sfActions
 
 		return $this->redirect('gameRelease/show?release_id='.$gameRelease->getId());
 	}
-	
+
+	public function executeDelete()
+	{
+		$gameRelease = GameReleasePeer::retrieveByPk($this->getRequestParameter('id'));
+
+		$this->forward404Unless($gameRelease);
+		
+		$game = $gameRelease->getGame();
+		
+		$gameRelease->delete();
+
+		return $this->redirect('game/show?id='.$game->getId());
+	}
+
 	private function updateGameFile($gameRelease)
 	{
 		$game = $gameRelease->getGame();

@@ -1,11 +1,12 @@
 <?php use_helper('Date', 'Partial'); ?>
+<?php $isOwner = $sf_user->isAuthenticated() && $sf_user->getId() == $collaboration_offer->getCreatedBy(); ?>
 
 <div id="pageContent">
 	<div class="contentColumn wide alignLeft">
 		<div class="contentBox">
 			<h3 class="header">
 				<?php echo linkToCollaborationOffer($collaboration_offer); ?>
-				<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $collaboration_offer->getCreatedBy()) : ?>
+				<?php if($isOwner) : ?>
 					<span>(<?php echo linkToEditCollaborationOffer($collaboration_offer, array(), __('edit')); ?>)</span>
 				<?php endif; ?>
 			</h3>
@@ -26,6 +27,9 @@
 			<p class="noSpace small"><strong><?php echo __('Autor'); ?>:</strong> <?php echo linkToProfile($collaboration_offer->getsfGuardUser()->getProfile()); ?></p>
 			<p class="noSpace small"><strong><?php echo __('Date'); ?>:</strong> <?php echo format_date($collaboration_offer->getCreatedAt()); ?></p>
 			<p class="noSpace small"><strong><?php echo __('Visits'); ?>:</strong> <?php echo $collaboration_offer->getCounter(); ?></p>
+			<?php if($isOwner) : ?>
+				<p class="small"><strong><?php echo linkToEditCollaborationOffer($collaboration_offer, array(), __('edit')); ?></strong> | <strong><?php echo link_to(__('delete'), "collaboration/delete?id={$collaboration_offer->getId()}", array('class' => 'delete', 'onClick' => 'javascript:return confirm("'.__('Are you sure you want to delete this?\n(Can\'t be undone. Seriously!)').'");')); ?></strong></p>
+			<?php endif; ?>
 		</div>
 		<div class="contentBox">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>

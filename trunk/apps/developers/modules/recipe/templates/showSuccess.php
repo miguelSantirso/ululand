@@ -1,4 +1,5 @@
 <?php use_helper('Date', 'Partial', 'sfRating'); ?>
+<?php $isOwner =  $sf_user->isAuthenticated() && $sf_user->getId() == $code_piece->getCreatedBy(); ?>
 
 <div id="pageContent">
 
@@ -9,7 +10,7 @@
 				<div class="alignRight"><?php echo sf_rater($code_piece) ?></div>
 				<h3 class="header">
 					<?php echo linkToRecipe($code_piece); ?>
-					<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $code_piece->getCreatedBy()) : ?>
+					<?php if($isOwner) : ?>
 						<span class="">(<?php echo linkToEditRecipe($code_piece, array(), __('edit')); ?>)</span>
 					<?php endif; ?>
 				</h3>
@@ -43,8 +44,9 @@
 						<p class="noSpace small"><?php echo __('Autor'); ?>: <strong><?php echo linkToProfile($code_piece->getsfGuardUser()->getProfile(), 15); ?></strong></p>
 						<p class="noSpace small"><?php echo __('Date'); ?>: <strong><?php echo format_date($code_piece->getCreatedAt()); ?></strong></p>
 						<p class="noSpace small"><?php echo __('Visits'); ?>: <strong><?php echo $code_piece->getCounter(); ?></strong></p>
-						<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $code_piece->getCreatedBy()) : ?>
-								<p class="small"><strong><?php echo linkToEditRecipe($code_piece, array(), __('edit')); ?></strong></p>
+						<?php if($isOwner) : ?>
+								<p class="small"><strong><?php echo linkToEditRecipe($code_piece, array(), __('edit')); ?></strong>
+								| <strong><?php echo link_to(__('delete'), "recipe/delete?id={$code_piece->getId()}", array('class' => 'delete', 'onClick' => 'javascript:return confirm("'.__('Are you sure you want to delete this?\n(Can\'t be undone. Seriously!)').'");')); ?></strong></p>
 						<?php endif; ?>
 					</div>
 				</div>

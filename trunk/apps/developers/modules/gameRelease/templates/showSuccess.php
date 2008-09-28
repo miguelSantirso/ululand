@@ -1,4 +1,5 @@
 <?php use_helper('Date'); ?>
+<?php $isOwner = $sf_user->isAuthenticated() && $sf_user->getId() == $gameRelease->getCreatedBy(); ?>
 
 <div id="pageContent">
 	
@@ -19,10 +20,11 @@
 	</div>
 	
 	<div class="contentColumn quarter alignLeft">
-		<?php if($sf_user->isAuthenticated() && $sf_user->getId() == $gameRelease->getCreatedBy()) : ?>
+		<?php if($isOwner) : ?>
 		<div class="contentBox">
 			<h4 class="header"><?php echo __('Owner options'); ?></h4>
 			<?php echo linkToEditGameRelease($gameRelease, array('class' => 'bigBox')); ?>
+			<?php echo link_to(__('delete'), 'gameRelease/delete?id='.$gameRelease->getId(), array('class' => 'bigBox delete', 'onClick' => 'javascript:return confirm("'.__('Are you sure you want to delete this?\n(Can\'t be undone. Seriously!)').'");')); ?>
 		</div>
 		<?php endif; ?>
 		
