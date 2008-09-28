@@ -9,7 +9,7 @@
 			<?php if($sf_user->isAuthenticated()) : ?>
 			<?php $status = $competition->getStatus($sf_user->getPlayerProfile()); ?>
 				<?php if($status == CompetitionPeer::OWNER) : ?>
-					<p><?php echo link_to(__("Admin"), 'competition/edit?id='.$competition->getId()); ?></p>
+					<p><?php echo link_to(__("Admin"), 'competition/edit?id='.$competition->getId().'&game='.null); ?></p>
 				<?php endif; ?>
 				
 				<?php if($status == CompetitionPeer::MEMBER || $status == CompetitionPeer::OWNER) : ?>

@@ -24,7 +24,7 @@
 					<br/>
 					<br/>
 
-					<?php echo select_tag('gameStatId', objects_for_select($game->getGameStats(), 'getId', 'getName', $gameStat ? $gameStat->getId() : null, array('include_blank' => true) )); ?>
+					<?php if (!is_null($game))echo select_tag('gameStatId', objects_for_select($game->getGameStats(), 'getId', 'getName', $gameStat ? $gameStat->getId() : null, array('include_blank' => true) )); ?>
 
 					<br/>
 					<br/>

@@ -48,20 +48,20 @@ class competitionActions extends sfActions
   	{
   		$this->competitionId = $this->getRequestParameter('id');
 	  	// Obtener el id del juego de la competición a editar
-		if($this->getRequestParameter('game'))
-		{
-			echo $this->gameId = $this->getRequestParameter('game');
-			echo $this->game = GamePeer::retrieveByPK($this->gameId);
-		}
+		//if($this->getRequestParameter('game'))
+		//{
+			$this->gameId = $this->getRequestParameter('game');
+			$this->game = GamePeer::retrieveByPK($this->gameId);
+		//}
   	}
   	else
   	{
 	  	// Obtener el id del juego de la competición a editar
-		if($this->getRequestParameter('game'))
-		{
-			echo $this->gameId = $this->getRequestParameter('game');
-			echo $this->game = GamePeer::retrieveByPK($this->gameId);
-		}
+		//if($this->getRequestParameter('game'))
+		//{
+		 	$this->gameId = $this->getRequestParameter('game');
+			$this->game = GamePeer::retrieveByPK($this->gameId);
+		//}
   		
   		// Obtener el jugador del perfil
 	    $this->profile = PlayerProfilePeer::retrieveByPk($this->getUser()->getPlayerProfile()->getId());
@@ -132,13 +132,13 @@ class competitionActions extends sfActions
 
   		$competition->setName($this->getRequestParameter('name'));
   		$competition->setDescription($this->getRequestParameter('description'));
-  		echo $this->getRequestParameter('gamesStatId');
-  		$competition->setGameStatId($this->getRequestParameter('gameStatId'));
+  		
+  		if ($this->getRequestParameter('gameStatId'))
+  			$competition->setGameStatId($this->getRequestParameter('gameStatId'));
+  			
   		if($this->getRequest()->getFileSize('thumbnail_path'))
-  		{
 			$this->updateThumbnail($competition);
-			echo "update";
-  		}
+			
 		$competition->save();
   	}
 
