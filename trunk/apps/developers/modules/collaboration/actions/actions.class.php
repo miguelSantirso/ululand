@@ -12,10 +12,13 @@ class collaborationActions extends sfActions
 {
   public function executeIndex()
   {
+	$this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
   }
 
   public function executeList()
   {	
+  		$this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
+  		
 		$tag = $this->getRequestParameter('tag');
 		if($tag)
 		{
@@ -48,7 +51,9 @@ class collaborationActions extends sfActions
 	}
 	
     $this->forward404Unless($this->collaboration_offer);
-    $this->collaboration_offer->incrementCounter(); // Una visita m�s
+    $this->collaboration_offer->incrementCounter(); // Una visita más
+    
+    $this->getResponse()->setTitle($this->collaboration_offer->getTitle() . " - " . ulToolkit::__('Collaboration Offers for flash game developers at developers.ululand.com'));
   }
 
   public function executePreview()
@@ -62,6 +67,8 @@ class collaborationActions extends sfActions
     $this->collaboration_offer = new CollaborationOffer();
 
     $this->setTemplate('edit');
+    
+    $this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
   }
 
   public function executeEdit()
@@ -85,6 +92,8 @@ class collaborationActions extends sfActions
     	$this->setFlash('warning', 'You don\'t have permission to edit this collaboration offer!');
     	$this->redirect('collaboration/show?id='.$this->getRequestParameter('id'));
     }
+    
+    $this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
   }
 
   public function executeUpdate()

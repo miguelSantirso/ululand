@@ -39,10 +39,13 @@
 			<div class="contentBox bordered">
 				<h3 class="header"><?php echo __('Quick Links'); ?></h3>
 				<a href="<?php echo url_for('@wiki_home'); ?>" class="bigBox">
-					<span class="large"><?php echo __('Flash Game Developers Wiki'); ?></span>
+					<span class="large"><?php echo __('Games'); ?></span>
 				</a>
 				<a href="<?php echo url_for('recipe'); ?>" class="bigBox">
 					<span class="large"><?php echo __('Flash Code Recipes'); ?></span>
+				</a>
+				<a href="<?php echo url_for('@wiki_home'); ?>" class="bigBox">
+					<span class="large"><?php echo __('Flash Game Developers Wiki'); ?></span>
 				</a>
 				<a href="<?php echo url_for('profile/list'); ?>" class="bigBox">
 					<span class="large"><?php echo __('Registered People'); ?></span>
@@ -67,6 +70,13 @@
 				    'url'     => 'home/latestNews'
 				  ))
 				) ?>
+			</div>
+		</div>
+		
+		<div class="contentColumn half alignLeft">
+			<div class="contentBox">
+				<h3 class="header"><?php echo link_to(__('Latest Developers'), 'profile/list'); ?> <?php echo __('(welcome!)') ?></h3>
+				<?php echo include_component('profile', 'list', array('limit' => 4, 'orderDescendingBy' => sfGuardUserPeer::CREATED_AT)) ?>
 			</div>
 		</div>
 	

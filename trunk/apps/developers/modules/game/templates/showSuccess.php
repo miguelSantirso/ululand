@@ -11,6 +11,7 @@
 			<h4 class="header"><?php echo __('Owner options'); ?></h4>
 			<?php echo linkToEditGame($game, array('class' => 'bigBox')); ?>
 			<?php echo linkToCreateGameRelease($game, array('class' => 'bigBox')); ?>
+			<?php echo link_to(__('delete'), 'game/delete?id='.$game->getId(), array('class' => 'delete bigBox', 'onClick' => 'javascript:return confirm("'.__('Are you sure you want to delete this?\n(Can\'t be undone. Seriously!)').'");')) ?>
 		</div>
 		<?php endif; ?>
 		

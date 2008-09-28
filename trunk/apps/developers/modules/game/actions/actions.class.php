@@ -62,6 +62,10 @@ class gameActions extends sfActions
 		}
 
 		$this->forward404Unless($this->game);
+		
+		$this->getResponse()->setTitle(sprintf(ulToolkit::__('%s by %s. Create flash games at developers.ululand.com.'), 
+			$this->game->getName(), 
+			$this->game->getsfGuardUser()->getProfile()));
 	}
 
 	public function executePreview()
@@ -127,6 +131,17 @@ class gameActions extends sfActions
 		$game->save();
 
 		return $this->redirect('game/show?id='.$game->getId());
+	}
+
+	public function executeDelete()
+	{
+		$game = GamePeer::retrieveByPk($this->getRequestParameter('id'));
+
+		$this->forward404Unless($game);
+
+		$game->delete();
+
+		return $this->redirect('game/list');
 	}
 
 	public function executeUpdateActiveRelease()

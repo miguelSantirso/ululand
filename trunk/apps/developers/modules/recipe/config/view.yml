@@ -1,2 +1,5 @@
+all:
+  metas:
+    title: ActionScript and mxml code recipes at developers.ululand.com. Learn to create flash games!
 embedSuccess:
   has_layout: false

@@ -56,7 +56,10 @@ class recipeActions extends sfActions
 	}
 	
     $this->forward404Unless($this->code_piece);
-    $this->code_piece->incrementCounter(); // Una visita m�s
+    $this->code_piece->incrementCounter(); // Una visita más
+    
+    $this->getResponse()->setTitle(sprintf(ulToolkit::__('%s. Flash code recipes at developers.ululand.com'), 
+		$this->code_piece->getTitle()));
   }
   
   public function executePreview()

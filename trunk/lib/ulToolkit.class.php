@@ -3,6 +3,17 @@
 class ulToolkit
 {
 	/**
+	 * Aplica i18n al texto pasado como parámetro. Este método es útil para internacionalizar textos fuera de los templates
+	 *
+	 * @param String $text texto a internacionalizar
+	 * @return unknown
+	 */
+	public static function __($text)
+	{
+		return sfContext::getInstance()->getI18N()->__($text);		
+	}
+	
+	/**
 	 * Retorna la url base de la aplicación
 	 *
 	 * @return La url base de la aplicación. Por ejemplo: 'http://ululand.com/'

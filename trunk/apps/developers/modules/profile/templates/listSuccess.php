@@ -15,7 +15,7 @@
 			<h3 class="header"><?php echo sprintf(__('Developers whose name is similar to %1$s (%2$s)'), link_to($search, 'profile/list?search='.$search), link_to('show all', 'profile/list')); ?></h3>
 		<?php endif; ?>
 			
-		<?php include_component('profile', 'list'); ?>		
+		<?php include_component('profile', 'list', array('orderDescendingBy' => sfGuardUserPeer::CREATED_AT)); ?>		
 
 	</div>
 	

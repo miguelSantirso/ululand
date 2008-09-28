@@ -62,6 +62,10 @@ class gameReleaseActions extends sfActions
 		{
 			$this->redirect('gameRelease/show?game_stripped_name='.$this->game->getStrippedName().'&release_stripped_name='.$this->gameRelease->getStrippedName());
 		}
+		
+		$this->getResponse()->setTitle(sprintf(ulToolkit::__('%s by %s. Create flash games at developers.ululand.com.'), 
+			$this->game->getName(), 
+			$this->game->getsfGuardUser()->getProfile()));
 
 	}
 
