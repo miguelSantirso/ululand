@@ -11,7 +11,7 @@ class PlayerProfile extends BasePlayerProfile
 {
 	public function __toString()
 	{
-		$this->getsfGuardUserProfile()->__toString();		
+		return $this->getsfGuardUserProfile()->__toString();		
 	}
 	
 	/**

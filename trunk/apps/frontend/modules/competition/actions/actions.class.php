@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * competition actions.
@@ -135,6 +135,8 @@ class competitionActions extends sfActions
   		
   		if ($this->getRequestParameter('gameStatId'))
   			$competition->setGameStatId($this->getRequestParameter('gameStatId'));
+
+		$competition->save();
   			
   		if($this->getRequest()->getFileSize('thumbnail_path'))
 			$this->updateThumbnail($competition);
