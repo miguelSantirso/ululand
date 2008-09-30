@@ -24,8 +24,24 @@
 					<br/>
 					<br/>
 
+					<p class="noSpace"><?php echo label_for('gameStatId', __('Competition GameStat:')); ?></p>
 					<?php if (!is_null($game))echo select_tag('gameStatId', objects_for_select($game->getGameStats(), 'getId', 'getName', $gameStat ? $gameStat->getId() : null, array('include_blank' => true) )); ?>
-
+					<br/>
+					<br/>
+					
+					<p class="noSpace"><?php echo label_for('start', __('Competition Start:')); ?></p>
+					<?php echo object_input_date_tag($competition, 'getStartsAt', array ( 
+						'rich' => true, 
+						'withtime' => true,
+						), 'now') ?>
+					<br/>
+					<br/>
+					
+					<p class="noSpace"><?php echo label_for('end', __('Competition End:')); ?></p>
+					<?php echo object_input_date_tag($competition, 'getFinishesAt', array ( 
+						'rich' => true, 
+						'withtime' => true,
+						), 'now') ?>
 					<br/>
 					<br/>
 
