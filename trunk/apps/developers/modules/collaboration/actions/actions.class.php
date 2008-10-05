@@ -12,13 +12,10 @@ class collaborationActions extends sfActions
 {
   public function executeIndex()
   {
-	$this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
   }
 
   public function executeList()
   {	
-  		$this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
-  		
 		$tag = $this->getRequestParameter('tag');
 		if($tag)
 		{
@@ -67,8 +64,6 @@ class collaborationActions extends sfActions
     $this->collaboration_offer = new CollaborationOffer();
 
     $this->setTemplate('edit');
-    
-    $this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
   }
 
   public function executeEdit()
@@ -92,8 +87,6 @@ class collaborationActions extends sfActions
     	$this->setFlash('warning', 'You don\'t have permission to edit this collaboration offer!');
     	$this->redirect('collaboration/show?id='.$this->getRequestParameter('id'));
     }
-    
-    $this->getResponse()->setTitle(ulToolkit::__('Collaboration Offers for flash game developers - developers.ululand.com'));
   }
 
   public function executeUpdate()

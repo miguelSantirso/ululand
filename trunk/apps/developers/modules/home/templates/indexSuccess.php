@@ -38,7 +38,7 @@
 		<div class="contentColumn half alignRight">
 			<div class="contentBox bordered">
 				<h3 class="header"><?php echo __('Quick Links'); ?></h3>
-				<a href="<?php echo url_for('@wiki_home'); ?>" class="bigBox">
+				<a href="<?php echo url_for('game'); ?>" class="bigBox">
 					<span class="large"><?php echo __('Games'); ?></span>
 				</a>
 				<a href="<?php echo url_for('recipe'); ?>" class="bigBox">

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-08-28T21:21:44Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-09-28T21:31:56Z">
     <body>
     
 <trans-unit id="1">
@@ -1150,6 +1150,386 @@
 <target>Comunidad de Desarrolladores de Juegos Flash - developers.ululand.com</target>
 </trans-unit>
 
+
+<trans-unit id="1">
+<source>Games List</source>
+<target>Lista de juegos</target>
+</trans-unit>
+
+<trans-unit id="2">
+<source>My Games</source>
+<target>Mis Juegos</target>
+</trans-unit>
+
+<trans-unit id="3">
+<source>Submit a new game</source>
+<target>Subir un juego nuevo</target>
+</trans-unit>
+
+<trans-unit id="4">
+<source>Collaboration Offers for flash game developers at developers.ululand.com</source>
+<target>Ofertas de colaboración para desarrolladores de juegos flash en developers.ululand.com</target>
+</trans-unit>
+
+<trans-unit id="5">
+<source>Showing collaboration offers submitted by %1$s (%2$s)</source>
+<target>Mostrando ofertas de colaboración enviadas por %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="6">
+<source>delete</source>
+<target>eliminar</target>
+</trans-unit>
+
+<trans-unit id="7">
+<source>Are you sure you want to delete this?\n(Can't be undone. Seriously!)</source>
+<target>¿Estás seguro de que quieres eliminar esto?\n(No se puede deshacer. ¡En serio!)</target>
+</trans-unit>
+
+<trans-unit id="8">
+<source>%s by %s. Create flash games at developers.ululand.com.</source>
+<target>%s de %s. Crea juegos flash en developers.ululand.com.</target>
+</trans-unit>
+
+<trans-unit id="9">
+<source>Game Info:</source>
+<target>Información del juego:</target>
+</trans-unit>
+
+<trans-unit id="10">
+<source>Name:</source>
+<target>Nombre:</target>
+</trans-unit>
+
+<trans-unit id="11">
+<source>Thumbnail:</source>
+<target>Icono:</target>
+</trans-unit>
+
+<trans-unit id="12">
+<source>Accepts (almost) everything. And don't worry; we will resize it for you ;)</source>
+<target>Acepta (casi) de todo. Y no tengas pena; nosotros lo redimensionamos por ti ;)</target>
+</trans-unit>
+
+<trans-unit id="13">
+<source>A short description for your game. Accepts %s.</source>
+<target>Una descripción breve para tu juego. Acepta %s</target>
+</trans-unit>
+
+<trans-unit id="14">
+<source>Instructions:</source>
+<target>Instrucciones:</target>
+</trans-unit>
+
+<trans-unit id="15">
+<source>Instructions on how to play the game. Accepts %s.</source>
+<target>Instrucciones sobre cómo jugar. Acepta %s</target>
+</trans-unit>
+
+<trans-unit id="16">
+<source>Comma separated. Examples: physics, arcade, platforms</source>
+<target>Separadas por comas. Ejemplos: físicas, arcade, plataformas</target>
+</trans-unit>
+
+<trans-unit id="17">
+<source>Showing games tagged with %1$s (%2$s)</source>
+<target>Mostrando juegos etiquetados con %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="18">
+<source>Showing %1$s's games (%2$s)</source>
+<target>Mostrando los juegos de %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="19">
+<source>Submit your own game &amp;raquo;</source>
+<target>Sube tu propio juego &amp;raquo;</target>
+</trans-unit>
+
+<trans-unit id="20">
+<source>Instructions</source>
+<target>Instrucciones</target>
+</trans-unit>
+
+<trans-unit id="21">
+<source>Owner options</source>
+<target>Opciones del propietario</target>
+</trans-unit>
+
+<trans-unit id="22">
+<source>Game details</source>
+<target>Detalles del juego</target>
+</trans-unit>
+
+<trans-unit id="23">
+<source>Stats</source>
+<target>Estadísticas</target>
+</trans-unit>
+
+<trans-unit id="24">
+<source>Played %s times</source>
+<target>Jugado %s veces</target>
+</trans-unit>
+
+<trans-unit id="25">
+<source>Commented %s times</source>
+<target>Comentado %s veces</target>
+</trans-unit>
+
+<trans-unit id="26">
+<source>Rating details</source>
+<target>Detalles de las puntuaciones</target>
+</trans-unit>
+
+<trans-unit id="27">
+<source>Active version</source>
+<target>Versión activa</target>
+</trans-unit>
+
+<trans-unit id="28">
+<source>There is no an active version for this game</source>
+<target>No hay una versión activa de este juego</target>
+</trans-unit>
+
+<trans-unit id="29">
+<source>Choose the active version for the game</source>
+<target>Escoge la versión activa del juego</target>
+</trans-unit>
+
+<trans-unit id="30">
+<source>You have not uploaded any version of this game yet!</source>
+<target>¡No has subido ninguna versión de este juego todavía!</target>
+</trans-unit>
+
+<trans-unit id="31">
+<source>The game won't be playable until you %s for this game.</source>
+<target>No se podrá jugar al juego hasta que %s para este juego.</target>
+</trans-unit>
+
+<trans-unit id="32">
+<source>upload a new version</source>
+<target>subir una versión nueva</target>
+</trans-unit>
+
+<trans-unit id="33">
+<source>Save</source>
+<target>Guardar</target>
+</trans-unit>
+
+<trans-unit id="34">
+<source>The active version will be playable from the players area</source>
+<target>La versión activa será jugable desde el área de jugadores</target>
+</trans-unit>
+
+<trans-unit id="35">
+<source>All versions</source>
+<target>Todas las versiones</target>
+</trans-unit>
+
+<trans-unit id="36">
+<source>Upload new release</source>
+<target>Sube una versión nueva</target>
+</trans-unit>
+
+<trans-unit id="37">
+<source>Play</source>
+<target>Jugar</target>
+</trans-unit>
+
+<trans-unit id="38">
+<source>Submitted by</source>
+<target>Enviado por</target>
+</trans-unit>
+
+<trans-unit id="39">
+<source>played %1$s times, %2$s comments</source>
+<target>jugado %1$s veces, %2$s comentarios</target>
+</trans-unit>
+
+<trans-unit id="40">
+<source>Related Games</source>
+<target>Juegos Relacionados</target>
+</trans-unit>
+
+<trans-unit id="41">
+<source>Game Release Info:</source>
+<target>Información de Versión de Juego:</target>
+</trans-unit>
+
+<trans-unit id="42">
+<source>Release Name:</source>
+<target>Nombre de la Versión</target>
+</trans-unit>
+
+<trans-unit id="43">
+<source>A unique identifier for this version. Examples: "0.35" or "BETA 1"</source>
+<target>Un identificador único para el juego. Ejemplos: "0.35" o "BETA 1"</target>
+</trans-unit>
+
+<trans-unit id="44">
+<source>Release file:</source>
+<target>Archivo de la versión:</target>
+</trans-unit>
+
+<trans-unit id="45">
+<source>Single SWF file (for now). The dimensions will be automatically detected.</source>
+<target>Archivo .SWF único. Las dimensiones se detectarán automáticamente.</target>
+</trans-unit>
+
+<trans-unit id="46">
+<source>Release Status:</source>
+<target>Estado de la versión:</target>
+</trans-unit>
+
+<trans-unit id="47">
+<source>Release Notes:</source>
+<target>Notas de la versión:</target>
+</trans-unit>
+
+<trans-unit id="48">
+<source>Notes for this game release. Accepts %s.</source>
+<target>Notas de esta versión del juego. Acepta %s</target>
+</trans-unit>
+
+<trans-unit id="49">
+<source>This release is public</source>
+<target>Esta versión es pública</target>
+</trans-unit>
+
+<trans-unit id="50">
+<source>%s version for</source>
+<target>Versión %s de</target>
+</trans-unit>
+
+<trans-unit id="51">
+<source>Game Instructions</source>
+<target>Instrucciones del Juego</target>
+</trans-unit>
+
+<trans-unit id="52">
+<source>Game Description</source>
+<target>Descripción del Juego</target>
+</trans-unit>
+
+<trans-unit id="53">
+<source>Release details</source>
+<target>Detalles de la Versión</target>
+</trans-unit>
+
+<trans-unit id="54">
+<source>Submitted by %1$s at %2$s</source>
+<target>Enviada por %1$s el %2$s</target>
+</trans-unit>
+
+<trans-unit id="55">
+<source>Status</source>
+<target>Estado</target>
+</trans-unit>
+
+<trans-unit id="56">
+<source>This version is %s</source>
+<target>Esta versión es %s</target>
+</trans-unit>
+
+<trans-unit id="57">
+<source>public</source>
+<target>pública</target>
+</trans-unit>
+
+<trans-unit id="58">
+<source>private</source>
+<target>privada</target>
+</trans-unit>
+
+<trans-unit id="59">
+<source>File details</source>
+<target>Detalles del fichero</target>
+</trans-unit>
+
+<trans-unit id="60">
+<source>Dimensions:</source>
+<target>Dimensiones:</target>
+</trans-unit>
+
+<trans-unit id="61">
+<source>All version for this game</source>
+<target>Todas las versiones de este juego</target>
+</trans-unit>
+
+<trans-unit id="62">
+<source>Release</source>
+<target>Versión</target>
+</trans-unit>
+
+<trans-unit id="63">
+<source>By</source>
+<target>De</target>
+</trans-unit>
+
+<trans-unit id="64">
+<source>Latest Developers</source>
+<target>Últimos Desarrolladores</target>
+</trans-unit>
+
+<trans-unit id="65">
+<source>(welcome!)</source>
+<target>(¡bievenidos!)</target>
+</trans-unit>
+
+<trans-unit id="66">
+<source>%s's profile. Flash game developers at developers.ululand.com</source>
+<target>Perfil de %s's. Desarrolladores de juegos flash en developers.ululand.com</target>
+</trans-unit>
+
+<trans-unit id="67">
+<source>%1$s comments in your profile</source>
+<target>%1$s comentarios en tu perfil</target>
+</trans-unit>
+
+<trans-unit id="68">
+<source>%1$s games submitted</source>
+<target>%1$s juegos enviados</target>
+</trans-unit>
+
+<trans-unit id="69">
+<source>%1$s recipes sent to the cookbook</source>
+<target>%1$s recetas enviadas al libro de recetas</target>
+</trans-unit>
+
+<trans-unit id="70">
+<source>%1$s collaboration offers submitted</source>
+<target>%1$s ofertas de colaboración enviadas</target>
+</trans-unit>
+
+<trans-unit id="71">
+<source>%s. Flash code recipes at developers.ululand.com</source>
+<target>%s. Recetas de código Flash en developers.ululand.com</target>
+</trans-unit>
+
+<trans-unit id="72">
+<source>Showing recipes submitted by %1$s (%2$s)</source>
+<target>Mostrando recetas enviadas por %1$s (%2$s)</target>
+</trans-unit>
+
+<trans-unit id="73">
+<source>Comment</source>
+<target>Comentar</target>
+</trans-unit>
+
+<trans-unit id="74">
+<source>Detailed ratings</source>
+<target>Puntuaciones detalladas</target>
+</trans-unit>
+
+<trans-unit id="75">
+<source>%s ratings</source>
+<target>%s puntuaciones</target>
+</trans-unit>
+
+<trans-unit id="76">
+<source>Average: %s</source>
+<target>Media: %s</target>
+</trans-unit>
 </body>
   </file>
 </xliff>
