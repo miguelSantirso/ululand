@@ -46,6 +46,8 @@ class GameReleaseMapBuilder {
 
 		$tMap->addColumn('IS_PUBLIC', 'IsPublic', 'boolean', CreoleTypes::BOOLEAN, true, null);
 
+		$tMap->addColumn('PASSWORD', 'Password', 'string', CreoleTypes::VARCHAR, false, 13);
+
 		$tMap->addForeignKey('CREATED_BY', 'CreatedBy', 'int', CreoleTypes::INTEGER, 'sf_guard_user', 'ID', false, null);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);

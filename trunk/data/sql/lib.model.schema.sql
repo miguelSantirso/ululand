@@ -298,6 +298,7 @@ CREATE TABLE `gamerelease`
 	`stripped_name` VARCHAR(80)  NOT NULL,
 	`description` TEXT,
 	`is_public` INTEGER default 0 NOT NULL,
+	`password` VARCHAR(13),
 	`created_by` INTEGER,
 	`created_at` DATETIME,
 	`game_path` VARCHAR(255)  NOT NULL,

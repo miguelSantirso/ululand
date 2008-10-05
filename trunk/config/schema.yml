@@ -128,7 +128,8 @@ propel:
     name:                 { type: varchar(80),  required: true }
     stripped_name:        { type: varchar(80),  required: true }
     description:          { type: longvarchar,  required: false }
-    is_public:            { type: boolean,     required: true, default: false }
+    is_public:            { type: boolean,      required: true, default: false }
+    password:             { type: varchar(13) }
     created_by:           { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     game_path:            { type: varchar(255), required: true }

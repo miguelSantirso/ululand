@@ -32,7 +32,7 @@ class gameReleaseActions extends sfActions
 			$c = new Criteria();
 			$c->add(GamePeer::STRIPPED_NAME, $this->getRequestParameter('game_stripped_name'));
 			$this->game = GamePeer::doSelectOne($c);
-		}
+		}	
 		if($this->getRequestParameter('release_id'))
 		{
 			$this->gameRelease = GameReleasePeer::retrieveByPk($this->getRequestParameter('release_id'));
@@ -53,8 +53,21 @@ class gameReleaseActions extends sfActions
 		{
 			if(!$this->getUser()->isAuthenticated() || ($this->getUser()->isAuthenticated() && $this->getUser()->getId() != $this->gameRelease->getCreatedBy()))
 			{
-				$this->setFlash('error', 'This version of the game is private. You don\'t have permission to see it');
-				$this->redirect('game/show?id='.$this->game->getId());
+				if(!$this->gameRelease->getPassword())
+				{
+					$this->setFlash('error', 'This version of the game is private. You don\'t have permission to see it');
+					$this->redirect('game/show?id='.$this->game->getId());
+				}
+				else 
+				{
+					if($this->getRequestParameter('password') != $this->gameRelease->getPassword())
+					{
+						if($this->getRequestParameter('password'))
+							$this->setFlash('error', ulToolkit::__('The password is not correct. Try again, please.'), false);
+
+						$this->setTemplate('askPassword');
+					}
+				}
 			}
 		}
 		
@@ -152,14 +165,16 @@ class gameReleaseActions extends sfActions
 		$gameRelease->setName($this->getRequestParameter('name'));
 		$gameRelease->setDescription($this->getRequestParameter('description'));
 		$gameRelease->setGamereleasestatusId($this->getRequestParameter('game_release_status_id'));
-		if($game->getActiveReleaseId() == $gameRelease->getId() && !$this->getRequestParameter('is_public', false))
+		if($game->getActiveReleaseId() == $gameRelease->getId())
 			$this->setFlash('error', 'The privacity of the active version of the game cannot be changed.');
 		else
 		{
-			$gameRelease->setIsPublic($this->getRequestParameter('is_public', false));
-			$gameRelease->save();
+			$privacity = $this->getRequestParameter('privacity');
+			if($privacity == 'public') { $gameRelease->setIsPublic(true); $gameRelease->setPassword(null); }
+			else if($privacity == 'password') { $gameRelease->setIsPublic(false); $gameRelease->setPassword($this->getRequestParameter('password')); }
+			else if($privacity == 'private') { $gameRelease->setIsPublic(false); $gameRelease->setPassword(null); }
 		}
-
+		
 		if($this->getRequest()->getFileSize('game_path'))
 		$this->updateGameFile($gameRelease);
 

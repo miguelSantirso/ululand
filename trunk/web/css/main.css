@@ -87,7 +87,7 @@ a.bigBox {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	padding: 1em 80px 1em 1em;
-	margin-bottom: 1em;
+	margin: 0 0 1em 0;
 	display: block;
 }
 a.bigBox:hover { background-color: #fafafa; }
