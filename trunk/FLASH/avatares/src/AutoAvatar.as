@@ -25,7 +25,7 @@ package
 	
 	public class AutoAvatar extends Sprite
 	{
-		public static const ASSETS_URL:String = "http://pfc/uploads/UploadedPieces/";
+		public static const ASSETS_URL:String = "http://ululand/uploads/UploadedPieces/";
 		public static const SHAPES_URL:String = ASSETS_URL + "shapes/";
 		/**
 		 * Referencia estática al objeto principal
@@ -88,14 +88,14 @@ package
 			tooltip_ = OBO_ToolTip.createToolTip(this.stage, new Folks(), 0xfefefe, 0.9, "roundTip", 0x222222, 13);
 		}
 		
-		public function createAvatar(avatarApiKey:String):PhysicalAvatar
+		public function createAvatar(userUuid:String):PhysicalAvatar
 		{
-			avatars[avatarApiKey] = new Object();
-			avatars[avatarApiKey].instance = new PhysicalAvatar(physicalEnvironment_);
+			avatars[userUuid] = new Object();
+			avatars[userUuid].instance = new PhysicalAvatar(physicalEnvironment_);
 			
-			requestInfoToServer(avatarApiKey);
+			requestInfoToServer(userUuid);
 			
-			return avatars[avatarApiKey].instance;
+			return avatars[userUuid].instance;
 		}
 		
 		/**
@@ -107,11 +107,11 @@ package
 		{
 			switch(actionName)
 			{
-				case "Avatar":
-					setAvatarInfo(data.ApiKey, data.Name, data.Gender);
+				case "Player":
+					setAvatarInfo(data.userUuid, data.Username, 0);
 					break;
 				case "PiecesByOwner":
-					startAssetsLoad(data.avatarApiKey, data.pieces);
+					startAssetsLoad(data.userUuid, data.pieces);
 					break;
 			}
 		}
@@ -121,10 +121,10 @@ package
 		 * @param	name
 		 * @param	gender
 		 */
-		protected function setAvatarInfo(avatarApiKey:String, name:String, gender:Boolean):void
+		protected function setAvatarInfo(userUuid:String, name:String, gender:Boolean):void
 		{
-			avatars[avatarApiKey].name  = name;
-			avatars[avatarApiKey].isMale  = gender;
+			avatars[userUuid].name  = name;
+			avatars[userUuid].isMale  = gender;
 		}
 		
 		/**
@@ -149,18 +149,18 @@ package
 		/**
 		 * Inicia la petición al servidor para obtener la información de las partes del avatar
 		 */
-		protected function requestInfoToServer(avatarApiKey:String):void
+		protected function requestInfoToServer(userUuid:String):void
 		{
-			ApiHelper.getAvatar(avatarApiKey);
-			ApiHelper.getPiecesByOwner(avatarApiKey, "", true);
+			ApiHelper.getPiecesByOwner(userUuid);
+			ApiHelper.getPiecesByOwner(userUuid, "", true);
 		}
 		
 		/**
 		 * Lanza la carga de los gráficos del avatar
 		 */
-		protected function startAssetsLoad(avatarApiKey:String, piecesInfo:Array):void
+		protected function startAssetsLoad(userUuid:String, piecesInfo:Array):void
 		{
-			avatars[avatarApiKey].instance.startAutoLoad(piecesInfo);
+			avatars[userUuid].instance.startAutoLoad(piecesInfo);
 		}
 		
 		

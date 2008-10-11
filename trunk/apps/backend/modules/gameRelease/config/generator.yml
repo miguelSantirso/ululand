@@ -5,7 +5,7 @@ generator:
     theme:            default
       
     edit:
-      display: [name, stripped_name, game_id, gamereleasestatus_id, description, is_public, created_by, created_at, game_path, width, height]
+      display: [name, stripped_name, game_id, gamereleasestatus_id, description, is_public, password, created_by, created_at, game_path, width, height]
       fields:
         stripped_name: 
           params: disabled=true

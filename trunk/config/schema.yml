@@ -33,12 +33,13 @@ propel:
     id:
     profile_id:         { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
     uuid:               { type: varchar(36), required: true }
-    gender:             { type: integer     , required: true }
+    gender:             { type: integer    , required: true }
 
 
   avatarpiece:
     _attributes: { phpName: AvatarPiece }
     id:
+    uuid:               { type: varchar(36), required: true }
     name:               { type: varchar(64) , required: true }
     description:        { type: varchar(255), required: false }
     author_id:          { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }

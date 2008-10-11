@@ -5,7 +5,7 @@
 /web/uploads/*
 /config/*
 /cache/*
-/flash
+/FLASH
 /doc
 /log/*
 /web/.htaccess

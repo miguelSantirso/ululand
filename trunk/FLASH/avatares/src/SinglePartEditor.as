@@ -23,7 +23,7 @@
 	* Clase principal que maneja el comportamiento del editor de avatares físicos
 	* @author Miguel Santirso
 	*/
-	public class PartsEditor extends MovieClip
+	public class SinglePartEditor extends MovieClip
 	{	
 		protected static const ASSETS_URL:String = "http://ululand/uploads/UploadedPieces/";
 		
@@ -39,6 +39,14 @@
 		 * Uuid del usuario propietario del avatar
 		 */
 		protected var userUuid_:String;
+		/**
+		 * Uuid de la pieza de avatar a editar
+		 */
+		protected var pieceUuid_:String;
+		/**
+		 * Tipo de la pieza de avatar a editar
+		 */
+		protected var pieceType_:String;
 		/**
 		 * Total de créditos disponibles del usuario, sin contar lo que cuesta la pieza
 		 */
@@ -60,15 +68,26 @@
 		/**
 		 * Constructor de la clase
 		 */
-		public function PartsEditor() 
+		public function SinglePartEditor() 
 		{
 			// Inicializar el ApiHelper
 			ApiHelper.init(this.stage, callbackFunction);
 			
 			userUuid_ = this.root.loaderInfo.parameters.userUuid;
 			//userUuid_ = "5005fd26-41a8-ce34-55ba-565e9d959c17";
+			pieceUuid_ = this.root.loaderInfo.parameters.pieceUuid;
+			pieceType_ = this.root.loaderInfo.parameters.pieceType;
 			
-			
+			if (!pieceUuid_)
+			{
+				if (!pieceType_) throw new Error("Avatar piece type is missing");
+				this.newPart(pieceType_);
+			}
+			else
+			{
+				updateRemainingOperations(1);
+				ApiHelper.getAvatarPiece(pieceUuid_);
+			}
 		}
 		
 		
@@ -82,13 +101,27 @@
 			updateRemainingOperations(-1);
 			switch(actionName)
 			{
-				case "PiecesByOwner":
-					populateDataGrid(data.pieces);
+				case "AvatarPiece":
+					startPieceEdition(data);
 					break;
 				case "PlayerAvailableCredits":
 					setAvailableCredits(data.availableCredits);
 					break;
 			}
+		}
+		
+		protected function startPieceEdition(data:Object)
+		{
+			// Cargar la información del objeto
+			var partInfo:Object = new Object();
+			partInfo.uuid = data.Uuid;
+			partInfo.type = data.Type;
+			partInfo.name = data.Name;
+			partInfo.description = data.Description;
+			partInfo.url = data.Url;
+			pieceCost_ = data.Price;
+			
+			editPart(partInfo);
 		}
 		
 		/**
@@ -105,7 +138,7 @@
 		protected function saveToServer():void
 		{
 			// indica si se está creando una pieza nueva o si se trata de una edición
-			var isEdit:Boolean = partInfo_.id ? true : false;
+			var isEdit:Boolean = partInfo_.uuid ? true : false;
 			
 			// @todo hasta que la api no informe de los envíos con éxito no se puede poner la pantalla de carga
 			// updateRemainingOperations(1);
@@ -116,7 +149,7 @@
 			
 			// Preparar las variables para enviar la información al servidor
 			var variables:URLVariables = new URLVariables();
-			if (isEdit) variables.pieceId = partInfo_.id; // indicar el id de la pieza en caso de que estemos editando
+			if (isEdit) variables.pieceUuid = partInfo_.uuid; // indicar el id de la pieza en caso de que estemos editando
 			variables.image = encodedImage;
 			variables.name  = partInfo_.name;
 			variables.description = partInfo_.description;
@@ -183,6 +216,7 @@
 			}
 			
 			// Tomar la información del objeto de los datos del catálogo
+			partInfo_ = new Object();
 			partInfo_ = partInfo;
 			
 			// Cargar la parte dibujable y situarla en el centro de la pantalla
@@ -195,23 +229,6 @@
 			loader.contentLoaderInfo.addEventListener(Event.INIT, pieceGraphicLoaded );
 			
 			gotoAndStop("editMenu");
-		}
-		/**
-		 * Popula el catálogo de piezas con los datos que pide al servidor
-		 */
-		protected function startCatalog():void
-		{
-			updateRemainingOperations(1);
-			piecesDataGrid.columns = ["id", "name", "type", "creator", "inUse"];
-			ApiHelper.getPiecesByOwner(userUuid_);
-		}
-		/**
-		 * Popula el catálogo de piezas con los datos recibidos del servidor
-		 * @param	dataArray
-		 */
-		protected function populateDataGrid(dataArray:Array):void
-		{
-			piecesDataGrid.dataProvider = new DataProvider(dataArray);
 		}
 		
 		/**
@@ -251,26 +268,6 @@
 		
 		//////////////////////////////////////////////////
 		// LISTENERS DE LOS BOTONES DE NAVEGACIÓN DEL INTERFAZ
-		protected function newPartClickedEvent(e:Event):void
-		{
-			newPart(typeComboBox.selectedItem.data);
-		}
-		protected function gotoCatalogClickedEvent(e:Event):void
-		{
-			gotoAndStop("piecesCatalog");
-		}
-		protected function backToStartEvent(e:Event):void
-		{
-			if(drawablePart_)
-				drawablePart_.destroy();
-			drawablePart_ = null;
-			this.removeEventListener(Event.ENTER_FRAME, updatePieceCostEvent);
-			gotoAndStop("mainMenu");
-		}
-		protected function gotoEditSelectedEvent(e:Event):void
-		{
-			editPart(piecesDataGrid.selectedItem);
-		}
 		protected function backToEditEvent(e:Event):void
 		{
 			gotoAndStop("editMenu");

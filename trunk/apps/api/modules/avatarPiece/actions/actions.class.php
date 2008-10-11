@@ -13,7 +13,22 @@ require_once dirname(__FILE__).'/../../../lib/apiCommonActions.class.php';
  */
 class avatarPieceActions extends apiCommonActions
 {
+	/**
+	 * Retorna la pieza de avatar indicado
+	 * Requiere como parámetro 'pieceUuid' que indica el uuid de la pieza
+	 *
+	 */
+	public function executeGet()
+	{
+		// Comprobar que se nos han pasado todos los parámetros necesarios
+		$this->checkRequiredParameters( array("pieceUuid") );
+		
+		// Obtener el perfil de usuario y el de jugador
+		$piece = AvatarPiecePeer::retrieveByUuid($this->getRequestParameter('pieceUuid'));
 
+		$this->returnApi($piece, $this->apiType);
+	}
+	
 	/**
 	 * Añade una nueva pieza. Se establecerá el creador y el propietario al jugador activo, salvo que se indique otra cosa
 	 * Requiere como parámetros:
@@ -96,10 +111,10 @@ class avatarPieceActions extends apiCommonActions
 	public function executeEdit()
 	{
 		// Comprobar que se han recibido los parámetros requeridos
-		$this->checkRequiredParameters( array('pieceId') );
+		$this->checkRequiredParameters( array('pieceUuid') );
 		
 		// Obtener la pieza a modificar
-		$piece = AvatarPiecePeer::retrieveByPK($this->getRequestParameter('pieceId'));
+		$piece = AvatarPiecePeer::retrieveByUuid($this->getRequestParameter('pieceUuid'));
 		
 		// Obtener el avatar propietario de la pieza
 		if($this->getRequestParameter('ownerUuid'))
@@ -202,7 +217,7 @@ class avatarPieceActions extends apiCommonActions
 										'name'    => $piece->getName(),
 										'description' => $piece->getDescription(), 
 										'type'    => $piece->getType(),
-										'creator' => $piece->getAvatarRelatedByAuthorId()->getName(),
+										'creator' => $piece->getsfGuardUserProfileRelatedByAuthorId()->getUsername(),
 										'url'     => $piece->getUrl(),
 										'price'   => $piece->getPrice(),
 										'inUse'   => $piece->getInUse() ) );

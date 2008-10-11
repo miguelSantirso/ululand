@@ -1,4 +1,4 @@
-package
+ï»¿package
 {
 	import flash.display.Loader;
 	import flash.display.Stage;
@@ -10,20 +10,21 @@ package
 	import mx.core.Application;
 	
 	/**
-	 * @description Clase que tiene como objetivo ayudar a los desarrolladores a conectarse y comunicarse con la api de la aplicación.
-	 * Entre otras cosas, establece la comunicación con el servidor y realiza las tareas de codificación y decodificación de la información.
-	 * @usage Se debe tener en cuenta que esta es una clase estática. Esto es así para facilitar su uso. Ver los ejemplos a continuación.
-	 * @example <code>// Lo primero que se debe hacer es indicar al ApiHelper cual es la función que recibirá las respuestas del servidor.
-	 * <br/>ApiHelper.callbackFunction = myCallbackFunction; 
-	 * <br/>ApiHelper.getAvatar("a123456789012"); // Pide al servidor la información del avatar indicado.</code>
-	 * @version 8.06
-	 * @author Miguel Santirso
+	 * @description Clase que tiene como objetivo ayudar a los desarrolladores a conectarse y comunicarse con la api de la aplicaciÃ³n.
+	 * Entre otras cosas, establece la comunicaciÃ³n con el servidor y realiza las tareas de codificaciÃ³n y decodificaciÃ³n de la informaciÃ³n.
+	 * @usage Se debe tener en cuenta que esta es una clase estÃ¡tica. Esto es asÃ­ para facilitar su uso. Ver los ejemplos a continuaciÃ³n.
+	 * @example <code>// Lo primero que se debe hacer es iniciar el ApiHelper:
+	 * <br/>ApiHelper.init(myStage, myCallbackFunction);
+	 * <br/>DespuÃ©s, simplemente hay que utilizar las funciones de peticiÃ³n de datos al servidor
+	 * <br/>ApiHelper.getPlayer(myPlayerUuid); // Pide al servidor la informaciÃ³n del avatar indicado.</code>
+	 * @version 8.10
+	 * @author Miguel Santirso <http://miguelSantirso.es> para pncil <http://pncil.com>
 	 */
 	 
 	public class ApiHelper
 	{
 		/**
-		 * Variable que almacena la función a la que se enviarán todas las respuestas del servidor.
+		 * Variable que almacena la funciÃ³n a la que se enviarÃ¡n todas las respuestas del servidor.
 		 */
 		protected static var callbackFunction_:Function;
 		/**
@@ -32,12 +33,12 @@ package
 		protected static var stage_:Stage;
 		
 		/**
-		 * Retorna la versión de la API
-		 * @return String la versión de la API
+		 * Retorna la versiÃ³n de la API
+		 * @return String la versiÃ³n de la API
 		 */
 		public static function getVersion():String
 		{
-			return "8.07";
+			return "8.10";
 		}
 		
 		public static function init(stage:Stage, callbackFunction:Function):void
@@ -46,157 +47,127 @@ package
 			stage_ = stage;
 		}
 		
+		/* Funciones de acceso al Jugador */
+		
 		/**
-		 * Función que inicia una petición al servidor para averiguar los datos de un avatar, dado su apikey.
+		 * FunciÃ³n que inicia una peticiÃ³n al servidor para averiguar los datos de un jugador, dado su uuid.
 		 * 
-		 * @example	<code>ApiHelper.getAvatar(avatarApiKey);</code>
-		 * @param	avatarApiKey Api Key del avatar
+		 * @example	<code>ApiHelper.getAvatar(userUuid);</code>
+		 * @param	userUuid Uuid del avatar
 		 */
-		public static function getAvatar(avatarApiKey:String):void
+		public static function getPlayer(userUuid:String):void
 		{
-			trace("avatar/get(" + avatarApiKey + ") called.");
+			trace("player/get(" + userUuid + ") called.");
 			
-			makeRequest("avatar/get", "avatarApiKey="+avatarApiKey).addEventListener(Event.COMPLETE, decodeJsonAvatarName);
+			if (userUuid == "")
+			{
+				throw new Error("The userUuid passed as parameter is empty to ApiHelper.getPlayer function is empty");
+			}
+			
+			makeRequest("player/get", "userUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonPlayerName);
 		}
 		
 		/**
-		 * Función que inicia una petición al servidor para modificar el nombre de un avatar, dado su apikey.
+		 * Resta la cantidad indicada de crÃ©ditos a los crÃ©ditos disponibles del avatar
 		 * 
-		 * @example	<code>ApiHelper.setAvatarName(avatarApiKey, "Nombre Nuevo")</code>
-		 * @param	avatarApiKey Api Key del avatar
-		 * @param   newAvatarName Nuevo nombre para el avatar
+		 * @example	<code>// Restar cierta cantidad de crÃ©ditos del jugador.<br/>ApiHelper.substractCredits(playerUuid)</code>
+		 * @param	userUuid Uuid del jugador
+		 * @param	amount Cantidad de crÃ©ditos que se restarÃ¡n.
 		 */
-		public static function setAvatarName(avatarApiKey:String, newAvatarName:String):void
+		public static function substractPlayerCredits(userUuid:String, amount:Number):void
 		{
-			trace("avatar/setName(" + avatarApiKey + ", " + newAvatarName +") called.");
+			trace("player/substractCredits(" + userUuid + ", " + amount + ") called.");
 			
-			makeRequest("avatar/setName", "avatarApiKey=" + avatarApiKey + "&avatarName=" + newAvatarName).addEventListener(Event.COMPLETE, genericEventHandler);
+			if (userUuid == "")
+			{
+				throw new Error("The userUuid passed as parameter is empty to ApiHelper.getPlayer function is empty");
+			}
+			
+			makeRequest("player/substractCredits", "userUuid="+userUuid+"&amount="+amount).addEventListener(Event.COMPLETE, genericEventHandler);
 		}
 		
 		/**
-		 * Función que inicia una petición al servidor para modificar un ítem de un avatar, dado su id.
+		 * FunciÃ³n que inicia una peticiÃ³n al servidor para averiguar los crÃ©ditos disonibles de un jugador
 		 * 
-		 *
-		 * @example	<code>// Añadir un nuevo objeto y activarlo.<br/>ApiHelper.setAvatarItem(avatarApiKey, newItemId, true)</code>
-		 * @example	<code>// Añadir un nuevo objeto sin activarlo.<br/>ApiHelper.setAvatarItem(avatarApiKey, newItemId)</code>
-		 * @param	avatarApiKey Api Key del avatar
-		 * @param   itemId Id que se desea añadir o activar
-		 * @param   activate Indica si se debe activar el ítem
+		 * @example	<code>// Obtener los crÃ©ditos disponibles del jugador.<br/>ApiHelper.getPlayerAvailableCredits(playerUuid)</code>
+		 * @param	userUuid Uuid del jugador
 		 */
-		public static function setAvatarItem(avatarApiKey:String, itemId:Number, activate:Boolean=false):void
+		public static function getPlayerAvailableCredits(userUuid:String):void
 		{
-			trace("avatar/setItem(" + avatarApiKey + ", " + itemId +"," + activate + ") called.");
+			trace("player/getAvailableCredits(" + userUuid + ") called.");
 			
-			makeRequest("avatar/setItem", "avatarApiKey=" + avatarApiKey + "&itemId=" + itemId + "&active=" + activate).addEventListener(Event.COMPLETE, genericEventHandler);
+			if (userUuid == "")
+			{
+				throw new Error("The userUuid passed as parameter is empty to ApiHelper.getPlayer function is empty");
+			}
+			
+			makeRequest("player/getAvailableCredits", "userUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonPlayerCredits);
 		}
 		
+		
+		/* Funciones de avatares */
+		
 		/**
-		 * Función que inicia una petición al servidor para modificar el género de un avatar
+		 * FunciÃ³n que inicia una peticiÃ³n al servidor para averiguar los datos de una pieza de avatar, dado su uuid
 		 * 
-		 * @example	<code>ApiHelper.setAvatarGender(avatarApiKey, "male")</code>
-		 * @param	avatarApiKey Api Key del avatar
-		 * @param   itemGender Género del avatar. Los valores válidos son "male" o "female"
-		 * @param   activate Indica si se debe activar el ítem
+		 * @example	<code>ApiHelper.getAvatarPiece(pieceUuid);</code>
+		 * @param	pieceUuid Uuid de la pieza de avatar
 		 */
-		public static function setAvatarGender(avatarApiKey:String, itemGender:String):void
+		public static function getAvatarPiece(pieceUuid:String):void
 		{
-			trace("avatar/setGender(" + avatarApiKey + ", " + itemGender + ") called.");
+			trace("avatarPiece/get(" + pieceUuid + ") called.");
 			
-			makeRequest("avatar/setGender", "avatarApiKey=" + avatarApiKey + "&avatarGender=" + itemGender).addEventListener(Event.COMPLETE, genericEventHandler);
+			makeRequest("avatarPiece/get", "pieceUuid="+pieceUuid).addEventListener(Event.COMPLETE, decodeJsonAvatarPiece);
 		}
 		
+		
 		/**
-		 * Función que inicia una petición al servidor para averiguar todos los ítems de un avatar, dada su id
+		 * Pide al servidor todas las piezas de las que se compone el avatar de cierto usuario
+		 * @param	userUuid Uuid del jugador de cuyo avatar se desean obtener las piezas
+		 * @param	filterByType Permite filtrar los resultados segÃºn el tipo
+		 * @param	filterInUse Si vale 'true' se retornarÃ¡n solo las piezas marcadas como en uso.
+		 */
+		public static function getPiecesByOwner(userUuid:String, filterByType:String="", filterInUse:Boolean = false):void
+		{
+			trace("avatarPiece/getPiecesByOwner(" + userUuid + ", " + filterByType + ", " + filterInUse + ") called.");
+			
+			if (userUuid == "")
+			{
+				throw new Error("The userUuid passed as parameter is empty to ApiHelper.getPlayer function is empty");
+			}
+			
+			makeRequest("avatarPiece/getByOwner",  "userUuid="+userUuid+(filterByType == "" ? "" : "&filterByType=")+filterByType+(filterInUse ? "&filterInUse=true" : "")).addEventListener(Event.COMPLETE, decodeJsonPiecesByOwner);
+		}
+		
+		
+		
+		/* Funciones del sistema de Gamestats */
+		
+		/**
+		 * FunciÃ³n que inicia una peticiÃ³n al servidor para averiguar el valor de un gamestat
 		 * 
-		 * @example	<code>// Obtener todos los ítems activos del avatar.<br/>ApiHelper.getAvatarItems(avatarApiKey, true)</code>
-		 * @example	<code>// Obtener todos los ítems del avatar (activos o no).<br/>ApiHelper.getAvatarItems(avatarApiKey, true)</code>
-		 * @param	avatarApiKey Api Key del avatar
+		 * @example	<code>ApiHelper.getGamestat(userUuid, gameUuid, "HighScores");</code>
+		 * @param	userUuid Uuid del avatar
+		 * @param	gameUuid Uuid del juego
+		 * @param	gamestatName Nombre de la estadÃ­stica a modificar
 		 */
-		public static function getAvatarItems(avatarApiKey:String, filterActive:Boolean=false):void
+		public static function getGamestat(userUuid:String, gameUuid:String, gamestatName:String):void
 		{
-			trace("avatar/getItems(" + avatarApiKey + ") called.");
+			trace("gamestat/getValue("+userUuid+", "+gameUuid+", "+gamestatName+")")
 			
-			makeRequest("avatar/getItems", "avatarApiKey="+avatarApiKey+"&filterActive="+filterActive).addEventListener(Event.COMPLETE, decodeJsonAvatarItems);
+			if (userUuid == "")
+			{
+				throw new Error("The userUuid passed as parameter is empty to ApiHelper.getPlayer function is empty");
+			}
+			
+			makeRequest("gamestat/getValue", "userUuid="+userUuid+"&gameUuid="+gameUuid+"&gamestatName="+gamestatName).addEventListener(Event.COMPLETE, decodeGamestat);
 		}
 		
 		/**
-		 * Función que inicia una petición al servidor para averiguar todos los ítems disponibles
-		 * 
-		 * @example	<code>// Obtener todos los ítems del sistema<br/>ApiHelper.getAvailableItems("")</code>
-		 * @example	<code>// Obtener todos los ítems de tipo cabeza<br/>ApiHelper.getAvailableItems("head")</code>
-		 * @param	filterByType Tipo de los ítems que se desea obtener. Si no se indica nada, se devolverán todos los ítems.
-		 */
-		public static function getAvailableItems(filterByType:String=""):void
-		{
-			trace("item/getAll(" + filterByType + ") called.");
-			
-			makeRequest("item/getAll", (filterByType == "" ? "" : "filterByType=")+filterByType).addEventListener(Event.COMPLETE, decodeJsonAvailableItems);
-		}
-		
-		/**
-		 * Pide al servidor todas las piezas poseídas por cierto avatar
-		 * @param	avatarApiKey Api Key del avatar del que se desean obtener las piezas
-		 * @param	filterByType Permite filtrar los resultados según el tipo
-		 * @param	filterInUse Si vale 'true' se retornarán solo las piezas marcadas como en uso.
-		 */
-		public static function getPiecesByOwner(avatarApiKey:String, filterByType:String="", filterInUse:Boolean = false):void
-		{
-			trace("item/getAll(" + filterByType + ") called.");
-			
-			makeRequest("avatarPiece/getByOwner",  "avatarApiKey="+avatarApiKey+(filterByType == "" ? "" : "&filterByType=")+filterByType+(filterInUse ? "&filterInUse=true" : "")).addEventListener(Event.COMPLETE, decodeJsonPiecesByOwner);
-		}
-		
-		/**
-		 * Resta la cantidad indicada de créditos a los créditos disponibles del avatar
-		 * 
-		 * @example	<code>// Obtener los créditos disponibles del avatar.<br/>ApiHelper.getAvatarAvailableCredits(avatarApiKey)</code>
-		 * @param	avatarApiKey Api Key del avatar
-		 * @param	amount Cantidad de créditos que se restarán.
-		 */
-		public static function substractCredits(avatarApiKey:String, amount:Number):void
-		{
-			trace("avatar/substractCredits(" + avatarApiKey + ", " + amount + ") called.");
-			
-			makeRequest("avatar/substractCredits", "avatarApiKey="+avatarApiKey+"&amount="+amount).addEventListener(Event.COMPLETE, genericEventHandler);
-		}
-		
-		/**
-		 * Función que inicia una petición al servidor para averiguar los créditos disonibles de un avatar
-		 * 
-		 * @example	<code>// Obtener los créditos disponibles del avatar.<br/>ApiHelper.getAvatarAvailableCredits(avatarApiKey)</code>
-		 * @param	avatarApiKey Api Key del avatar
-		 */
-		public static function getAvatarAvailableCredits(avatarApiKey:String):void
-		{
-			trace("avatar/getAvailableCredits(" + avatarApiKey + ") called.");
-			
-			makeRequest("avatar/getAvailableCredits", "avatarApiKey="+avatarApiKey).addEventListener(Event.COMPLETE, decodeJsonAvatarCredits);
-		}
-		
-		//////////////////////////
-		// API DE GAMESTATS
-		//////////////////////////
-		
-		/**
-		 * Función que inicia una petición al servidor para averiguar el valor de un gamestat
-		 * 
-		 * @example	<code>ApiHelper.getGamestat(avatarApiKey, "g1abc2def3ghi", "HighScores");</code>
-		 * @param	avatarApiKey ApiKey del avatar
-		 * @param	gameApiKey ApiKey del juego
-		 * @param	gamestatName Nombre de la estadística a modificar
-		 */
-		public static function getGamestat(avatarApiKey:String, gameApiKey:String, gamestatName:String):void
-		{
-			trace("gamestat/getValue("+avatarApiKey+", "+gameApiKey+", "+gamestatName+")")
-			
-			makeRequest("gamestat/getValue", "avatarApiKey="+avatarApiKey+"&gameApiKey="+gameApiKey+"&gamestatName="+gamestatName).addEventListener(Event.COMPLETE, decodeGamestat);
-		}
-		
-		/**
-		 * Función que inicia una petición al servidor para modificar el valor de un gamestat
+		 * FunciÃ³n que inicia una peticiÃ³n al servidor para modificar el valor de un gamestat
 		 * 
 		 * @example	<code>ApiHelper.setGamestat("HighScores", 1999);</code>
-		 * @param	gamestatName Nombre de la estadística a modificar
+		 * @param	gamestatName Nombre de la estadÃ­stica a modificar
 		 * @param	gamestatValue Valor que se desea enviar al servidor para el gamestat
 		 */
 		public static function setGamestat(gamestatName:String, value:Number):void
@@ -225,17 +196,17 @@ package
 		 * Callback que procesa una respuesta del servidor
 		 * @param	e
 		 */
-		protected static function decodeJsonAvatarName(e:Event):void
+		protected static function decodeJsonPlayerName(e:Event):void
 		{
-			genericDecode(e, "Avatar");
+			genericDecode(e, "Player");
 		}
 		/**
 		 * Callback que procesa una respuesta del servidor
 		 * @param	e
 		 */
-		protected static function decodeJsonAvatarItems(e:Event):void
+		protected static function decodeJsonAvatarPiece(e:Event):void
 		{
-			genericDecode(e, "AvatarItems");
+			genericDecode(e, "AvatarPiece");
 		}
 		/**
 		 * Callback que procesa una respuesta del servidor
@@ -249,17 +220,9 @@ package
 		 * Callback que procesa una respuesta del servidor
 		 * @param	e
 		 */
-		protected static function decodeJsonAvailableItems(e:Event):void
+		protected static function decodeJsonPlayerCredits(e:Event):void
 		{
-			genericDecode(e, "AvailableItems");
-		}
-		/**
-		 * Callback que procesa una respuesta del servidor
-		 * @param	e
-		 */
-		protected static function decodeJsonAvatarCredits(e:Event):void
-		{
-			genericDecode(e, "AvatarAvailableCredits");
+			genericDecode(e, "PlayerAvailableCredits");
 		}
 		/**
 		 * Callback que procesa una respuesta del servidor
@@ -271,10 +234,10 @@ package
 		}
 		
 		/**
-		 * Función auxiliar que decodifica una respuesta cualquiera de la API
+		 * FunciÃ³n auxiliar que decodifica una respuesta cualquiera de la API
 		 * 
 		 * @param	e evento producido al recibirse la respuesta de la API.
-		 * @param	actionName nombre de la acción por la que responde la API.
+		 * @param	actionName nombre de la acciÃ³n por la que responde la API.
 		 */
 		protected static function genericDecode(e:Event, actionName:String):void
 		{
@@ -306,28 +269,28 @@ package
 		}
 		
 		/**
-		 * Realiza una petición a la api.
-		 * @param	requestType Tipo de la petición
-		 * @param	parameters Parámetros de la petición
-		 * @return URLLoader El cargador que realiza la petición
+		 * Realiza una peticiÃ³n a la api.
+		 * @param	requestType Tipo de la peticiÃ³n
+		 * @param	parameters ParÃ¡metros de la peticiÃ³n
+		 * @return URLLoader El cargador que realiza la peticiÃ³n
 		 */
 		protected static function makeRequest(requestType:String, parameters:String):URLLoader
 		{
-			// Comprobar si se ha indicado una función de respuesta. En caso de que no sea así se lanza un error
+			// Comprobar si se ha indicado una funciÃ³n de respuesta. En caso de que no sea asÃ­ se lanza un error
 			if (ApiHelper.callbackFunction == null)
 			{
 				throw new Error("You must set ApiHelper.callbackFunction before calling this function. Read the related documentation to get more information");
 			}
 			
-			// Crear el cargador y la petición (para relizar la petición http)
+			// Crear el cargador y la peticiÃ³n (para relizar la peticiÃ³n http)
 			var loader:URLLoader = new URLLoader();
 			var request:URLRequest = new URLRequest();
 			
-			// Construir la url de acuerdo al tipo de petición y a los parámetros
-			request.url = "http://pfc/api.php/"; // Dirección base de la api
-			// Añadir la acción necesaria en función del tipo de petición
+			// Construir la url de acuerdo al tipo de peticiÃ³n y a los parÃ¡metros
+			request.url = "http://ululand/api.php/"; // DirecciÃ³n base de la api
+			// AÃ±adir la acciÃ³n necesaria en funciÃ³n del tipo de peticiÃ³n
 			request.url += requestType;
-			// Añadir los parámetros
+			// AÃ±adir los parÃ¡metros
 			request.url += "?apiSessionId=";
 			request.url += ApiHelper.getApiSessionId();
 			request.url += "&";
@@ -337,19 +300,19 @@ package
 			}
 			request.url += "apiType=json"; // Indicar que deseamos la respuesta en formato json
 			
-			// Realizar y retornar la petición
+			// Realizar y retornar la peticiÃ³n
 			trace("Sending request to server: " + request.url);
 			loader.load(request);
 			return loader;
 		}
 		
 		/**
-		 * Retorna una cadena correspondiente al id de la sesión actual con la api
-		 * @return id de la sesión actual con la api
+		 * Retorna una cadena correspondiente al id de la sesiÃ³n actual con la api
+		 * @return id de la sesiÃ³n actual con la api
 		 */
 		public static function getApiSessionId():String
 		{
-			//return "6ljj43zmnqdu";
+			//return "jq0suf4ymu2g";
 			return stage_.root.loaderInfo.parameters.apiSessionId;
 		}
 		

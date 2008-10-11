@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- Forma de la parte -->
+<part>
+	<shape>
+		<vertex x="0" y="20" />
+		<vertex x="-15" y="-20" />
+		<vertex x="15" y="-20" />
+		
+	</shape>
+	<anchorPoints>
+		<anchorPoint x="0" y="0" />
+	</anchorPoints>
+</part>

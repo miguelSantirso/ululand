@@ -34,6 +34,8 @@ class AvatarPieceMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
+		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
+
 		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 64);
 
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::VARCHAR, false, 255);

@@ -108,6 +108,20 @@
 		/* Funciones de avatares */
 		
 		/**
+		 * Función que inicia una petición al servidor para averiguar los datos de una pieza de avatar, dado su uuid
+		 * 
+		 * @example	<code>ApiHelper.getAvatarPiece(pieceUuid);</code>
+		 * @param	pieceUuid Uuid de la pieza de avatar
+		 */
+		public static function getAvatarPiece(pieceUuid:String):void
+		{
+			trace("avatarPiece/get(" + pieceUuid + ") called.");
+			
+			makeRequest("avatarPiece/get", "pieceUuid="+pieceUuid).addEventListener(Event.COMPLETE, decodeJsonAvatarPiece);
+		}
+		
+		
+		/**
 		 * Pide al servidor todas las piezas de las que se compone el avatar de cierto usuario
 		 * @param	userUuid Uuid del jugador de cuyo avatar se desean obtener las piezas
 		 * @param	filterByType Permite filtrar los resultados según el tipo
@@ -115,7 +129,7 @@
 		 */
 		public static function getPiecesByOwner(userUuid:String, filterByType:String="", filterInUse:Boolean = false):void
 		{
-			trace("avatarPiece/getByOwne(" + userUuid + ", " + filterByType + ", " + filterByType + ") called.");
+			trace("avatarPiece/getPiecesByOwner(" + userUuid + ", " + filterByType + ", " + filterInUse + ") called.");
 			
 			if (userUuid == "")
 			{
@@ -185,6 +199,14 @@
 		protected static function decodeJsonPlayerName(e:Event):void
 		{
 			genericDecode(e, "Player");
+		}
+		/**
+		 * Callback que procesa una respuesta del servidor
+		 * @param	e
+		 */
+		protected static function decodeJsonAvatarPiece(e:Event):void
+		{
+			genericDecode(e, "AvatarPiece");
 		}
 		/**
 		 * Callback que procesa una respuesta del servidor
@@ -290,7 +312,7 @@
 		 */
 		public static function getApiSessionId():String
 		{
-			//return "6ljj43zmnqdu";
+			//return "jq0suf4ymu2g";
 			return stage_.root.loaderInfo.parameters.apiSessionId;
 		}
 		

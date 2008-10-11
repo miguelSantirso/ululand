@@ -102,6 +102,7 @@ DROP TABLE IF EXISTS `avatarpiece`;
 CREATE TABLE `avatarpiece`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`uuid` VARCHAR(36)  NOT NULL,
 	`name` VARCHAR(64)  NOT NULL,
 	`description` VARCHAR(255),
 	`author_id` INTEGER  NOT NULL,

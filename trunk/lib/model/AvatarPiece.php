@@ -10,7 +10,7 @@
 class AvatarPiece extends BaseAvatarPiece
 {
 	/**
-	 * getUpload: Función necesaria para realizar las operaciones de subida de los gráficos de las piezas de avatar
+	 * getUpload: FunciÃ³n necesaria para realizar las operaciones de subida de los grï¿½ficos de las piezas de avatar
 	 *
 	 * @return
 	 **/
@@ -20,7 +20,7 @@ class AvatarPiece extends BaseAvatarPiece
 	}
 
 	/**
-	 * setUpload: Función necesaria para realizar las operaciones de subida de los gráficos de las piezas de avatar
+	 * setUpload: FunciÃ³n necesaria para realizar las operaciones de subida de los grï¿½ficos de las piezas de avatar
 	 *
 	 **/
 	public function setUpload($v)
@@ -43,3 +43,4 @@ class AvatarPiece extends BaseAvatarPiece
 		return $this->name;
 	}
 }
+sfPropelBehavior::add('AvatarPiece', array('sfPropelUuidBehavior'));
