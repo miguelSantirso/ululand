@@ -35,60 +35,17 @@ class AvatarPeer extends BaseAvatarPeer
 	}
 
 	/**
-	 * Retorna el avatar identificado por su apikey 
+	 * Retorna el avatar identificado por su uuid 
 	 *
-	 * @param varchar(13) $apikey
-	 * @return avatar cuyo apikey es el pasado como parámetro
+	 * @param varchar $uuid
+	 * @return avatar cuyo uuid es el pasado como parámetro
 	 */
-	public static function retrieveByApiKey($apikey)
+	public static function retrieveByUuid($uuid)
 	{
 		$c = new Criteria();
-		$c->add(AvatarPeer::API_KEY, $apikey);
+		$c->add(AvatarPeer::UUID, $uuid);
 		
 		return AvatarPeer::doSelectOne($c);
 	}
 
-	/**
-	 * Genera una clave de la api para un avatar
-	 *
-	 * @return Una api key �nica
-	 */
-	public static function generateApiKey()
-	{
-		$apiKey = 'a'; // La api key empieza por a para indicar que es un juego
-		
-		do
-		{
-		    $apiKey .= AvatarPeer::generateRandomString(12);
-		    
-		    $c = new Criteria();
-		    $c->add(AvatarPeer::API_KEY, $apiKey);
-		    $result = AvatarPeer::doSelectOne($c);
-		} while($result);
-		
-		return $apiKey;
-	}
-
-	/**
-	 * Genera una cadena aleatoria de la longitud indicada
-	 *
-	 * @param integer $length longitud deseada de la cadena a generar
-	 * @return cadena aleatoria de la longitud indicada
-	 */
-	protected static function generateRandomString($length)
-	{
-	    $chars = "abcdefghijklmnopqrstuvwxyz0123456789"; 
-	    srand((double)microtime()*1000000); 
-	    $i = 0;
-	    
-	    while ($i <= $length)
-	    { 
-	        $num = rand() % 35; 
-	        $tmp = substr($chars, $num, 1); 
-	        $string = $string . $tmp; 
-	        $i++; 
-	    } 
-	
-	    return $string;
-	}
 }

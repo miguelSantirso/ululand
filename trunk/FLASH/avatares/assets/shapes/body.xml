@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="ISO-8859-1" ?>
+<part>
+	<!-- Forma de la parte -->
+	<shape>
+		<vertex x="30" y="40" />
+		<vertex x="-30" y="40" />
+		<vertex x="-18" y="-40" />
+		<vertex x="18" y="-40" />
+		
+	</shape>
+	<!-- Puntos de anclaje -->
+	<anchorPoints>
+		<anchorPoint x="0" y="40" lowerAngle="-0.3" upperAngle="0.3" />   <!-- para el cuello -->
+		<anchorPoint x="-15" y="35" lowerAngle="3.64" upperAngle="5.7" /> <!-- brazo derecho -->
+		<anchorPoint x="15" y="35" lowerAngle="0.5" upperAngle="2.35" />  <!-- brazo izquierdo -->
+		<anchorPoint x="-20" y="-38" lowerAngle="-0.4" upperAngle="0.4" />  <!-- pierna derecha -->
+		<anchorPoint x="20" y="-38" lowerAngle="-0.4" upperAngle="0.4" />  <!-- pierna izquierda -->
+	</anchorPoints>
+</part>

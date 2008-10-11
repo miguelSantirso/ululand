@@ -152,7 +152,7 @@ class apiCommonActions extends sfActions
 	 * privilegios exigidos y el avatar al que hace referencia la operación.
 	 *
 	 * @param integer $requiredPrivileges Privilegios exigidos {0|1|2}
-	 * @param integer $avatarApiKey ApiKey del avatar que se modificará en la operación. Si se da el valor '-1' a este parámetro, se interpretará que no se modifica ningún avatar 
+	 * @param integer $userUuid Uuid del usuario que se modificará en la operación. Si se da el valor '-1' a este parámetro, se interpretará que no se modifica ningún usuario 
 	 */
 	protected function breakIfNotAllowed($requiredPrivileges, $userUuid)
 	{
@@ -199,7 +199,7 @@ class apiCommonActions extends sfActions
 			if($userUuid != -1 && $apiSession->getUserUuid() != $userUuid)
 			{
 				$this->setFlash('api_error_code', 0);
-				$this->setFlash('api_error_message', "ERROR: Access denied. You don't have permission to modify that avatar.");
+				$this->setFlash('api_error_message', "ERROR: Access denied. You don't have permission to modify that user.");
 
 				$this->forward('output', 'error');
 			}

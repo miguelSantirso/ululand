@@ -82,14 +82,44 @@ CREATE TABLE `avatar`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`profile_id` INTEGER  NOT NULL,
-	`api_key` VARCHAR(13),
+	`uuid` VARCHAR(36)  NOT NULL,
 	`gender` INTEGER  NOT NULL,
-	`total_credits` INTEGER default 0,
-	`spent_credits` INTEGER default 0,
 	PRIMARY KEY (`id`),
 	INDEX `avatar_FI_1` (`profile_id`),
 	CONSTRAINT `avatar_FK_1`
 		FOREIGN KEY (`profile_id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
+		ON DELETE CASCADE
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
+#-- avatarpiece
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `avatarpiece`;
+
+
+CREATE TABLE `avatarpiece`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(64)  NOT NULL,
+	`description` VARCHAR(255),
+	`author_id` INTEGER  NOT NULL,
+	`owner_id` INTEGER  NOT NULL,
+	`url` VARCHAR(255)  NOT NULL,
+	`price` INTEGER default 0,
+	`type` VARCHAR(64)  NOT NULL,
+	`in_use` INTEGER default 0,
+	`created_at` DATETIME,
+	PRIMARY KEY (`id`),
+	INDEX `avatarpiece_FI_1` (`author_id`),
+	CONSTRAINT `avatarpiece_FK_1`
+		FOREIGN KEY (`author_id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
+		ON DELETE CASCADE,
+	INDEX `avatarpiece_FI_2` (`owner_id`),
+	CONSTRAINT `avatarpiece_FK_2`
+		FOREIGN KEY (`owner_id`)
 		REFERENCES `sf_guard_user_profile` (`id`)
 		ON DELETE CASCADE
 )Type=MyISAM;
@@ -213,38 +243,6 @@ CREATE TABLE `code_piece`
 	CONSTRAINT `code_piece_FK_1`
 		FOREIGN KEY (`created_by`)
 		REFERENCES `sf_guard_user` (`id`)
-		ON DELETE CASCADE
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- avatarpiece
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `avatarpiece`;
-
-
-CREATE TABLE `avatarpiece`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(64)  NOT NULL,
-	`description` VARCHAR(255),
-	`author_id` INTEGER,
-	`owner_id` INTEGER,
-	`url` VARCHAR(255)  NOT NULL,
-	`price` INTEGER default 0,
-	`type` VARCHAR(64)  NOT NULL,
-	`in_use` INTEGER default 0,
-	`created_at` DATETIME,
-	PRIMARY KEY (`id`),
-	INDEX `avatarpiece_FI_1` (`author_id`),
-	CONSTRAINT `avatarpiece_FK_1`
-		FOREIGN KEY (`author_id`)
-		REFERENCES `avatar` (`id`)
-		ON DELETE SET NULL,
-	INDEX `avatarpiece_FI_2` (`owner_id`),
-	CONSTRAINT `avatarpiece_FK_2`
-		FOREIGN KEY (`owner_id`)
-		REFERENCES `avatar` (`id`)
 		ON DELETE CASCADE
 )Type=MyISAM;
 

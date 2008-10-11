@@ -38,9 +38,9 @@ class AvatarPieceMapBuilder {
 
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::VARCHAR, false, 255);
 
-		$tMap->addForeignKey('AUTHOR_ID', 'AuthorId', 'int', CreoleTypes::INTEGER, 'avatar', 'ID', false, null);
+		$tMap->addForeignKey('AUTHOR_ID', 'AuthorId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
 
-		$tMap->addForeignKey('OWNER_ID', 'OwnerId', 'int', CreoleTypes::INTEGER, 'avatar', 'ID', false, null);
+		$tMap->addForeignKey('OWNER_ID', 'OwnerId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
 
 		$tMap->addColumn('URL', 'Url', 'string', CreoleTypes::VARCHAR, true, 255);
 

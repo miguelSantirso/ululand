@@ -36,13 +36,9 @@ class AvatarMapBuilder {
 
 		$tMap->addForeignKey('PROFILE_ID', 'ProfileId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
 
-		$tMap->addColumn('API_KEY', 'ApiKey', 'string', CreoleTypes::VARCHAR, false, 13);
+		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
 
 		$tMap->addColumn('GENDER', 'Gender', 'int', CreoleTypes::INTEGER, true, null);
-
-		$tMap->addColumn('TOTAL_CREDITS', 'TotalCredits', 'int', CreoleTypes::INTEGER, false, null);
-
-		$tMap->addColumn('SPENT_CREDITS', 'SpentCredits', 'int', CreoleTypes::INTEGER, false, null);
 
 	} 
 } 

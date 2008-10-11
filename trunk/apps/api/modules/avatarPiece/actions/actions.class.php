@@ -13,25 +13,18 @@ require_once dirname(__FILE__).'/../../../lib/apiCommonActions.class.php';
  */
 class avatarPieceActions extends apiCommonActions
 {
-	/**
-	 * Executes index action
-	 *
-	 */
-	public function executeIndex()
-	{
-	}
 
 	/**
-	 * Añade una nueva pieza. Se establecerá el creador y el propietario al avatar activo, salvo que se indique otra cosa
+	 * AÃ±ade una nueva pieza. Se establecerÃ¡ el creador y el propietario al jugador activo, salvo que se indique otra cosa
 	 * Requiere como parÃ¡metros:
 	 *  - 'image' -- Imagen asociada a la pieza
 	 *  - 'name' -- Nombre que el usuario le ha dado a la pieza
 	 *  - 'price' -- Coste de la pieza
 	 *  - 'type' -- Tipo de la pieza
 	 *
-	 * Además, admite como parámetros:
-	 *  - 'avatarApiKey' -- ApiKey del avatar que ha creado la pieza y que será, también, el propietario de la misma.
-	 *  - 'description' -- Descripción de la pieza
+	 * AdemÃ¡s, admite como parï¿½metros:
+	 *  - 'userUuid' -- Uuid del usuario que ha creado la pieza y que serÃ¡, tambiÃ©n, el propietario de la misma.
+	 *  - 'description' -- DescripciÃ³n de la pieza
 	 *
 	 */
 	public function executeAdd()
@@ -40,21 +33,21 @@ class avatarPieceActions extends apiCommonActions
 		$this->checkRequiredParameters( array('image', 'name', 'price', 'type') );
 		
 		// Comprobamos si nos especifican el avatar al que se debe asignar esta pieza
-		if($this->getRequestParameter('avatarApiKey'))
+		if($this->getRequestParameter('userUuid'))
 		{
 			// Obtener el avatar cuyo apikey es el recibido
-			$avatar = AvatarPeer::retrieveByApiKey($this->getRequestParameter('avatarApiKey'));
+			$user = sfGuardUserProfilePeer::retrieveByUuid($this->getRequestParameter('userUuid'));
 		}
 		else
 		{
-			// No nos especifican nada, trabajaremos con el usuario que ha lanzado la petición
-			$avatar = $this->getActiveAvatar();
+			// No nos especifican nada, trabajaremos con el usuario que ha lanzado la peticiï¿½n
+			$user = $this->getActiveUser();
 		}
 		
-		// Comprobar que se tienen permisos para actuar sobre el avatar a modificar
-		$this->breakIfNotAllowed(1, $avatar->getApiKey());
+		// Comprobar que se tienen permisos para actuar sobre el usuario a modificar
+		$this->breakIfNotAllowed(1, $user->getUuid());
 		
-		// Obtener los parámetros recibidos
+		// Obtener los parï¿½metros recibidos
 		$name  = $this->getRequestParameter('name');
 		$price = $this->getRequestParameter('price');
 		$type  = $this->getRequestParameter('type');
@@ -63,8 +56,8 @@ class avatarPieceActions extends apiCommonActions
 		
 		// Crear el objeto y popularlo con los valores adecuados
 		$newPiece = new AvatarPiece();
-		$newPiece->setAuthorId($avatar->getId());
-		$newPiece->setOwnerId($avatar->getId());
+		$newPiece->setAuthorId($user->getId());
+		$newPiece->setOwnerId($user->getId());
 		$newPiece->setName($name);
 		$newPiece->setPrice($price);
 		$newPiece->setType($type);
@@ -77,24 +70,23 @@ class avatarPieceActions extends apiCommonActions
 		$imageUrl  = sfConfig::get('sf_upload_dir').'/'.sfConfig::get('app_dir_avatarPiece').'/'.$newPiece->getId().'.png';
 		file_put_contents($imageUrl, $imageFile);
 		
-		// Guardar la url de la imagen recién guardada
+		// Guardar la url de la imagen reciï¿½n guardada
 		$newPiece->setUrl($newPiece->getId().'.png');
 		$newPiece->save();
 		
-		$this->setFlash('responseData', "Pieza de nombre ".$name ." añadida correctamente.");
+		$this->setFlash('responseData', "Pieza de nombre ".$name ." aÃ±adida correctamente.");
 		$this->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}
 
 	/**
-	 * Edita una nueva pieza. Se establecerá el creador y el propietario al avatar activo, salvo que se indique otra cosa
+	 * Edita una pieza.
 	 * Requiere como parÃ¡metros:
 	 *  - 'pieceId' -- Id de la pieza a modificar
 	 *
-	 * Además, admite como parámetros:
-	 *  - 'ownerApiKey' -- ApiKey del avatar que ha creado la pieza y que será, también, el propietario de la misma.
-	 *  - 'creatorApiKey' -- ApiKey del avatar que ha creado la pieza y que será, también, el propietario de la misma.
-	 *  - 'description' -- Descripción de la pieza
+	 * AdemÃ¡s, admite como parÃ¡metros:
+	 *  - 'ownerUuid' -- ApiKey del avatar que ha creado la pieza y que serÃ¡, tambiÃ©n, el propietario de la misma.
+	 *  - 'description' -- Descripciï¿½n de la pieza
 	 *  - 'image' -- Imagen asociada a la pieza
 	 *  - 'name' -- Nombre que el usuario le ha dado a la pieza
 	 *  - 'price' -- Coste de la pieza
@@ -110,22 +102,21 @@ class avatarPieceActions extends apiCommonActions
 		$piece = AvatarPiecePeer::retrieveByPK($this->getRequestParameter('pieceId'));
 		
 		// Obtener el avatar propietario de la pieza
-		if($this->getRequestParameter('ownerApiKey'))
+		if($this->getRequestParameter('ownerUuid'))
 		{
 			// Obtener el avatar cuyo apikey es el recibido
-			$owner = AvatarPeer::retrieveByApiKey($this->getRequestParameter('ownerApiKey'));
+			$owner = sfGuardUserProfilePeer::retrieveByUuid($this->getRequestParameter('ownerUuid'));
 		}
 		else
 		{
-			// No nos especifican nada, trabajaremos con el usuario que ha lanzado la petición
-			$owner = $this->getActiveAvatar();
+			// No nos especifican nada, trabajaremos con el usuario que ha lanzado la peticiï¿½n
+			$owner = sfGuardUserProfilePeer::retrieveByPK($piece->getOwnerId());
 		}
 		
 		// Comprobar que se tienen permisos para actuar sobre el avatar a modificar
-		$this->breakIfNotAllowed(1, $owner->getApiKey());
+		$this->breakIfNotAllowed(1, $owner->getUuid());
 		
-		// Obtener el resto de parámetros
-		$newAuthor = AvatarPeer::retrieveByApiKey($this->getRequestParameter('creatorApiKey'));
+		// Obtener el resto de parÃ¡metros
 		$newName    = $this->getRequestParameter('name');
 		$newPrice   = $this->getRequestParameter('price');
 		$newType    = $this->getRequestParameter('type');
@@ -133,8 +124,6 @@ class avatarPieceActions extends apiCommonActions
 		$newDescription = $this->getRequestParameter('description', 'Pieza sin describir');
 		
 		// Modificar el objeto en los casos en que sea necesario
-		$piece->setOwnerId($owner->getId());
-		if($newAuthor) $piece->setAuthorId($newAuthor->getId());
 		if($newName)   $piece->setName($newName);
 		if($newPrice)  $piece->setPrice($newPrice);
 		if($newType)   $piece->setType($newType);
@@ -147,7 +136,7 @@ class avatarPieceActions extends apiCommonActions
 			$imageUrl  = sfConfig::get('sf_upload_dir').'/'.sfConfig::get('app_dir_avatarPiece').'/'.$piece->getId().'.png';
 			file_put_contents($imageUrl, $imageFile);
 
-			// Guardar la url de la imagen recién guardada
+			// Guardar la url de la imagen reciï¿½n guardada
 			$piece->setUrl($piece->getId().'.png');
 		}
 		
@@ -160,38 +149,45 @@ class avatarPieceActions extends apiCommonActions
 	}
 	
 	/**
-	 * Retorna todas las piezas poseídas por cierto avatar. Si no se especifica ningún avatar, se tratará de averiguar automáticamente a través de la sesión con la api
+	 * Retorna todas las piezas poseÃ­das por cierto usuario. Si no se especifica ningÃºn usuario, se tratarÃ¡ de averiguar automaticamente a travÃ©s de la sesiÃ³n con la api
 	 * Admite como parÃ¡metros:
-	 *  - 'avatarApiKey' -- ApiKey del juego del que se desea obtener un gamestat
-	 *  - 'filterByType' -- Permite filtrar los resultados según el tipo
-	 *  - 'filterInUse' -- Si vale 'true' se retornarán solo las piezas marcadas como en uso. 
+	 *  - 'userUuid'     -- Uuid del usuario del que se desean obtener sus piezas de avatar
+	 *  - 'filterByType' -- Permite filtrar los resultados segÃ­n el tipo
+	 *  - 'filterInUse'  -- Si vale 'true' se retornarÃ¡n solo las piezas marcadas como en uso. 
 	 * 
 	 * Retorna un array con el siguiente formato:
-	 *  array('uniqid' => <id único del usuario en el chat>,
-	 *  'avatarName' => <nombre del avatar>,
-	 *  'gamestatName' => <nombre del gamestat>,
-	 *  'gamestatValue' => <valor del gamestat>)
+	 * 
+	 *  array('userUuid' => <uuid del propietario>,
+	 *  'pieces' => array('id'    => <id de la pieza>,
+	 *       'name'        => <nombre de la pieza>,
+	 *       'description' => <descripciÃ³n del gamestat>,
+	 *       'type'        => <tipo de la pieza>,
+	 *       'creator'     => <creador de la pieza>,
+	 *       'url'         => <url de la pieza>,
+	 *       'price'       => <precio de la pieza>,
+	 *       'inUse'       => <indica si la pieza estÃ¡ en uso; solo deberÃ­a haber una por cada tipo>
+	 * )
 	 * 
 	 */
 	public function executeGetByOwner()
 	{	
 		// Comprobamos si nos especifican el avatar al que se debe asignar esta pieza
-		if($this->getRequestParameter('avatarApiKey'))
+		if($this->getRequestParameter('userUuid'))
 		{
 			// Obtener el avatar cuyo apikey es el recibido
-			$avatar = AvatarPeer::retrieveByApiKey($this->getRequestParameter('avatarApiKey'));
+			$user = sfGuardUserProfilePeer::retrieveByUuid($this->getRequestParameter('userUuid'));
 		}
 		else
 		{
-			// No nos especifican nada, trabajaremos con el usuario que ha lanzado la petición
-			$avatar = $this->getActiveAvatar();
+			// No nos especifican nada, trabajaremos con el usuario que ha lanzado la peticiÃ³n
+			$user = $this->getActiveUser();
 		}
 
 		$filterByType = $this->getRequestParameter('filterByType');
 		$filterInUse  = $this->getRequestParameter('filterInUse', false);
 		
 		$c = new Criteria();
-		$c->add(AvatarPiecePeer::OWNER_ID, $avatar->getId());
+		$c->add(AvatarPiecePeer::OWNER_ID, $user->getId());
 		if($filterByType)
 			$c->add(AvatarPiecePeer::TYPE, $filterByType);
 		if($filterInUse)
@@ -212,6 +208,6 @@ class avatarPieceActions extends apiCommonActions
 										'inUse'   => $piece->getInUse() ) );
 		}
 		
-		$this->returnApi( array('avatarApiKey' => $avatar->getApiKey(), 'pieces' => $result) );
+		$this->returnApi( array('userUuid' => $user->getUuid(), 'pieces' => $result) );
 	}
 }

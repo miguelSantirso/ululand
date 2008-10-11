@@ -32,10 +32,22 @@ propel:
     _attributes: { phpName: Avatar }
     id:
     profile_id:         { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
-    api_key:            { type: varchar(13),  required: false }
+    uuid:               { type: varchar(36), required: true }
     gender:             { type: integer     , required: true }
-    total_credits:      { type: integer     , required: false, default: 0 }
-    spent_credits:      { type: integer     , required: false, default: 0 }
+
+
+  avatarpiece:
+    _attributes: { phpName: AvatarPiece }
+    id:
+    name:               { type: varchar(64) , required: true }
+    description:        { type: varchar(255), required: false }
+    author_id:          { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
+    owner_id:           { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
+    url:                { type: varchar(255), required: true }
+    price:              { type: integer     , required: false, default: 0 }
+    type:               { type: varchar(64) , required: true }
+    in_use:             { type: boolean     , default: false }
+    created_at:
 
 
   grupo:
@@ -88,20 +100,6 @@ propel:
     stripped_title: { type: varchar(75), required: true }
     source:         { type: longvarchar, required: true }
     html_source:    { type: longvarchar, required: true }
-
-
-  avatarpiece:
-    _attributes: { phpName: AvatarPiece }
-    id:
-    name:               { type: varchar(64) , required: true }
-    description:        { type: varchar(255), required: false }
-    author_id:          { type: integer     , foreignTable: avatar, foreignReference: id, onDelete: setnull }
-    owner_id:           { type: integer     , foreignTable: avatar, foreignReference: id, onDelete: cascade }
-    url:                { type: varchar(255), required: true }
-    price:              { type: integer     , required: false, default: 0 }
-    type:               { type: varchar(64) , required: true }
-    in_use:             { type: boolean     , default: false }
-    created_at:
 
 
   game:
