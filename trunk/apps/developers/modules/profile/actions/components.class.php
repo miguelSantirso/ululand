@@ -36,7 +36,7 @@ class profileComponents extends sfComponents
 		$this->limit = isset($this->limit) ? $this->limit : $this->getRequestParameter('limit');
 		if($this->limit)
 		{
-			$c->setLimit($this->limit);
+			$pager->setMaxRecordLimit($this->limit);
 		}
 		$this->orderDescendingBy = isset($this->orderDescendingBy) ? $this->orderDescendingBy : $this->getRequestParameter('orderDescendingBy');
 		if($this->orderDescendingBy)
@@ -51,6 +51,7 @@ class profileComponents extends sfComponents
 		
 		$c->addJoin(DeveloperProfilePeer::USER_PROFILE_ID, sfGuardUserProfilePeer::ID);
 		$c->addJoin(sfGuardUserProfilePeer::USER_ID, sfGuardUserPeer::ID);
+		
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));
 		$pager->init();

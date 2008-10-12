@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-09-28T21:31:56Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-10-06T20:05:32Z">
     <body>
     
 <trans-unit id="1">
@@ -1168,12 +1168,12 @@
 
 <trans-unit id="4">
 <source>Collaboration Offers for flash game developers at developers.ululand.com</source>
-<target>Ofertas de colaboración para desarrolladores de juegos flash en developers.ululand.com</target>
+<target>Ofertas de colaboraci&#xF3;n para desarrolladores de juegos flash en developers.ululand.com</target>
 </trans-unit>
 
 <trans-unit id="5">
 <source>Showing collaboration offers submitted by %1$s (%2$s)</source>
-<target>Mostrando ofertas de colaboración enviadas por %1$s (%2$s)</target>
+<target>Mostrando ofertas de colaboraci&#xF3;n enviadas por %1$s (%2$s)</target>
 </trans-unit>
 
 <trans-unit id="6">
@@ -1183,7 +1183,7 @@
 
 <trans-unit id="7">
 <source>Are you sure you want to delete this?\n(Can't be undone. Seriously!)</source>
-<target>¿Estás seguro de que quieres eliminar esto?\n(No se puede deshacer. ¡En serio!)</target>
+<target>&#xBF;Est&#xE1;s seguro de que quieres eliminar esto?\n(No se puede deshacer. &#xA1;En serio!)</target>
 </trans-unit>
 
 <trans-unit id="8">
@@ -1193,7 +1193,7 @@
 
 <trans-unit id="9">
 <source>Game Info:</source>
-<target>Información del juego:</target>
+<target>Informaci&#xF3;n del juego:</target>
 </trans-unit>
 
 <trans-unit id="10">
@@ -1213,7 +1213,7 @@
 
 <trans-unit id="13">
 <source>A short description for your game. Accepts %s.</source>
-<target>Una descripción breve para tu juego. Acepta %s</target>
+<target>Una descripci&#xF3;n breve para tu juego. Acepta %s</target>
 </trans-unit>
 
 <trans-unit id="14">
@@ -1223,12 +1223,12 @@
 
 <trans-unit id="15">
 <source>Instructions on how to play the game. Accepts %s.</source>
-<target>Instrucciones sobre cómo jugar. Acepta %s</target>
+<target>Instrucciones sobre c&#xF3;mo jugar. Acepta %s</target>
 </trans-unit>
 
 <trans-unit id="16">
 <source>Comma separated. Examples: physics, arcade, platforms</source>
-<target>Separadas por comas. Ejemplos: físicas, arcade, plataformas</target>
+<target>Separadas por comas. Ejemplos: f&#xED;sicas, arcade, plataformas</target>
 </trans-unit>
 
 <trans-unit id="17">
@@ -1263,7 +1263,7 @@
 
 <trans-unit id="23">
 <source>Stats</source>
-<target>Estadísticas</target>
+<target>Estad&#xED;sticas</target>
 </trans-unit>
 
 <trans-unit id="24">
@@ -1283,32 +1283,32 @@
 
 <trans-unit id="27">
 <source>Active version</source>
-<target>Versión activa</target>
+<target>Versi&#xF3;n activa</target>
 </trans-unit>
 
 <trans-unit id="28">
 <source>There is no an active version for this game</source>
-<target>No hay una versión activa de este juego</target>
+<target>No hay una versi&#xF3;n activa de este juego</target>
 </trans-unit>
 
 <trans-unit id="29">
 <source>Choose the active version for the game</source>
-<target>Escoge la versión activa del juego</target>
+<target>Escoge la versi&#xF3;n activa del juego</target>
 </trans-unit>
 
 <trans-unit id="30">
 <source>You have not uploaded any version of this game yet!</source>
-<target>¡No has subido ninguna versión de este juego todavía!</target>
+<target>&#xA1;No has subido ninguna versi&#xF3;n de este juego todav&#xED;a!</target>
 </trans-unit>
 
 <trans-unit id="31">
 <source>The game won't be playable until you %s for this game.</source>
-<target>No se podrá jugar al juego hasta que %s para este juego.</target>
+<target>No se podr&#xE1; jugar al juego hasta que %s para este juego.</target>
 </trans-unit>
 
 <trans-unit id="32">
 <source>upload a new version</source>
-<target>subir una versión nueva</target>
+<target>subir una versi&#xF3;n nueva</target>
 </trans-unit>
 
 <trans-unit id="33">
@@ -1318,7 +1318,7 @@
 
 <trans-unit id="34">
 <source>The active version will be playable from the players area</source>
-<target>La versión activa será jugable desde el área de jugadores</target>
+<target>La versi&#xF3;n activa ser&#xE1; jugable desde el &#xE1;rea de jugadores</target>
 </trans-unit>
 
 <trans-unit id="35">
@@ -1328,7 +1328,7 @@
 
 <trans-unit id="36">
 <source>Upload new release</source>
-<target>Sube una versión nueva</target>
+<target>Sube una versi&#xF3;n nueva</target>
 </trans-unit>
 
 <trans-unit id="37">
@@ -1353,52 +1353,52 @@
 
 <trans-unit id="41">
 <source>Game Release Info:</source>
-<target>Información de Versión de Juego:</target>
+<target>Informaci&#xF3;n de Versi&#xF3;n de Juego:</target>
 </trans-unit>
 
 <trans-unit id="42">
 <source>Release Name:</source>
-<target>Nombre de la Versión</target>
+<target>Nombre de la Versi&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="43">
 <source>A unique identifier for this version. Examples: "0.35" or "BETA 1"</source>
-<target>Un identificador único para el juego. Ejemplos: "0.35" o "BETA 1"</target>
+<target>Un identificador &#xFA;nico para el juego. Ejemplos: "0.35" o "BETA 1"</target>
 </trans-unit>
 
 <trans-unit id="44">
 <source>Release file:</source>
-<target>Archivo de la versión:</target>
+<target>Archivo de la versi&#xF3;n:</target>
 </trans-unit>
 
 <trans-unit id="45">
 <source>Single SWF file (for now). The dimensions will be automatically detected.</source>
-<target>Archivo .SWF único. Las dimensiones se detectarán automáticamente.</target>
+<target>Archivo .SWF &#xFA;nico. Las dimensiones se detectar&#xE1;n autom&#xE1;ticamente.</target>
 </trans-unit>
 
 <trans-unit id="46">
 <source>Release Status:</source>
-<target>Estado de la versión:</target>
+<target>Estado de la versi&#xF3;n:</target>
 </trans-unit>
 
 <trans-unit id="47">
 <source>Release Notes:</source>
-<target>Notas de la versión:</target>
+<target>Notas de la versi&#xF3;n:</target>
 </trans-unit>
 
 <trans-unit id="48">
 <source>Notes for this game release. Accepts %s.</source>
-<target>Notas de esta versión del juego. Acepta %s</target>
+<target>Notas de esta versi&#xF3;n del juego. Acepta %s</target>
 </trans-unit>
 
 <trans-unit id="49">
 <source>This release is public</source>
-<target>Esta versión es pública</target>
+<target>Esta versi&#xF3;n es p&#xFA;blica</target>
 </trans-unit>
 
 <trans-unit id="50">
 <source>%s version for</source>
-<target>Versión %s de</target>
+<target>Versi&#xF3;n %s de</target>
 </trans-unit>
 
 <trans-unit id="51">
@@ -1408,12 +1408,12 @@
 
 <trans-unit id="52">
 <source>Game Description</source>
-<target>Descripción del Juego</target>
+<target>Descripci&#xF3;n del Juego</target>
 </trans-unit>
 
 <trans-unit id="53">
 <source>Release details</source>
-<target>Detalles de la Versión</target>
+<target>Detalles de la Versi&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="54">
@@ -1428,12 +1428,12 @@
 
 <trans-unit id="56">
 <source>This version is %s</source>
-<target>Esta versión es %s</target>
+<target>Esta versi&#xF3;n es %s</target>
 </trans-unit>
 
 <trans-unit id="57">
 <source>public</source>
-<target>pública</target>
+<target>p&#xFA;blica</target>
 </trans-unit>
 
 <trans-unit id="58">
@@ -1458,7 +1458,7 @@
 
 <trans-unit id="62">
 <source>Release</source>
-<target>Versión</target>
+<target>Versi&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="63">
@@ -1468,12 +1468,12 @@
 
 <trans-unit id="64">
 <source>Latest Developers</source>
-<target>Últimos Desarrolladores</target>
+<target>&#xDA;ltimos Desarrolladores</target>
 </trans-unit>
 
 <trans-unit id="65">
 <source>(welcome!)</source>
-<target>(¡bievenidos!)</target>
+<target>(&#xA1;bienvenidos!)</target>
 </trans-unit>
 
 <trans-unit id="66">
@@ -1498,12 +1498,12 @@
 
 <trans-unit id="70">
 <source>%1$s collaboration offers submitted</source>
-<target>%1$s ofertas de colaboración enviadas</target>
+<target>%1$s ofertas de colaboraci&#xF3;n enviadas</target>
 </trans-unit>
 
 <trans-unit id="71">
 <source>%s. Flash code recipes at developers.ululand.com</source>
-<target>%s. Recetas de código Flash en developers.ululand.com</target>
+<target>%s. Recetas de c&#xF3;digo Flash en developers.ululand.com</target>
 </trans-unit>
 
 <trans-unit id="72">
@@ -1529,6 +1529,66 @@
 <trans-unit id="76">
 <source>Average: %s</source>
 <target>Media: %s</target>
+</trans-unit>
+
+<trans-unit id="1">
+<source>There has been an error while fetching the RSS feed.</source>
+<target>Ha ocurrido un error al acceder al feed RSS.</target>
+</trans-unit>
+
+<trans-unit id="2">
+<source>The password is not correct. Try again, please.</source>
+<target>La contraseña no es correcta. Vuelve a intentarlo, por favor.</target>
+</trans-unit>
+
+<trans-unit id="3">
+<source>Enter the Password</source>
+<target>Introduce la Contraseña</target>
+</trans-unit>
+
+<trans-unit id="4">
+<source>Enter</source>
+<target>Entrar</target>
+</trans-unit>
+
+<trans-unit id="5">
+<source>or</source>
+<target>o</target>
+</trans-unit>
+
+<trans-unit id="6">
+<source>Go back</source>
+<target>Volver</target>
+</trans-unit>
+
+<trans-unit id="7">
+<source>Privacity</source>
+<target>Privacidad</target>
+</trans-unit>
+
+<trans-unit id="8">
+<source>Public</source>
+<target>Pública</target>
+</trans-unit>
+
+<trans-unit id="9">
+<source>Password Protected</source>
+<target>Protegida por Contraseña</target>
+</trans-unit>
+
+<trans-unit id="10">
+<source>For My Eyes Only</source>
+<target>Solo Para Mis Ojos</target>
+</trans-unit>
+
+<trans-unit id="11">
+<source>Select the desired privacity level for this version of the game.</source>
+<target>Selecciona la privacidad deseada para esta versión del juego.</target>
+</trans-unit>
+
+<trans-unit id="12">
+<source>Anyone will gain access with this password, even if not registered in ululand.</source>
+<target>Cualquiera tendrá acceso con esta contraseña, incluso si no está registrado en ululand.</target>
 </trans-unit>
 </body>
   </file>
