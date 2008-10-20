@@ -10,15 +10,15 @@
 		</div>
 	<?php endif; ?>
 	
-	<div class="contentColumn wide alignLeft">
-
-		<?php include_component('competition', 'list'); ?>
+	<div class="contentColumn quarter alignLeft">
+		
+		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
 		
 	</div>
 	
-	<div class="contentColumn quarter alignRight">
-		
-		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
+	<div class="contentColumn wide alignRight">
+
+		<?php include_component('competition', 'list'); ?>
 		
 	</div>
 	

@@ -16,11 +16,9 @@
 
 	<!-- header and menu -->
 	<div id="header">
-		<?php include_partial('global/title'); ?>
+		<?php include_partial('global/userMenu'); ?>
 		
 		<?php include_partial('global/mainMenu'); ?>
-		
-		<?php include_partial('global/userMenu'); ?>
 	</div>
 	
 	

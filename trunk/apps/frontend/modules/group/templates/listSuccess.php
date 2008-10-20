@@ -14,19 +14,20 @@
 
 		<?php include_component('group', 'list'); ?>
 		
+	</div>
+	
+	<div class="contentColumn quarter alignRight">
+		
+		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
+		
 		<?php if($sf_user->isAuthenticated()) : ?>
-			<?php echo link_to(__('Create your own &raquo;'), 'group/edit', array('class' => 'button')); ?>
+			<?php echo link_to(__('Create your own group'), 'group/edit', array('class' => 'bigBox')); ?>
 		<?php else :  ?>
 			<p class="center">
 				(<?php echo sprintf(__('requires %s or %s'), link_to(__('log in'), '@sf_guard_signin'), link_to(__('register'), '@register')) ?>)
 				<?php echo link_to(__('Create your own &raquo;'), 'group/edit', array('class' => '')); ?> 
 			</p>
 		<?php endif; ?>
-	</div>
-	
-	<div class="contentColumn quarter alignRight">
-		
-		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
 		
 	</div>
 	

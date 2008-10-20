@@ -82,6 +82,7 @@ propel:
 
   collaboration_offer:
     _attributes:    { phpName: CollaborationOffer }
+    id: ~
     created_by:     { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     created_at: ~
     updated_at: ~

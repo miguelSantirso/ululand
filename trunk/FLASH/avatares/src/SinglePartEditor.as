@@ -195,6 +195,7 @@
 			partInfo_.type = type;
 			partInfo_.name = "Nueva pieza";
 			partInfo_.description = "Descripción de la pieza nueva";
+			pieceCost_ = 0;
 			
 			// Cargar la parte dibujable y situarla en el centro de la pantalla
 			drawablePart_ = new DrawablePart(ASSETS_URL + "shapes/" + partInfo_.type + ".xml", this);

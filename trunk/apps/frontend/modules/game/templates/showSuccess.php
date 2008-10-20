@@ -10,7 +10,6 @@
 			<div class="contentBox">
 				<div class="alignRight"><?php echo sf_rater($game) ?></div>
 				<h3 class="large header"><?php echo linkToGame($game); ?></h3>
-				<?php echo link_to(__('Create Competition for this game'), 'competition/edit?game='.$game->getId()); ?>
 				<div class="xSmall alignLeft">
 					<p class="noSpace">
 						<a href="#description"><?php echo __('Instructions & Details'); ?></a>
@@ -52,8 +51,13 @@
 			</div>
 		</div>
 		
-		<!-- barra búsqueda y relacionados -->
-		<div class="contentColumn quarter alignRight">
+		<!-- acciones, barra búsqueda y relacionados -->
+		<div class="contentColumn quarter alignLeft">
+			<?php if($sf_user->isAuthenticated()) : ?>
+				<?php if(count($game->getGameStats()) > 0) : ?>
+					<?php echo link_to(__('Create Competition'), 'competition/edit?game='.$game->getId(), array('class' => 'bigBox')); ?>
+				<?php endif; ?>
+			<?php endif; ?>
 			<?php include_partial('searchForm'); ?>
 			<?php include_partial('relatedByTags', array('limit' => 5, 'tagsString' => $game->getTagsString())); ?>
 		</div>

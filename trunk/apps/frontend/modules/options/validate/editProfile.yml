@@ -1,0 +1,7 @@
+fields:
+  username:
+    required:
+      msg: This field is required!
+    sfStringValidator:
+      min: 2
+      min_error: Username must be 2 characters or more

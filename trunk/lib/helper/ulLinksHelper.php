@@ -36,10 +36,11 @@
 	 * @param string $customText Texto personalizado para el enlace
 	 * @return string c�digo html del enlace al perfil pasado como par�metro
 	 */
-	function linkToEditProfile($sfGuardUserProfile, $options = array(), $customText = "")
+	function linkToEditProfile($sfGuardUserProfile= null, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? __('edit') : $customText;
-		return link_to($linkText, "profile/edit?username=".$sfGuardUserProfile->getUsername(), $options);
+		$linkUrl = is_null($sfGuardUserProfile) ? '@options_edit_profile' : "profile/edit?username=".$sfGuardUserProfile->getUsername();
+		return link_to($linkText, $linkUrl, $options);
 	}
 	
 	/**
@@ -177,9 +178,9 @@
 	}
 	
 	/**
-	 * Retorna el código html de un enlace a la competici�n pasada como parámetro
+	 * Retorna el código html de un enlace a la competici�n pasada como parámetro
 	 *
-	 * @param Competition $competition Competici�n a la que se desea enlazar
+	 * @param Competition $competition Competici�n a la que se desea enlazar
 	 * @param array $options opciones que se añadirán al link_to
 	 * @param string $customText Texto personalizado para el enlace
 	 * @return string código html del enlace al grupo pasado como parámetro
@@ -191,13 +192,13 @@
 	}
 	
 	/**
-	 * Retorna el código html de un enlace a la competici�n pasada como parámetro, incluyendo el thumbnail
+	 * Retorna el código html de un enlace a la competici�n pasada como parámetro, incluyendo el thumbnail
 	 *
-	 * @param Competition $competition Competici�n a la que se desea enlazar
+	 * @param Competition $competition Competici�n a la que se desea enlazar
 	 * @param int $size Tamaño del thumbnail
 	 * @param array $options opciones que se añadirán al link_to
 	 * @param string $customText Texto personalizado para el enlace
-	 * @return string código html del enlace a la competici�n pasada como parámetro
+	 * @return string código html del enlace a la competici�n pasada como parámetro
 	 */
 	function linkToCompetitionWithThumbnail($competition, $size = 100, $options = array(), $customText = "")
 	{

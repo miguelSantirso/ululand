@@ -4,12 +4,11 @@ $module = $sf_context->getModuleName();
 
 $isHome = $module == 'home' || $module == 'sfGuardAuth';
 
-$isGames = $module == 'game';
+$isGames = $module == 'game' || $module == 'competition';
 
-$isCompetitions = $module == 'competition';
+$isCommunity = $module == 'group' || $module == 'profile' || $module == 'community';
 
-$isCommunity = $module == 'group' ||
-	$module == 'profile';
+$isOptions = $module == 'options';
 
 ?>
 <div id="mainHeader">
@@ -20,6 +19,12 @@ $isCommunity = $module == 'group' ||
 	</ul>
 	<?php endif; ?>
 	
+	<?php if($isGames) : ?>
+	<ul>
+		<li><?php echo link_to(__('Games'), 'game', array('class' => $module == "game" ? 'selected' : '')); ?></li>
+		<li><?php echo link_to(__('Competitions'), 'competition', array('class' => $module == "competition" ? 'selected' : '')); ?></li>
+	</ul>
+	<?php endif; ?>
 	
 	<h2>
 		<?php if($isHome) : ?>
@@ -30,12 +35,12 @@ $isCommunity = $module == 'group' ||
 		<?php echo link_to(__('Games'), 'game'); ?>
 		<?php endif; ?>
 		
-		<?php if($isCompetitions) : ?>
-		<?php echo link_to(__('Competition'), 'competition'); ?>
-		<?php endif; ?>
-		
 		<?php if($isCommunity) : ?>
 		<?php echo link_to(__('Community'), 'community'); ?>
+		<?php endif; ?>
+		
+		<?php if($isOptions) : ?>
+		<?php echo link_to(__('Options'), 'options'); ?>
 		<?php endif; ?>
 	</h2>
 </div>

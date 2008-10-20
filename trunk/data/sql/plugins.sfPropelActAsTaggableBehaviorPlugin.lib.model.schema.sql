@@ -23,7 +23,7 @@ CREATE TABLE `sf_tag`
 	KEY `triple1`(`triple_namespace`),
 	KEY `triple2`(`triple_key`),
 	KEY `triple3`(`triple_value`)
-)Type=MyISAM;
+)Type=InnoDB;
 
 #-----------------------------------------------------------------------------
 #-- sf_tagging
@@ -45,7 +45,7 @@ CREATE TABLE `sf_tagging`
 		FOREIGN KEY (`tag_id`)
 		REFERENCES `sf_tag` (`id`)
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Type=InnoDB;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

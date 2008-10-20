@@ -18,7 +18,6 @@ class gameActions extends sfActions
   
   public function executeIndex()
   {
-    return $this->forward('game', 'list');
   }
 
   public function executeList()

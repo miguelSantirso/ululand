@@ -24,10 +24,15 @@ class avatarPieceActions extends sfActions
     $this->avatar_piece = AvatarPiecePeer::retrieveByPk($this->getRequestParameter('id'));
     $this->forward404Unless($this->avatar_piece);
   }
-
+  
   public function executeCreate()
   {
-    $this->setTemplate('edit');
+  	$this->pieceType = $this->getRequestParameter('pieceType');
+  	
+  	if(is_null($this->pieceType))
+  		$this->setTemplate('selectPieceType');
+  	else
+    	$this->setTemplate('edit');
   }
 
   public function executeEdit()

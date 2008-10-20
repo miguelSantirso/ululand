@@ -17,18 +17,16 @@
 		</div>
 	<?php endif; ?>
 	
+	<div class="contentColumn quarter alignLeft">
+		<div class="">
+			<?php include_partial('tagCloud'); ?>
+		</div>
+		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
+	</div>
+	
 	<div class="contentColumn wide alignLeft">
 		<div class="contentBox">
 			<?php include_component('game', 'list'); ?>
-		</div>
-	</div>
-
-	<div class="contentColumn quarter alignRight">
-		
-		<?php include_partial('searchForm', array('search' => isset($search) ? $search : null)); ?>
-		
-		<div class="">
-			<?php include_partial('tagCloud'); ?>
 		</div>
 	</div>
 	

@@ -1,1 +1,0 @@
-<span class="strongColor">Tu mensaje ha sido correctamente eliminado</span>

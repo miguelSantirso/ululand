@@ -28,7 +28,17 @@ PlayerProfile:
     description: Hola
     total_credits: 500
 
+# WIDGETS
+#########
 
+Widget:
+  avatarPieceEditor:
+    privileges_level: 0
+    name:             partEditor
+    description:      Editor de piezas de avatar
+    url:              partEditor.swf
+    width:            650
+    height:           400
 
 # COLLABORATION OFFERS
 ######################
@@ -52,8 +62,6 @@ CollaborationOffer:
     description: Buscamos programador que sepa *dibujar* muy bien
     tags: programador
 
-
-
 # COOKBOOK
 ##########
 
@@ -63,8 +71,7 @@ CodePiece:
     title: Uso de AddChild
     source: Source Code
     tags: as3, actionscript, addchild, bitmap
-    
-    
+
 # GAME RELEASES STATUS
 ######################
 

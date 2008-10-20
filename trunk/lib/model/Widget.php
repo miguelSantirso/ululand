@@ -61,6 +61,7 @@ class Widget extends BaseWidget
 		{
 			$this->setApiKey(WidgetPeer::generateApiKey());
 		}
+		
 		parent::save($con);
 	}
 }

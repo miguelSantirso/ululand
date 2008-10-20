@@ -1,6 +1,9 @@
 		
 		
 		<ul id="mainMenu">
+			<li id="mainLogo">
+				<?php echo link_to(image_tag('header_logo.png'), "@homepage"); ?>
+			</li>
 			<li class="<?php echo $sf_context->getModuleName() == 'home' ? 'selected' : '' ?>">
 				<?php echo link_to(__("Home"), "@homepage"); ?>
 			</li>
