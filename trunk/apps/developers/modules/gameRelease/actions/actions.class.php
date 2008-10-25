@@ -165,7 +165,7 @@ class gameReleaseActions extends sfActions
 		$gameRelease->setName($this->getRequestParameter('name'));
 		$gameRelease->setDescription($this->getRequestParameter('description'));
 		$gameRelease->setGamereleasestatusId($this->getRequestParameter('game_release_status_id'));
-		if($game->getActiveReleaseId() == $gameRelease->getId())
+		if(!is_null($game->getActiveReleaseId()) && $game->getActiveReleaseId() == $gameRelease->getId())
 			$this->setFlash('error', 'The privacity of the active version of the game cannot be changed.');
 		else
 		{

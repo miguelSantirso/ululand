@@ -1,5 +1,7 @@
 <?php use_helper('Partial'); ?>
 
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconOptions.png").__('Community'), '/community'); ?></h2>
+
 <div id="pageContent">
 
 	<div class="contentColumn half alignLeft">

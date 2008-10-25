@@ -44,6 +44,8 @@ class sfGuardUserProfileMapBuilder {
 
 		$tMap->addColumn('LAST_NAME', 'LastName', 'string', CreoleTypes::VARCHAR, false, 20);
 
+		$tMap->addColumn('GENDER', 'Gender', 'int', CreoleTypes::INTEGER, false, null);
+
 		$tMap->addColumn('CULTURE', 'Culture', 'string', CreoleTypes::VARCHAR, false, 8);
 
 	} 

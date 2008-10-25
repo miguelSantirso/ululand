@@ -38,7 +38,5 @@ class AvatarMapBuilder {
 
 		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
 
-		$tMap->addColumn('GENDER', 'Gender', 'int', CreoleTypes::INTEGER, true, null);
-
 	} 
 } 

@@ -1,3 +1,5 @@
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconOptions.png").__('Competition'), '/game/list'); ?></h2>
+
 <div id = "pageContent" >
 	
 	<div class = "contentColumn quarter alignLeft">
@@ -40,8 +42,11 @@
 		<div class="contentBox" id="postComment">
 			<h4 class="header small"><?php echo __('Comments:') ?></h4>
 			<?php
-				 include_component('sfComment', 'commentForm', array('object' => $competition, 'order' => 'desc'));
-				 include_component('sfComment', 'commentList', array('object' => $competition, 'order' => 'desc'));
+				if ($sf_user->isAuthenticated() && ($status == GroupPeer::OWNER || $status == GroupPeer::MEMBER))
+				{
+					include_component('sfComment', 'commentForm', array('object' => $competition, 'order' => 'desc'));
+				}
+				include_component('sfComment', 'commentList', array('object' => $competition, 'order' => 'desc'));
 			?>
 		</div>
 		

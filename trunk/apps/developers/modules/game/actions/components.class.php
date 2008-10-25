@@ -47,6 +47,7 @@ class gameComponents extends sfComponents
 			$c->addAscendingOrderByColumn($this->orderAscendingBy);
 		}
 		
+		$c->add(GamePeer::CREATED_BY, null, Criteria::NOT_EQUAL);
 		$c->addDescendingOrderByColumn(GamePeer::NAME);
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));
@@ -69,6 +70,8 @@ class gameComponents extends sfComponents
 		{
 			$c->setLimit($this->limit);
 		}
+		
+		$c->add(GamePeer::CREATED_BY, null, Criteria::NOT_EQUAL);
 		
 		$this->objects = GamePeer::doSelect($c);
 	}

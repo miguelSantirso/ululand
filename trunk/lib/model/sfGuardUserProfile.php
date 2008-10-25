@@ -100,6 +100,15 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 			return $playerProfile;
 		}
 	}
+
+	public function setGender($value)
+	{
+		parent::setGender(sfGuardUserProfilePeer::getGenderFromValue($value));
+	}
+	public function getGender()
+	{
+		return sfGuardUserProfilePeer::getGenderFromIndex(parent::getGender());
+	}
 }
 
 sfPropelBehavior::add('sfGuardUserProfile', array('sfPropelUuidBehavior'));

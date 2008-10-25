@@ -7,6 +7,7 @@ propel:
     username:    varchar(30)
     first_name:  varchar(20)
     last_name:   varchar(20)
+    gender:      { type: integer, required: true, default: 0 }
     culture:     varchar(8)
 
 
@@ -33,7 +34,6 @@ propel:
     id:
     profile_id:         { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
     uuid:               { type: varchar(36), required: true }
-    gender:             { type: integer    , required: true }
 
 
   avatarpiece:

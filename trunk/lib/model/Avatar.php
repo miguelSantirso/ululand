@@ -28,15 +28,6 @@ class Avatar extends BaseAvatar
 		$this->getsfGuardUserProfile();		
 	}
 	
-	public function setGender($value)
-	{
-		parent::setGender(AvatarPeer::getGenderFromValue($value));
-	}
-
-	public function getGender()
-	{
-		return AvatarPeer::getGenderFromIndex(parent::getGender());
-	}
 
 }
 sfPropelBehavior::add('Avatar', array('sfPropelUuidBehavior'));

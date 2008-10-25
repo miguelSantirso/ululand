@@ -19,7 +19,7 @@ CREATE TABLE `sf_ratings`
 	`rating` INTEGER default 1 NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `ratable_index`(`ratable_model`, `ratable_id`, `user_id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

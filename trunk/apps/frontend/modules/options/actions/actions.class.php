@@ -54,6 +54,7 @@ class optionsActions extends sfActions
 			$sf_guard_user_profile->setUsername($this->getRequestParameter('username'));
 			$sf_guard_user_profile->setFirstName($this->getRequestParameter('first_name'));
 			$sf_guard_user_profile->setLastName($this->getRequestParameter('last_name'));
+			$sf_guard_user_profile->setGender($this->getRequestParameter('gender'));
 
 			$sf_guard_user_profile->save();
 				

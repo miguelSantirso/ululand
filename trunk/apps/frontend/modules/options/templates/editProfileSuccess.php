@@ -37,10 +37,18 @@
 						)) ?>
 					<p class="noSpace"><small class=''><?php echo __('Your real last name (optional).'); ?></small></p>
 					<br/>
+					<p class="noSpace"><?php echo label_for('gender', __('Gender:')); ?></p>
+					<?php echo select_tag('gender', options_for_select(array(
+						'' => '',
+						'male' => 'Male',
+						'female' => 'Female',
+						), isset($sf_guard_user_profile) && !is_null($sf_guard_user_profile->getGender()) ? $sf_guard_user_profile->getGender() : '')); ?>
+					<br/>
+					<br/>
 				</div>
 				
 				
-				<div id="developerDescription">
+				<div id="playerDescription">
 					<h3 class="header"><?php echo __('Description'); ?></h3>
 					<p class="noSpace"><?php echo sprintf(__('Write whatever you want. Accepts %s.'), link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax')); ?></p>
 					<?php echo object_textarea_tag($playerProfile, 'getDescription', array (

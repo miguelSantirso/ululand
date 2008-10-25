@@ -293,6 +293,7 @@ abstract class BasenahoWikiContentPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
+			$affectedRows += nahoWikiContentPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(nahoWikiContentPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -323,7 +324,7 @@ abstract class BasenahoWikiContentPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			
+			$affectedRows += nahoWikiContentPeer::doOnDeleteCascade($criteria, $con);
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -331,6 +332,25 @@ abstract class BasenahoWikiContentPeer {
 			$con->rollback();
 			throw $e;
 		}
+	}
+
+	
+	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
+	{
+				$affectedRows = 0;
+
+				$objects = nahoWikiContentPeer::doSelect($criteria, $con);
+		foreach($objects as $obj) {
+
+
+			include_once 'plugins/nahoWikiPlugin/lib/model/nahoWikiRevision.php';
+
+						$c = new Criteria();
+			
+			$c->add(nahoWikiRevisionPeer::CONTENT_ID, $obj->getId());
+			$affectedRows += nahoWikiRevisionPeer::doDelete($c, $con);
+		}
+		return $affectedRows;
 	}
 
 	

@@ -17,7 +17,7 @@
 			<p class="noSpace"><?php echo label_for('name', __('Release Name:')); ?></p>
 			<?php echo form_error("name"); ?>
 			<?php echo object_input_tag($gameRelease, 'getName', array (
-			  'size' => 15, 'maxlength' => 15
+			  'style' => 'width: 100%;', 'maxlength' => 15
 			)) ?>
 			<p class="noSpace"><small><?php echo __('A unique identifier for this version. Examples: "0.35" or "BETA 1"'); ?></small></p>
 			<br/>
@@ -34,7 +34,7 @@
 			<p class="noSpace"><?php echo label_for('description', __('Release Notes:')); ?></p>
 			<?php echo form_error('description'); ?>
 			<?php echo object_textarea_tag($gameRelease, 'getDescription', array (
-			  'size' => '50x2',
+			  'style' => 'width: 100%', 'rows' => '2',
 			)) ?>
 			<p class="noSpace"><small><?php echo sprintf(__('Notes for this game release. Accepts %s.'), link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax')); ?></small></p>
 			<br/>
@@ -48,7 +48,7 @@
 			<p class="noSpace"><?php echo label_for('password', __('Password')); ?>:</p>
 			<?php echo form_error("password"); ?>
 			<?php echo object_input_tag($gameRelease, 'getPassword', array (
-			  'size' => 13, 'maxlength' => 13
+			  'width' => '100%', 'maxlength' => 13
 			)) ?>
 			<p class="noSpace"><small><?php echo __('Anyone will gain access with this password, even if not registered in ululand.'); ?></small></p>
 			<br/>
