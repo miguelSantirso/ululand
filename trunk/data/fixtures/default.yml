@@ -79,6 +79,14 @@ Widget:
     url:              partEditor.swf
     width:            650
     height:           400
+  avatarPieceEditor:
+    privileges_level: 2
+    name:             avatarRepresentator
+    description:      Widget que representa visualmente los avatares
+    url:              avatarRepresentator.swf
+    width:            150
+    height:           250
+
 
 # COLLABORATION OFFERS
 ######################
