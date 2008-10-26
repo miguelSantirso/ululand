@@ -28,10 +28,6 @@ PlayerProfile:
     description: Hola
     total_credits: 5000
 
-Avatar:
-  avatarMiguel:
-    profile_id: miguelSantirso
-
 
 AvatarPiece:
   cabezaMiguel:
@@ -68,6 +64,15 @@ AvatarPiece:
     type: leg
 
 
+Avatar:
+  avatarMiguel:
+    profile_id: miguelSantirso
+    head_id: cabezaMiguel
+    body_id: cuerpoMiguel
+    arms_id: brazoMiguel
+    legs_id: piernaMiguel
+
+
 # WIDGETS
 #########
 
@@ -79,13 +84,20 @@ Widget:
     url:              partEditor.swf
     width:            650
     height:           400
-  avatarPieceEditor:
+  avatarRepresentator:
     privileges_level: 2
     name:             avatarRepresentator
     description:      Widget que representa visualmente los avatares
     url:              avatarRepresentator.swf
     width:            150
     height:           250
+  ululandChat:
+    privileges_level: 2
+    name:             ululandChat
+    description:      Parte cliente del chat de ululand
+    url:              ululandChat.swf
+    width:            200
+    height:           400
 
 
 # COLLABORATION OFFERS

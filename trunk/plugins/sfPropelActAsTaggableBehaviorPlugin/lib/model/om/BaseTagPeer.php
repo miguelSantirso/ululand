@@ -308,6 +308,7 @@ abstract class BaseTagPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
+			$affectedRows += TagPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(TagPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -338,7 +339,7 @@ abstract class BaseTagPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			
+			$affectedRows += TagPeer::doOnDeleteCascade($criteria, $con);
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -346,6 +347,25 @@ abstract class BaseTagPeer {
 			$con->rollback();
 			throw $e;
 		}
+	}
+
+	
+	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
+	{
+				$affectedRows = 0;
+
+				$objects = TagPeer::doSelect($criteria, $con);
+		foreach($objects as $obj) {
+
+
+			include_once 'plugins/sfPropelActAsTaggableBehaviorPlugin/lib/model/Tagging.php';
+
+						$c = new Criteria();
+			
+			$c->add(TaggingPeer::TAG_ID, $obj->getID());
+			$affectedRows += TaggingPeer::doDelete($c, $con);
+		}
+		return $affectedRows;
 	}
 
 	

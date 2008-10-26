@@ -26,7 +26,7 @@ CREATE TABLE `sf_guard_user_profile`
 		FOREIGN KEY (`user_id`)
 		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- developer_profile
@@ -48,7 +48,7 @@ CREATE TABLE `developer_profile`
 		FOREIGN KEY (`user_profile_id`)
 		REFERENCES `sf_guard_user_profile` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- player_profile
@@ -70,7 +70,7 @@ CREATE TABLE `player_profile`
 		FOREIGN KEY (`user_profile_id`)
 		REFERENCES `sf_guard_user_profile` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- avatar
@@ -114,7 +114,7 @@ CREATE TABLE `avatar`
 		FOREIGN KEY (`legs_id`)
 		REFERENCES `avatarpiece` (`id`)
 		ON DELETE SET NULL
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- avatarpiece
@@ -147,7 +147,7 @@ CREATE TABLE `avatarpiece`
 		FOREIGN KEY (`owner_id`)
 		REFERENCES `sf_guard_user_profile` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- grupo
@@ -165,7 +165,7 @@ CREATE TABLE `grupo`
 	`thumbnail_path` VARCHAR(255),
 	`created_at` DATETIME,
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- player_profile_grupo
@@ -193,7 +193,7 @@ CREATE TABLE `player_profile_grupo`
 		FOREIGN KEY (`grupo_id`)
 		REFERENCES `grupo` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- friendship
@@ -219,7 +219,7 @@ CREATE TABLE `friendship`
 		FOREIGN KEY (`player_profile_id_b`)
 		REFERENCES `player_profile` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- collaboration_offer
@@ -243,7 +243,7 @@ CREATE TABLE `collaboration_offer`
 		FOREIGN KEY (`created_by`)
 		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- code_piece
@@ -269,7 +269,7 @@ CREATE TABLE `code_piece`
 		FOREIGN KEY (`created_by`)
 		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- game
@@ -303,7 +303,7 @@ CREATE TABLE `game`
 		FOREIGN KEY (`active_release_id`)
 		REFERENCES `gamerelease` (`id`)
 		ON DELETE SET NULL
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- gamerelease
@@ -342,7 +342,7 @@ CREATE TABLE `gamerelease`
 		FOREIGN KEY (`created_by`)
 		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- gamereleasestatus
@@ -357,7 +357,7 @@ CREATE TABLE `gamereleasestatus`
 	`name` VARCHAR(80)  NOT NULL,
 	`description` TEXT,
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- widget
@@ -378,7 +378,7 @@ CREATE TABLE `widget`
 	`height` INTEGER  NOT NULL,
 	`bgcolor` VARCHAR(8),
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- apisession
@@ -396,7 +396,7 @@ CREATE TABLE `apisession`
 	`privileges_level` INTEGER  NOT NULL,
 	`created_at` DATETIME,
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- gamestat
@@ -423,7 +423,7 @@ CREATE TABLE `gamestat`
 		FOREIGN KEY (`gamestattype_id`)
 		REFERENCES `gamestattype` (`id`)
 		ON DELETE SET NULL
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- gamestattype
@@ -438,7 +438,7 @@ CREATE TABLE `gamestattype`
 	`name` VARCHAR(255)  NOT NULL,
 	`description` TEXT,
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- gamestat_player_profile
@@ -465,7 +465,7 @@ CREATE TABLE `gamestat_player_profile`
 		FOREIGN KEY (`player_profile_id`)
 		REFERENCES `player_profile` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- competition
@@ -496,7 +496,7 @@ CREATE TABLE `competition`
 		FOREIGN KEY (`created_by`)
 		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- competition_player_profile
@@ -524,7 +524,7 @@ CREATE TABLE `competition_player_profile`
 		FOREIGN KEY (`player_profile_id`)
 		REFERENCES `player_profile` (`id`)
 		ON DELETE CASCADE
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- chat_message
@@ -540,7 +540,7 @@ CREATE TABLE `chat_message`
 	`created_at` DATETIME,
 	`chat_message` TEXT  NOT NULL,
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- chat_useronline
@@ -557,7 +557,7 @@ CREATE TABLE `chat_useronline`
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`)
-)Type=InnoDB;
+)Type=MyISAM;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

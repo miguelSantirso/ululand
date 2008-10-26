@@ -293,6 +293,7 @@ abstract class BasesfGuardGroupPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
+			$affectedRows += sfGuardGroupPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(sfGuardGroupPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -323,7 +324,7 @@ abstract class BasesfGuardGroupPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			
+			$affectedRows += sfGuardGroupPeer::doOnDeleteCascade($criteria, $con);
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -331,6 +332,32 @@ abstract class BasesfGuardGroupPeer {
 			$con->rollback();
 			throw $e;
 		}
+	}
+
+	
+	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
+	{
+				$affectedRows = 0;
+
+				$objects = sfGuardGroupPeer::doSelect($criteria, $con);
+		foreach($objects as $obj) {
+
+
+			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardGroupPermission.php';
+
+						$c = new Criteria();
+			
+			$c->add(sfGuardGroupPermissionPeer::GROUP_ID, $obj->getId());
+			$affectedRows += sfGuardGroupPermissionPeer::doDelete($c, $con);
+
+			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardUserGroup.php';
+
+						$c = new Criteria();
+			
+			$c->add(sfGuardUserGroupPeer::GROUP_ID, $obj->getId());
+			$affectedRows += sfGuardUserGroupPeer::doDelete($c, $con);
+		}
+		return $affectedRows;
 	}
 
 	

@@ -34,6 +34,17 @@ function insertAtCursor(myField, myValue)
 	}
 }
 
+// Comportamiento de la barra de chat
+/////////////////////////////////////
+
+function toggleChat()
+{
+	chatWindow = $('chatClient');
+	
+	Element.toggleClassName(chatWindow, 'chatClientUp');
+}
+
+
 // Comportamiento del botón "+", en los enlaces extensibles
 //////////////////////////////////////////////////////////
 

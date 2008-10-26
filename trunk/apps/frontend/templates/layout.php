@@ -45,7 +45,9 @@
 		<div style="clear:both;"></div>
 	</div>
 	
+	<?php include_partial('global/chatBar') ?>
+	
 	<?php include_partial('global/footer'); ?>
-
+	
 </body>
 </html>

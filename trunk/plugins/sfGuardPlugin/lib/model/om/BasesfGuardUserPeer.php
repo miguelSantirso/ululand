@@ -323,6 +323,7 @@ abstract class BasesfGuardUserPeer {
 		}
 		$affectedRows = 0; 		try {
 									$con->begin();
+			$affectedRows += sfGuardUserPeer::doOnDeleteCascade(new Criteria(), $con);
 			$affectedRows += BasePeer::doDeleteAll(sfGuardUserPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -353,7 +354,7 @@ abstract class BasesfGuardUserPeer {
 		$affectedRows = 0; 
 		try {
 									$con->begin();
-			
+			$affectedRows += sfGuardUserPeer::doOnDeleteCascade($criteria, $con);
 			$affectedRows += BasePeer::doDelete($criteria, $con);
 			$con->commit();
 			return $affectedRows;
@@ -361,6 +362,81 @@ abstract class BasesfGuardUserPeer {
 			$con->rollback();
 			throw $e;
 		}
+	}
+
+	
+	protected static function doOnDeleteCascade(Criteria $criteria, Connection $con)
+	{
+				$affectedRows = 0;
+
+				$objects = sfGuardUserPeer::doSelect($criteria, $con);
+		foreach($objects as $obj) {
+
+
+			include_once 'lib/model/sfGuardUserProfile.php';
+
+						$c = new Criteria();
+			
+			$c->add(sfGuardUserProfilePeer::USER_ID, $obj->getId());
+			$affectedRows += sfGuardUserProfilePeer::doDelete($c, $con);
+
+			include_once 'lib/model/CollaborationOffer.php';
+
+						$c = new Criteria();
+			
+			$c->add(CollaborationOfferPeer::CREATED_BY, $obj->getId());
+			$affectedRows += CollaborationOfferPeer::doDelete($c, $con);
+
+			include_once 'lib/model/CodePiece.php';
+
+						$c = new Criteria();
+			
+			$c->add(CodePiecePeer::CREATED_BY, $obj->getId());
+			$affectedRows += CodePiecePeer::doDelete($c, $con);
+
+			include_once 'lib/model/Game.php';
+
+						$c = new Criteria();
+			
+			$c->add(GamePeer::CREATED_BY, $obj->getId());
+			$affectedRows += GamePeer::doDelete($c, $con);
+
+			include_once 'lib/model/GameRelease.php';
+
+						$c = new Criteria();
+			
+			$c->add(GameReleasePeer::CREATED_BY, $obj->getId());
+			$affectedRows += GameReleasePeer::doDelete($c, $con);
+
+			include_once 'lib/model/Competition.php';
+
+						$c = new Criteria();
+			
+			$c->add(CompetitionPeer::CREATED_BY, $obj->getId());
+			$affectedRows += CompetitionPeer::doDelete($c, $con);
+
+			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardUserPermission.php';
+
+						$c = new Criteria();
+			
+			$c->add(sfGuardUserPermissionPeer::USER_ID, $obj->getId());
+			$affectedRows += sfGuardUserPermissionPeer::doDelete($c, $con);
+
+			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardUserGroup.php';
+
+						$c = new Criteria();
+			
+			$c->add(sfGuardUserGroupPeer::USER_ID, $obj->getId());
+			$affectedRows += sfGuardUserGroupPeer::doDelete($c, $con);
+
+			include_once 'plugins/sfGuardPlugin/lib/model/sfGuardRememberKey.php';
+
+						$c = new Criteria();
+			
+			$c->add(sfGuardRememberKeyPeer::USER_ID, $obj->getId());
+			$affectedRows += sfGuardRememberKeyPeer::doDelete($c, $con);
+		}
+		return $affectedRows;
 	}
 
 	
