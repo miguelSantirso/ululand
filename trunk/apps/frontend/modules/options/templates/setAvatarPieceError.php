@@ -1,0 +1,1 @@
+<p><?php __('There has been an error while updating your avatar. Please, try again.') ?></p>

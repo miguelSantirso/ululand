@@ -34,11 +34,9 @@ class ChatUserOnlineMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addColumn('USER_ID', 'UserId', 'string', CreoleTypes::VARCHAR, true, 37);
+		$tMap->addColumn('USER_UUID', 'UserUuid', 'string', CreoleTypes::VARCHAR, true, 36);
 
 		$tMap->addColumn('USER_NAME', 'UserName', 'string', CreoleTypes::VARCHAR, true, 64);
-
-		$tMap->addColumn('AVATAR_API_KEY', 'AvatarApiKey', 'string', CreoleTypes::VARCHAR, true, 13);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

@@ -46,6 +46,7 @@ class WidgetPeer extends BaseWidgetPeer
 	 */
 	protected static function generateRandomString($length)
 	{
+		$string = "";
 	    $chars = "abcdefghijklmnopqrstuvwxyz0123456789"; 
 	    srand((double)microtime()*1000000); 
 	    $i = 0; 
@@ -56,7 +57,7 @@ class WidgetPeer extends BaseWidgetPeer
 	        $tmp = substr($chars, $num, 1); 
 	        $string = $string . $tmp; 
 	        $i++; 
-	    } 
+	    }
 	
 	    return $string;
 	}

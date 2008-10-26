@@ -52,7 +52,7 @@
 		/**
 		 * Función que inicia una petición al servidor para averiguar los datos de un jugador, dado su uuid.
 		 * 
-		 * @example	<code>ApiHelper.getAvatar(userUuid);</code>
+		 * @example	<code>ApiHelper.getPlayer(userUuid);</code>
 		 * @param	userUuid Uuid del avatar
 		 */
 		public static function getPlayer(userUuid:String):void
@@ -61,10 +61,28 @@
 			
 			if (userUuid == "")
 			{
-				throw new Error("The userUuid passed as parameter is empty to ApiHelper.getPlayer function is empty");
+				throw new Error("The userUuid passed as parameter to ApiHelper.getPlayer function is empty");
 			}
 			
 			makeRequest("player/get", "userUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonPlayerName);
+		}
+		
+		/**
+		 * Función que inicia una petición al servidor para averiguar los datos del avatar de cierto usuario identificado por su uuid
+		 * 
+		 * @example	<code>ApiHelper.getAvatar(userUuid);</code>
+		 * @param	userUuid Uuid del avatar
+		 */
+		public static function getAvatarForPlayer(userUuid:String):void
+		{
+			trace("avatar/getByUserUuid(" + userUuid + ") called.");
+			
+			if (userUuid == "")
+			{
+				throw new Error("The userUuid passed as parameter to ApiHelper.getAvatarForPlayer function is empty");
+			}
+			
+			makeRequest("avatar/getByUserUuid", "userUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonAvatar);
 		}
 		
 		/**
@@ -204,6 +222,14 @@
 		 * Callback que procesa una respuesta del servidor
 		 * @param	e
 		 */
+		protected static function decodeJsonAvatar(e:Event):void
+		{
+			genericDecode(e, "Avatar");
+		}
+		/**
+		 * Callback que procesa una respuesta del servidor
+		 * @param	e
+		 */
 		protected static function decodeJsonAvatarPiece(e:Event):void
 		{
 			genericDecode(e, "AvatarPiece");
@@ -312,7 +338,7 @@
 		 */
 		public static function getApiSessionId():String
 		{
-			//return "jq0suf4ymu2g";
+			//return "3lxgt65fl7oq";
 			return stage_.root.loaderInfo.parameters.apiSessionId;
 		}
 		

@@ -22,7 +22,7 @@ class ChatMessagePeer extends BaseChatMessagePeer
 	{
 		$c = new Criteria();
 		$c->add(ChatMessagePeer::CREATED_AT, $last_time, Criteria::GREATER_EQUAL);
-		$c->add(ChatMessagePeer::USER_ID, $user_id, Criteria::NOT_EQUAL);
+		$c->add(ChatMessagePeer::USER_UUID, $user_id, Criteria::NOT_EQUAL);
 		return ChatMessagePeer::doSelect($c);
 	}
 }

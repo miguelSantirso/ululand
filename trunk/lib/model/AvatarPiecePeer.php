@@ -21,4 +21,5 @@ class AvatarPiecePeer extends BaseAvatarPiecePeer
 		
 		return AvatarPiecePeer::doSelectOne($c);
 	}
+	
 }

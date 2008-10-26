@@ -376,6 +376,26 @@ div.contentColumn.quarter
 	width: 240px;
 }
 
+/* avatar pieces receiver */
+
+div#avatarPiecesReceiver { text-align: center; margin: 10px 10px 10px 25px; background: #eee; border: 1px solid #ccc;
+							height: 250px; width: 150px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding-top: 5px; }
+	div#avatarPiecesReceiver.receiverActive { border: 696969; background: #fafafa; }
+div#avatarPiecesReceiver + p:first-line { font-size: large; font-weight: bold; }
+
+
+/* avatar pieces catalogue list */
+
+ul#avatarPiecesCatalogue { list-style-type: none; padding: 0; }
+	ul#avatarPiecesCatalogue li { float: left; margin: 5px; padding: 5px; text-align: center; width: 200px; }
+	ul#avatarPiecesCatalogue li.inUse { background: yellow; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+		ul#avatarPiecesCatalogue li span.pieceImage { width: 80px; height: 80px; background: #fafafa; padding: 5px; display: block;
+													  margin-left: auto; margin-right: auto; border: 1px solid #ddd; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+		ul#avatarPiecesCatalogue li span.pieceName { display: block; font-size: large; padding-top: 5px; }
+		ul#avatarPiecesCatalogue li span.pieceDescription { display: block; font-size: small; margin-top: 2px; color: #696969; }
+	ul#avatarPiecesCatalogue li span.pieceImage:hover { border-color: #0099cc; background: #fff; }
+	ul#avatarPiecesCatalogue li span.pieceImage { cursor: move; }
+															
 
 /* styled lists */
 

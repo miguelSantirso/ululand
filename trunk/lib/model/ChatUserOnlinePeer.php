@@ -19,10 +19,10 @@ class ChatUserOnlinePeer extends BaseChatUserOnlinePeer
 		return $activeUsers;
 	}
 	
-	public static function retrieveByUserId($userId)
+	public static function retrieveByUserUuid($userUuid)
 	{
 		$c = new Criteria();
-		$c->add(ChatUserOnlinePeer::USER_ID, $userId);
+		$c->add(ChatUserOnlinePeer::USER_UUID, $userUuid);
 		return ChatUserOnlinePeer::doSelectOne($c);
 	}
 

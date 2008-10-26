@@ -110,7 +110,7 @@ package
 				case "Player":
 					setAvatarInfo(data.userUuid, data.Username, 0);
 					break;
-				case "PiecesByOwner":
+				case "Avatar":
 					startAssetsLoad(data.userUuid, data.pieces);
 					break;
 			}
@@ -151,8 +151,8 @@ package
 		 */
 		protected function requestInfoToServer(userUuid:String):void
 		{
-			ApiHelper.getPiecesByOwner(userUuid);
-			ApiHelper.getPiecesByOwner(userUuid, "", true);
+			ApiHelper.getPlayer(userUuid);
+			ApiHelper.getAvatarForPlayer(userUuid);
 		}
 		
 		/**

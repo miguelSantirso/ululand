@@ -12,23 +12,15 @@ require_once dirname(__FILE__).'/../../../lib/apiCommonActions.class.php';
  */
 class chatActions extends apiCommonActions
 {
-	/**
-	 * Executes index action
-	 *
-	 */
-	public function executeIndex()
-	{
-		$this->forward('default', 'module');
-	}
 
 	/**
-	 * Inicia una sesión de chat para cierto usuario
+	 * Inicia una sesiÃ³n de chat para cierto usuario
 	 *
 	 * Requiere como parÃ¡metros:
-	 *  - 'avatarApiKey' -- ApiKey del avatar que se conecta al chat
+	 *  - 'userUuid' -- Uuid del usuario que se conecta al chat
 	 * 
 	 * Retorna un array con el siguiente formato:
-	 *  array('uniqid' => <identificador único del usuario en el chat>,
+	 *  array('uniqid' => <identificador Ãºnico del usuario en el chat>,
 	 *        'username' => <nombre del usuario en el chat>)
 	 * 
 	 */
@@ -43,31 +35,33 @@ class chatActions extends apiCommonActions
 			$this->forward('output', 'error');
 		}
 
-		// Comprobar que se nos han pasado todos los parï¿½metros necesarios
-		$this->checkRequiredParameters( array("avatarApiKey") );
+		// Comprobar que se nos han pasado todos los parÃ¡metros necesarios
+		$this->checkRequiredParameters( array("userUuid") );
 		// ---------------------
 		// FIRST ACCESS
 		// return its unique id
 		// ---------------------
-		$uid = md5(uniqid(microtime(), 1)) . getmypid();
-		$username = AvatarPeer::retrieveByApiKey($this->getRequestParameter('avatarApiKey'))->getName();
+		//$uid = md5(uniqid(microtime(), 1)) . getmypid();
+		$user = sfGuardUserProfilePeer::retrieveByUuid($this->getRequestParameter('userUuid'));
+		$uuid = $user->getUuid();
+		$username = $user->getUsername();
+		
 		$newChatUser = new ChatUserOnline();
-		$newChatUser->setUserId($uid);
-		$newChatUser->setAvatarApiKey($this->getRequestParameter('avatarApiKey'));
+		$newChatUser->setUserUuid($uuid);
 		$newChatUser->setUserName($username);
 		$newChatUser->save();
 		
-		$this->returnApi(array('uniqid' => $uid, 'username' => $username));
+		$this->returnApi(array('uniqid' => $uuid, 'username' => $username));
 	}
 	
 	/**
-	 * Recibe y almacena un nuevo mensaje procedente de algún usuario del chat
+	 * Recibe y almacena un nuevo mensaje procedente de algÃºn usuario del chat
 	 *
-	 * Requiere como parámetros:
-	 *  - 'uniqid' -- Identificador único del usuario en el sistema de chat. Este id es el que se retorna en la acción 'login'
+	 * Requiere como parï¿½metros:
+	 *  - 'uniqid' -- Identificador Ãºnico del usuario en el sistema de chat. Este id es el que se retorna en la acciÃ³n 'login'
 	 *  - 'message' -- Mensaje enviado por el usuario
 	 * 
-	 * No retorna nada útil
+	 * No retorna nada Ãºtil
 	 */
 	public function executeWriteMessage()
 	{	
@@ -85,7 +79,7 @@ class chatActions extends apiCommonActions
 		}
 		
 		$newMessage = new ChatMessage();
-		$newMessage->setUserId($uniqid);
+		$newMessage->setUserUuid($uniqid);
 		$newMessage->setChatMessage($message);
 		$newMessage->save();
 		
@@ -93,10 +87,10 @@ class chatActions extends apiCommonActions
 	}
 	
 	/**
-	 * Retorna los últimos mensajes para cierto usuario
+	 * Retorna los Ãºltimos mensajes para cierto usuario
 	 *
 	 * Requiere como parÃ¡metros:
-	 *  - 'uniqid' -- Identificador único del usuario en el sistema de chat. Este id es el que se retorna en la acción 'login'
+	 *  - 'uniqid' -- Identificador Ãºnico del usuario en el sistema de chat. Este id es el que se retorna en la acciï¿½n 'login'
 	 * 
 	 * Retorna un array con el siguiente formato:
 	 *  array(array('chat_message' => <mensaje>, 'chat_data' => <fecha del mensaje>, '<user_name>' => <nombre del usuario>)[,...])
@@ -104,12 +98,12 @@ class chatActions extends apiCommonActions
 	 */
 	public function executeReadMessages()
 	{
-		// Comprobar que se nos han pasado todos los parámetros necesarios
+		// Comprobar que se nos han pasado todos los parï¿½metros necesarios
 		$this->checkRequiredParameters( array("uniqid") );
 		$uniqid = $this->getRequestParameter('uniqid');
 		
-		// Obtener el usuario que envía el mensaje
-		$user = ChatUserOnlinePeer::retrieveByUserId($uniqid);
+		// Obtener el usuario que envÃ­a el mensaje
+		$user = ChatUserOnlinePeer::retrieveByUserUuid($uniqid);
 		
 		$lastTime = $user->getUpdatedAt();
 		$user->setUpdatedAt(time());
@@ -133,7 +127,7 @@ class chatActions extends apiCommonActions
 		{
 			$messagesArray[$i]["message_body"] = $message->getChatMessage();
 			$messagesArray[$i]["message_date"] = $message->getCreatedAt();
-			$messagesArray[$i]["user_name"]    = ChatUserOnlinePeer::retrieveByUserId( $message->getUserId() )->getUserName();//ChatUserOnlinePeer::retrieveByUserId( $message->getUserId() )->getUserName();
+			$messagesArray[$i]["user_name"]    = ChatUserOnlinePeer::retrieveByUserUuid( $message->getUserUuid() )->getUserName();//ChatUserOnlinePeer::retrieveByUserId( $message->getUserId() )->getUserName();
 			
 			$i++;
 		}
@@ -143,7 +137,7 @@ class chatActions extends apiCommonActions
 		{
 			array_push($usersArray, array('user_name' => $user->getUserName(), 
 							'last_time' => $user->getUpdatedAt(), 
-							'user_id' => $user->getUserId() ));
+							'user_id' => $user->getUserUuid() ));
 		}
 		
 		$responseArray = array('messages' => $messagesArray, 'users' => $usersArray);

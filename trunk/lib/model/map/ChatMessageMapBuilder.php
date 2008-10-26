@@ -34,7 +34,7 @@ class ChatMessageMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
-		$tMap->addColumn('USER_ID', 'UserId', 'string', CreoleTypes::VARCHAR, true, 37);
+		$tMap->addColumn('USER_UUID', 'UserUuid', 'string', CreoleTypes::VARCHAR, true, 36);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

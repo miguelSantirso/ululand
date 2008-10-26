@@ -36,6 +36,14 @@ class AvatarMapBuilder {
 
 		$tMap->addForeignKey('PROFILE_ID', 'ProfileId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
 
+		$tMap->addForeignKey('HEAD_ID', 'HeadId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+
+		$tMap->addForeignKey('BODY_ID', 'BodyId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+
+		$tMap->addForeignKey('ARMS_ID', 'ArmsId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+
+		$tMap->addForeignKey('LEGS_ID', 'LegsId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+
 		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
 
 	} 

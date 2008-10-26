@@ -19,6 +19,22 @@
 		return image_tag($imageUrl, $options);
 	}
 	
+		/**
+	 * Retorna el c贸digo html de la imagen de una pieza de avatar
+	 *
+	 * @param AvatarPiece $avatarPiece Pieza de avatar de la que se desea obtener su imagen
+	 * @param Array $options opciones que se pasar谩n a la funci贸n image_tag de symfony
+	 * @return string c贸digo html de una imagen de una pieza de avatar
+	 */
+	function avatarPiece_tag($avatarPiece, $options = array())
+	{
+		$sf_upload_dir = sfConfig::get('sf_upload_dir_name');
+		$app_dir_AvatarPiece = sfConfig::get('app_dir_avatarPiece');
+		$imageUrl = "/{$sf_upload_dir}/{$app_dir_AvatarPiece}/{$avatarPiece->getUrl()}";
+		
+		return image_tag($imageUrl, $options);
+	}
+	
 	/**
 	 * Retorna el c贸digo html de una imagen del thumbnail de un grupo
 	 *
@@ -33,11 +49,11 @@
 	}
 	
 	/**
-	 * Retorna el c贸digo html de una imagen del thumbnail de una competici髇
+	 * Retorna el c贸digo html de una imagen del thumbnail de una competici锟絥
 	 *
-	 * @param Competition $competition Competici髇 de la que se desea imprimir su thumbnail
+	 * @param Competition $competition Competici锟絥 de la que se desea imprimir su thumbnail
 	 * @param Array $options opciones que se pasar谩n a la funci贸n image_tag de symfony
-	 * @return string c贸digo html de una imagen del thumbnail de una competici髇
+	 * @return string c贸digo html de una imagen del thumbnail de una competici锟絥
 	 */
 	function competitionThumbnail_tag($competition, $options = array())
 	{

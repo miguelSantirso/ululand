@@ -149,7 +149,51 @@ class optionsActions extends sfActions
 
 	public function executeEditAvatar()
 	{
-		$this->playerProfile = $this->getUser()->getProfile()->getPlayerProfile(true);	
+		$this->userProfile   = $this->getUser()->getProfile();
+		$this->playerProfile = $this->userProfile->getPlayerProfile(true);	
+		
+		$c = new Criteria();
+		$c->add(AvatarPiecePeer::IN_USE, true);
+		$this->avatarPieces = $this->userProfile->getAvatarPiecesRelatedByOwnerId($c);
+		
+		$this->avatarPiecesCatalogue = $this->userProfile->getAvatarPiecesRelatedByOwnerId();
+	}
+	
+	public function executeSetAvatarPiece()
+	{
+		if(!$this->getRequestParameter('id')) { $this->owner = $this->getUser()->getProfile(); return sfView::SUCCESS; } 
+		
+		$tmp = split('_', $this->getRequestParameter('id', ''));
+  		$avatarPieceId = $tmp[1];
+  		
+  		$avatarPiece = AvatarPiecePeer::retrieveByPK($avatarPieceId);
+  		if(is_null($avatarPiece)) return sfView::ERROR;
+  		
+  		$owner = $avatarPiece->getsfGuardUserProfileRelatedByOwnerId();
+  		if(is_null($owner)) return sfView::ERROR;
+  		
+  		$avatars = $owner->getAvatars();
+  		$avatar = $avatars[0];
+  		
+  		switch($avatarPiece->getType())
+  		{
+  			case 'head':
+  				$avatar->setHeadId($avatarPieceId);
+  				break;
+  			case 'body':
+  				$avatar->setBodyId($avatarPieceId);
+  				break;
+  			case 'arm':
+  				$avatar->setArmsId($avatarPieceId);
+  				break;
+  			case 'leg':
+  				$avatar->setLegsId($avatarPieceId);
+  				break;
+  		}
+  		$avatar->save();
+  		
+  		$this->avatar = $avatar;
+  		$this->owner  = $owner;
 	}
 	
 }

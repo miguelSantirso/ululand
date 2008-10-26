@@ -33,6 +33,10 @@ propel:
     _attributes: { phpName: Avatar }
     id:
     profile_id:         { type: integer, foreignTable: sf_guard_user_profile, foreignReference: id, required: true, onDelete: cascade }
+    head_id:            { type: integer, foreignTable: avatarpiece, foreignReference: id, required: false, onDelete: setnull }
+    body_id:            { type: integer, foreignTable: avatarpiece, foreignReference: id, required: false, onDelete: setnull }
+    arms_id:            { type: integer, foreignTable: avatarpiece, foreignReference: id, required: false, onDelete: setnull }
+    legs_id:            { type: integer, foreignTable: avatarpiece, foreignReference: id, required: false, onDelete: setnull }
     uuid:               { type: varchar(36), required: true }
 
 
@@ -216,7 +220,7 @@ propel:
   chat_message:
     _attributes: { phpName: ChatMessage }
     id:
-    user_id:           { type: varchar(37),  required: true }
+    user_uuid:         { type: varchar(36),  required: true }
     created_at:        ~
     chat_message:      { type: longvarchar,  required: true }
 
@@ -224,9 +228,8 @@ propel:
   chat_useronline:
     _attributes: {phpName: ChatUserOnline }
     id:
-    user_id:           { type: varchar(37),  required: true }
+    user_uuid:         { type: varchar(36),  required: true }
     user_name:         { type: varchar(64) , required: true }
-    avatar_api_key:    { type: varchar(13),  required: true }
     created_at:        ~
     updated_at:        ~
     

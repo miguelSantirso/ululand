@@ -26,7 +26,47 @@ PlayerProfile:
   miguelSantirso:
     user_profile_id: miguelSantirso
     description: Hola
-    total_credits: 500
+    total_credits: 5000
+
+Avatar:
+  avatarMiguel:
+    profile_id: miguelSantirso
+
+
+AvatarPiece:
+  cabezaMiguel:
+    name: Cabeza de Miguel
+    description: Mi preciosa cabecita
+    author_id: miguelSantirso
+    owner_id: miguelSantirso
+    url: 1.png
+    price: 550
+    type: head
+  cuerpoMiguel:
+    name: Cuerpo de Miguel
+    description: Mi escultural cuerpazo
+    author_id: miguelSantirso
+    owner_id: miguelSantirso
+    url: 2.png
+    price: 1050
+    type: body
+  brazoMiguel:
+    name: Brazo de Miguel
+    description: Mi ágil brazo
+    author_id: miguelSantirso
+    owner_id: miguelSantirso
+    url: 3.png
+    price: 250
+    type: arm
+  piernaMiguel:
+    name: Pierna de Miguel
+    description: Mi robusta pierna
+    author_id: miguelSantirso
+    owner_id: miguelSantirso
+    url: 4.png
+    price: 350
+    type: leg
+
 
 # WIDGETS
 #########
