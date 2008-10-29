@@ -17,7 +17,7 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 		}
 		else
 		{
-			return __("Registered User")." #".$this->getId();
+			return ulToolkit::__("Registered User")." #".$this->getId();
 		}
 	}
 	

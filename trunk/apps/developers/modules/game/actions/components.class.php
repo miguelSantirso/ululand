@@ -29,7 +29,7 @@ class gameComponents extends sfComponents
 			$c = TagPeer::getTaggedWithCriteria('Game', $tag);
 		}
 		
-		$this->username = isset($this->username) ? $this->username : $this->getRequestParameter('username');
+		$this->username = isset($this->username) ? $this->username : $this->getRequestParameter('filterByUsername');
 		if($this->username)
 		{
 			$c->addJoin(GamePeer::CREATED_BY, sfGuardUserPeer::ID);

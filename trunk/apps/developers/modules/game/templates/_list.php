@@ -7,6 +7,8 @@
 		
 		<ul class="compound">
 			<?php foreach ($games as $game): ?>
+				<?php if(!$game->hasDeveloper()) continue; ?>
+				
 				<li class="">
 					<?php echo linkToGameWithThumbnail($game, 100, array('class' => 'firstRow xLarge')); ?>
 					<div class="lastRow">

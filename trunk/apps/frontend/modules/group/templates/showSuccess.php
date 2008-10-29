@@ -1,4 +1,4 @@
-<h2 id="pageTitle"><?php echo link_to(image_tag("iconOptions.png").$group->getName(), linkToGroup($group)); ?></h2>
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconCommunity.png").$group->getName(), linkToGroup($group)); ?></h2>
 
 <div id = "pageContent" >
 	

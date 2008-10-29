@@ -1,6 +1,6 @@
 <?php use_helper('Partial'); ?>
 
-<h2 id="pageTitle"><?php echo link_to(image_tag("iconOptions.png").__('Games List'), '/game/list'); ?></h2>
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconGames.png").__('Games List'), '/game/list'); ?></h2>
 
 <div id="pageContent">
 

@@ -59,6 +59,11 @@ class Game extends BaseGame
 		return !is_null($this->getActiveRelease());
 	}
 	
+	public function hasDeveloper()
+	{
+		return !is_null($this->getsfGuardUser()->getProfile()->getDeveloperProfile(false));
+	}
+	
 	/**
 	 * Retorna una cadena con todos los tags del objeto separados por comas.
 	 *

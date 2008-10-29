@@ -312,7 +312,7 @@ div.contentRow
 h2#pageTitle { margin: 0.3em 0 0 1em; font-weight: normal; font-size: 40px; }
 	h2#pageTitle a { text-decoration: none; color: #336699; }
 	h2#pageTitle a:hover { color: #00aaff; }
-		h2#pageTitle a img { margin: 0 8px -5px 0; padding: 5px; background: #336699; border: 1px solid #003366; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+		h2#pageTitle img { margin: 0 8px -5px 0; padding: 5px; background: #336699; border: 1px solid #003366; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
 		h2#pageTitle a:hover img { background: #00aaff; border-color: #0099cc; }
 
 /* page content */

@@ -6,7 +6,7 @@ generator:
     list:
       display: [=_thumbnail, =name, created_by, created_at, updated_at, stripped_name, description, privileges_level, active_release_id]
     edit: 
-      display: [name, stripped_name, created_by, created_at, updated_at, description, instructions, privileges_level, thumbnail_path, _thumbnail, active_release_id]
+      display: [name, stripped_name, created_by, created_at, updated_at, description, instructions, privileges_level, thumbnail_path, _thumbnail, _active_release_id]
       fields:
         stripped_name:
           params: disabled=true

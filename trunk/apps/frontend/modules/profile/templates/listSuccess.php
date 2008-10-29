@@ -1,5 +1,7 @@
 <?php use_helper('PagerNavigation', 'Partial'); ?>
 
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconCommunity.png").__('Players List'), '/profile/list'); ?></h2>
+
 <div id="pageContent">
 
 	<div class="contentColumn wide alignLeft">

@@ -1,8 +1,6 @@
 <?php use_helper('Validation', 'I18N') ?>
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Log In"), "@sf_guard_signin"); ?></h2>
-	<p class="subtitle"><?php echo __("Come on in!"); ?></p>
-</div>
+
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconLock.png").__("Log In"), "@sf_guard_signin"); ?></h2>
 
 <div id="pageContent">
 	<div class="contentColumn half alignCenter">
@@ -40,7 +38,8 @@
 			  echo "<p class='center contentBox'>".submit_tag(__('sign in')) ."</p>"
 			  ?>
 		    <div style="clear:both;"></div>
-		  	<p class="center"><?php echo link_to(__('Forgot your password?'), '@sf_guard_password', array('id' => 'sf_guard_auth_forgot_password')) ?></p>
+		  	<!-- <p class="center"><?php echo link_to(__('Forgot your password?'), '@sf_guard_password', array('id' => 'sf_guard_auth_forgot_password')) ?></p> -->
+		  	<p class="center"><?php echo link_to(__('Need an account?'), '@register', array('id' => '')) ?></p>
 		</form>
 	</div>
 </div>
