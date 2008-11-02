@@ -65,6 +65,18 @@ class Game extends BaseGame
 	}
 	
 	/**
+	 * Retorna la anchura en píxeles de la versión activa del juego
+	 *
+	 * @return Anchura en píxeles de la versión activa del juego o null si el juego no tiene versión activa asociada
+	 */
+	public function getWidth()
+	{
+		if(is_null($this->getActiveRelease())) return null;
+		
+		return $this->getActiveRelease()->getWidth();
+	}
+	
+	/**
 	 * Retorna una cadena con todos los tags del objeto separados por comas.
 	 *
 	 * @todo Buscar la forma de que esta función esté en el ámbito del plugin en lugar de en el de cada clase

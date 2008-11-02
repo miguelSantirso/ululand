@@ -12,3 +12,4 @@
 /lib/symfony
 /data/symfony
 /web/sf
+/web/chatHttp

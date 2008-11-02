@@ -7,8 +7,24 @@
 		<div class="contentColumn wide alignLeft">
 			
 			<!-- juego -->
+			<div id="ululandGame-<?php echo $game->getStrippedName(); ?>" class="gameBox alignCenter" style="width: <?php echo $game->getWidth() ?>px">
+				<h3 class="gameBoxTitle"><?php echo linkToGameWithThumbnail($game, 40); ?></h3>
+				<?php include_component('game', 'release', array('gameId' => $game->getId())) ?>
+				<div class="gameBoxDetails">
+					<?php if($game->getInstructions() && $game->getInstructions() != "") : ?>
+					<h4><?php echo __('Instructions') ?>:</h4>
+					<?php echo sfMarkdown::doConvert($game->getInstructions()); ?>
+					<?php endif; ?>
+					<?php if($game->getDescription() && $game->getDescription() != "") : ?>
+					<h4><?php echo __('Description') ?>:</h4>
+					<?php echo sfMarkdown::doConvert($game->getDescription()); ?>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class="clearFloat"></div>
+			<!-- 
 			<div class="contentBox">
-				<div class="alignRight"><?php echo sf_rater($game) ?></div>
+				
 				<h3 class="large header"><?php echo linkToGame($game); ?></h3>
 				<div class="xSmall alignLeft">
 					<p class="noSpace">
@@ -24,24 +40,34 @@
 				</div>
 				<div class="clearFloat"></div>
 				<br/>
-				<div class="center">
+				<div class="alignRight">
 					<?php include_component('game', 'release', array('gameId' => $game->getId())) ?>
 				</div>
 			</div>
-			<!-- descripción -->
+			<div class="clearFloat"></div>
+			
 			<div id="description" class="contentBox light">
 				<h4 class="header"><?php echo __('Instructions') ?>:</h4>
 				<div class="small"><?php echo sfMarkdown::doConvert($game->getInstructions()); ?></div>
 			</div>
-			<!-- detalles del juego -->
-			<div id="gameDetails" class="contentBox bordered light">
+			 -->
+			 
+			<div id="gameDetails" class="contentBox bordered">
 				<div class="contentColumn alignLeft half">
 					<h4 class="header"><?php echo __('Game Details'); ?>:</h4>
+					<?php if($game->hasDeveloper()) : ?>
+					<p class="noSpace small"><?php echo sprintf(__('Submitted by %1$s %2$s ago (%3$s)'),
+									$game->getsfGuardUser()->getProfile(),
+									time_ago_in_words($game->getCreatedAt('U')), 
+									format_date($game->getCreatedAt()) ); ?></p>
+					<?php endif; ?>
 					<p class="noSpace small"><?php echo __('Tags') ?>: <strong><?php echo $game->getLinkedTagsString(); ?></strong></p>
 					<?php if($game->hasBeenRated()) : ?>
 					<p class="noSpace small"><?php echo __('Rating'); ?>: <strong><?php echo sprintf(__('%s out of %s'), $game->getRating(), $game->getMaxRating()); ?></strong></p>
 					<?php endif; ?>
 					<p class="noSpace small"><?php echo sprintf(__('%s gameplays'), '<strong>'.$game->getCounter().'</strong>'); ?></p>
+					<h4 class="header"><?php echo __('Rate this game'); ?>:</h4>
+					<?php echo sf_rater($game) ?>
 				</div>
 				<div class="contentColumn alignLeft">
 					<h4 class="header"><?php echo __('Detailed ratings'); ?></h4>

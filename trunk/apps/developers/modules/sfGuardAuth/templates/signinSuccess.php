@@ -1,8 +1,6 @@
 <?php use_helper('Validation', 'I18N') ?>
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Log In"), "@sf_guard_signin"); ?></h2>
-	<p class="subtitle"><?php echo __("Come on in!"); ?></p>
-</div>
+
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconLock.png").__("Log In"), "@sf_guard_signin"); ?></h2>
 
 <div id="pageContent">
 	<div class="contentColumn half alignCenter">

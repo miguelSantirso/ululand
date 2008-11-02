@@ -1,8 +1,6 @@
 <?php use_helper('Validation', 'I18N') ?>
-<div id="pageHeader">
-	<h2><?php echo link_to(__("Register"), "@register"); ?></h2>
-	<p class="subtitle"><?php echo __("Join us!"); ?></p>
-</div>
+
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconLock.png").__("Register"), "@register"); ?></h2>
 
 <div id="pageContent">
 

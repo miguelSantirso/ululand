@@ -1,9 +1,20 @@
 <?php use_helper('Validation'); ?>
 
-<div class="contentColumn wide normalBox lightColor">
-	<h2 class="alignCenter">Administraci&oacute;n</h2>
-	<p class="alignCenter">La zona de los que mandan.</p>
+<h2 id="pageTitle"><?php echo link_to(image_tag("iconOptions.png").__('Administration'), '/'); ?></h2>
+
+<div class="contentBox">
+	
+	<h3 class="header">Acciones rápidas</h3>
+
+	<?php $linkText = image_tag("iconGames.png") . sprintf('%s<span>%s</span>', __("Add New Game"), __("Add a new game to the system in one step.")); ?>
+	<?php echo link_to($linkText, '/game/addGame', array('class' => 'largeIconButton')); ?>
+	
 </div>
+
+<div class="contentRow">
+<div class="contentBox">
+
+	<h3 class="header">Administración manual</h3>
 
 	<ul>
 		<li><?php echo link_to('Administrar cuentas de usuario', 'sfGuardUser'); ?>
@@ -51,3 +62,6 @@
 			</ul>
 		</li>
 	</ul>
+	
+</div>
+</div>	
