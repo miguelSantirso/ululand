@@ -3,16 +3,30 @@
 require_once(sfConfig::get('sf_plugins_dir').'/sfGuardPlugin/modules/sfGuardAuth/lib/BasesfGuardAuthActions.class.php');
 
 /**
- * sfGuardAuth actions.
+ * Acciones de gestión de usuarios. Extiende a la clase correspondiente del plugin "sfGuardAuth"
  *
- * @package    ululand_dev
+ * @package    ululand
  * @subpackage sfGuardAuth
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class sfGuardAuthActions extends BasesfGuardAuthActions
 {
+	/**
+	 * Acción que extiende la acción signin del plugin "sfGuardAuth". Actualiza el idioma del interfaz del sistema cuando el usuario inicia sesión
+	 *
+	 */
+	public function executeSignin()
+	{	
+		if($this->getUser()->isAuthenticated())
+			$this->getUser()->setCulture($this->getUser()->getProfile()->getCulture());
+			
+		parent::executeSignin();
+	}
 	
+	/**
+	 * Habilita el registro de nuevos usuarios
+	 *
+	 */
 	public function executeRegister()
 	{
 		if ($this->getRequest()->getMethod() != sfRequest::POST)
@@ -73,6 +87,10 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 		}
 	}
 	
+	/**
+	 * Maneja los posibles errores en el proceso de registro
+	 *
+	 */
 	public function handleErrorRegister()
 	{
 		// @todo mensaje no internacionalizado

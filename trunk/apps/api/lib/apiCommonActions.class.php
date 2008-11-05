@@ -1,5 +1,17 @@
 <?php
+/**
+ * Contiene la clase apiCommonActions 
+ * 
+ * @package ululand
+ */
 
+/**
+ * Acciones comunes para toda la aplicación api
+ * 
+ * @package ululand
+ * @author <pncil.com>
+ *
+ */
 class apiCommonActions extends sfActions
 {
 	/**

@@ -6,7 +6,6 @@
  * @package    ululand
  * @subpackage gameRelease
  * @author     Pncil.com <http://pncil.com>
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
  */
 class gameReleaseActions extends sfActions
 {
@@ -19,6 +18,10 @@ class gameReleaseActions extends sfActions
 		$this->forward('release', 'list');
 	}
 
+	/**
+	 * Acción correspondiente a la pantalla de visualización de una versión de un juego
+	 *
+	 */
 	public function executeShow()
 	{
 		$needRedirect = false;
@@ -82,6 +85,10 @@ class gameReleaseActions extends sfActions
 
 	}
 
+	/**
+	 * Acción correspondiente a la pantalla de creación de una versión de un juego
+	 *
+	 */
 	public function executeCreate()
 	{
 		if($this->getRequestParameter('game_id'))
@@ -99,6 +106,10 @@ class gameReleaseActions extends sfActions
 		$this->setTemplate('edit');
 	}
 
+	/**
+	 * Acción correspondiente a la pantalla de edición de una versión de un juego
+	 *
+	 */
 	public function executeEdit()
 	{
 		$needRedirect = false;
@@ -141,6 +152,11 @@ class gameReleaseActions extends sfActions
 		}
 	}
 
+	/**
+	 * Acción que actualiza los datos de una versión de un juego.
+	 * Al terminar redirecciona a la pantalla de visualización de la versión de juego.
+	 *
+	 */
 	public function executeUpdate()
 	{
 		if (!$this->getRequestParameter('gameId'))
@@ -183,6 +199,11 @@ class gameReleaseActions extends sfActions
 		return $this->redirect('gameRelease/show?release_id='.$gameRelease->getId());
 	}
 
+	/**
+	 * Acción que elinina una versión de un juego.
+	 * Al terminar redirecciona a la pantalla del juego relacionado con la versión borrada
+	 *
+	 */
 	public function executeDelete()
 	{
 		$gameRelease = GameReleasePeer::retrieveByPk($this->getRequestParameter('id'));
@@ -196,6 +217,12 @@ class gameReleaseActions extends sfActions
 		return $this->redirect('game/show?id='.$game->getId());
 	}
 
+	/**
+	 * Función privada que actualiza el archivo ejecutable (SWF) de la versión de juego
+	 * El archivo .SWF debe haber sido enviada previamente a través del formulario correspondiente con nombre "game_path"
+	 *
+	 * @param GameRelease $gameRelease Versión de juego cuyo archivo ejecutable se desea modificar
+	 */
 	private function updateGameFile($gameRelease)
 	{
 		$game = $gameRelease->getGame();

@@ -6,7 +6,6 @@
  * @package    ululand
  * @subpackage options
  * @author     Pncil.com <http://pncil.com>
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
  */
 class optionsActions extends sfActions
 {
@@ -19,6 +18,10 @@ class optionsActions extends sfActions
 
 	}
 
+	/**
+	 * Acción correspondiente a la pantalla de edición de un perfil
+	 *
+	 */
 	public function executeEditProfile()
 	{
 		if ($this->getRequest()->getMethod() != sfRequest::POST)
@@ -71,6 +74,10 @@ class optionsActions extends sfActions
 		}
 	}
 
+	/**
+	 * Maneja los posibles errores en el formulario de edición de un perfil 
+	 *
+	 */
 	public function handleErrorEditProfile()
 	{
 		$this->sf_guard_user_profile = $this->getUser()->getProfile();
@@ -81,6 +88,10 @@ class optionsActions extends sfActions
 		return sfView::SUCCESS;		
 	}
 	
+	/**
+	 * Acción correspondiente a la pantalla de edición de la contraseña
+	 *
+	 */
 	public function executeEditPassword()
 	{
 		if ($this->getRequest()->getMethod() != sfRequest::POST)
@@ -103,11 +114,19 @@ class optionsActions extends sfActions
 		}
 	}
 
+	/**
+	 * Maneja los posibles errores producidos en el formulario de edición de contraseña
+	 *
+	 */
 	public function handleErrorEditPassword()
 	{
 		return sfView::SUCCESS;		
 	}
 	
+	/**
+	 * Acción correspondiente a la pantalla de edición de la configuración general
+	 *
+	 */
 	public function executeEditSettings()
 	{
 		if ($this->getRequest()->getMethod() != sfRequest::POST)
@@ -147,6 +166,10 @@ class optionsActions extends sfActions
 		}
 	}
 
+	/**
+	 * Acción correspondiente a la pantalla de edición del avatar
+	 *
+	 */
 	public function executeEditAvatar()
 	{
 		$this->userProfile   = $this->getUser()->getProfile();
@@ -159,6 +182,10 @@ class optionsActions extends sfActions
 		$this->avatarPiecesCatalogue = $this->userProfile->getAvatarPiecesRelatedByOwnerId();
 	}
 	
+	/**
+	 * Acción que pone una pieza de avatar en el avatar del usuario.
+	 *
+	 */
 	public function executeSetAvatarPiece()
 	{
 		if(!$this->getRequestParameter('id')) { $this->owner = $this->getUser()->getProfile(); return sfView::SUCCESS; } 

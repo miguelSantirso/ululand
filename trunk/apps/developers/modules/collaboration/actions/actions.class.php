@@ -5,15 +5,22 @@
  *
  * @package    ululand
  * @subpackage collaborations
- * @author     Pncil.com
- * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
+ * @author     pncil.com <http://pncil.com>
  */
 class collaborationActions extends sfActions
 {
+  /**
+   * Ejecuta la acción index
+   *
+   */
   public function executeIndex()
   {
   }
 
+  /**
+   * Ejecuta la acción correspondiente a la lista de colaboraciones
+   *
+   */
   public function executeList()
   {	
 		$tag = $this->getRequestParameter('tag');
@@ -33,6 +40,10 @@ class collaborationActions extends sfActions
 		}
   }
 
+  /**
+   * Ejecuta la acción correspondiente a la visualización de una colaboración
+   *
+   */
   public function executeShow()
   {
   	if($this->getRequestParameter('id'))
@@ -53,12 +64,20 @@ class collaborationActions extends sfActions
     $this->getResponse()->setTitle($this->collaboration_offer->getTitle() . " - " . ulToolkit::__('Collaboration Offers for flash game developers at developers.ululand.com'));
   }
 
+  /**
+   * Ejecuta la acción que sirve para previsualizar una colaboración
+   *
+   */
   public function executePreview()
   {
   	$this->title = $this->getRequestParameter('title');
   	$this->description = $this->getRequestParameter('description');
   }
   
+  /**
+   * Ejecuta la acción correspondiente a la pantalla de creación de una colaboración
+   *
+   */
   public function executeCreate()
   {
     $this->collaboration_offer = new CollaborationOffer();
@@ -66,6 +85,10 @@ class collaborationActions extends sfActions
     $this->setTemplate('edit');
   }
 
+  /**
+   * Ejecuta la acción correspondiente a la pantalla de edición de una colaboración
+   *
+   */
   public function executeEdit()
   {
     if($this->getRequestParameter('id'))
@@ -89,6 +112,11 @@ class collaborationActions extends sfActions
     }
   }
 
+  /**
+   * Acción que actualiza o crea una oferta de colaboración.
+   * Al terminar redirecciona a la página de visualización de la oferta en cuestión
+   * 
+   */
   public function executeUpdate()
   {
     if (!$this->getRequestParameter('id'))
@@ -110,6 +138,10 @@ class collaborationActions extends sfActions
     return $this->redirect('collaboration/show?id='.$collaboration_offer->getId());
   }
   
+  /**
+   * Maneja los posibles errores al actualizar una oferta de colaboración
+   *
+   */
   public function handleErrorUpdate()
   {
 		// @todo mensaje no internacionalizado
@@ -126,6 +158,11 @@ class collaborationActions extends sfActions
 		return $this->forward('collaboration', $redirectTo);
   }
 
+  /**
+   *  Acción que elimina un a oferta de colaboración.
+   * Al terminar con éxito redirecciona a la lista de ofertas de colaboración
+   *
+   */
   public function executeDelete()
   {
     $collaboration_offer = CollaborationOfferPeer::retrieveByPk($this->getRequestParameter('id'));

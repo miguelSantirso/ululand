@@ -5,11 +5,14 @@
  *
  * @package    ululand
  * @subpackage collaboration
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
+ * @author     pncil.com <http://pncil.com>
  */
 class collaborationComponents extends sfComponents
 {
+	/**
+	 * Acción que ejecuta la lógica del componente "list".
+	 *
+	 */
 	public function executeList()
 	{	
 		$pager = new sfPropelPager('CollaborationOffer', sfConfig::get('app_pager_collaboration'));
@@ -53,6 +56,10 @@ class collaborationComponents extends sfComponents
 		$this->collaborationsPager = $pager;
 	}
 	
+	/**
+	 * Acción que ejecuta la lógica del componente "relatedByTags"
+	 *
+	 */
 	public function executeRelatedByTags()
 	{
 		$c = new Criteria();

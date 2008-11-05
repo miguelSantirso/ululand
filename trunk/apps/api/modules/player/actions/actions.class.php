@@ -1,15 +1,20 @@
 <?php
+/**
+ * Contiene la clase playerActions
+ *
+ * @package    ululand
+ * @subpackage player
+ */
 
 // Requerimos la clase apiCommonActions que nos proporciona las acciones b�sicas de la api al heredar de ella.
 require_once dirname(__FILE__).'/../../../lib/apiCommonActions.class.php';
 
 /**
- * player actions.
+ * Acciones del módulo player en la aplicación API. Contiene las acciones de la api que se refieren a información de los jugadores
  *
  * @package    ululand
  * @subpackage player
  * @author     Pncil.com <http://pncil.com>
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
  */
 class playerActions extends apiCommonActions
 {
@@ -53,7 +58,7 @@ class playerActions extends apiCommonActions
 	}
 	
 	
-	/**
+	/* *
 	 * Suma cierta cantidad de créditos al avatar indicado.
 	 * Requiere como parámetros:
 	 *  - 'avatarId' que indica el id del avatar

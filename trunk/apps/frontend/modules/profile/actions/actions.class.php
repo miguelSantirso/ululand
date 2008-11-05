@@ -4,10 +4,9 @@
 /**
  * profile actions.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage profile
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     pncil.com <http://pncil.com>
  */
 class profileActions extends sfActions
 {
@@ -21,6 +20,10 @@ class profileActions extends sfActions
 		$this->forward('profile', 'list');
 	}
 
+	/**
+	 * Acción correspondiente a la pantalla que lista los perfiles de usuario
+	 *
+	 */
 	public function executeList()
 	{
 		$search = $this->getRequestParameter('search');
@@ -57,7 +60,10 @@ class profileActions extends sfActions
 		
 	}
 	
-	
+	/**
+	 * Permite la previsualización del perfil de un usuario desde la pantalla de edición del mismo
+	 *
+	 */
 	public function executePreview()
 	{
 		$this->username = $this->getRequestParameter('username');
@@ -98,7 +104,6 @@ class profileActions extends sfActions
 	
 	/* Actualiza un perfil según los datos recibidos como parámetros
 	 *
-	 * @return unknown
 	 */
 	public function executeUpdate()
 	{
@@ -140,7 +145,7 @@ class profileActions extends sfActions
 	}
 	
 /**
-	 * AcciÃ³n que aÃ±ade una relaciÃ³n de amistad
+	 * Acción que añade una relación de amistad
 	 *
 	 */
 	public function executeAddFriend()
@@ -168,7 +173,7 @@ class profileActions extends sfActions
 	}
 	
 /**
-	 * AcciÃ³n que acepta una relaciÃ³n de amistad
+	 * Acción que acepta una relación de amistad
 	 *
 	 */
 	public function executeAcceptFriend()
@@ -198,8 +203,8 @@ class profileActions extends sfActions
 	    $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 	}
 	
-/**
-	 * AcciÃ³n que rechaza una relaciÃ³n de amistad
+	/**
+	 * Acción que rechaza una relación de amistad
 	 *
 	 */
 	public function executeRejectFriend()

@@ -1,15 +1,19 @@
 <?php
 
+
 /**
  * profile actions for components.
  *
  * @package    ululand
  * @subpackage profile
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
+ * @author     pncil.com <http://pncil.com>
  */
 class profileComponents extends sfComponents
 {
+	/**
+	 * Ejecuta la lógica del componente "list" del módulo "profile"
+	 *
+	 */
 	public function executeList()
 	{
 		$pager = new sfPropelPager('PlayerProfile', sfConfig::get('app_pager_profile'));

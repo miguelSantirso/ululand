@@ -6,7 +6,6 @@
  * @package    ululand
  * @subpackage competition
  * @author     Pncil.com <http://pncil.com>
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
  */
 class competitionActions extends sfActions
 {
@@ -19,6 +18,10 @@ class competitionActions extends sfActions
     return $this->forward('competition', 'list');
   }
   
+  /**
+   * Acción correspondiente a la pantalla que lista las competiciones
+   *
+   */
   public function executeList()
   {
   	$search = $this->getRequestParameter('search');
@@ -33,6 +36,10 @@ class competitionActions extends sfActions
   	}
   }
   
+  /**
+   * Acción correspondiente a la pantalla de visualización de una competición
+   *
+   */
   public function executeShow()
   {  	
     $this->competition = CompetitionPeer::retrieveByPk($this->getRequestParameter('id'));
@@ -41,6 +48,10 @@ class competitionActions extends sfActions
     $this->competition->incrementCounter(); // Una visita más
   }
   
+  /**
+   * Acción correspondiente a la pantalla de edición de una competición
+   *
+   */
   public function executeEdit()
   {
   	// Obtener el id de la competición a editar
@@ -104,6 +115,10 @@ class competitionActions extends sfActions
 	}
   }
   
+  /**
+   * Acción que actualiza los datos de una competición
+   *
+   */
   public function executeUpdate()
   {
   	if($this->getRequest()->getMethod() == sfRequest::POST)
@@ -172,12 +187,21 @@ class competitionActions extends sfActions
   	return $this->redirect('competition/show?id='.$competitionId);
   }
   
+  /**
+   * Acción que permite la previsualización de una competición desde la pantalla de edición
+   *
+   */
   public function executePreview()
   {
   	$this->name = $this->getRequestParameter('name');
   	$this->description = $this->getRequestParameter('description');
   }
   
+
+  /**
+   * Acción que inicia el proceso de unión de un usuario a una competición
+   *
+   */
   public function executeUnion()
   {
   	// Obtener el jugador del perfil
@@ -204,6 +228,11 @@ class competitionActions extends sfActions
   	return $this->redirect('competition/show?id='.$this->competition->getId());
   }
   
+  
+  /**
+   * Acción que confirma a un usuario como participante de cierta competición
+   *
+   */
   public function executeAccept()
   {
   	// Obtener el jugador 
@@ -229,6 +258,10 @@ class competitionActions extends sfActions
   	return $this->redirect('competition/edit?id='.$competition);
   }
   
+  /**
+   * Acción que rechaza a un participante en la competición
+   *
+   */
   public function executeReject()
   {
   	// Obtener el jugador
@@ -254,6 +287,10 @@ class competitionActions extends sfActions
   	return $this->redirect('competition/edit?id='.$competition);
   }
   
+  /**
+   * Acción que marca a cierto usuario propietario de la competición
+   *
+   */
   public function executeMakeOwner()
   {
   	// Obtener el jugador 

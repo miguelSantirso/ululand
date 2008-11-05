@@ -3,10 +3,9 @@
 /**
  * group actions.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage group
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class groupActions extends sfActions
 {
@@ -19,6 +18,10 @@ class groupActions extends sfActions
   	return $this->forward('group', 'list');
   }
 
+  /**
+   * Acción correspondiente a la pantalla de edición de un grupo
+   *
+   */
   public function executeEdit()
   {
   	// Obtener el id del grupo a editar
@@ -88,6 +91,10 @@ class groupActions extends sfActions
     return sfView::SUCCESS;
   }
   
+  /**
+   * Acción correspondiente a la pantalla que lista los grupos
+   *
+   */
   public function executeList()
   {
   	$search = $this->getRequestParameter('search');
@@ -102,6 +109,10 @@ class groupActions extends sfActions
   	}
   }
   
+  /**
+   * Acción correspondiente a la pantalla que muestra un grupo
+   *
+   */
   public function executeShow()
   {  	
     $this->group = GroupPeer::retrieveByPk($this->getRequestParameter('id'));
@@ -110,12 +121,20 @@ class groupActions extends sfActions
     $this->group->incrementCounter(); // Una visita más
   }
   
+  /**
+   * Acción que permite la previsualización de un grupo desde la pantalla de edición del mismo
+   *
+   */
   public function executePreview()
   {
   	$this->name = $this->getRequestParameter('name');
   	$this->description = $this->getRequestParameter('description');
   }
 
+  /**
+   * Acción que inicia el proceso de unión de un usuario a un grupo
+   *
+   */
   public function executeUnion()
   {
   	// Obtener el jugador del perfil
@@ -142,6 +161,10 @@ class groupActions extends sfActions
   	return $this->redirect('group/show?id='.$this->group->getId());
   }
   
+  /**
+   * Acción que confirma a un usuario como miembro de cierto grupo
+   *
+   */
   public function executeAccept()
   {
   	// Obtener el jugador 
@@ -167,6 +190,10 @@ class groupActions extends sfActions
   	return $this->redirect('group/edit?id='.$group);
   }
   
+  /**
+   * Acción que rechaza a un miembro del grupo
+   *
+   */
   public function executeReject()
   {
   	// Obtener el jugador
@@ -192,6 +219,10 @@ class groupActions extends sfActions
   	return $this->redirect('group/edit?id='.$group);
   }
 
+  /**
+   * Acción que actualiza los datos de un grupo de usuarios
+   *
+   */
   public function executeUpdate()
   {
   	if($this->getRequest()->getMethod() == sfRequest::POST)
@@ -219,6 +250,10 @@ class groupActions extends sfActions
   	return $this->redirect('group/show?id='.$groupId);
   }
   
+  /**
+   * Acción que marca a cierto usuario propietario de un grupo
+   *
+   */
   public function executeMakeOwner()
   {
   	// Obtener el jugador 

@@ -4,37 +4,23 @@
 /**
  * home actions.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage home
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class homeActions extends sfActions
 {
 
   /**
-  * Acci�n que ejecuta la pantalla de bienvenida.
-  * �nicamente se ocupa de obtener los posibles errores que hayan aparecido al rellenar el formulario y
-  * los almacena en dos variables para su posterior uso en el layout
+  * Acción que ejecuta la pantalla de bienvenida.
   *
-  * @return void
   */ 
   public function executeWelcome()
   {
-  	if($this->getUser()->isAuthenticated())
-  	{
-  		$this->avatar = AvatarPeer::retrieveByPK($this->getUser()->getAttribute('avatarId'));
-
-  		/*if(!$this->avatar)
-  		{
-  			$this->getUser()->signOut();
-  			$this->redirect('home');
-  		}*/
-  	}
   }
 
   /**
-   * Acci�n que se ejecuta inmediatamente despu�s de validar el correo electr�nico
+   * Acción que se ejecuta inmediatamente despu�s de validar el correo electr�nico
    *
    */
   public function executeEmailApproved()
@@ -49,7 +35,6 @@ class homeActions extends sfActions
   /**
    * Pantalla que muestra las explicaciones de como validar el email
    *
-   * @return unknown
    */
   public function executeApproveEmail()
   {
@@ -66,9 +51,8 @@ class homeActions extends sfActions
   
   
   /**
-   * Acci�n que reenv�a el email de aprobaci�n y muestra el aviso del resultado
+   * Acción que reenvía el email de aprobación y muestra el aviso del resultado
    *
-   * @return unknown
    */
   public function executeResendApprovalEmail()
   {
@@ -92,16 +76,6 @@ class homeActions extends sfActions
   	}
   }
 
-  
-  /**
-  * Acci�n que carga y muestra el editor de avatares
-  *
-  * @return void
-  */
-  public function executeEditAvatar()
-  {
-  	$this->avatarApiKey = $this->getUser()->getAttribute("avatarApiKey");
-  }
 
   protected function sendApprovalEmail($account)
   {

@@ -1,15 +1,20 @@
 <?php
+/**
+ * Contiene la clase gamestatActions
+ *
+ * @package    ululand
+ * @subpackage gamestat
+ */
 
 // Requerimos la clase apiCommonActions que nos proporciona las acciones b�sicas de la api al heredar de ella.
 require_once dirname(__FILE__).'/../../../lib/apiCommonActions.class.php';
 
 /**
- * avatar actions.
+ * Acciones del módulo gamestat en la aplicación API. Contiene las acciones de la api que se refieren a información de las piezas de avatar
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage gamestat
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     <pncil.com>
  */
 class gamestatActions extends apiCommonActions
 {

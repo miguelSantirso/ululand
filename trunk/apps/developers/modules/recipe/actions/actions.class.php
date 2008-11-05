@@ -5,141 +5,175 @@
  *
  * @package    ululand
  * @subpackage recipe
- * @author     Pncil.com
- * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class recipeActions extends sfActions
 {
-  public function executeIndex()
-  {
-    return $this->redirect('recipe/list');
-  }
+	/**
+	 * Acción correspondiente al índice del módulo recipe
+	 */
+	public function executeIndex()
+	{
+		return $this->redirect('recipe/list');
+	}
 
-  public function executeList()
-  {
-  	$tag = $this->getRequestParameter('tag');
-  	if($tag)
-  	{
-  		$this->tag = $tag;
-  	}
-  	$search = $this->getRequestParameter('search');
-  	if($search)
-  	{
-  		$this->search = $search;
-  	}
-	$filterByUsername = $this->getRequestParameter('filterByUsername');
-	if($filterByUsername)
+	/**
+	 * Acción correspondiente a la pantalla que lista todas las recetas de código
+	 *
+	 */
+	public function executeList()
 	{
-		$this->userFiltered = sfGuardUserProfilePeer::retrieveByUsername($filterByUsername);
+		$tag = $this->getRequestParameter('tag');
+		if($tag)
+		{
+			$this->tag = $tag;
+		}
+		$search = $this->getRequestParameter('search');
+		if($search)
+		{
+			$this->search = $search;
+		}
+		$filterByUsername = $this->getRequestParameter('filterByUsername');
+		if($filterByUsername)
+		{
+			$this->userFiltered = sfGuardUserProfilePeer::retrieveByUsername($filterByUsername);
+		}
 	}
-  }
 
-  public function executeShow()
-  {
-  	if($this->getRequestParameter('id'))
+	/**
+	 * Acción correspondiente a la pantalla que muestra una receta de código
+	 *
+	 */
+	public function executeShow()
 	{
-		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
-	}
-	else if($this->getRequestParameter('r'))
-	{
-		$c = new Criteria();
-		$c->add(CodePiecePeer::UUID, $this->getRequestParameter('r'));
-		$code_piece = CodePiecePeer::doSelectOne($c);
-		$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
-	}
-	else if($this->getRequestParameter('stripped_title'))
-	{
-		$c = new Criteria();
-		$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
-		$this->code_piece = CodePiecePeer::doSelectOne($c);
-	}
-	
-    $this->forward404Unless($this->code_piece);
-    $this->code_piece->incrementCounter(); // Una visita más
-    
-    $this->getResponse()->setTitle(sprintf(ulToolkit::__('%s. Flash code recipes at developers.ululand.com'), 
+		if($this->getRequestParameter('id'))
+		{
+			$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+			$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
+		}
+		else if($this->getRequestParameter('r'))
+		{
+			$c = new Criteria();
+			$c->add(CodePiecePeer::UUID, $this->getRequestParameter('r'));
+			$code_piece = CodePiecePeer::doSelectOne($c);
+			$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
+		}
+		else if($this->getRequestParameter('stripped_title'))
+		{
+			$c = new Criteria();
+			$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
+			$this->code_piece = CodePiecePeer::doSelectOne($c);
+		}
+
+		$this->forward404Unless($this->code_piece);
+		$this->code_piece->incrementCounter(); // Una visita más
+
+		$this->getResponse()->setTitle(sprintf(ulToolkit::__('%s. Flash code recipes at developers.ululand.com'),
 		$this->code_piece->getTitle()));
-  }
-  
-  public function executePreview()
-  {
-  	$this->title = $this->getRequestParameter('title');
-  	//$this->source = sfMarkdown::doConvert($this->getRequestParameter('source'));
-  	$this->source = ulGeshiToolkit::transformToHtml($this->getRequestParameter('source'));
-  }
-  
-  public function executeEmbed()
-  {
-  	if($this->getRequestParameter('r'))
-	{
-		$c = new Criteria();
-		$c->add(CodePiecePeer::UUID, $this->getRequestParameter('r'));
-		$this->code_piece = CodePiecePeer::doSelectOne($c);
 	}
-	
-    $this->forward404Unless($this->code_piece);
-    $this->code_piece->incrementCounter(); // Una visita más
-    
-    $this->getResponse()->setContentType('application/x-javascript');
-  }
-  
-  public function executeCreate()
-  {
-    $this->code_piece = new CodePiece();
 
-    $this->setTemplate('edit');
-  }
-
-  public function executeEdit()
-  {
-  	if($this->getRequestParameter('id'))
+	/**
+	 * Acción que permite la previsualización de las recetas de código desde la pantalla de edición de las mismas
+	 *
+	 */
+	public function executePreview()
 	{
-		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-		$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
+		$this->title = $this->getRequestParameter('title');
+		//$this->source = sfMarkdown::doConvert($this->getRequestParameter('source'));
+		$this->source = ulGeshiToolkit::transformToHtml($this->getRequestParameter('source'));
 	}
-	else if($this->getRequestParameter('stripped_title'))
+
+	/**
+	 * Acción correspondiente a la pantalla que se inserta en páginas externas al sistema
+	 *
+	 */
+	public function executeEmbed()
 	{
-		$c = new Criteria();
-		$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
-		$this->code_piece = CodePiecePeer::doSelectOne($c);
+		if($this->getRequestParameter('r'))
+		{
+			$c = new Criteria();
+			$c->add(CodePiecePeer::UUID, $this->getRequestParameter('r'));
+			$this->code_piece = CodePiecePeer::doSelectOne($c);
+		}
+
+		$this->forward404Unless($this->code_piece);
+		$this->code_piece->incrementCounter(); // Una visita más
+
+		$this->getResponse()->setContentType('application/x-javascript');
 	}
-	
-    $this->forward404Unless($this->code_piece);
-    
-    if($this->getUser()->getId() != $this->code_piece->getCreatedBy())
-    {
-    	$this->setFlash('warning', 'You don\'t have permission to edit this recipe!');
-    	$this->redirect('recipe/show?id='.$this->getRequestParameter('id'));
-    }
-  }
 
-  public function executeUpdate()
-  {
-    if (!$this->getRequestParameter('id'))
-    {
-      $code_piece = new CodePiece();
-    }
-    else
-    {
-      $code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
-      $this->forward404Unless($code_piece);
-    }
+	/**
+	 * Acción correspondiente a la pantalla de creación de una receta de código
+	 *
+	 */
+	public function executeCreate()
+	{
+		$this->code_piece = new CodePiece();
 
-    $code_piece->setTitle($this->getRequestParameter('title'));
-    $code_piece->setTags($this->getRequestParameter('tags_string'));
-    $code_piece->setSource($this->getRequestParameter('source'));
+		$this->setTemplate('edit');
+	}
 
-    $code_piece->save();
+	/**
+	 * Acción correspondiente a la pantalla de edición de una receta de código
+	 *
+	 */
+	public function executeEdit()
+	{
+		if($this->getRequestParameter('id'))
+		{
+			$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+			$this->redirect('recipe/show?stripped_title='.$code_piece->getStrippedTitle());
+		}
+		else if($this->getRequestParameter('stripped_title'))
+		{
+			$c = new Criteria();
+			$c->add(CodePiecePeer::STRIPPED_TITLE, $this->getRequestParameter('stripped_title'));
+			$this->code_piece = CodePiecePeer::doSelectOne($c);
+		}
 
-    return $this->redirect('recipe/show?id='.$code_piece->getId());
-  }
+		$this->forward404Unless($this->code_piece);
 
-  public function handleErrorUpdate()
-  {
+		if($this->getUser()->getId() != $this->code_piece->getCreatedBy())
+		{
+			$this->setFlash('warning', 'You don\'t have permission to edit this recipe!');
+			$this->redirect('recipe/show?id='.$this->getRequestParameter('id'));
+		}
+	}
+
+	/**
+	 * Acción que actualiza los datos de una receta de código
+	 *
+	 */
+	public function executeUpdate()
+	{
+		if (!$this->getRequestParameter('id'))
+		{
+			$code_piece = new CodePiece();
+		}
+		else
+		{
+			$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+			$this->forward404Unless($code_piece);
+		}
+
+		$code_piece->setTitle($this->getRequestParameter('title'));
+		$code_piece->setTags($this->getRequestParameter('tags_string'));
+		$code_piece->setSource($this->getRequestParameter('source'));
+
+		$code_piece->save();
+
+		return $this->redirect('recipe/show?id='.$code_piece->getId());
+	}
+
+	/**
+	 * Acción que maneja posibles errores al actualizar los datos de una receta de código
+	 *
+	 */
+	public function handleErrorUpdate()
+	{
 		// @todo mensaje no internacionalizado
 		$this->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
-		
+
 		if($this->getRequestParameter('id'))
 		{
 			$redirectTo = 'edit?id='.$this->getRequestParameter('id');
@@ -148,19 +182,23 @@ class recipeActions extends sfActions
 		{
 			$redirectTo = 'create';
 		}
-		
+
 		return $this->forward('recipe', $redirectTo);
-  }
-  
-  public function executeDelete()
-  {
-    $code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
+	}
 
-    $this->forward404Unless($code_piece);
+	/**
+	 * Acción que elimina una receta de código.
+	 *
+	 */
+	public function executeDelete()
+	{
+		$code_piece = CodePiecePeer::retrieveByPk($this->getRequestParameter('id'));
 
-    $code_piece->delete();
+		$this->forward404Unless($code_piece);
 
-    return $this->redirect('recipe/list');
-  }
-  
+		$code_piece->delete();
+
+		return $this->redirect('recipe/list');
+	}
+
 }

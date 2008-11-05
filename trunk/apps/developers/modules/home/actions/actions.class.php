@@ -3,10 +3,9 @@
 /**
  * home actions.
  *
- * @package    ululand_dev
+ * @package    ululand
  * @subpackage home
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class homeActions extends sfActions
 {
@@ -19,6 +18,10 @@ class homeActions extends sfActions
 	{
 	}
 	
+	/**
+	 * Acción correspondiente a la pantalla que muestra las últimas noticias relacionadas.
+	 *
+	 */
 	public function executeLatestNews()
 	{
 		try
@@ -31,6 +34,10 @@ class homeActions extends sfActions
 		catch (Exception $e) { return sfView::ERROR; }
 	}
 	
+	/**
+	 * Acción que se ejecuta cuando se intenta acceder a un módulo configurado como "disabled" (deshabilitado)
+	 *
+	 */
 	public function executeDisabled()
 	{
 		

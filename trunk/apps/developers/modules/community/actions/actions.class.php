@@ -5,8 +5,7 @@
  *
  * @package    ululand
  * @subpackage community
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     pncil.com <http://pncil.com>
  */
 class communityActions extends sfActions
 {
@@ -19,6 +18,10 @@ class communityActions extends sfActions
     
   }
   
+  /**
+   * Acción correspondiente a la pantalla que muestra las últimas noticias de la comunidad
+   *
+   */
   public function executeLatestCommunityNews()
   {
   	$feedUrls = array('http://mochiland.com/feed/',

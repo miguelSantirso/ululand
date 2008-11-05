@@ -1,26 +1,23 @@
 <?php
+/**
+ * Contiene la clase outputActions
+ *
+ * @package    ululand
+ * @subpackage output
+ */
 
 /**
- * output actions.
+ * Acciones del módulo output en la aplicación API. Este módulo se encarga de responder a todas las peticiones a la API, después de que sean procesadas por el módulo receptor correspondiente.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage output
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     <pncil.com>
  */
 class outputActions extends sfActions
 {
-	/**
-	 * Executes index action
-	 *
-	 */
-	public function executeIndex()
-	{
-		$this->forward('default', 'module');
-	}
 
 	/**
-	 * Acci�n de error. Esta acci�n se ejecuta cuando ocurre un error en la api
+	 * Acción de error. Esta acción se ejecuta cuando la API retorna un error.
 	 *
 	 */
 	public function executeError()
@@ -32,8 +29,8 @@ class outputActions extends sfActions
 	}
 
 	/**
-	 * Retorna la respuesta cuando una funci�n de la API tiene �xito.
-	 * Recibe la respuesta y el tipo de la misma a trav�s de las variables flash 'responseType' y 'responseData'
+	 * Retorna la respuesta cuando una función de la API tiene éxito.
+	 * Recibe la respuesta y el tipo de la misma a través de las variables flash 'responseType' y 'responseData'
 	 *
 	 */
 	public function executeResponse()

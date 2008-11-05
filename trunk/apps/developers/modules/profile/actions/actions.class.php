@@ -3,13 +3,16 @@
 /**
  * profile actions.
  *
- * @package    ululand_dev
+ * @package    ululand
  * @subpackage profile
- * @author     Pncil.com
- * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class profileActions extends sfActions
 {
+	/**
+	 * Acción correspondiente al índice del módulo profile
+	 *
+	 */
 	public function executeIndex()
 	{
 		return $this->forward('profile', 'list');
@@ -146,6 +149,13 @@ class profileActions extends sfActions
 		return $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 	}
 	
+	/**
+	 * Función auxiliar que procesa una url recibida a través de un formulario web y la modifica para adecuarla al formato adecuado
+	 * Basicamente, comprueba si el usuario ha introducido la url con la cadena "http://" o sin ella. La función se ocupa de retornarla completa 
+	 *
+	 * @param string $url Url a procesar
+	 * @return string URL procesada y preparada para almacenar en la base de datos.
+	 */
 	protected function processUrl($url)
 	{
 		if(strncasecmp($url, 'http', 4) == 0)

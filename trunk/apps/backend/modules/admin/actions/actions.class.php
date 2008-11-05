@@ -3,10 +3,9 @@
 /**
  * admin actions.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage admin
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     pncil.com <http://pncil.com>
  */
 class adminActions extends sfActions
 {

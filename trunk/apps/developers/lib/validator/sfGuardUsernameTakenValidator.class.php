@@ -1,6 +1,16 @@
 <?php
+
+/**
+ * Validador que comprueba si un nombre de usuario está ya registrado en el sistema
+ *
+ * @package ululand
+ */
 class sfGuardUsernameTakenValidator extends sfValidator
 {
+	/**
+	 * Inicializa el validador
+	 *
+	 */
 	public function initialize($context, $parameters = null)
 	{
 		// initialize parent
@@ -8,6 +18,11 @@ class sfGuardUsernameTakenValidator extends sfValidator
 		$this->getParameterHolder()->add($parameters);
 		return true;
 	}
+	
+	/**
+	 * Ejecuta el validador
+	 * 
+	 */
 	public function execute(&$value, &$error)
 	{
 		$desiredUsername = $value;

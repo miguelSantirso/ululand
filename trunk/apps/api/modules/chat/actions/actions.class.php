@@ -1,14 +1,19 @@
 <?php
+/**
+ * Contiene la clase chatActions
+ *
+ * @package    ululand
+ * @subpackage chat
+ */
 
 require_once dirname(__FILE__).'/../../../lib/apiCommonActions.class.php';
 
 /**
- * chat actions.
+ * Acciones del módulo chat en la aplicación API. Contiene las acciones de la api relacionadas con el chat del sistema.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage chat
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     <pncil.com>
  */
 class chatActions extends apiCommonActions
 {

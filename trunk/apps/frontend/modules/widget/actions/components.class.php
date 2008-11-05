@@ -3,10 +3,9 @@
 /**
  * widget components.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage widget
- * @author     Your name here
- * @version    SVN: $Id: components.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class widgetComponents extends sfComponents
 {

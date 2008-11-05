@@ -5,11 +5,14 @@
  *
  * @package    ululand
  * @subpackage group
- * @author     Pncil.com
- * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class groupComponents extends sfComponents
 {
+	/**
+	 * Ejecuta la lista del componente "list"
+	 *
+	 */
 	public function executeList()
 	{
 		$pager = new sfPropelPager('Group', sfConfig::get('app_pager_profile'));

@@ -5,11 +5,14 @@
  *
  * @package    ululand
  * @subpackage profile
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 3335 2007-01-23 16:19:56Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class profileComponents extends sfComponents
 {
+	/**
+	 * Ejecuta la lógica correspondiente al componente "list" del módulo "profile" 
+	 *
+	 */
 	public function executeList()
 	{
 		$pager = new sfPropelPager('DeveloperProfile', sfConfig::get('app_pager_profile'));
@@ -59,6 +62,10 @@ class profileComponents extends sfComponents
 		$this->profilesPager = $pager;
 	}
 	
+	/**
+	 * Ejecuta la lógica correspondiente al componente "relatedByTags" del módulo "profile" 
+	 *
+	 */
 	public function executeRelatedByTags()
 	{
 		$c = new Criteria();

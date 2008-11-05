@@ -3,14 +3,17 @@
 /**
  * game components.
  *
- * @package    PFC
- * @subpackage widget
- * @author     Your name here
- * @version    SVN: $Id: components.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @package    ululand
+ * @subpackage game
+ * @author     Pncil.com <http://pncil.com>
  */
 class gameComponents extends sfComponents
 {
 
+	/**
+	 * Lógica del componente "list" que lista o filtra juegos almacenados en el sistema 
+	 *
+	 */
 	public function executeList()
 	{
 		$pager = new sfPropelPager('Game', sfConfig::get('app_pager_profile'));
@@ -37,6 +40,10 @@ class gameComponents extends sfComponents
 		$this->gamesPager = $pager;
 	}
 
+	/**
+	 * Lógica del componente "relatedByTags"
+	 *
+	 */
 	public function executeRelatedByTags()
 	{
 		$c = new Criteria();
@@ -55,6 +62,10 @@ class gameComponents extends sfComponents
 		$this->objects = GamePeer::doSelect($c);
 	}
 	
+	/**
+	 * Lógica del componente "release"
+	 *
+	 */
 	public function executeRelease()
 	{
 		// Cargar el juego

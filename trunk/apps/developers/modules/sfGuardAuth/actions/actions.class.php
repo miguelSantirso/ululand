@@ -3,15 +3,18 @@
 require_once(sfConfig::get('sf_plugins_dir').'/sfGuardPlugin/modules/sfGuardAuth/lib/BasesfGuardAuthActions.class.php');
 
 /**
- * sfGuardAuth actions.
+ * Acciones de gestión de usuarios. Extiende a la clase correspondiente del plugin "sfGuardAuth"
  *
- * @package    ululand_dev
+ * @package    ululand
  * @subpackage sfGuardAuth
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @author     Pncil.com <http://pncil.com>
  */
 class sfGuardAuthActions extends BasesfGuardAuthActions
 {
+	/**
+	 * Acción que extiende la acción signin del plugin "sfGuardAuth". Actualiza el idioma del interfaz del sistema cuando el usuario inicia sesión
+	 *
+	 */
 	public function executeSignin()
 	{	
 		if($this->getUser()->isAuthenticated())
@@ -20,6 +23,10 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 		parent::executeSignin();
 	}
 	
+	/**
+	 * Habilita el registro de nuevos usuarios
+	 *
+	 */
 	public function executeRegister()
 	{
 		if ($this->getRequest()->getMethod() != sfRequest::POST)
@@ -33,7 +40,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 			// Display the form
 			return sfView::SUCCESS;
 		}
-		else // el m�todo de la petici�n es GET. Es necesario procesar el formulario
+		else // el método de la petición es GET. Es necesario procesar el formulario
 		{
 			// no hace falta comprobar errores porque eso ya se hace mediante los m�todos
 			// validate autom�ticos. Ver validate\register.yml
@@ -65,6 +72,10 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 		}
 	}
 	
+	/**
+	 * Maneja los posibles errores en el proceso de registro
+	 *
+	 */
 	public function handleErrorRegister()
 	{
 		// @todo mensaje no internacionalizado

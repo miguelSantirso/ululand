@@ -3,10 +3,9 @@
 /**
  * gamestat_avatar actions.
  *
- * @package    PFC
+ * @package    ululand
  * @subpackage gamestat_avatar
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2288 2006-10-02 15:22:13Z fabien $
+ * @author     pncil.com <http://pncil.com>
  */
 class gamestat_avatarActions extends autogamestat_avatarActions
 {
