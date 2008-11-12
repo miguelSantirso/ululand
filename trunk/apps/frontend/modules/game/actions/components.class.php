@@ -78,8 +78,14 @@ class gameComponents extends sfComponents
 				$this->getUser()->getProfile()->getUuid(),
 				$this->game->getPrivilegesLevel());    // Iniciar la sesión de la api
 			 
+			// Añadimos el userUuid al principio de los flashVars para pasárselo al cliente flash.
+	    	$this->flashVars = 'userUuid='.$this->getUser()->getProfile()->getUuid().'&'.$this->flashVars;
+	    
 			// Añadimos el sessionId al principio de los flashVars para pasárselo al objeto flash.
 			$this->flashVars = 'apiSessionId='.$newApiSession->getSessionId().'&'.$this->flashVars;
+			
+			// Añadimos la ruta a la API al principio de los flashVars para pasárselo al cliente flash.
+	    	$this->flashVars = 'apiUrl='.ulToolkit::getBaseUrl().'/api.php/'.'&'.$this->flashVars;
 		}
 	}
 }

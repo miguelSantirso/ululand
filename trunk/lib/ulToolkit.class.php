@@ -16,7 +16,7 @@ class ulToolkit
 	/**
 	 * Retorna la url base de la aplicación
 	 *
-	 * @return La url base de la aplicación. Por ejemplo: 'http://ululand.com/'
+	 * @return La url base de la aplicación. Por ejemplo: 'http://ululand.com'
 	 */
 	public static function getBaseUrl()
 	{

@@ -555,7 +555,7 @@ div.gameBox h3 { margin-bottom: 0; font-size: xx-large; font-weight: normal; tex
 		div.gameBox h3 a span img { border: 0 solid #f1f1f1; !important; }
 	div.gameBox h3 a:hover { background: #00aaff; color: #fff; }
 	div.gameBox div.gameBoxDetails { background: url('../images/smallHorizontalShadow.png') #f1f1f1 repeat-x;
-		font-size: 10px;  padding: 5px; margin-top: -3px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; }
+		font-size: 10px;  padding: 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; }
 		div.gameBox div.gameBoxDetails h4 { margin: 0; padding-top: 3px; color: #222 !important; text-transform: uppercase; 
 			font-weight: normal;}
 		div.gameBox div.gameBoxDetails p  { margin: 0 0 3px; color: #696969 !important; }

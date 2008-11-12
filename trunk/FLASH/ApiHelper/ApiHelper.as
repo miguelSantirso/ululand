@@ -24,6 +24,18 @@
 	public class ApiHelper
 	{
 		/**
+		 * Variable que controla si el usuario está identificado o no. Si es que no, el ApiHelper no hará nada.
+		 */
+		protected static var isEnabled:Boolean = false;
+		/**
+		 * Variable que almacena la ruta absoluta a la API
+		 */
+		protected static var apiUrl:String;
+		/**
+		 * Variable que almacena el id de la sesión con la API
+		 */
+		protected static var apiSessionId:String;
+		/**
 		 * Variable que almacena la función a la que se enviarán todas las respuestas del servidor.
 		 */
 		protected static var callbackFunction_:Function;
@@ -38,13 +50,28 @@
 		 */
 		public static function getVersion():String
 		{
-			return "8.10";
+			return "8.11";
 		}
 		
+		/**
+		 * Inicializa la API. Es obligatorio llamar a esta función antes de utilizar el ApiHelper.
+		 * 
+		 * @param	stage Referencia al escenario raiz del archivo flash
+		 * @param	callbackFunction Referencia a la función de callback (ver documentación)
+		 */
 		public static function init(stage:Stage, callbackFunction:Function):void
 		{
 			ApiHelper.callbackFunction_ = callbackFunction;
 			stage_ = stage;
+			
+			// Leer la URL de la api desde los flashVars
+			if (ApiHelper.getParameter("apiUrl"))
+			{
+				apiUrl = ApiHelper.getParameter("apiUrl");
+				isEnabled = true;
+				
+				apiSessionId = ApiHelper.getParameter("apiSessionId");
+			}
 		}
 		
 		/* Funciones de acceso al Jugador */
@@ -276,6 +303,9 @@
 		 */
 		protected static function makeRequest(requestType:String, parameters:String):URLLoader
 		{
+			if (!isEnabled)
+				return null;
+			
 			// Comprobar si se ha indicado una función de respuesta. En caso de que no sea así se lanza un error
 			if (ApiHelper.callbackFunction == null)
 			{
@@ -287,7 +317,7 @@
 			var request:URLRequest = new URLRequest();
 			
 			// Construir la url de acuerdo al tipo de petición y a los parámetros
-			request.url = "http://ululand/api.php/"; // Dirección base de la api
+			request.url = ApiHelper.getParameter("apiUrl"); // Dirección base de la api
 			// Añadir la acción necesaria en función del tipo de petición
 			request.url += requestType;
 			// Añadir los parámetros
@@ -307,13 +337,24 @@
 		}
 		
 		/**
-		 * Retorna una cadena correspondiente al id de la sesión actual con la api
-		 * @return id de la sesión actual con la api
+		 * Retorna el valor de un parámetro que se haya recibido a través de los flashVars
+		 * 
+		 * @example ApiHelper.getParameter("apiUrl");
+		 * 
+		 * @param	paramName nombre del parámetro cuyo valor se desea conocer
+		 * @return  valor del parámetro cuyo nombre se ha pasado como parámetro
+		 */
+		public static function getParameter(paramName:String):String
+		{
+			return stage_.root.loaderInfo.parameters[paramName];
+		}
+		/**
+		 * Equivalente a getParameter("apiSessionId");
+		 * @return
 		 */
 		public static function getApiSessionId():String
 		{
-			//return "jq0suf4ymu2g";
-			return stage_.root.loaderInfo.parameters.apiSessionId;
+			return ApiHelper.getParameter("apiSessionId");
 		}
 		
 		public static function get callbackFunction():Function
