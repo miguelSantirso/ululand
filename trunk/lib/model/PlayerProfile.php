@@ -127,6 +127,7 @@ class PlayerProfile extends BasePlayerProfile
 	 */
 	public function addCredits($amount)
 	{
+		//echo $this->getTotalCredits();
 		$totalCredits = $this->setTotalCredits($this->getTotalCredits() + $amount);
 		$this->save();
 		return $totalCredits;

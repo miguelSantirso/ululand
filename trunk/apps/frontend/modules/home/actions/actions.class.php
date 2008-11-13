@@ -10,6 +10,11 @@
  */
 class homeActions extends sfActions
 {
+	
+  public function executeIndex()
+  {
+    return $this->forward('home', 'welcome');
+  }
 
   /**
   * Acción que ejecuta la pantalla de bienvenida.
