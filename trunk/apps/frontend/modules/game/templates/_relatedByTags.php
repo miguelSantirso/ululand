@@ -2,7 +2,7 @@
 	
 	if(!isset($objects))
 	{
-		$objects = TagPeer::getTaggedWith($tagsString, array('model' => 'Game', 'nb_common_tags' => 1));
+		$objects = TagPeer::getTaggedWith($tagsString, array('model' => 'Game', 'nb_common_tags' => 2));
 	}
 
 	if(!isset($title))
@@ -13,8 +13,24 @@
 ?>
 
 			<h3 class="header"><?php echo $title; ?></h3>
-			<ul class="tags">
+			<ul class="relatedGames">
 			<?php foreach($objects as $object) : ?>
-				<li><?php echo linkToGame($object); ?></li>
+				<?php $linkText = 
+					gameThumbnail_tag($object, array('width' => '60px')).
+					'<span class="relatedGameLink">'.
+						$object->getName().
+					'</span>'.
+					'<span class="relatedGameDetails">'.
+						sprintf(__('%s gameplays'), $object->getCounter()).
+					'</span>';
+				?>
+				<?php if($object->getRating()) :
+					$linkText .= '<span class="relatedGameDetails">'.
+						sprintf(__('%s stars'), $object->getRating()).
+					'</span>';
+					endif; ?>
+				<li class="">
+					<?php echo linkToGame($object, array(), $linkText); ?>
+				</li>
 			<?php endforeach; ?>
 			</ul>

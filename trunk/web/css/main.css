@@ -547,8 +547,7 @@ form small {
 
 /* game box */
 
-div.gameBox h3 { margin-bottom: 0; font-size: xx-large; font-weight: normal; text-transform: uppercase; }
-	div.gameBox h3 { margin-bottom: 0; font-size: xx-large; font-weight: normal; text-transform: uppercase; }
+div.gameBox h3 { margin-top: 0; margin-bottom: 0; font-size: xx-large; font-weight: normal; text-transform: uppercase; letter-spacing: -2px; }
 	div.gameBox h3 a { background: #222; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius-topleft: 5px 5px 0 0; 
 		padding: 10px; display: block; text-decoration: none; color: #00aaff; }
 		div.gameBox h3 a span { border: 0 !important; }
@@ -560,6 +559,22 @@ div.gameBox h3 { margin-bottom: 0; font-size: xx-large; font-weight: normal; tex
 			font-weight: normal;}
 		div.gameBox div.gameBoxDetails p  { margin: 0 0 3px; color: #696969 !important; }
 
+/* related games list */
+
+ul.relatedGames { list-style-type: none; margin: 0; padding: 0; }
+	ul.relatedGames li { padding-left: 64px; margin-bottom: 5px; clear: both;
+		background: #ccc url('../images/bigBoxButtonBg.gif') no-repeat center right; } 
+	ul.relatedGames li:hover { background-color: #00aaff; }
+		ul.relatedGames li a { color: #000; text-decoration: none; min-height: 70px; display: block; }
+		ul.relatedGames li a:hover { color: #fff; }
+		ul.relatedGames li a:active { color: #000; }
+			ul.relatedGames li a img { display: inline; float: left; margin: 4px 4px 4px -60px; padding: 2px; }
+			ul.relatedGames li a span { display: block; }
+			ul.relatedGames li a span.relatedGameLink { display: block; padding-top: 3px; font-family: sans-serif;
+				text-transform: uppercase; font-size: 16px; font-weight: bold; letter-spacing: -1px; }
+			ul.relatedGames li a span.relatedGameDetails { color: #696969; font-size: small; }
+			ul.relatedGames li a:hover span.relatedGameDetails { color: #000; }			
+			
 
 /* game releases list */
 
