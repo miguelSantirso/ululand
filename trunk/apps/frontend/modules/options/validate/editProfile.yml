@@ -2,6 +2,10 @@ fields:
   username:
     required:
       msg: This field is required!
+    sfPropelUniqueValidator:
+      class:        sfGuardUserProfile
+      column:       username
+      unique_error: There is someone with that name already. Choose a different one, please
     sfStringValidator:
       min: 2
       min_error: Username must be 2 characters or more

@@ -317,7 +317,7 @@
 			var request:URLRequest = new URLRequest();
 			
 			// Construir la url de acuerdo al tipo de petición y a los parámetros
-			request.url = ApiHelper.getParameter("apiUrl"); // Dirección base de la api
+			request.url = apiUrl; // Dirección base de la api
 			// Añadir la acción necesaria en función del tipo de petición
 			request.url += requestType;
 			// Añadir los parámetros

@@ -2,6 +2,10 @@ fields:
   title:
     required:
       msg: This field is required!
+    sfPropelUniqueValidator:
+      class:        CollaborationOffer
+      column:       title
+      unique_error: There is already a collaboration offer with that title. Choose a different one, please
   description:
     required:
       msg: This field is required!

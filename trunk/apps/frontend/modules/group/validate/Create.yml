@@ -13,6 +13,10 @@ names:
     sfStringValidator:
       min:       1
       min_error: Debes introducir un nombre
+    sfPropelUniqueValidator:
+      class:        CollaborationOffer
+      column:       title
+      unique_error: There is already a collaboration offer with that title. Choose a different one, please
     
   description:
     required: true

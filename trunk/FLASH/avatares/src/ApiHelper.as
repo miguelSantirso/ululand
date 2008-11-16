@@ -17,7 +17,7 @@
 	 * <br/>ApiHelper.init(myStage, myCallbackFunction);
 	 * <br/>Después, simplemente hay que utilizar las funciones de petición de datos al servidor
 	 * <br/>ApiHelper.getPlayer(myPlayerUuid); // Pide al servidor la información del avatar indicado.</code>
-	 * @version 8.10
+	 * @version 8.11
 	 * @author Miguel Santirso <http://miguelSantirso.es> para pncil <http://pncil.com>
 	 */
 	 
@@ -135,6 +135,18 @@
 		/* Funciones de avatares */
 		
 		/**
+		 * Función que inicia una petición al servidor para averiguar los datos de un avatar, dado el uuid del jugador propietario
+		 *
+		 * @param userUuid Uuid del jugador propietario del avatar
+		 */
+		public static function getAvatarForPlayer(userUuid:String):void
+		{
+			trace("avatar/getByUserUuid(" + userUuid + ") called.");
+			
+			makeRequest("avatar/getByUserUuid", "pieceUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonAvatar);
+		}
+		
+		/**
 		 * Función que inicia una petición al servidor para averiguar los datos de una pieza de avatar, dado su uuid
 		 * 
 		 * @example	<code>ApiHelper.getAvatarPiece(pieceUuid);</code>
@@ -231,6 +243,14 @@
 		 * Callback que procesa una respuesta del servidor
 		 * @param	e
 		 */
+		protected static function decodeJsonAvatar(e:Event):void
+		{
+			genericDecode(e, "Avatar");
+		}
+		/**
+		 * Callback que procesa una respuesta del servidor
+		 * @param	e
+		 */
 		protected static function decodeJsonAvatarPiece(e:Event):void
 		{
 			genericDecode(e, "AvatarPiece");
@@ -317,7 +337,7 @@
 			var request:URLRequest = new URLRequest();
 			
 			// Construir la url de acuerdo al tipo de petición y a los parámetros
-			request.url = ApiHelper.getParameter("apiUrl"); // Dirección base de la api
+			request.url = apiUrl; // Dirección base de la api
 			// Añadir la acción necesaria en función del tipo de petición
 			request.url += requestType;
 			// Añadir los parámetros

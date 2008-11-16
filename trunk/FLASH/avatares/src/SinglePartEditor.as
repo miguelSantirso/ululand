@@ -24,8 +24,8 @@
 	* @author Miguel Santirso
 	*/
 	public class SinglePartEditor extends MovieClip
-	{	
-		protected static const ASSETS_URL:String = "http://ululand/uploads/UploadedPieces/";
+	{
+		protected static const ASSETS_URL:String = "http://ululand.com/uploads/UploadedPieces/";
 		
 		/**
 		 * Objeto de tipo DrawablePart que servirá para dibujar las diferentes partes que se creen
