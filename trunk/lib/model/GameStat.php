@@ -30,9 +30,9 @@ class GameStat extends BaseGameStat
 	}
 	
 	/**
-	 * A�ade un valor de una estad�stica de partida para un jugador
+	 * Añade un valor de una estadística de partida para un jugador
 	 *
-	 * @param integer $value Valor de la estad�stica de partida
+	 * @param integer $value Valor de la estadística de partida
 	 * @param integer $playerId Identificador del jugador
 	 */
 	public function addGameStatValueForPlayer($value, $playerId)

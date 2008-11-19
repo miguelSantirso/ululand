@@ -34,8 +34,8 @@ all:
     secure_module:          sfGuardAuth   # To be called when a user doesn't have
     secure_action:          secure    # The credentials required for an action
 #
-#    module_disabled_module: default   # To be called when a user requests 
-#    module_disabled_action: disabled  # A module disabled in the module.yml
+    module_disabled_module: home   # To be called when a user requests 
+    module_disabled_action: disabled  # A module disabled in the module.yml
 #
 #    unavailable_module:     default   # To be called when a user requests a page
 #    unavailable_action:  unavailable  # From an application disabled via the available setting below

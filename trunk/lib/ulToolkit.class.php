@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Clase auxiliar con diversas funciones que se utilizan en varios puntos de la aplicación
+ *
+ */
 class ulToolkit
 {
 	/**

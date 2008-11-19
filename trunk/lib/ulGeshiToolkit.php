@@ -1,8 +1,18 @@
 <?php
 
-
+/**
+ * Clase auxiliar con funciones relacionadas con el resaltador de sintaxis Geshi
+ * 
+ * @package ululand
+ *
+ */
 class ulGeshiToolkit
 {
+	/**
+	 * Retorna la lista de lenguajes de programación disponibles para resaltar su sintaxis
+	 *
+	 * @return array Lista de lenguajes disponibles
+	 */
 	public static function getAvailableLanguages()
 	{
 		$languages = array(
@@ -29,6 +39,10 @@ class ulGeshiToolkit
 		return $languages;
 	}
 
+	/**
+	 * Realiza una llamada a la librería de resaltado de sintaxis Geshi
+	 *
+	 */
 	private static function geshiCall($matches, $default = '')
 	{
 		require_once('geshi.php');

@@ -12,7 +12,7 @@ class Widget extends BaseWidget
 	protected $upload;
 	
 	/**
-	 * getUpload: Funci�n necesaria para subir widgets
+	 * getUpload: Función necesaria para subir widgets
 	 *
 	 * @return string $this->upload Cadena
 	 **/
@@ -22,7 +22,7 @@ class Widget extends BaseWidget
 	}
 
 	/**
-	 * setUpload: Funci�n necesaria para subir widgets
+	 * setUpload: Función necesaria para subir widgets
 	 * Se recibe la dirección del widget
 	 * Se comprueba que cumple los requísitos y se guarda
 	 *

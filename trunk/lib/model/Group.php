@@ -9,7 +9,7 @@
  */ 
 class Group extends BaseGroup
 {
-	 /** __toString: Funci�n auxiliar "m�gica" que retorna una cadena que representa al objeto.
+	 /** __toString: Función auxiliar "mágica" que retorna una cadena que representa al objeto.
 	 *
 	 * @return string Cadena representando al objeto
 	 **/

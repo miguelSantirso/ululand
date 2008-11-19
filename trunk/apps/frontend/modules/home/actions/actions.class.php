@@ -25,6 +25,15 @@ class homeActions extends sfActions
   }
 
   /**
+   * Acción que se ejecuta cuando se intenta acceder a un módulo configurado como deshabilitado
+   *
+   */
+  public function executeDisabled()
+  {
+  	
+  }
+  
+  /**
    * Acción que se ejecuta inmediatamente despu�s de validar el correo electr�nico
    *
    */

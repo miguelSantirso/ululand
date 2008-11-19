@@ -9,7 +9,7 @@
  */ 
 class Competition extends BaseCompetition
 {
- /** __toString: FunciÛn auxiliar "m·gica" que retorna una cadena que representa al objeto.
+ /** __toString: Funci√≥n auxiliar "m√°gica" que retorna una cadena que representa al objeto.
 	 *
 	 * @return string Cadena representando al objeto
 	 **/
@@ -34,10 +34,10 @@ class Competition extends BaseCompetition
 	}
 	
 	/**
-	 * Devuelve los miembros de un competiciÛn
+	 * Devuelve los miembros de un competici√≥n
 	 *
-	 * @param Criteria $c criteria que se aÒadir· al select
-	 * @return Array array de jugadores de acuerdo al criteria pasado como par·metro
+	 * @param Criteria $c criteria que se a√±adir√° al select
+	 * @return Array array de jugadores de acuerdo al criteria pasado como par√°metro
 	 */
 	public function getMembers($c = null)
 	{	
@@ -69,10 +69,10 @@ class Competition extends BaseCompetition
 	}
 	
 /**
-	 * Devuelve los miembros de un competiciÛn ordenados seg˙n su puntuaciÛn
+	 * Devuelve los miembros de un competici√≥n ordenados seg√∫n su puntuaci√≥n
 	 *
-	 * @param Criteria $c criteria que se aÒadir· al select
-	 * @return Array array de jugadores de acuerdo al criteria pasado como par·metro
+	 * @param Criteria $c criteria que se a√±adir√° al select
+	 * @return Array array de jugadores de acuerdo al criteria pasado como par√°metro
 	 */
 	public function getOrderedValues($c = null)
 	{	

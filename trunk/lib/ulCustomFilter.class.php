@@ -4,8 +4,7 @@
  *
  * @package    symfony
  * @subpackage plugin
- * @author     Pncil.com
- * @version    SVN: $Id$
+ * @author     pncil.com <http://pncil.com>
  */
 class ulCustomFilter extends sfFilter
 {
