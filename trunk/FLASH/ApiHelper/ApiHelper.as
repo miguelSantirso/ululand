@@ -17,7 +17,7 @@
 	 * <br/>ApiHelper.init(myStage, myCallbackFunction);
 	 * <br/>Después, simplemente hay que utilizar las funciones de petición de datos al servidor
 	 * <br/>ApiHelper.getPlayer(myPlayerUuid); // Pide al servidor la información del avatar indicado.</code>
-	 * @version 8.10
+	 * @version 8.11
 	 * @author Miguel Santirso <http://miguelSantirso.es> para pncil <http://pncil.com>
 	 */
 	 
@@ -135,6 +135,18 @@
 		/* Funciones de avatares */
 		
 		/**
+		 * Función que inicia una petición al servidor para averiguar los datos de un avatar, dado el uuid del jugador propietario
+		 *
+		 * @param userUuid Uuid del jugador propietario del avatar
+		 */
+		public static function getAvatarForPlayer(userUuid:String):void
+		{
+			trace("avatar/getByUserUuid(" + userUuid + ") called.");
+			
+			makeRequest("avatar/getByUserUuid", "userUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonAvatar);
+		}
+		
+		/**
 		 * Función que inicia una petición al servidor para averiguar los datos de una pieza de avatar, dado su uuid
 		 * 
 		 * @example	<code>ApiHelper.getAvatarPiece(pieceUuid);</code>
@@ -226,6 +238,14 @@
 		protected static function decodeJsonPlayerName(e:Event):void
 		{
 			genericDecode(e, "Player");
+		}
+		/**
+		 * Callback que procesa una respuesta del servidor
+		 * @param	e
+		 */
+		protected static function decodeJsonAvatar(e:Event):void
+		{
+			genericDecode(e, "Avatar");
 		}
 		/**
 		 * Callback que procesa una respuesta del servidor

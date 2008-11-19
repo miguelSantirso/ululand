@@ -25,7 +25,7 @@ package
 	
 	public class AutoAvatar extends Sprite
 	{
-		public static const ASSETS_URL:String = "http://ululand/uploads/UploadedPieces/";
+		public static const ASSETS_URL:String = "http://ululand.com/uploads/UploadedPieces/";
 		public static const SHAPES_URL:String = ASSETS_URL + "shapes/";
 		/**
 		 * Referencia estática al objeto principal
@@ -108,7 +108,7 @@ package
 			switch(actionName)
 			{
 				case "Player":
-					setAvatarInfo(data.userUuid, data.Username, 0);
+					setAvatarInfo(data.userUuid, data.Username, true);
 					break;
 				case "Avatar":
 					startAssetsLoad(data.userUuid, data.pieces);

@@ -199,8 +199,7 @@ class optionsActions extends sfActions
   		$owner = $avatarPiece->getsfGuardUserProfileRelatedByOwnerId();
   		if(is_null($owner)) return sfView::ERROR;
   		
-  		$avatars = $owner->getAvatars();
-  		$avatar = $avatars[0];
+  		$avatar = $owner->getAvatar();
   		
   		switch($avatarPiece->getType())
   		{

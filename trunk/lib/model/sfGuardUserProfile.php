@@ -45,7 +45,28 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 	{
 			return count($this->getPlayerProfiles()) > 0;
 	}
+	
+	/**
+	 * Retorna el avatar relacionado con el jugador. Si no existe, se crea uno
+	 * 
+	 * @return Avatar el avatar relacionado con este perfil de usuario
+	 */
+	public function getAvatar()
+	{
+		$avatar = null;
+		$avatars = $this->getAvatars();
+		if(count($avatars) == 0)
+		{
+			$avatar = new Avatar();
+			$avatar->setProfile($this);
+			$avatar->save();
+		}
+		else
+			$avatar = $avatars[0];
 		
+		return $avatar;
+	}
+	
 	/**
 	 * Retorna el perfil de desarrollador asociado al perfil de usuario o null si no existe.
 	 *
@@ -74,7 +95,7 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 		}
 	}
 	
-     /* Retorna el perfil de jugador asociado al perfil de usuario o null si no existe.
+    /** Retorna el perfil de jugador asociado al perfil de usuario o null si no existe.
 	 *
 	 * @param boolean $forceCreation Si vale true, crea un perfil de jugador en caso de no existir.
 	 * @return El perfil de jugador asociado al perfil de usuario o null si no existe.

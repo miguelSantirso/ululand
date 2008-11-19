@@ -160,7 +160,7 @@
 			
 			// Preparar petición url al servidor
 			var urlRequest:URLRequest = new URLRequest();
-			urlRequest.url = 'http://ululand/api.php/avatarPiece/' + (isEdit ? 'edit' : 'add');
+			urlRequest.url = 'http://ululand.com/api.php/avatarPiece/' + (isEdit ? 'edit' : 'add');
 			urlRequest.method = URLRequestMethod.POST;
 			urlRequest.data = variables;
 			

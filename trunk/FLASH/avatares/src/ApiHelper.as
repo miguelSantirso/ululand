@@ -143,7 +143,7 @@
 		{
 			trace("avatar/getByUserUuid(" + userUuid + ") called.");
 			
-			makeRequest("avatar/getByUserUuid", "pieceUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonAvatar);
+			makeRequest("avatar/getByUserUuid", "userUuid="+userUuid).addEventListener(Event.COMPLETE, decodeJsonAvatar);
 		}
 		
 		/**
