@@ -60,7 +60,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 				$profile->setCulture('es');
 			else
 				$profile->setCulture('en');
-			
+			$profile->setUsername($this->getRequestParameter('screenname'));
 			$profile->save();
 
 			$this->getContext()->getUser()->signIn($user, true);
@@ -68,7 +68,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 			// @todo mensaje no internacionalizado
 			$this->setFlash('success', 'Registro completado con éxito');
 			
-			$this->redirect('profile/edit?id='.$profile->getId());
+			$this->redirect('@options_edit_profile');
 		}
 	}
 	

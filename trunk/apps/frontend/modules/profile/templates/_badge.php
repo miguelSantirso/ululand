@@ -1,6 +1,6 @@
 <?php use_helper('ulMisc'); ?>
 
-<?php $playerProfile = $profile->getPlayerProfile(); ?>
+<?php $playerProfile = $profile->getPlayerProfile(true); ?>
 
 <div class="profileBadge">
 	<?php if($profile->isFilledIn()) : ?>

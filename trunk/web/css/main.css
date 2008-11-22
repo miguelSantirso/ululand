@@ -545,6 +545,27 @@ form small {
 	color: #666;
 }
 
+/* player profile title */
+
+div#playerProfileTitle div.playerProfileTitleBlock { margin: 10px; padding: 3px; width: 289px; height: 54px; float: left;
+	border: 1px solid #c6c6c6; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+
+/* player profile title name */
+
+div#playerProfileTitle div#playerProfileTitleName { margin-left: 80px; width: 219px; }
+	div#playerProfileTitleName .linkToProfileWithGravatar a { font-size: large; text-decoration: none; font-weight: bold; letter-spacing: -1px; }
+	div#playerProfileTitleName .linkToProfileWithGravatar a:hover { text-decoration: underline; }
+		div#playerProfileTitleName .linkToProfileWithGravatar a img { margin-left: -70px; width: 60px; }
+		div#playerProfileTitleName .linkToProfileWithGravatar a span.gravatar { padding: 0 15px 0 0; margin: -3px; border: 0; }
+	div#playerProfileTitleName p.playerProfileTitleDetails { font-size: small; color: #888; margin: 2px; padding-top: 3px;  
+			line-height: 1em; border-top: 1px solid #c6c6c6; }
+
+/* player profile title credits */
+
+div#playerProfileTitleCredits { background: #fff url('../images/uluCoin_blue.png') left center no-repeat; }
+	div#playerProfileTitleCredits p { margin: -2px 0 0 50px; font-size: 45px; letter-spacing: -5px; color: #696969; }
+		div#playerProfileTitleCredits p span { font-size: small; color: #888; letter-spacing: -1px; }
+
 /* game box */
 
 div.gameBox h3 { margin-top: 0; margin-bottom: 0; font-size: xx-large; font-weight: normal; text-transform: uppercase; letter-spacing: -2px; }

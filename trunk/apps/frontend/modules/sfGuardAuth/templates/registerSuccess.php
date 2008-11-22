@@ -13,7 +13,17 @@
 					label_for("username", __("Email")), 
 					form_error("username"),
 					"<p class='noSpace'>".input_tag("username", $sf_params->get("username"))."</p>",
-					"<small class='alignLeft'>".__('Must be a valid e-mail')."</small>"
+					"<small class='alignLeft'>".__('Must be a valid e-mail. Won\'t be published.')."</small>"
+					?>
+				</div>
+			</div>
+			<div class="form-field contentColumn third alignCenter">
+				<div class="contentBox light">
+					<?php echo
+					label_for("screenname", __("Username")), 
+					form_error("screenname"),
+					"<p class='noSpace'>".input_tag("screenname", $sf_params->get("screenname"))."</p>",
+					"<small class='alignLeft'>".__('The name everyone will see.')."</small>"
 					?>
 				</div>
 			</div>

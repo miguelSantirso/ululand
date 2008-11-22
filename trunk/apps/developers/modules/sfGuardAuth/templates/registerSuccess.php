@@ -19,6 +19,16 @@
 			</div>
 			<div class="form-field contentColumn third alignCenter">
 				<div class="contentBox light">
+					<?php echo
+					label_for("screenname", __("Username")), 
+					form_error("screenname"),
+					"<p class='noSpace'>".input_tag("screenname", $sf_params->get("screenname"))."</p>",
+					"<small class='alignLeft'>".__('The name everyone will see.')."</small>"
+					?>
+				</div>
+			</div>
+			<div class="form-field contentColumn third alignCenter">
+				<div class="contentBox light">
 					<?php echo 
 					label_for("password", __("Password")),
 					form_error("password"),

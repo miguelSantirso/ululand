@@ -59,6 +59,19 @@ class profileActions extends sfActions
 		
 		$this->forward404Unless($this->sf_guard_user_profile);
 		
+		// Obtener los amigos confirmados
+		$c = new Criteria();
+		$c->add(FriendshipPeer::IS_CONFIRMED, true);
+		$this->friends = $this->playerProfile->getFriends($c);
+		
+		// Obtener las peticiones de amistad pendientes
+		if($this->getUser()->isAuthenticated() && $this->sf_guard_user_profile->getId() == $this->getUser()->getProfile()->getId())
+		{
+			$c = new Criteria();
+			$c->add(FriendshipPeer::IS_CONFIRMED, false);
+			$c->add(FriendshipPeer::PLAYER_PROFILE_ID_B, $this->playerProfile->getId());
+			$this->unconfirmedFriends = $this->playerProfile->getFriends($c);
+		}
 	}
 	
 	/**

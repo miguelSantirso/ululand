@@ -9,6 +9,18 @@
  */ 
 class FriendshipPeer extends BaseFriendshipPeer
 {
+	const NO_FRIENDS  = 'noFriends';
+	const FRIENDS     = 'friends';
+	const PENDING_A   = 'pendingA';
+	const PENDING_B   = 'pendingB';
+	
+	/**
+	 * Retorna el estado de la amistad entre dos jugadores
+	 *
+	 * @param int $idPlayerA identificador del jugador A
+	 * @param int $idPlayerB identificador del jugador B
+	 * @return unknown
+	 */
 	public static function getFriendshipBetween($idPlayerA, $idPlayerB)
 	{
 		$c = new Criteria();
@@ -23,9 +35,9 @@ class FriendshipPeer extends BaseFriendshipPeer
 		$c->add($criterionA);
 		
 		$friendship = FriendshipPeer::doSelectOne($c);
-		if (!$friendship) return "NO_FRIENDS";
-		if ($friendship->getIsConfirmed()) return "FRIENDS";
-		if (!$friendship->getIsConfirmed() && $friendship->getPlayerProfileIdB() == $idPlayerB) return "PENDINGA";
-		else return "PENDINGB";
+		if (!$friendship) return FriendshipPeer::NO_FRIENDS;
+		if ($friendship->getIsConfirmed()) return FriendshipPeer::FRIENDS;
+		if (!$friendship->getIsConfirmed() && $friendship->getPlayerProfileIdB() == $idPlayerB) return FriendshipPeer::PENDING_A;
+		else return FriendshipPeer::PENDING_B;
 	}
 }

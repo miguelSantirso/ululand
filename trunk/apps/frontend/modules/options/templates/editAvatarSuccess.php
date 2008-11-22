@@ -60,7 +60,7 @@
 			<p class="right noSpace">
 				<?php echo select_tag('avatarType',
 					array('head' => __('Head'), 'body' => __('Body'), 'arm' => __('Arm'), 'leg' => __('Leg')),
-					array('onClick' => '$("createNewLink").href="'.$createPieceUrl.'/pieceType/"+this.value;')); ?>
+					array('onChange' => '$("createNewLink").href="'.$createPieceUrl.'/pieceType/"+this.value;')); ?>
 				<?php echo link_to_function(__('Create a new piece &raquo;'),
 					"Modalbox.show(this.href, {title: '{$createPieceText}', width: 880})",
 					array('id' => 'createNewLink', 'href' => url_for('avatarPiece/create?pieceType=head'))); ?>

@@ -98,4 +98,9 @@ function currentPageURL()
 	 */
 }
 
-
+function includeWidget($widgetName, $flashVars = "", $otherOptions = array())
+{
+	$otherOptions['widgetName'] = $widgetName;
+	$otherOptions['flashVars'] = $flashVars;
+	include_component('widget', 'widget', $otherOptions);
+}

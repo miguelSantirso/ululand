@@ -1,5 +1,10 @@
 <?php
 
+	function userAvatar_tag($sfGuardUserProfile, $size = 80, $options = array())
+	{
+		return gravatar_tag($sfGuardUserProfile->getSfGuardUser()->getUsername(), $size, $options);
+	}
+	
 	function gravatar_tag($email, $size = 80, $options = array())
 	{
 		$grav_url = "http://www.gravatar.com/avatar/".md5($email).'?s='.$size;
