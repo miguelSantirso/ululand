@@ -1,0 +1,5 @@
+all:
+  metas:
+    title: The best flash gaming experience
+embedSuccess:
+  has_layout: false
