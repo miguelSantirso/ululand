@@ -16,7 +16,7 @@
 	function gameThumbnail_tag($game, $options = array())
 	{
 		$imageUrl = '/' . $game->getUploadDirName() . '/' . 'thumb_' . $game->getThumbnailPath();
-		return image_tag($imageUrl, $options);
+		return image_tag(ulToolkit::getBaseUrl().'/'.$imageUrl, $options);
 	}
 	
 		/**

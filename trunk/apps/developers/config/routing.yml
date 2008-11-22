@@ -48,11 +48,11 @@ recipe_list:
 recipe_list_tag:
   url: /recipes/tag/:tag
   param: { module: recipe, action: list }
-  
+
 recipe_list_search:
   url: /recipes/search/:search
   param: { module: recipe, action: list }
-  
+
 recipe_show:
   url: /recipes/:stripped_title
   param: { module: recipe, action: show }
@@ -60,11 +60,11 @@ recipe_show:
 recipe_show_rcode:
   url: /recipes/:r
   param: { module: recipe, action: show }
-  
+
 recipe_embed:
   url: /recipes/:r/embed
   param: { module: recipe, action: embed }
-  
+
 recipe_edit:
   url: /recipes/:stripped_title/edit
   param: { module: recipe, action: edit }

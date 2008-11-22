@@ -88,4 +88,28 @@ class gameComponents extends sfComponents
 	    	$this->flashVars = 'apiUrl='.ulToolkit::getBaseUrl().'/api.php/'.'&'.$this->flashVars;
 		}
 	}
+	
+	public function executeReleaseEmbed()
+	{
+		// Cargar el juego
+		$this->game = GamePeer::retrieveByPK($this->gameId);
+		$this->gameRelease = $this->game->getActiveRelease();
+		if($this->game && $this->gameRelease && $this->getUser()->isAuthenticated())
+		{
+			// Iniciar la sesi�n de la api
+			$newApiSession = ApiSessionPeer::createNew($this->game->getUuid(), 
+				$this->getUser()->getProfile()->getUuid(),
+				$this->game->getPrivilegesLevel());    // Iniciar la sesión de la api
+			 
+			// Añadimos el userUuid al principio de los flashVars para pasárselo al cliente flash.
+	    	$this->flashVars = 'userUuid='.$this->getUser()->getProfile()->getUuid().'&'.$this->flashVars;
+	    
+			// Añadimos el sessionId al principio de los flashVars para pasárselo al objeto flash.
+			$this->flashVars = 'apiSessionId='.$newApiSession->getSessionId().'&'.$this->flashVars;
+			
+			// Añadimos la ruta a la API al principio de los flashVars para pasárselo al cliente flash.
+	    	$this->flashVars = 'apiUrl='.ulToolkit::getBaseUrl().'/api.php/'.'&'.$this->flashVars;
+		}
+	}
+	
 }

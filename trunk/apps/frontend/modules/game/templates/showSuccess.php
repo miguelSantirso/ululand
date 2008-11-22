@@ -61,6 +61,12 @@
 									time_ago_in_words($game->getCreatedAt('U')), 
 									format_date($game->getCreatedAt()) ); ?></p>
 					<?php endif; ?>
+					<?php
+						$url = url_for('game/embed?g='.$game->getUuid(), true); 
+						$embedCode = '<script type="text/javascript" language="javascript" charset="utf-8" src="'.$url.'"></script>';
+					?>
+					<h4 class="header"><?php echo __('Embed Game:'); ?>:</h4>
+					<input name="embedCode" id="embedCode" type="text" readonly="" onclick="javascript:$('embedCode').focus();$('embedCode').select();" value='<?php echo $embedCode; ?>' />
 					<p class="noSpace small"><?php echo __('Tags') ?>: <strong><?php echo $game->getLinkedTagsString(); ?></strong></p>
 					<?php if($game->hasBeenRated()) : ?>
 					<p class="noSpace small"><?php echo __('Rating'); ?>: <strong><?php echo sprintf(__('%s out of %s'), $game->getRating(), $game->getMaxRating()); ?></strong></p>

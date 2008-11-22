@@ -1,9 +1,32 @@
+
+# Games
+
+game_list:
+  url: /games
+  param: { module: game, action: list }
+
+game_list_tag:
+  url: /games/tag/:tag
+  param: { module: game, action: list }
+
+game_list_search:
+  url: /games/search/:search
+  param: { module: game, action: list }
+
+game_show:
+  url: /games/:stripped_name
+  param: { module: game, action: show }
+
+game_embed:
+  url: /games/:g/embed
+  param: { module: game, action: embed }
+
 # Authentification
 
 register:
   url:   /register
   param: { module: sfGuardAuth, action: register }
-  
+
 sf_guard_signin:
   url:   /login
   param: { module: sfGuardAuth, action: signin }
@@ -38,15 +61,6 @@ options_edit_avatar:
   url: /options/editAvatar
   param: { module: options, action: editAvatar }
 
-# Messages and comments
-add_message:
-  url:   /add_message
-  param: { module: message, action: add }
-add_comment:
-  url:   /add_comment
-  param: { module: comment, action: add }
-  
-  
 # default rules
 homepage:
   url:   /

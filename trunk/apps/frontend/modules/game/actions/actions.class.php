@@ -64,4 +64,22 @@ class gameActions extends sfActions
   	$this->gamestats = $this->game->getGameStats();
   }
 
+  /**
+   * Acción que permite la inserción de un juego desde páginas externas
+   *
+   */
+  public function executeEmbed()
+  {
+		if($this->getRequestParameter('g'))
+		{
+			$c = new Criteria();
+			$c->add(GamePeer::UUID, $this->getRequestParameter('g'));
+			$this->game = GamePeer::doSelectOne($c);
+		}
+
+		$this->forward404Unless($this->game);
+		$this->game->incrementCounter(); // Una visita más
+
+		$this->getResponse()->setContentType('application/x-javascript');
+  }
 }

@@ -38,7 +38,7 @@
 							$url = url_for('recipe/embed?r='.$code_piece->getUuid(), true); 
 							$embedCode = '<script type="text/javascript" language="javascript" charset="utf-8" src="'.$url.'"></script>';
 						?>
-						<input name="embedCode" id="embedCode" type="text" readonly="" onclick="javascript:$('embedCode').focus();$('embedCode').select();" value='<?php echo $embedCode; ?>' />
+						<input name="embedCode" id="embedCode" type="text" readonly="true" onclick="javascript:$('embedCode').focus();$('embedCode').select();" value='<?php echo $embedCode; ?>' />
 						<h4 class="header"><?php echo __('Recipe details'); ?></h4>
 						<p class="noSpace small"><?php echo __('Tags'); ?>: <strong><?php echo $code_piece->getLinkedTagsString(); ?></strong></p>
 						<p class="noSpace small"><?php echo __('Autor'); ?>: <strong><?php echo linkToProfile($code_piece->getsfGuardUser()->getProfile(), 15); ?></strong></p>
