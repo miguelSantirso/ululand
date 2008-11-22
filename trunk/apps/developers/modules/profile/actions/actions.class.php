@@ -135,7 +135,7 @@ class profileActions extends sfActions
 			$developerProfile = $sf_guard_user_profile->getDeveloperProfile();
 			$this->forward404Unless($developerProfile);
 	
-			$developerProfile->setUrl($this->processUrl($this->getRequestParameter('url')));
+			$developerProfile->setUrl(ulToolkit::processUrl($this->getRequestParameter('url')));
 			$developerProfile->setIsFree($this->getRequestParameter('is_free'));
 			$developerProfile->setTags($this->getRequestParameter('tags_string'));
 			$developerProfile->setDescription($this->getRequestParameter('description'));
@@ -149,23 +149,5 @@ class profileActions extends sfActions
 		return $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 	}
 	
-	/**
-	 * Función auxiliar que procesa una url recibida a través de un formulario web y la modifica para adecuarla al formato adecuado
-	 * Basicamente, comprueba si el usuario ha introducido la url con la cadena "http://" o sin ella. La función se ocupa de retornarla completa 
-	 *
-	 * @param string $url Url a procesar
-	 * @return string URL procesada y preparada para almacenar en la base de datos.
-	 */
-	protected function processUrl($url)
-	{
-		if(strncasecmp($url, 'http', 4) == 0)
-		{
-			return $url;
-		}
-		else
-		{
-			return 'http://'.$url;
-		}
-	}
 
 }

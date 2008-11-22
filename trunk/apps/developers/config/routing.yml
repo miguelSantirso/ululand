@@ -1,4 +1,22 @@
 
+# Options
+
+options:
+  url: /options
+  param: { module: options, action: index }
+
+options_edit_profile:
+  url: /options/editProfile
+  param: { module: options, action: editProfile }
+
+options_change_password:
+  url: /options/changePassword
+  param: { module: options, action: editPassword }
+
+options_edit_settings:
+  url: /options/editSettings
+  param: { module: options, action: editSettings }
+
 # games
 
 game_list:

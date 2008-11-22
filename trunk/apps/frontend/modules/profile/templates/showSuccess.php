@@ -2,6 +2,7 @@
 
 	<div class="contentColumn quarter alignLeft">
 		<div class="contentBox">
+			<?php if($sf_user->isAuthenticated()) : ?>
 			<?php if($sf_guard_user_profile->getId() != $sf_user->getProfile()->getId() && $friendship == "NO_FRIENDS") { ?>
 				<?php echo link_to(__('Add as friend'), 'profile/addFriend?id='.$playerProfile->getId()); ?> 
 			<?php } ?>
@@ -15,6 +16,7 @@
 			<?php if($sf_guard_user_profile->getId() != $sf_user->getProfile()->getId() && $friendship == "PENDINGB") { ?>
 				<?php echo __('I must confirm your friendship'); ?> 
 			<?php } ?>
+			<?php endif; ?>
 		</div>
 		<div class="contentBox">
 			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) : ?>

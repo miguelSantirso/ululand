@@ -13,10 +13,10 @@
 	</div>
 	<?php else : ?>
 	
-			<h4 class=""><?php echo link_to(__("Fill in your profile now!"), 'profile/edit?id='.$sf_user->getProfile()->getId()); ?></h4>
-			<p class="small"><?php echo __("Your profile is not filled in and you will not be listed here."); ?></p>
-			<p class=""><?php echo link_to(__("Fill in your profile &raquo;"), 'profile/edit?id='.$sf_user->getProfile()->getId()); ?></p>
-	
+		<h4 class=""><?php echo linkToEditProfile(null, array(), __("Fill in your profile now!")); ?></h4>
+		<p class="small"><?php echo __("Your profile is not filled in and you will not be listed here."); ?></p>
+		<p class=""><?php echo linkToEditProfile(null, array(), __("Fill in your profile &raquo;")); ?></p>
+		
 	<?php endif; ?>
 	<div class="clearFloat"></div>
 </div>

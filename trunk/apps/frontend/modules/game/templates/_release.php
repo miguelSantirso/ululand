@@ -1,5 +1,35 @@
 <?php if($game) { ?>
-	
+	<div id="leaderboard_bridge">
+	</div>
+	<script src="http://xs.mochiads.com/static/pub/swf/leaderboard.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		// Mochi Publisher Bridge
+		var options = {partnerID: "e60b7d6125fdc7bb", id: "leaderboard_bridge"};
+		<?php if($sf_user->isAuthenticated()) : ?>
+			options.username = "<?php echo $sf_user->getProfile()->getUsername(); ?>";
+		<?php endif; ?>
+		// optional
+		options.sessionID = "sf908uw098urerjw3948";
+		// optional
+		//options.gateway = "http://www.example.com/bridge/";
+		// optional
+		options.userPrefix = "http://ululand.com/people/";
+		// optional
+		options.logoURL = "http://ululand.com/images/logoUluland_mochi.png";
+		// optional
+		//options.callback = function (params) { alert(params.name + " (" + params.username + ") just scored " + params.score + "!"); }
+		
+		// uncomment this to display global scores
+		// options.globalScores = "true";
+		
+		/*
+		// uncomment this block for debug mode
+		options.width = 320;
+		options.height = 240;
+		options.debug = "true";
+		*/
+		Mochi.addLeaderboardIntegration(options);
+	</script>
 	<?php
 		if(!isset($width))
 			$width = $gameRelease->getWidth().'px';

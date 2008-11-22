@@ -1,7 +1,9 @@
 /* game box */
 
+div.gameBox * { margin: 0; padding: 0; border: 0; }
+
 div.gameBox h3 { font-family: Verdana; margin-top: 0; margin-bottom: 0; font-size: xx-large; font-weight: normal; text-transform: uppercase; letter-spacing: -2px; }
-	div.gameBox h3 a { background: #222; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius-topleft: 5px 5px 0 0; 
+	div.gameBox h3 a { background: #222; margin: 0; border: 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius-topleft: 5px 5px 0 0; 
 		padding: 10px; display: block; text-decoration: none; color: #00aaff; }
 		div.gameBox h3 a span { border: 0 !important; }
 		div.gameBox h3 a span img { border: 0 solid #f1f1f1; !important; vertical-align: middle; }

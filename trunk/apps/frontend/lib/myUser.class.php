@@ -19,6 +19,7 @@ class myUser extends sfGuardSecurityUser
 	
 	public function getPlayerProfile()
 	{
-		return $this->getProfile()->getPlayerProfile();
+		if(!is_null($this->getProfile()))
+			return $this->getProfile()->getPlayerProfile();
 	}
 }

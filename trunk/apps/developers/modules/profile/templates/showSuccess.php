@@ -6,7 +6,7 @@
 			<h3 class="header">
 				<?php echo linkToProfileWithGravatar($sf_guard_user_profile, 70); ?>
 				<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
-				<span class="">(<?php echo linkToEditProfile($sf_guard_user_profile); ?>)</span>
+				<span class="">(<?php echo linkToEditProfile(); ?>)</span>
 				<?php } ?>
 			</h3>
 			<small class="noSpace subtitle"><?php echo sprintf(__("Profile for %s"), linkToProfile($sf_guard_user_profile)); ?></small>
@@ -33,7 +33,7 @@
 			<p class="small"><?php echo __('Wiki'); ?>: <?php echo link_to_wiki_user($sf_guard_user_profile, $sf_guard_user_profile); ?></p>
 			
 			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
-				<span class="small"><?php echo linkToEditProfile($sf_guard_user_profile); ?></span>
+				<span class="small"><?php echo linkToEditProfile(); ?></span>
 			<?php } ?>
 			</div>
 			<div class="contentBox" id="postComment">

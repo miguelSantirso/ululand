@@ -29,10 +29,10 @@ class optionsActions extends sfActions
 			$this->sf_guard_user_profile = $this->getUser()->getProfile();
 
 			// Obtener el perfil de jugador a editar (en caso de no existir, se fuerza su creación)
-			$this->playerProfile = $this->sf_guard_user_profile->getPlayerProfile(true);
+			$this->developerProfile = $this->sf_guard_user_profile->getDeveloperProfile(true);
 				
 			$this->forward404Unless($this->sf_guard_user_profile);
-			$this->forward404Unless($this->playerProfile);
+			$this->forward404Unless($this->developerProfile);
 
 			// Display the form
 			return sfView::SUCCESS;
@@ -62,15 +62,18 @@ class optionsActions extends sfActions
 			$sf_guard_user_profile->save();
 				
 			// Obtener el objeto del perfil de usuario a editar
-			$playerProfile = $sf_guard_user_profile->getPlayerProfile();
-			$this->forward404Unless($playerProfile);
+			$developerProfile = $sf_guard_user_profile->getDeveloperProfile();
+			$this->forward404Unless($developerProfile);
 
-			$playerProfile->setDescription($this->getRequestParameter('description'));
+			$developerProfile->setUrl(ulToolkit::processUrl($this->getRequestParameter('url')));
+			$developerProfile->setIsFree($this->getRequestParameter('is_free'));
+			$developerProfile->setTags($this->getRequestParameter('tags_string'));
+			$developerProfile->setDescription($this->getRequestParameter('description'));
 				
-			$playerProfile->save();
+			$developerProfile->save();
 				
 			$this->sf_guard_user_profile = $sf_guard_user_profile;
-			$this->playerProfile = $playerProfile;
+			$this->developerProfile = $developerProfile;
 			
 			$this->setFlash('success', ulToolkit::__('Your profile has been successfully updated!'), false);
 			$this->redirect('@options');
@@ -86,7 +89,7 @@ class optionsActions extends sfActions
 		$this->sf_guard_user_profile = $this->getUser()->getProfile();
 
 		// Obtener el perfil de jugador a editar (en caso de no existir, se fuerza su creación)
-		$this->playerProfile = $this->sf_guard_user_profile->getPlayerProfile(true);
+		$this->developerProfile = $this->sf_guard_user_profile->getDeveloperProfile(true);
 			
 		return sfView::SUCCESS;		
 	}
@@ -176,53 +179,13 @@ class optionsActions extends sfActions
 	public function executeEditAvatar()
 	{
 		$this->userProfile   = $this->getUser()->getProfile();
-		$this->playerProfile = $this->userProfile->getPlayerProfile(true);	
+		$this->developerProfile = $this->userProfile->getDeveloperProfile(true);	
 		
 		$c = new Criteria();
 		$c->add(AvatarPiecePeer::IN_USE, true);
 		$this->avatarPieces = $this->userProfile->getAvatarPiecesRelatedByOwnerId($c);
 		
 		$this->avatarPiecesCatalogue = $this->userProfile->getAvatarPiecesRelatedByOwnerId();
-	}
-	
-	/**
-	 * Acción que pone una pieza de avatar en el avatar del usuario.
-	 *
-	 */
-	public function executeSetAvatarPiece()
-	{
-		if(!$this->getRequestParameter('id')) { $this->owner = $this->getUser()->getProfile(); return sfView::SUCCESS; } 
-		
-		$tmp = split('_', $this->getRequestParameter('id', ''));
-  		$avatarPieceId = $tmp[1];
-  		
-  		$avatarPiece = AvatarPiecePeer::retrieveByPK($avatarPieceId);
-  		if(is_null($avatarPiece)) return sfView::ERROR;
-  		
-  		$owner = $avatarPiece->getsfGuardUserProfileRelatedByOwnerId();
-  		if(is_null($owner)) return sfView::ERROR;
-  		
-  		$avatar = $owner->getAvatar();
-  		
-  		switch($avatarPiece->getType())
-  		{
-  			case 'head':
-  				$avatar->setHeadId($avatarPieceId);
-  				break;
-  			case 'body':
-  				$avatar->setBodyId($avatarPieceId);
-  				break;
-  			case 'arm':
-  				$avatar->setArmsId($avatarPieceId);
-  				break;
-  			case 'leg':
-  				$avatar->setLegsId($avatarPieceId);
-  				break;
-  		}
-  		$avatar->save();
-  		
-  		$this->avatar = $avatar;
-  		$this->owner  = $owner;
 	}
 	
 }

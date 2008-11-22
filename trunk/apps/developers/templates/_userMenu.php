@@ -10,7 +10,7 @@
 				} else {
 					$user = $sf_user->getProfile();
 				}
-				?>
-				<?php echo __(sprintf(__('Welcome back, %1$s! %2$s?'), linkToProfile($user), link_to(__("Logout"), "@sf_guard_signout"))); ?>
+				?>				
+				<?php echo __(sprintf(__('Welcome back, %1$s! %2$s? %3$s?'), linkToProfile($user), link_to(__("Options"), '@options'), link_to(__("Logout"), "@sf_guard_signout"))); ?>
 			<?php } ?>
 		</div>

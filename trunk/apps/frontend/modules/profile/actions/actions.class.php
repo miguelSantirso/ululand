@@ -53,8 +53,9 @@ class profileActions extends sfActions
 		
 		$this->playerProfile = $this->sf_guard_user_profile->getPlayerProfile(true);
 		// Obtenemos la hipotï¿½tica relaciï¿½n de amistad entre el avatar del usuario y el avatar del perfil
-		$this->friendship = FriendshipPeer::getFriendshipBetween($this->playerProfile->getId(), $this->getUser()->getPlayerProfile()->getId());
-		$this->playerProfile->incrementCounter(); // Una visita m�s
+		if($this->getUser()->isAuthenticated())
+			$this->friendship = FriendshipPeer::getFriendshipBetween($this->playerProfile->getId(), $this->getUser()->getPlayerProfile()->getId());
+		$this->playerProfile->incrementCounter(); // Una visita más
 		
 		$this->forward404Unless($this->sf_guard_user_profile);
 		

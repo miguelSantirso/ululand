@@ -12,6 +12,8 @@ $isCommunity = $module == 'nahoWiki' ||
 	$module == 'community' ||
 	$module == 'profile';
 
+$isOptions = $module == 'options';
+
 ?>
 <div id="mainHeader">
 	<?php if($isCommunity) : ?>
@@ -34,6 +36,10 @@ $isCommunity = $module == 'nahoWiki' ||
 		
 		<?php if($isCommunity) : ?>
 		<?php echo link_to(__('Community'), 'community'); ?>
+		<?php endif; ?>
+		
+		<?php if($isOptions) : ?>
+		<?php echo link_to(__('Options'), 'options'); ?>
 		<?php endif; ?>
 	</h2>
 </div>

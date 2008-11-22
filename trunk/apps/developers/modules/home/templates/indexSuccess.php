@@ -15,7 +15,7 @@
 			<?php else: ?>
 			<div class="contentBox">
 				<h3 class="header">
-					<?php echo __('Your profile'); ?> <?php echo "(".linkToEditProfile($sf_user->getProfile(), array(), __('edit')).")" ?>:
+					<?php echo __('Your profile'); ?> <?php echo "(".linkToEditProfile(null, array(), __('edit')).")" ?>:
 				</h3>
 				
 				<?php include_partial('profile/badge', array('profile' => $sf_user->getProfile()) ); ?>

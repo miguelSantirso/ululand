@@ -50,4 +50,23 @@ class ulToolkit
 
 		return $text;
 	}
+
+	/**
+	 * Función auxiliar que procesa una url recibida a través de un formulario web y la modifica para adecuarla al formato adecuado
+	 * Basicamente, comprueba si el usuario ha introducido la url con la cadena "http://" o sin ella. La función se ocupa de retornarla completa 
+	 *
+	 * @param string $url Url a procesar
+	 * @return string URL procesada y preparada para almacenar en la base de datos.
+	 */
+	public static function processUrl($url)
+	{
+		if(strncasecmp($url, 'http', 4) == 0)
+		{
+			return $url;
+		}
+		else
+		{
+			return 'http://'.$url;
+		}
+	}
 }

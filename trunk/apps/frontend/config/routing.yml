@@ -21,6 +21,24 @@ game_embed:
   url: /games/:g/embed
   param: { module: game, action: embed }
 
+# profiles
+
+user_list:
+  url: /people
+  param: { module: profile, action: list }
+
+user_list_tag:
+  url: /people/tag/:tag
+  param: { module: profile, action: list }
+
+user_list_search:
+  url: /people/search/:search
+  param: { module: profile, action: list }
+  
+user_show:
+  url: /people/:username
+  param: { module: profile, action: show }
+
 # Authentification
 
 register:
