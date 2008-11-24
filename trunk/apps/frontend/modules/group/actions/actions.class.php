@@ -245,6 +245,11 @@ class groupActions extends sfActions
   		$group->setName($this->getRequestParameter('name'));
   		$group->setDescription($this->getRequestParameter('description'));
   		$group->save();
+  		
+  		/*if($this->getRequest()->getFileSize('thumbnail_path'))
+			$this->updateThumbnail($group);
+			
+		$group->save();*/
   	}
 
   	return $this->redirect('group/show?id='.$groupId);
@@ -278,4 +283,25 @@ class groupActions extends sfActions
   	
   	return $this->redirect('group/edit?id='.$group);
   }
+  
+/**
+	 * Función privada que actualiza la vista en miniatura del icono del grupo pasado como parámetro.
+	 * La imagen desde la que se generará el icono debe haber sido enviada previamente a través del formulario correspondiente con nombre "thumbnail_path"
+	 *
+	 * @param Group $group Grupo al que se desea actualizar su icono
+	 */
+	/*private function updateThumbnail($group)
+	{
+		$currentThumbnail = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_group')."/{$group->getStrippedName()}/".$group->getThumbnailPath();
+
+		if (is_file($currentThumbnail))
+		{
+			unlink($currentThumbnail);
+		}
+		$fileName = "{$group->getStrippedName()}";
+		$ext = $this->getRequest()->getFileExtension('thumbnail_path');
+		$thumbnailPath = $this->getRequest()->getFileName('thumbnail_path');
+      	$this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_group')."/{$group->getStrippedName()}/".$fileName.$ext);
+      	$group->setThumbnailPath($fileName.$ext);
+	}*/
 }

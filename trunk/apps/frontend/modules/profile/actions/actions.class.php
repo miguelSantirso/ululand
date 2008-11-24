@@ -212,7 +212,7 @@ class profileActions extends sfActions
 	    endforeach;
 	  	
 	  	// Obtener el objeto del perfil de usuario
-		$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk(PlayerProfilePeer::retrieveByPk($this->playerBId)->getUserProfileId());
+		$sf_guard_user_profile = sfGuardUserProfilePeer::retrieveByPk(PlayerProfilePeer::retrieveByPk($this->playerAId)->getUserProfileId());
 	    
 	    $this->redirect('profile/show?username='.$sf_guard_user_profile->getUsername());
 	}

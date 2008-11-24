@@ -1,4 +1,5 @@
-<?php use_helper('Object', 'Javascript') ?>
+<?php use_helper('Object', 'Validation', 'Javascript') ?>
+
 
 <h2 id="pageTitle"><?php echo image_tag("iconCommunity.png").image_tag("iconConfiguration.png").__('Group Administration'); ?></h2>
 
@@ -17,6 +18,13 @@
 				  		'size' => 20,
 						'class' => 'grande',
 						)) ?>
+					<br/>
+					
+					<br/>
+					<p class="noSpace"><?php echo label_for('thumbnail_path', __('Thumbnail:')); ?></p>
+					<?php echo form_error("thumbnail_path"); ?>
+					<?php echo input_file_tag("thumbnail_path"); ?>
+					<p class="noSpace"><small><?php echo __('Accepts (almost) everything. And don\'t worry; we will resize it for you ;)'); ?></small></p>
 					<br/>
 
 					<p class="noSpace"><?php echo label_for('description', __('Group Description')); ?>:</p>
