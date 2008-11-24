@@ -20,6 +20,7 @@ CREATE TABLE `sf_guard_user_profile`
 	`last_name` VARCHAR(20),
 	`gender` INTEGER default 0 NOT NULL,
 	`culture` VARCHAR(8),
+	`is_approved` INTEGER default 0 NOT NULL,
 	PRIMARY KEY (`id`),
 	INDEX `sf_guard_user_profile_FI_1` (`user_id`),
 	CONSTRAINT `sf_guard_user_profile_FK_1`

@@ -10,14 +10,6 @@
  */
 class mailActions extends sfActions
 {
-  /**
-   * Executes index action
-   *
-   */
-  public function executeIndex()
-  {
-    $this->forward('default', 'module');
-  }
 
   public function executeSendEmailApprovalLink()
   {
@@ -25,7 +17,7 @@ class mailActions extends sfActions
 
 		// definition of the required parameters
 		$mail->setFrom('no-reply@ululand.com', 'El cartero amable de Ululand.');
-		$mail->setSubject('Confirmaci&oacute;n de tu direcci&oacute;n de email');
+		$mail->setSubject(ulToolkit::__('Email account validation'));
 		$mail->addAddress($this->getRequestParameter('email'));
 		
 		$mail->addEmbeddedImage(sfConfig::get('sf_web_dir').'/images/header_logo.gif', 'CID1', 'Ululand Logo', 'base64', 'image/gif');

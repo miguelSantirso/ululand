@@ -47,27 +47,10 @@ class PlayerProfile extends BasePlayerProfile
 	 */
 	public function getNbFriends()
 	{
-		return count($this->getFriends());		
+		$c = new Criteria();
+		$c->add(FriendshipPeer::IS_CONFIRMED, true);
+		return count($this->getFriends($c));		
 	}
-	
-	/**
-	 * Retorna una lista con todos los grupos del jugador
-	 *
-	 * @deprecated Creo que ya no se usa
-	 * @return unknown
-	 */
-	/*public function getGroups()
-	{
-		// Obtener todas las relaciones de grupo en las que participa el jugador
-		$groupships = $this->getPlayerProfile_Groups();
-
-		$groups = Array();
-		foreach($groupships as $groupship) // Para cada relaci�n
-		{
-					$groups[] = $groupship->getGroup();
-		}
-		return $groups;
-	}*/
 	
 	/**
 	 * Retorna el número de grupos a los que pertenece el jugador
@@ -81,25 +64,7 @@ class PlayerProfile extends BasePlayerProfile
 		
 		return PlayerProfile_GroupPeer::doCount($c);
 	}
-	
-/**
-	 * Retorna un enlace al perfil del avatar
-	 *
-	 * @todo ¿esto quizás estaría mejor en un helper?
-	 * @deprecated ya no se usa
-	 * @return enlace al perfil del avatar formateado correctamente
-	 */
-	/*public function getProfileLink()
-	{
-		return (
-			'<span class="extensible">' . 
-			link_to($this->getName(), 'profile/show?id='.$this->getId(), array('class' => 'profileLink ' . $this->getGender())) . 
-			'<img class="more" src="/images/more.gif" onMouseOver="javascript:swapMoreImage(this, 0);" onClick="javascript:swapMoreImage(this, 1); showMoreMenu(\'' . url_for("/profile/quickActions?id=".$this->getId()) . '\');" onMouseOut="javascript:swapMoreImage(this, 2);" />'.
-			'</span>'
-			);
-	}*/
-	
-	
+		
 	/**
 	 * Retorna el número de comentarios en el perfil
 	 *
@@ -109,7 +74,7 @@ class PlayerProfile extends BasePlayerProfile
 		return count($this->getComments());
 	}
 	
-/**
+	/**
 	 * Retorna los créditos disponibles del avatar
 	 *
 	 * @return ingeger créditos disponibles del avatar
@@ -119,7 +84,7 @@ class PlayerProfile extends BasePlayerProfile
 		return $this->getTotalCredits() - $this->getSpentCredits();
 	}
 	
-/**
+	/**
 	 * Añade los créditos pasados como parámetro al número total de créditos. Esta función es la forma adecuada de aumentar los créditos disponibles.
 	 *
 	 * @param number $amount Cantidad de créditos a añadir.

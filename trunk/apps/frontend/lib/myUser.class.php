@@ -1,6 +1,6 @@
 <?php
 
-class myUser extends sfGuardSecurityUser
+class myUser extends ulUser
 {
 	public static function getConnectedAvatarId()
 	{

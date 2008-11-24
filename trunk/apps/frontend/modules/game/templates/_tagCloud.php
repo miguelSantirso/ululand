@@ -9,7 +9,7 @@
 	
 	if(!isset($listStyle))
 	{
-		$listStyle = "xSmall tags";
+		$listStyle = "small cloud";
 	}
 ?>
 

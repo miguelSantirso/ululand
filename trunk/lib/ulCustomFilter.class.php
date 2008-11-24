@@ -21,7 +21,7 @@ class ulCustomFilter extends sfFilter
 					$rk = sfGuardRememberKeyPeer::doSelectOne($c);
 					if ($rk && $rk->getSfGuardUser())
 					{
-						$this->getContext()->getUser()->signIn($rk->getSfGuardUser());
+						$this->context->getUser()->signIn($rk->getSfGuardUser());
 					}
 				}
 				
@@ -33,7 +33,6 @@ class ulCustomFilter extends sfFilter
 				else
 					$this->context->getUser()->setCulture('en');
 			}
-			
 		}
 
 		$filterChain->execute();

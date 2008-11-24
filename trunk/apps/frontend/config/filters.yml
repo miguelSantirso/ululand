@@ -3,7 +3,9 @@ web_debug: ~
 security:
   class: sfGuardBasicSecurityFilter
 # generally, you will want to insert your own filters here
-        
+ul_custom_filter:
+  class: ulCustomFilter
+
 cache:     ~
 common:    ~
 flash:     ~

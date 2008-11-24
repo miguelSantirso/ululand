@@ -13,48 +13,31 @@
 
 </head>
 <body>
-	<!-- Cajitas especiales de avisos -->
-	<?php if($formErrors != NULL): ?>
-	  <p class="messageBox error"><?php echo $formErrors; ?></p>
-	<?php endif; ?>
-	<?php if($warnings != NULL): ?>
-	  <p class="messageBox warning"><?php echo $warnings; ?></p>
-	<?php endif; ?>
-	<?php if($successes != NULL): ?>
-	  <p class="messageBox success"><?php echo $successes; ?></p>
-	<?php endif; ?>
-<br/>
-<div id="header" class="rounded alignCenter">
-	<?php echo image_tag('header_logo.png', array("class" => "alignCenter")); ?>
-</div>
+	<div id="" class="alignCenter">
+		<br/>
+		<?php echo image_tag('header_logo.png', array("class" => "alignCenter")); ?>
+		<br/>
+	</div>
 
-<div id="content" class="rounded">
-
-	<?php echo $sf_data->getRaw('sf_content') ?> 
+	<!-- flash boxes -->
+	<?php if ($sf_flash->has('error')): ?>
+		<p class="flashBox error"><?php echo $sf_flash->get('error') ?></p>
+	<?php endif ?>
+	<?php if ($sf_flash->has('warning')): ?>
+		<p class="flashBox warning"><?php echo $sf_flash->get('warning') ?></p>
+	<?php endif ?>	
+	<?php if ($sf_flash->has('success')): ?>
+		<p class="flashBox success"><?php echo $sf_flash->get('success') ?></p>
+	<?php endif ?>
 	
-	<div style="clear: both"></div>
-</div>
- 
-<div id="footer" class="alignCenter">
-	<p><strong>ulu</strong>land versi&oacute;n <?php echo sfConfig::get('app_version'); ?>. Desarrollado por <a href="#">Christian Ca&ntilde;ete</a> &amp; <a href="http://miguelsantirso.es">Miguel Santirso</a></p>
-	<br/>
-	<!-- <p><a href="http://validator.w3.org/check?uri=referer">XHTML v&aacute;lido.</a></p>  -->
-	
-</div>
-
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-1096368-6");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
-
+	<div id="content" class="">
+		<br/>
+		<?php echo $sf_data->getRaw('sf_content') ?> 
+		
+		<div style="clear: both"></div>
+	</div>
+	 
+	<?php include_partial('global/footer'); ?>
 
 
 </body>

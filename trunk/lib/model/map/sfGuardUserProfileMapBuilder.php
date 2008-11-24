@@ -48,5 +48,7 @@ class sfGuardUserProfileMapBuilder {
 
 		$tMap->addColumn('CULTURE', 'Culture', 'string', CreoleTypes::VARCHAR, false, 8);
 
+		$tMap->addColumn('IS_APPROVED', 'IsApproved', 'boolean', CreoleTypes::BOOLEAN, true, null);
+
 	} 
 } 

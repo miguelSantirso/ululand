@@ -1,0 +1,6 @@
+approveEmailSuccess:
+  layout: isolatedLayout
+resendApprovalEmailSuccess:
+  layout: isolatedLayout
+resendApprovalEmailError:
+  layout: isolatedLayout

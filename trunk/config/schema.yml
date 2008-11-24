@@ -9,6 +9,7 @@ propel:
     last_name:   varchar(20)
     gender:      { type: integer, required: true, default: 0 }
     culture:     varchar(8)
+    is_approved:   { type: boolean, required: true, default: false }
 
 
   developer_profile:

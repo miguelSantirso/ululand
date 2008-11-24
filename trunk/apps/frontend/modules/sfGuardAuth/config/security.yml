@@ -1,0 +1,6 @@
+approveEmail:
+  is_secure: off
+resendApprovalEmail:
+  is_secure: off
+emailApproved:
+  is_secure: off

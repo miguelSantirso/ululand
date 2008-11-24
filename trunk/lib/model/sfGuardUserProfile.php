@@ -133,3 +133,12 @@ class sfGuardUserProfile extends BasesfGuardUserProfile
 }
 
 sfPropelBehavior::add('sfGuardUserProfile', array('sfPropelUuidBehavior'));
+sfPropelBehavior::add('sfGuardUserProfile', 
+  array(
+    'sfPropelApprovableBehavior' => array(
+      'column' => 'is_approved',
+      'disabled_applications' => array('backend'),
+      'destination' => 'sfGuardAuth/emailApproved'
+    )
+  )
+);
