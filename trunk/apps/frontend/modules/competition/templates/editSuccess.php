@@ -1,7 +1,7 @@
 <?php use_helper('Object', 'Javascript') ?>
 
 <div id="pageContent">
-	<?php echo form_tag('competition/update') ?>
+	<?php echo form_tag('competition/update', 'multipart=true') ?>
 	
 	<?php echo object_input_hidden_tag($competition, 'getId'); ?>
 	

@@ -1,0 +1,4 @@
+edit:
+  is_secure: on
+update:
+  is_secure: on

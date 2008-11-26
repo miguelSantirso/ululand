@@ -1,6 +1,6 @@
 # default values
 all:
-  version: "Alfa 6"
+  version: "Beta 1"
   register:
     daystovalidate: 7
   saltlength: 4

@@ -100,7 +100,7 @@ class Group extends BaseGroup
 		parent::setName($v);
 		
 		//if(!$this->getStrippedTitle())
-		// @todo habría que hacer que el título no se modifique cuando el juego esté ya publicado
+		// @todo habría que hacer que el título no se modifique cuando el grupo esté ya publicado
 		$this->setStrippedName(ulToolkit::stripText($v));
 	}
 }

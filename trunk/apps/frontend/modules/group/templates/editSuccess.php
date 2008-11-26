@@ -4,7 +4,7 @@
 <h2 id="pageTitle"><?php echo image_tag("iconCommunity.png").image_tag("iconConfiguration.png").__('Group Administration'); ?></h2>
 
 <div id="pageContent">
-	<?php echo form_tag('group/update') ?>
+	<?php echo form_tag('group/update', 'multipart=true') ?>
 	
 	<?php echo object_input_hidden_tag($group, 'getId'); ?>
 	

@@ -50,8 +50,7 @@ class groupActions extends sfActions
  	        
 	    // Crear un nuevo objeto PlayerProfile_Group
  	    $this->newPlayerProfile_Group = new PlayerProfile_Group();
-	        
-	        
+
 	    // Modificar adecuadamente el objeto
 	    $this->newPlayerProfile_Group->setPlayerProfileId($this->profile->getId());
  	    $this->newPlayerProfile_Group->setGrupoId($this->groupId);
@@ -240,16 +239,15 @@ class groupActions extends sfActions
   			$this->setFlash('warning', 'No tienes permisos para editar este grupo');
   			$this->forward('group', 'list');
   		}
-  		
 
   		$group->setName($this->getRequestParameter('name'));
   		$group->setDescription($this->getRequestParameter('description'));
   		$group->save();
   		
-  		/*if($this->getRequest()->getFileSize('thumbnail_path'))
+  		if($this->getRequest()->getFileSize('thumbnail_path'))
 			$this->updateThumbnail($group);
-			
-		$group->save();*/
+  		
+		$group->save();
   	}
 
   	return $this->redirect('group/show?id='.$groupId);
@@ -290,9 +288,9 @@ class groupActions extends sfActions
 	 *
 	 * @param Group $group Grupo al que se desea actualizar su icono
 	 */
-	/*private function updateThumbnail($group)
+	private function updateThumbnail($group)
 	{
-		$currentThumbnail = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_group')."/{$group->getStrippedName()}/".$group->getThumbnailPath();
+		$currentThumbnail = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_groupIcons')."/".$group->getThumbnailPath();
 
 		if (is_file($currentThumbnail))
 		{
@@ -301,7 +299,7 @@ class groupActions extends sfActions
 		$fileName = "{$group->getStrippedName()}";
 		$ext = $this->getRequest()->getFileExtension('thumbnail_path');
 		$thumbnailPath = $this->getRequest()->getFileName('thumbnail_path');
-      	$this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_group')."/{$group->getStrippedName()}/".$fileName.$ext);
+      	$this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_groupIcons')."/".$fileName.$ext);
       	$group->setThumbnailPath($fileName.$ext);
-	}*/
+	}
 }

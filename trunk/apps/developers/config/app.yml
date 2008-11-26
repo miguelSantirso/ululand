@@ -6,6 +6,8 @@ all:
     game:    "UploadedGames"
     widget:  "UploadedWidgets"
     avatarPiece: "UploadedPieces"
+    groupIcons:  "GroupIcons"
+    competitionIcons:  "CompetitionIcons"
 
   pager:
     profile: 12

@@ -60,7 +60,7 @@ class ulToolkit
 	 */
 	public static function processUrl($url)
 	{
-		if(strncasecmp($url, 'http', 4) == 0)
+		if(is_null($url) || $url == "" || strncasecmp($url, 'http', 4) == 0)
 		{
 			return $url;
 		}

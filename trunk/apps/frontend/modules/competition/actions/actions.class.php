@@ -180,7 +180,7 @@ class competitionActions extends sfActions
   			
   		if($this->getRequest()->getFileSize('thumbnail_path'))
 			$this->updateThumbnail($competition);
-			
+  			
 		$competition->save();
   	}
 
@@ -318,7 +318,7 @@ class competitionActions extends sfActions
   
   private function updateThumbnail($competition)
   {
-	$currentThumbnail = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_competitionIcons')."/{$competition->getStrippedName()}/".$competition->getThumbnailPath();
+	$currentThumbnail = sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_competitionIcons')."/".$competition->getThumbnailPath();
 
 	if (is_file($currentThumbnail))
 	{
@@ -327,7 +327,7 @@ class competitionActions extends sfActions
 	$fileName = "{$competition->getStrippedName()}";
 	$ext = $this->getRequest()->getFileExtension('thumbnail_path');
 	$thumbnailPath = $this->getRequest()->getFileName('thumbnail_path');
-    $this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_competitionIcons')."/{$competition->getStrippedName()}/".$fileName.$ext);
+    $this->getRequest()->moveFile('thumbnail_path', sfConfig::get('sf_upload_dir')."/".sfConfig::get('app_dir_competitionIcons')."/".$fileName.$ext);
     $competition->setThumbnailPath($fileName.$ext);
   }
   

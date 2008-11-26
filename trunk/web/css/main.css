@@ -87,7 +87,7 @@ a.bigBox {
 	margin: 0 0 1em 0;
 	display: block;
 }
-a.bigBox:hover { background-color: #fafafa; }
+a.bigBox:hover { background-color: #00aaff; color: white; }
 a.bigBox.delete:hover { background-color: red; border: 0; }
 a.bigBox.delete:active { background-color: black; border: 0; }
 a.bigBox:active { background-color: #eee; }
