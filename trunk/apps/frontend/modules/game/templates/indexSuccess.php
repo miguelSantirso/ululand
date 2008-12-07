@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="contentColumn half alignLeft">
+	<div class="contentColumn half alignRight">
 		<div class="contentBox bordered">
 			<h3 class="header"><?php echo __('Recent Competitions') ?></h3>
 			<?php include_component('competition', 'list', array()) ?>

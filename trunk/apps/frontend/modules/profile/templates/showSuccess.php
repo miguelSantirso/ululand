@@ -69,6 +69,9 @@
 				?>
 				<h4 class="header"><?php echo __('Me & my friends:'); ?></h4>
 				<?php includeWidget('avatarRepresentator', $flashVars, array('width' => 800)); ?>
+				<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) : ?>
+					<p class="center noSpace"><?php echo link_to(__('Customize your ULU').' &raquo;', '@options_edit_avatar'); ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

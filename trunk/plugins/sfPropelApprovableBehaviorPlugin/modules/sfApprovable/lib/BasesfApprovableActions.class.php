@@ -1,8 +1,6 @@
 <?php
 
-require_once sfConfig::get('sf_app_dir').'/lib/frontendCommonActions.class.php';
-
-class BasesfApprovableActions extends frontendCommonActions
+class BasesfApprovableActions extends sfActions
 {
 
   public function executeApprove()

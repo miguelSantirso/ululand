@@ -55,8 +55,7 @@
 	function linkToProfileWithGravatar($sfGuardUserProfile, $size = 80, $options = array(), $customText = "")
 	{
 		$linkText = $customText == "" ? $sfGuardUserProfile : $customText;
-		$grav_url = "http://www.gravatar.com/avatar/".md5($sfGuardUserProfile->getSfGuardUser()->getUsername()).'?s='.$size;
-		$imageTag = image_tag($grav_url, array('alt' => $sfGuardUserProfile, 'title' => $sfGuardUserProfile));
+		$imageTag = gravatar_tag($sfGuardUserProfile->getSfGuardUser()->getUsername(), $size, array('alt' => $sfGuardUserProfile, 'title' => $sfGuardUserProfile));
 		$linkText = '<span class="gravatar">'.$imageTag.'</span>'.$linkText;
 		
 		return '<span class="linkToProfileWithGravatar">'.linkToProfile($sfGuardUserProfile, $options, $linkText ).'</span>';

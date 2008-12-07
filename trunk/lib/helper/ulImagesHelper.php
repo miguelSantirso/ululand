@@ -7,7 +7,8 @@
 	
 	function gravatar_tag($email, $size = 80, $options = array())
 	{
-		$grav_url = "http://www.gravatar.com/avatar/".md5($email).'?s='.$size;
+		$grav_url = "http://www.gravatar.com/avatar/".md5($email).'?s='.$size.'&d='.ulToolkit::getBaseUrl().'/images/noGravatar.png';
+		$options["width"] = $size;
 		return image_tag($grav_url, $options);
 	}
 

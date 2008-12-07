@@ -14,8 +14,8 @@
 						<?php echo linkToProfileWithGravatar($userProfile, 80, array('class' => 'firstRow large')); ?>
 						<div class="lastRow">
 							<?php if($sf_user->isAuthenticated() && $userProfile->getId() == $sf_user->getProfile()->getId()) { echo linkToEditProfile(null, array('class' => 'alignRight xSmall')); } ?>
-							<p class="noSpace xSmall"><?php echo __('Available credits'); ?>: <strong><?php echo $profile->getAvailableCredits(); ?></strong></p>
-							<p class="noSpace xSmall"><?php echo __('Total earned credits'); ?>: <strong><?php echo $profile->getTotalCredits(); ?></strong></p>
+							<p class="noSpace xSmall"><?php echo __('Friends'); ?>: <strong><?php echo $profile->getNbFriends(); ?></strong></p>
+							<p class="noSpace xSmall"><?php echo __('uluPoints'); ?>: <strong><?php echo $profile->getTotalCredits(); ?></strong></p>
 						</div>
 						<div class="clearFloat"></div>
 					</li>

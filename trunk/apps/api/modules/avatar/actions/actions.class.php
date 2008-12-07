@@ -62,7 +62,7 @@ class avatarActions extends apiCommonActions
 										'type'         => $piece->getType(),
 										'creator'      => $piece->getsfGuardUserProfileRelatedByAuthorId()->getUsername(),
 										'creatorUuid'  => $piece->getsfGuardUserProfileRelatedByAuthorId()->getUuid(),
-										'url'          => $piece->getUrl(),
+										'url'          => is_null($piece->getUrl()) ? 'basics/head.png' : $piece->getUrl(),
 										'price'        => $piece->getPrice(),
 										'inUse'        => $piece->getInUse() ) );
 		}

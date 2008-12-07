@@ -59,15 +59,37 @@ class ulsfGuardAuthActions extends BasesfGuardAuthActions
 			$languages = $this->getRequest()->getLanguages();
 			$preferredLanguage = $languages[0];
 			if($preferredLanguage == 'es' || $preferredLanguage == 'es_ES')
-			$profile->setCulture('es');
+				$profile->setCulture('es');
 			else
-			$profile->setCulture('en');
+				$profile->setCulture('en');
+
 			$profile->setUsername($this->getRequestParameter('screenname'));
 			$profile->save();
 			
 			// CREAR EL AVATAR DEL NUEVO USUARIO
 			$newAvatar = new Avatar();
-			$newAvatar->setProfile($this->getUser()->getProfile());
+			$newAvatar->setProfile($profile);
+			
+			// crear las piezas iniciales del avatar
+			$basicPieces = array("head", "body", "arm", "leg");
+			foreach($basicPieces as $basicPiece)
+			{
+				$piece = new AvatarPiece();
+				$piece->setName("Basic {$basicPiece}");
+				$piece->setDescription("Basic {$basicPiece}. You can edit this piece to customize your look");
+				$piece->setAuthorId($profile->getId());
+				$piece->setOwnerId($profile->getId());
+				$piece->setUrl("/basics/{$basicPiece}.png");
+				$piece->setPrice(0);
+				$piece->setType($basicPiece);
+				$piece->save();
+				
+				if($basicPiece == "head") { $newAvatar->setHeadId($piece->getId()); }
+				else if($basicPiece == "body") { $newAvatar->setBodyId($piece->getId()); }
+				else if($basicPiece == "arm") { $newAvatar->setArmsId($piece->getId()); }
+				else if($basicPiece == "leg") { $newAvatar->setLegsId($piece->getId()); }
+			}
+			
 			$newAvatar->save();
 			
 			// Iniciar automaticamente la sesión para el usuario que se acaba de registrar

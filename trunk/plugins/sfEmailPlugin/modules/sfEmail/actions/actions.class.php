@@ -8,9 +8,8 @@
  * @website    http://narkozateam.com
  */
 
-require_once sfConfig::get('sf_app_dir').'/lib/frontendCommonActions.class.php';
 
-class sfEmailActions extends frontendCommonActions
+class sfEmailActions extends sfActions
 {
 
   public function executeIndex()
@@ -21,7 +20,6 @@ class sfEmailActions extends frontendCommonActions
       $this->files = $files;
     }    
   }
-
 
   private function retrieveFile()
   {

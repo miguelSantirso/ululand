@@ -29,7 +29,17 @@ class profileComponents extends sfComponents
 		$this->limit = isset($this->limit) ? $this->limit : $this->getRequestParameter('limit');
 		if($this->limit)
 		{
-			$c->setLimit($this->limit);
+			$pager->setMaxRecordLimit($this->limit);
+		}
+		$this->orderDescendingBy = isset($this->orderDescendingBy) ? $this->orderDescendingBy : $this->getRequestParameter('orderDescendingBy');
+		if($this->orderDescendingBy)
+		{
+			$c->addDescendingOrderByColumn($this->orderDescendingBy);
+		}
+		$this->orderAscendingBy = isset($this->orderAscendingBy) ? $this->orderAscendingBy : $this->getRequestParameter('orderAscendingBy');
+		if($this->orderAscendingBy)
+		{
+			$c->addAscendingOrderByColumn($this->orderAscendingBy);
 		}
 		
 		$pager->setCriteria($c);
