@@ -1,6 +1,6 @@
 <?php use_helper('ulMisc'); ?>
 
-<?php $developerProfile = $profile->getDeveloperProfile(); ?>
+<?php $developerProfile = $profile->getDeveloperProfile(true); ?>
 
 <div class="profileBadge">
 	<?php if($profile->isFilledIn()) : ?>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-11-06T18:13:46Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-11-27T19:26:07Z">
     <body>
 
 <trans-unit id="1">
@@ -461,7 +461,7 @@
 
 <trans-unit id="104">
 <source>Hello! You can %1$s or %2$s.</source>
-<target>¡Hola! Puedes %1$s o %2$s.</target>
+<target>&#xA1;Hola! Puedes %1$s o %2$s.</target>
 </trans-unit>
 
 <trans-unit id="105">
@@ -471,7 +471,7 @@
 
 <trans-unit id="106">
 <source>Welcome back, %1$s! %2$s? %3$s?</source>
-<target>¡Hola de nuevo, %1$s! ¿%2$s? ¿%3$s?</target>
+<target>&#xA1;Hola de nuevo, %1$s! &#xBF;%2$s? &#xBF;%3$s?</target>
 </trans-unit>
 
 <trans-unit id="107">
@@ -511,42 +511,42 @@
 
 <trans-unit id="114">
 <source>Wrong Password</source>
-<target>Contraseña Incorrecta</target>
+<target>Contrase&#xF1;a Incorrecta</target>
 </trans-unit>
 
 <trans-unit id="115">
 <source>Your password has been successfully updated!</source>
-<target>¡Tu contraseña se ha actualizado con éxito!</target>
+<target>&#xA1;Tu contrase&#xF1;a se ha actualizado con &#xE9;xito!</target>
 </trans-unit>
 
 <trans-unit id="116">
 <source>The interface settings have been succesfully updated!</source>
-<target>¡La configuración del interfaz se ha actualizado con éxito!</target>
+<target>&#xA1;La configuraci&#xF3;n del interfaz se ha actualizado con &#xE9;xito!</target>
 </trans-unit>
 
 <trans-unit id="117">
 <source>Change Your Password</source>
-<target>Cambiar tu Contraseña</target>
+<target>Cambiar tu Contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="118">
 <source>Current Password</source>
-<target>Contraseña Actual</target>
+<target>Contrase&#xF1;a Actual</target>
 </trans-unit>
 
 <trans-unit id="119">
 <source>New Password</source>
-<target>Nueva Contraseña</target>
+<target>Nueva Contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="120">
 <source>Retype new password</source>
-<target>Reescribe la nueva contraseña</target>
+<target>Reescribe la nueva contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="121">
 <source>Change Password</source>
-<target>Cambiar Contraseña</target>
+<target>Cambiar Contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="122">
@@ -566,12 +566,12 @@
 
 <trans-unit id="125">
 <source>Drag the pieces from your catalog and drop them over your avatar to change it</source>
-<target>Arrastra las piezas desde tu catálogo y suéltalas sobre el avatar para cambiarlo</target>
+<target>Arrastra las piezas desde tu cat&#xE1;logo y su&#xE9;ltalas sobre el avatar para cambiarlo</target>
 </trans-unit>
 
 <trans-unit id="126">
 <source>Your Pieces Catalogue</source>
-<target>Catálogo de Tus Piezas</target>
+<target>Cat&#xE1;logo de Tus Piezas</target>
 </trans-unit>
 
 <trans-unit id="127">
@@ -581,7 +581,7 @@
 
 <trans-unit id="128">
 <source>Change The Interface Settings</source>
-<target>Cambiar la Configuración del Interfaz</target>
+<target>Cambiar la Configuraci&#xF3;n del Interfaz</target>
 </trans-unit>
 
 <trans-unit id="129">
@@ -601,7 +601,7 @@
 
 <trans-unit id="132">
 <source>Edit your name, your description and other personal info</source>
-<target>Edita tu nombre, tu descripción y otra información personal</target>
+<target>Edita tu nombre, tu descripci&#xF3;n y otra informaci&#xF3;n personal</target>
 </trans-unit>
 
 <trans-unit id="133">
@@ -616,12 +616,12 @@
 
 <trans-unit id="135">
 <source>You can change your password here</source>
-<target>Puedes cambiar tu contraseña aquí</target>
+<target>Puedes cambiar tu contrase&#xF1;a aqu&#xED;</target>
 </trans-unit>
 
 <trans-unit id="136">
 <source>Interface Settings</source>
-<target>Configuración de Interfaz</target>
+<target>Configuraci&#xF3;n de Interfaz</target>
 </trans-unit>
 
 <trans-unit id="137">
@@ -636,7 +636,7 @@
 
 <trans-unit id="139">
 <source>This is the name that everyone will see.</source>
-<target>Este es el nombre que se mostrará a todo el mundo.</target>
+<target>Este es el nombre que se mostrar&#xE1; a todo el mundo.</target>
 </trans-unit>
 
 <trans-unit id="140">
@@ -666,27 +666,27 @@
 
 <trans-unit id="145">
 <source>The password you entered is not correct</source>
-<target>La contraseña que has introducido no es correcta</target>
+<target>La contrase&#xF1;a que has introducido no es correcta</target>
 </trans-unit>
 
 <trans-unit id="146">
 <source>Username must be 2 characters or more</source>
-<target>El nombre de usuario debe tener 2 caracteres o más</target>
+<target>El nombre de usuario debe tener 2 caracteres o m&#xE1;s</target>
 </trans-unit>
 
 <trans-unit id="147">
 <source>Search results for %1$s (%2$s)</source>
-<target>Resultados de la búsqueda para %1$s (%2$s)</target>
+<target>Resultados de la b&#xFA;squeda para %1$s (%2$s)</target>
 </trans-unit>
 
 <trans-unit id="148">
 <source>Competition Info</source>
-<target>Información de la Competición</target>
+<target>Informaci&#xF3;n de la Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="149">
 <source>Competition Name</source>
-<target>Nombre de la Competición</target>
+<target>Nombre de la Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="150">
@@ -696,27 +696,27 @@
 
 <trans-unit id="151">
 <source>Competition GameStat:</source>
-<target>Estadística de partida de la Competición</target>
+<target>Estad&#xED;stica de partida de la Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="152">
 <source>Competition Start:</source>
-<target>Inicio de la Competición:</target>
+<target>Inicio de la Competici&#xF3;n:</target>
 </trans-unit>
 
 <trans-unit id="153">
 <source>Competition End:</source>
-<target>Final de la Competición:</target>
+<target>Final de la Competici&#xF3;n:</target>
 </trans-unit>
 
 <trans-unit id="154">
 <source>Competition Description</source>
-<target>Descripción de la Competición</target>
+<target>Descripci&#xF3;n de la Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="155">
 <source>New Competition</source>
-<target>Nueva Competición</target>
+<target>Nueva Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="156">
@@ -726,17 +726,17 @@
 
 <trans-unit id="157">
 <source>Competition</source>
-<target>Competición</target>
+<target>Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="158">
 <source>Leave competition</source>
-<target>Abandonar Competición</target>
+<target>Abandonar Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="159">
 <source>There is no description for this competition</source>
-<target>Esta competición no tiene descripción</target>
+<target>Esta competici&#xF3;n no tiene descripci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="160">
@@ -746,7 +746,7 @@
 
 <trans-unit id="161">
 <source>There are no competitions still</source>
-<target>Aún no hay competiciones</target>
+<target>A&#xFA;n no hay competiciones</target>
 </trans-unit>
 
 <trans-unit id="162">
@@ -771,12 +771,12 @@
 
 <trans-unit id="166">
 <source>Group Administration</source>
-<target>Administración del grupo</target>
+<target>Administraci&#xF3;n del grupo</target>
 </trans-unit>
 
 <trans-unit id="167">
 <source>There is no description for this group</source>
-<target>No hay descripción para este grupo</target>
+<target>No hay descripci&#xF3;n para este grupo</target>
 </trans-unit>
 
 <trans-unit id="168">
@@ -791,17 +791,17 @@
 
 <trans-unit id="170">
 <source>There are no groups yet</source>
-<target>No hay grupos aún</target>
+<target>No hay grupos a&#xFA;n</target>
 </trans-unit>
 
 <trans-unit id="171">
 <source>Debes introducir un nombre</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="172">
 <source>Debes introducir una descripcion</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="173">
@@ -811,7 +811,7 @@
 
 <trans-unit id="174">
 <source>Quick Links</source>
-<target>Enlaces Rápidos</target>
+<target>Enlaces R&#xE1;pidos</target>
 </trans-unit>
 
 <trans-unit id="175">
@@ -826,42 +826,42 @@
 
 <trans-unit id="177">
 <source>Se requiere una contrase&amp;ntilde;a</source>
-<target>Se requiere una contreseña</target>
+<target>Se requiere una contrese&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="178">
 <source>La cuenta no existe o has introducido mal tu contrase&amp;ntilde;a</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="179">
 <source>Debes introducir un email</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="180">
 <source>El formato del email no es correcto</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="181">
 <source>Los dos emails deben coincidir.</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="182">
 <source>Ese email ya ha sido registrado. Solo se permite una cuenta por email.</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="183">
 <source>La contrase&amp;ntilde;a es demasiado corta (debe ser de 5 caracteres o m&amp;aacute;s)</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="184">
 <source>La contrase&amp;ntilde;a es demasiado larga (no puede tener m&amp;aacute;s de 20 caracteres)</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="185">
@@ -946,7 +946,7 @@
 
 <trans-unit id="201">
 <source>Rating</source>
-<target>Puntuación</target>
+<target>Puntuaci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="202">
@@ -961,7 +961,7 @@
 
 <trans-unit id="204">
 <source>Rate this game</source>
-<target>Puntúa este juego</target>
+<target>Punt&#xFA;a este juego</target>
 </trans-unit>
 
 <trans-unit id="205">
@@ -971,7 +971,7 @@
 
 <trans-unit id="206">
 <source>Create Competition</source>
-<target>Crear Competición</target>
+<target>Crear Competici&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="207">
@@ -986,7 +986,7 @@
 
 <trans-unit id="209">
 <source>There are no games yet</source>
-<target>No hay juegos todavía</target>
+<target>No hay juegos todav&#xED;a</target>
 </trans-unit>
 
 <trans-unit id="210">
@@ -1031,7 +1031,7 @@
 
 <trans-unit id="218">
 <source>There are no avatar pieces yet</source>
-<target>No hay piezas de avatar todavía</target>
+<target>No hay piezas de avatar todav&#xED;a</target>
 </trans-unit>
 
 <trans-unit id="219">
@@ -1046,12 +1046,12 @@
 
 <trans-unit id="221">
 <source>Fill in your profile now!</source>
-<target>¡Rellena ahora tu perfil!</target>
+<target>&#xA1;Rellena ahora tu perfil!</target>
 </trans-unit>
 
 <trans-unit id="222">
 <source>Your profile is not filled in and you will not be listed here.</source>
-<target>Tu perfil no está rellenado y no aparecerás en esta lista.</target>
+<target>Tu perfil no est&#xE1; rellenado y no aparecer&#xE1;s en esta lista.</target>
 </trans-unit>
 
 <trans-unit id="223">
@@ -1081,12 +1081,12 @@
 
 <trans-unit id="228">
 <source>Disabled module</source>
-<target>Módulo desactivado</target>
+<target>M&#xF3;dulo desactivado</target>
 </trans-unit>
 
 <trans-unit id="229">
 <source>Must be a valid e-mail</source>
-<target>Debe ser un email válido</target>
+<target>Debe ser un email v&#xE1;lido</target>
 </trans-unit>
 
 <trans-unit id="230">
@@ -1096,7 +1096,7 @@
 
 <trans-unit id="231">
 <source>Remember me?</source>
-<target>¿Recordarme?</target>
+<target>&#xBF;Recordarme?</target>
 </trans-unit>
 
 <trans-unit id="232">
@@ -1106,12 +1106,172 @@
 
 <trans-unit id="233">
 <source>Forgot your password?</source>
-<target>¿Olvidaste tu contraseña?</target>
+<target>&#xBF;Olvidaste tu contrase&#xF1;a?</target>
 </trans-unit>
 
 <trans-unit id="234">
 <source>Need an account?</source>
-<target>¿Necesitas una cuenta?</target>
+<target>&#xBF;Necesitas una cuenta?</target>
+</trans-unit>
+
+<trans-unit id="235">
+<source>%s. You have %s days left.</source>
+<target>%s. Te quedan %s días.</target>
+</trans-unit>
+
+<trans-unit id="236">
+<source>Validate your email now!</source>
+<target>¡Valida ahora tu email!</target>
+</trans-unit>
+
+<trans-unit id="237">
+<source>Your profile has been successfully updated!</source>
+<target>¡Tu perfil se ha actualizado con éxito!</target>
+</trans-unit>
+
+<trans-unit id="238">
+<source>There is someone with that name already. Choose a different one, please</source>
+<target>Ya hay alguien con ese nombre. Elige un diferente, por favor.</target>
+</trans-unit>
+
+<trans-unit id="239">
+<source>Accepts (almost) everything. And don't worry; we will resize it for you ;)</source>
+<target>Acepta (casi) de todo. Y no te preocupes; la redimensionaremos por tí ;)</target>
+</trans-unit>
+
+<trans-unit id="240">
+<source>NOTICE: Disabled module!</source>
+<target>AVISO: ¡Módulo deshabilitado!</target>
+</trans-unit>
+
+<trans-unit id="241">
+<source>This module has been disabled.</source>
+<target>Este módulo ha sido deshabilitado.</target>
+</trans-unit>
+
+<trans-unit id="242">
+<source>%s stars</source>
+<target>%s estrellas</target>
+</trans-unit>
+
+<trans-unit id="243">
+<source>Embed Game:</source>
+<target>Insertar Juego:</target>
+</trans-unit>
+
+<trans-unit id="244">
+<source>%s or %s to become his friend!</source>
+<target>¡%s o %s para hacerte su amigo!</target>
+</trans-unit>
+
+<trans-unit id="245">
+<source>We are friends!</source>
+<target>¡Somos amigos!</target>
+</trans-unit>
+
+<trans-unit id="246">
+<source>Accept as a friend</source>
+<target>Aceptar como amigo</target>
+</trans-unit>
+
+<trans-unit id="247">
+<source>Reject</source>
+<target>Rechazar</target>
+</trans-unit>
+
+<trans-unit id="248">
+<source>%s must confirm your friendship</source>
+<target>%s debe confirmar vuestra amistad</target>
+</trans-unit>
+
+<trans-unit id="249">
+<source>You have unconfirmed friends. Are these people your friends?</source>
+<target>Tienes amigos sin confirmar. ¿Conoces a esta gente?</target>
+</trans-unit>
+
+<trans-unit id="250">
+<source>Yes, we are friends!</source>
+<target>¡Sí, somos amigos!</target>
+</trans-unit>
+
+<trans-unit id="251">
+<source>No, we are not friends</source>
+<target>No, no somos amigos</target>
+</trans-unit>
+
+<trans-unit id="252">
+<source>uluPoints</source>
+<target>uluPuntos</target>
+</trans-unit>
+
+<trans-unit id="253">
+<source>Me &amp; my friends:</source>
+<target>Me & my friends:</target>
+</trans-unit>
+
+<trans-unit id="254">
+<source>Friends:</source>
+<target>Amigos:</target>
+</trans-unit>
+
+<trans-unit id="255">
+<source>Must be a valid e-mail. Won't be published.</source>
+<target>Debe ser un email válido. No lo publicaremos.</target>
+</trans-unit>
+
+<trans-unit id="256">
+<source>Username</source>
+<target>Usuario</target>
+</trans-unit>
+
+<trans-unit id="257">
+<source>The name everyone will see.</source>
+<target>El nombre que verá todo el mundo.</target>
+</trans-unit>
+
+<trans-unit id="258">
+<source>Email account validation</source>
+<target>Validación de la cuenta de email</target>
+</trans-unit>
+
+<trans-unit id="259">
+<source>We need to confirm that you are the owner of the email you provided (%s)</source>
+<target>Necesitamos confirmar que eres el propietario de la cuenta de email que nos has dado (%s)</target>
+</trans-unit>
+
+<trans-unit id="260">
+<source>Have you lost your confirmation email?</source>
+<target>¿Has perdido tu email de confirmación?</target>
+</trans-unit>
+
+<trans-unit id="261">
+<source>Resend email to %s</source>
+<target>Reenviar email a %s</target>
+</trans-unit>
+
+<trans-unit id="262">
+<source>We trust you, but...</source>
+<target>Confiamos en tí, pero...</target>
+</trans-unit>
+
+<trans-unit id="263">
+<source>Check your email inbox</source>
+<target>Comprueba tu bandeja de entrada del email</target>
+</trans-unit>
+
+<trans-unit id="264">
+<source>Go to %s</source>
+<target>Ir a %s</target>
+</trans-unit>
+
+<trans-unit id="265">
+<source>Click on the confirmation URL</source>
+<target>Haz clic en la URL de confirmación</target>
+</trans-unit>
+
+<trans-unit id="266">
+<source>Close this window</source>
+<target>Cierra esta ventana</target>
 </trans-unit>
 </body>
   </file>

@@ -1,5 +1,8 @@
 # default values
 all:
+  version: "Beta 1"
+  register:
+    daystovalidate: 7
   apikeylength: 12 # este valor debe ser igual al de la base de datos
   dir:
     asset:   "assets"

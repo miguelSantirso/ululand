@@ -3,7 +3,6 @@ all:
   version: "Beta 1"
   register:
     daystovalidate: 7
-  saltlength: 4
   pager:
     profile: 12
     game:    12
