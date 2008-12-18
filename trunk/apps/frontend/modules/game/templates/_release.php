@@ -6,21 +6,15 @@
 		// Mochi Publisher Bridge
 		var options = {partnerID: "e60b7d6125fdc7bb", id: "leaderboard_bridge"};
 		<?php if($sf_user->isAuthenticated()) : ?>
-			options.username = "<?php echo $sf_user->getProfile()->getUsername(); ?>";
+			options.username  = "<?php echo $sf_user->getProfile()->getUsername(); ?>";
+			options.userID    = "<?php echo $sf_user->getProfile()->getUuid(); ?>";
+			options.sessionID = "<?php echo $apiKey; ?>";
+			options.gateway   = "<?php echo ulToolkit::getBaseUrl(); ?>/api.php/gamestat/setValueFromMochiads";
 		<?php endif; ?>
-		// optional
-		options.sessionID = "sf908uw098urerjw3948";
-		// optional
-		//options.gateway = "http://www.example.com/bridge/";
-		// optional
-		options.userPrefix = "http://ululand.com/people/";
-		// optional
-		options.logoURL = "http://ululand.com/images/logoUluland_mochi.png";
-		// optional
+		// 
+		options.userPrefix = "<?php echo ulToolkit::getBaseUrl(); ?>/people/";
+		options.logoURL = "<?php echo ulToolkit::getBaseUrl(); ?>/images/logoUluland_mochi.png";
 		//options.callback = function (params) { alert(params.name + " (" + params.username + ") just scored " + params.score + "!"); }
-		
-		// uncomment this to display global scores
-		// options.globalScores = "true";
 		
 		/*
 		// uncomment this block for debug mode

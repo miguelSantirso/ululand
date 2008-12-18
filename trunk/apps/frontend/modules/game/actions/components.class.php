@@ -86,6 +86,8 @@ class gameComponents extends sfComponents
 			
 			// Añadimos la ruta a la API al principio de los flashVars para pasárselo al cliente flash.
 	    	$this->flashVars = 'apiUrl='.ulToolkit::getBaseUrl().'/api.php/'.'&'.$this->flashVars;
+	    	
+	    	$this->apiKey = $newApiSession->getSessionId();
 		}
 	}
 	

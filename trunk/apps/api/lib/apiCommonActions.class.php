@@ -25,9 +25,19 @@ class apiCommonActions extends sfActions
 		// Comprobar que se ha recibido la id de la sesión como parámetro
 		$this->checkRequiredParameters( array('apiSessionId') );
 		
+		$this->getGameForApiKey($this->getRequestParameter('apiSessionId'));
+	}
+	
+	/**
+	 * Retorna el juego asociado a cierta apiKey
+	 *
+	 * @param string $apiKey clave única que identifica una sesión con la api
+	 */
+	protected function getGameForApiKey($apiKey)
+	{	
 		// Obtener la sesión de la api
 		$c = new Criteria();
-		$c->add(ApiSessionPeer::SESSION_ID, $this->getRequestParameter('apiSessionId'));
+		$c->add(ApiSessionPeer::SESSION_ID, $apiKey);
 		$apiSession = ApiSessionPeer::doSelectOne($c);
 		
 		// Comprobar que la sesión exista.
@@ -39,7 +49,7 @@ class apiCommonActions extends sfActions
 		// retornamos el juego que inició la sesión con la api o null si no es un juego.
 		return GamePeer::retrieveByUuid($apiSession->getClientUuid());
 	}
-	
+
 	/**
 	 * Retorna el usuario que está ejecutando el juego.
 	 *
@@ -62,7 +72,7 @@ class apiCommonActions extends sfActions
 		}
 
 		// retornamos el avatar que inició la sesión con la api.
-		return sfGuardUserProfile::retrieveByUuid($apiSession->getUserUuid());
+		return sfGuardUserProfilePeer::retrieveByUuid($apiSession->getUserUuid());
 	}	
 	
 	/**
@@ -152,8 +162,9 @@ class apiCommonActions extends sfActions
 			if ( is_null($this->getRequestParameter($requiredParameter)) )
 			{
 				$this->setFlash('api_error_code', 2);
-				$this->setFlash('api_error_message', "ERROR: This API function requires '".$requiredParameter."' as a parameter.");
-
+				$errorMessage = "ERROR: This API function requires '".$requiredParameter."' as a parameter.";
+				$this->setFlash('api_error_message', $errorMessage);
+				$this->logMessage($errorMessage, "err");
 				$this->forward('output', 'error');
 			}
 		}
@@ -164,22 +175,29 @@ class apiCommonActions extends sfActions
 	 * privilegios exigidos y el avatar al que hace referencia la operación.
 	 *
 	 * @param integer $requiredPrivileges Privilegios exigidos {0|1|2}
-	 * @param integer $userUuid Uuid del usuario que se modificará en la operación. Si se da el valor '-1' a este parámetro, se interpretará que no se modifica ningún usuario 
+	 * @param string $userUuid Uuid del usuario que se modificará en la operación. Si se da el valor '-1' a este parámetro, se interpretará que no se modifica ningún usuario
+	 * @param string $apiSessionId Opcional. apiKey de la operación con la api. 
 	 */
-	protected function breakIfNotAllowed($requiredPrivileges, $userUuid)
+	protected function breakIfNotAllowed($requiredPrivileges, $userUuid, $apiSessionId = null)
 	{
 		// Si los privilegios exigidos son mayores que 2 retornamos ya que eso quiere decir que no hay restricciones de seguridad
 		if($requiredPrivileges >= 2)
 		{
 			return;			
 		}
+		
+		// Si no se ha pasado una apiKey como parámetro, se buscará automáticamente
+		if(is_null($apiSessionId))
+		{
+			// Comprobar que se ha recibido la id de la sesión como parámetro
+			$this->checkRequiredParameters( array('apiSessionId') );
 			
-		// Comprobar que se ha recibido la id de la sesión como parámetro
-		$this->checkRequiredParameters( array('apiSessionId') );
-
+			$apiSessionId = $this->getRequestParameter('apiSessionId');
+		}
+		
 		// Obtener la información de la sesión de la api
 		$c = new Criteria();
-		$c->add(ApiSessionPeer::SESSION_ID, $this->getRequestParameter('apiSessionId') );
+		$c->add(ApiSessionPeer::SESSION_ID, $apiSessionId);
 		$apiSession = ApiSessionPeer::doSelectOne($c);
 			
 		// Comprobar que la sesión exista.

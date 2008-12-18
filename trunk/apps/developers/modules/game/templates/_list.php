@@ -1,6 +1,6 @@
 		<?php use_helper('PagerNavigation'); ?>
 		
-		<div class="center"><?php echo pager_navigation($gamesPager, 'group/list'); ?></div>
+		<div class="center"><?php echo pager_navigation($gamesPager, 'game/list'); ?></div>
 		
 		<?php $games = $gamesPager->getResults(); ?>
 		<?php sfPropelActAsTaggableBehavior::preloadTags($games); ?>
@@ -34,4 +34,4 @@
 			<?php endforeach; ?>
 		</ul>
 	
-		<div class="center"><?php echo pager_navigation($gamesPager, 'profile/list'); ?></div>
+		<div class="center"><?php echo pager_navigation($gamesPager, 'game/list'); ?></div>

@@ -22,35 +22,6 @@
 				</div>
 			</div>
 			<div class="clearFloat"></div>
-			<!-- 
-			<div class="contentBox">
-				
-				<h3 class="large header"><?php echo linkToGame($game); ?></h3>
-				<div class="xSmall alignLeft">
-					<p class="noSpace">
-						<a href="#description"><?php echo __('Instructions & Details'); ?></a>
-						| <a href="#commentsAndRankings"><?php echo __('Comments & Rankings'); ?></a>
-					</p>
-				</div>
-				<div class="xSmall right">
-						<p class="noSpace"><?php echo sprintf(__('Submitted by %1$s %2$s ago (%3$s)'),
-									$game->getsfGuardUser()->getProfile(),
-									time_ago_in_words($game->getCreatedAt('U')), 
-									format_date($game->getCreatedAt()) ); ?></p>
-				</div>
-				<div class="clearFloat"></div>
-				<br/>
-				<div class="alignRight">
-					<?php include_component('game', 'release', array('gameId' => $game->getId())) ?>
-				</div>
-			</div>
-			<div class="clearFloat"></div>
-			
-			<div id="description" class="contentBox light">
-				<h4 class="header"><?php echo __('Instructions') ?>:</h4>
-				<div class="small"><?php echo sfMarkdown::doConvert($game->getInstructions()); ?></div>
-			</div>
-			 -->
 			 
 			<div id="gameDetails" class="contentBox bordered">
 				<div class="contentColumn alignLeft half">
@@ -65,7 +36,7 @@
 						$url = url_for('game/embed?g='.$game->getUuid(), true); 
 						$embedCode = '<script type="text/javascript" language="javascript" charset="utf-8" src="'.$url.'"></script>';
 					?>
-					<h4 class="header"><?php echo __('Embed Game:'); ?>:</h4>
+					<h4 class="header"><?php echo __('Embed Game:'); ?></h4>
 					<input name="embedCode" id="embedCode" type="text" readonly="" onclick="javascript:$('embedCode').focus();$('embedCode').select();" value='<?php echo $embedCode; ?>' />
 					<p class="noSpace small"><?php echo __('Tags') ?>: <strong><?php echo $game->getLinkedTagsString(); ?></strong></p>
 					<?php if($game->hasBeenRated()) : ?>

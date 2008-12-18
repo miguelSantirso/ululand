@@ -18,12 +18,12 @@ class profileComponents extends sfComponents
 	{
 		$pager = new sfPropelPager('PlayerProfile', sfConfig::get('app_pager_profile'));
 		$c = new Criteria();
+		$c->addJoin(sfGuardUserProfilePeer::ID, PlayerProfilePeer::USER_PROFILE_ID);
 
 		$search = $this->getRequestParameter('search');
 		if($search)
 		{
 			$this->search = $search;
-			$c->addJoin(sfGuardUserProfilePeer::ID, PlayerProfilePeer::USER_PROFILE_ID);
 			$c->add(sfGuardUserProfilePeer::USERNAME, '%'.$search.'%', Criteria::LIKE);
 		}
 		$this->limit = isset($this->limit) ? $this->limit : $this->getRequestParameter('limit');
@@ -40,6 +40,12 @@ class profileComponents extends sfComponents
 		if($this->orderAscendingBy)
 		{
 			$c->addAscendingOrderByColumn($this->orderAscendingBy);
+		}
+		
+		if($this->getNewest)
+		{
+			$c->addJoin(sfGuardUserProfilePeer::USER_ID, sfGuardUserPeer::ID);
+			$c->addDescendingOrderByColumn(sfGuardUserPeer::CREATED_AT);
 		}
 		
 		$pager->setCriteria($c);

@@ -90,7 +90,83 @@ class gamestatActions extends apiCommonActions
 					'gamestatName' => $gamestat->getName(),
 					'gamestatValue' => $result ? $result->getValue() : 0 )); // Retornamos cero si el avatar no tiene ningún gamestat
 	}
-	
+
+	/**
+	 * Añade un valor de un gamestat desde un juego que implementa la API de mochiads
+	 *
+	 */
+	public function executeSetValueFromMochiads()
+	{
+		// Comprobar que mochiads nos envía todos los parámetros que necesitamos
+		$this->checkRequiredParameters( array('userID', 'sessionID', 'boardID', 'score') );
+		
+		$apiKey = $this->getRequestParameter('sessionID');
+		$user = sfGuardUserProfilePeer::retrieveByUuid($this->getRequestParameter('userID'));
+
+		// Comprobar que el avatar existe
+		if(!$user)
+		{
+			$this->setFlash('api_error_code', 3);
+			$this->setFlash('api_error_message', "Unexpected value for 'userID'. There is not a user whose uuid is ".$this->getRequestParameter('userID'));
+			$this->forward('output', 'error');
+		}
+		
+		// Comprobar que se dispone de suficientes privilegios como para realizar la operación
+		$this->breakIfNotAllowed(1, $user->getUuid(), $apiKey);
+		
+		// Obtenemos el juego que inició la petición
+		$game = $this->getGameForApiKey($apiKey);
+		
+		if(!$game)
+		{
+			$this->setFlash('api_error_code', 3);
+			$this->setFlash('api_error_message', "Unexpected value for 'apiSessionId'. This session was not started by a game, and that is required to use this function.");
+			$this->forward('output', 'error');
+		}
+		
+		// Comprobamos si ya se ha creado el gamestat. Si no, lo creamos
+		$c = new Criteria();
+		$c->add(GameStatPeer::GAME_ID, $game->getId());
+		$c->add(GameStatPeer::NAME, $this->getRequestParameter('boardID'));
+		$gamestat = GameStatPeer::doSelectOne($c);
+		
+		// Es necesario crear el gamestat por primera vez
+		if(!$gamestat)
+		{
+			$c = new Criteria();
+			$c->add(GameStatTypePeer::NAME, 'max');
+			$gamestattype = GameStatTypePeer::doSelect($c);
+
+			$this->logMessage("uno", "err");
+			
+			$gamestat = new GameStat();
+			$this->logMessage($this->getRequestParameter('boardID'), "err");
+			$gamestat->setName($this->getRequestParameter('boardID'));
+			$gamestat->setGame($game);
+			/*$gamestat->setDescription($this->getRequestParameter('description'));
+			$gamestat->setGameStatType($gamestattype);*/
+			
+			//$gamestat->setDescription($this->getRequestParameter('description'));
+			$gamestat->setGameStatTypeId(1);
+			
+			$this->logMessage("uno coma cinco", "err");
+			
+			$gamestat->save();
+		}
+		
+		$this->logMessage("dos", "err");
+		
+		// Finalmente, enviamos el nuevo valor
+		$gamestat->addGameStatValueForPlayer($this->getRequestParameter('score'), $user->getPlayerProfile()->getId());
+		
+		$this->logMessage("tres", "err");
+		
+		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getUsername());
+		$this->setFlash('responseType', "Content-Type: plain/text");
+		$this->forward('output', 'response');
+		
+		$this->logMessage("cuatro", "err");
+	}
 
 	/**
 	 * Modifica, o añade, el valor de un gamestat para cierto avatar
@@ -108,14 +184,14 @@ class gamestatActions extends apiCommonActions
 		if($this->getRequestParameter('userUuid'))
 		{
 			// Obtener el avatar cuyo apikey es el recibido
-			$user = sfGuardUserProfile::retrieveByUuid($this->getRequestParameter('userUuid'));
+			$user = sfGuardUserProfilePeer::retrieveByUuid($this->getRequestParameter('userUuid'));
 		}
 		else
 		{
 			$user = $this->getActiveUser();
 		}
 		
-		// Comprobar que el avatar existe
+		// Comprobar que el usuario existe
 		if(!$user)
 		{
 			$this->setFlash('api_error_code', 3);
@@ -154,7 +230,7 @@ class gamestatActions extends apiCommonActions
 		// Finalmente, enviamos el nuevo valor
 		$gamestat->addGameStatValueForPlayer($this->getRequestParameter('value'), $user->getPlayerProfile()->getId());
 		
-		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getName());
+		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getUsername());
 		$this->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}

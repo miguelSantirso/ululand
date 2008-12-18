@@ -2,7 +2,7 @@
 	
 	if(!isset($objects))
 	{
-		$objects = TagPeer::getTaggedWith($tagsString, array('model' => 'Game', 'nb_common_tags' => 2));
+		$objects = TagPeer::getTaggedWith($tagsString, array('model' => 'Game', 'nb_common_tags' => 1));
 	}
 
 	if(!isset($title))

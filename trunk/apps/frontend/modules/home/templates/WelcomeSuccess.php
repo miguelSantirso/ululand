@@ -26,7 +26,7 @@
 			
 			<div class="contentBox bordered">
 				<h3 class="header"><?php echo __('Latest ULUs (welcome!)') ?></h3>
-				<?php include_component('profile', 'list', array('limit' => 4)) ?>
+				<?php include_component('profile', 'list', array('limit' => 4, 'getNewest' => true)) ?>
 			</div>
 		</div>
 			

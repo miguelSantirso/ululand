@@ -61,7 +61,7 @@
 					<?php $linkText = ""; ?>
 					<?php foreach($gamestat_players as $gamestat_player) : ?>
 					<?php $linkText = $gamestat_player->getPlayerProfile()->getsfGuardUserProfile() . " (" . sprintf(__('%s points'), $gamestat_player->getValue()) . ") "; ?>
-					<li><?php echo linkToProfileWithGravatar($gamestat_player->getPlayerProfile()->getsfGuardUserProfile(), 35, array(), $linkText); ?>	</li>
+					<li><?php echo linkToProfileWithGravatar($gamestat_player->getPlayerProfile()->getsfGuardUserProfile(), 35, array(), $linkText); ?><div class="clearFloat"></div></li>
 					<?php endforeach; ?>
 				</ul>
 				<?php } else echo __("You don't have them"); ?>

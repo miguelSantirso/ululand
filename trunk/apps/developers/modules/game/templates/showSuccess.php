@@ -77,7 +77,7 @@
 	
 	<div class="contentColumn quarter alignLeft">
 		<?php include_partial('searchForm'); ?>
-		<?php include_partial('relatedByTags', array('limit' => 5, 'tagsString' => $game->getTagsString())); ?>
+		<?php include_component('relatedByTags', array('limit' => 7, 'tagsString' => $game->getTagsString())); ?>
 	</div>
 </div>
 

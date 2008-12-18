@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-11-27T19:26:07Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-10T21:22:16Z">
     <body>
 
 <trans-unit id="1">
@@ -1116,17 +1116,17 @@
 
 <trans-unit id="235">
 <source>%s. You have %s days left.</source>
-<target>%s. Te quedan %s días.</target>
+<target>%s. Te quedan %s d&#xED;as.</target>
 </trans-unit>
 
 <trans-unit id="236">
 <source>Validate your email now!</source>
-<target>¡Valida ahora tu email!</target>
+<target>&#xA1;Valida ahora tu email!</target>
 </trans-unit>
 
 <trans-unit id="237">
 <source>Your profile has been successfully updated!</source>
-<target>¡Tu perfil se ha actualizado con éxito!</target>
+<target>&#xA1;Tu perfil se ha actualizado con &#xE9;xito!</target>
 </trans-unit>
 
 <trans-unit id="238">
@@ -1136,17 +1136,17 @@
 
 <trans-unit id="239">
 <source>Accepts (almost) everything. And don't worry; we will resize it for you ;)</source>
-<target>Acepta (casi) de todo. Y no te preocupes; la redimensionaremos por tí ;)</target>
+<target>Acepta (casi) de todo. Y no te preocupes; la redimensionaremos por t&#xED; ;)</target>
 </trans-unit>
 
 <trans-unit id="240">
 <source>NOTICE: Disabled module!</source>
-<target>AVISO: ¡Módulo deshabilitado!</target>
+<target>AVISO: &#xA1;M&#xF3;dulo deshabilitado!</target>
 </trans-unit>
 
 <trans-unit id="241">
 <source>This module has been disabled.</source>
-<target>Este módulo ha sido deshabilitado.</target>
+<target>Este m&#xF3;dulo ha sido deshabilitado.</target>
 </trans-unit>
 
 <trans-unit id="242">
@@ -1161,12 +1161,12 @@
 
 <trans-unit id="244">
 <source>%s or %s to become his friend!</source>
-<target>¡%s o %s para hacerte su amigo!</target>
+<target>&#xA1;%s o %s para hacerte su amigo!</target>
 </trans-unit>
 
 <trans-unit id="245">
 <source>We are friends!</source>
-<target>¡Somos amigos!</target>
+<target>&#xA1;Somos amigos!</target>
 </trans-unit>
 
 <trans-unit id="246">
@@ -1186,12 +1186,12 @@
 
 <trans-unit id="249">
 <source>You have unconfirmed friends. Are these people your friends?</source>
-<target>Tienes amigos sin confirmar. ¿Conoces a esta gente?</target>
+<target>Tienes amigos sin confirmar. &#xBF;Conoces a esta gente?</target>
 </trans-unit>
 
 <trans-unit id="250">
 <source>Yes, we are friends!</source>
-<target>¡Sí, somos amigos!</target>
+<target>&#xA1;S&#xED;, somos amigos!</target>
 </trans-unit>
 
 <trans-unit id="251">
@@ -1206,7 +1206,7 @@
 
 <trans-unit id="253">
 <source>Me &amp; my friends:</source>
-<target>Me &amp; my friends:</target>
+<target>Mis amigos y Yo:</target>
 </trans-unit>
 
 <trans-unit id="254">
@@ -1216,7 +1216,7 @@
 
 <trans-unit id="255">
 <source>Must be a valid e-mail. Won't be published.</source>
-<target>Debe ser un email válido. No lo publicaremos.</target>
+<target>Debe ser un email v&#xE1;lido. No lo publicaremos.</target>
 </trans-unit>
 
 <trans-unit id="256">
@@ -1226,12 +1226,12 @@
 
 <trans-unit id="257">
 <source>The name everyone will see.</source>
-<target>El nombre que verá todo el mundo.</target>
+<target>El nombre que ver&#xE1; todo el mundo.</target>
 </trans-unit>
 
 <trans-unit id="258">
 <source>Email account validation</source>
-<target>Validación de la cuenta de email</target>
+<target>Validaci&#xF3;n de la cuenta de email</target>
 </trans-unit>
 
 <trans-unit id="259">
@@ -1241,7 +1241,7 @@
 
 <trans-unit id="260">
 <source>Have you lost your confirmation email?</source>
-<target>¿Has perdido tu email de confirmación?</target>
+<target>&#xBF;Has perdido tu email de confirmaci&#xF3;n?</target>
 </trans-unit>
 
 <trans-unit id="261">
@@ -1251,7 +1251,7 @@
 
 <trans-unit id="262">
 <source>We trust you, but...</source>
-<target>Confiamos en tí, pero...</target>
+<target>Confiamos en t&#xED;, pero...</target>
 </trans-unit>
 
 <trans-unit id="263">
@@ -1266,12 +1266,22 @@
 
 <trans-unit id="265">
 <source>Click on the confirmation URL</source>
-<target>Haz clic en la URL de confirmación</target>
+<target>Haz clic en la URL de confirmaci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="266">
 <source>Close this window</source>
 <target>Cierra esta ventana</target>
+</trans-unit>
+
+<trans-unit id="267">
+<source>Latest ULUs (welcome!)</source>
+<target>Últimos ULUs (¡bienvenidos!)</target>
+</trans-unit>
+
+<trans-unit id="268">
+<source>Customize your ULU</source>
+<target>Personaliza tu ULU</target>
 </trans-unit>
 </body>
   </file>

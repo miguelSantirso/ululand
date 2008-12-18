@@ -9,6 +9,7 @@
 							<?php echo button_to(__("Expel"), 'group/reject?group='.$group->getId().'&player='.$member->getId()); ?>
 							<?php echo button_to(__("Make owner"), 'group/makeOwner?group='.$group->getId().'&player='.$member->getId()); ?>
 					<?php } ?>
+					<div class="clearFloat"></div>
 				</li>
 				<?php endforeach; ?>
 			</ul>

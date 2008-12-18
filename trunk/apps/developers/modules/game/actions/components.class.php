@@ -17,7 +17,11 @@ class gameComponents extends sfComponents
 	{
 		$pager = new sfPropelPager('Game', sfConfig::get('app_pager_profile'));
 		$c = new Criteria();
-
+		$c->addJoin(GamePeer::CREATED_BY, sfGuardUserPeer::ID);
+		$c->addJoin(sfGuardUserPeer::ID, sfGuardUserProfilePeer::USER_ID);
+		
+		$c->add(sfGuardUserPeer::USERNAME, "admin", Criteria::NOT_EQUAL);
+		
 		$search = $this->getRequestParameter('search');
 		if($search)
 		{
@@ -34,9 +38,12 @@ class gameComponents extends sfComponents
 		$this->username = isset($this->username) ? $this->username : $this->getRequestParameter('filterByUsername');
 		if($this->username)
 		{
-			$c->addJoin(GamePeer::CREATED_BY, sfGuardUserPeer::ID);
-			$c->addJoin(sfGuardUserPeer::ID, sfGuardUserProfilePeer::USER_ID);
 			$c->add(sfGuardUserProfilePeer::USERNAME, $this->username);
+		}
+		$this->limit = isset($this->limit) ? $this->limit : $this->getRequestParameter('limit');
+		if($this->limit)
+		{
+			$pager->setMaxRecordLimit($this->limit);
 		}
 		$this->orderDescendingBy = isset($this->orderDescendingBy) ? $this->orderDescendingBy : $this->getRequestParameter('orderDescendingBy');
 		if($this->orderDescendingBy)
@@ -48,6 +55,7 @@ class gameComponents extends sfComponents
 		{
 			$c->addAscendingOrderByColumn($this->orderAscendingBy);
 		}
+		
 		
 		$c->add(GamePeer::CREATED_BY, null, Criteria::NOT_EQUAL);
 		$c->addDescendingOrderByColumn(GamePeer::NAME);
