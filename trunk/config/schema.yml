@@ -76,7 +76,6 @@ propel:
     created_at:
 
 
-
   friendship:
     _attributes: { phpName: Friendship }
     id:
@@ -158,7 +157,7 @@ propel:
     description:       { type: longvarchar,  required: false }
     url:               { type: varchar(255), required: true }
     width:             { type: integer,      required: true }
-    height:            { type: integer,      required: true }    
+    height:            { type: integer,      required: true }
     bgcolor:           { type: varchar(8),   required: false }
 
 
@@ -171,21 +170,16 @@ propel:
     privileges_level:  { type: integer,      required: true }
     created_at:        ~
 
-   
+ 
   gamestat:
     _attributes: { phpName: GameStat }
     id:                ~
-    game_id:           { type: integer,      foreignTable: game, foreignReference: id, onDelete: cascade }
-    gamestattype_id:   { type: integer,      foreignTable: gamestattype, foreignReference: id, onDelete: setnull }
+    uuid:              { type: varchar(36), required: true }
+    game_id:           { type: integer, foreignTable: game, foreignReference: id, onDelete: cascade }
+    gamestattype:      { type: varchar(6), required: true, default: "max" }
     name:              { type: varchar(255), required: true }
+    stripped_name:     { type: varchar(255), required: true }
     description:       { type: longvarchar }
-
-
-  gamestattype:
-    _attributes: { phpName: GameStatType }
-    id:                ~
-    name:              { type: varchar(255), required: true }
-    description:       { type: longvarchar,  required: false }
 
 
   gamestat_player_profile:
@@ -193,8 +187,9 @@ propel:
     id:                ~
     gamestat_id:       { type: integer, foreignTable: gamestat, foreignReference: id, onDelete: cascade }
     player_profile_id: { type: integer, foreignTable: player_profile, foreignReference: id, onDelete: cascade }
-    value:             { type: integer,      required: true }
+    value:             { type: integer, required: true }
     created_at:        ~
+
 
   competition:
     _attributes: { phpName: Competition }
@@ -209,6 +204,7 @@ propel:
     starts_at:            { type: timestamp,  required: true }
     finishes_at:          { type: timestamp,  required: true }
 
+
   competition_player_profile:
     _attributes: { phpName: Competition_PlayerProfile }
     id:                ~
@@ -217,6 +213,7 @@ propel:
     is_owner:              { type: boolean, required: false, default: false }
     is_confirmed:          { type: boolean, required: false, default: false }
     created_at:
+
 
   chat_message:
     _attributes: { phpName: ChatMessage }

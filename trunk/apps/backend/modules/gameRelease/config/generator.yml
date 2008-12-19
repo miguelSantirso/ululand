@@ -17,4 +17,3 @@ generator:
           type:       admin_input_file_tag
           upload_dir: UploadedGames/%%game_stripped_name%%
           filename:   %%game_stripped_name%%_%%stripped_name%%
-        

@@ -44,7 +44,7 @@ class gameActions extends sfActions
   public function executeShow()
   {
   	if($this->getRequestParameter('id'))
-  	{
+  	{ 
   		$game = GamePeer::retrieveByPk($this->getRequestParameter('id'));
   		$this->redirect('game/show?stripped_name='.$game->getStrippedName());
   	}

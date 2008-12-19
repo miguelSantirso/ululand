@@ -42,7 +42,7 @@ class gamestatActions extends apiCommonActions
 	 */
 	public function executeGetValue()
 	{
-		// Comprobar que se nos han pasado todos los par�metros necesarios
+		// Comprobar que se nos han pasado todos los parámetros necesarios
 		$this->checkRequiredParameters( array("gameUuid", "userUuid", "gamestatName") );
 
 		// Obtener el juego con la uuid recibida

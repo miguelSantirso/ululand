@@ -173,18 +173,7 @@ GameRelease:
     is_public: true
     gamereleasestatus_id: Beta
     game_path: arkanoid_final.swf
-    
-    
-# GAMESTATS TYPES
-#################
 
-GameStatType:
-  Max:
-    name: max
-  Min:
-    name: min
-  Add:
-    name: add
 
 # GAMESTATS
 #################
@@ -192,9 +181,9 @@ GameStatType:
 GameStat:
   TotalBlocksDestroyed:
     game_id: Arkanoid
-    gamestattype_id: Add
-    name: TotalBlocksDestroyed
- 
+    gamestattype: add
+    name: Total Blocks Destroyed
+
 # GAMESTATS VALUES
 #################
 

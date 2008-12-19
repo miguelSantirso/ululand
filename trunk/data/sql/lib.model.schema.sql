@@ -409,36 +409,18 @@ DROP TABLE IF EXISTS `gamestat`;
 CREATE TABLE `gamestat`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`uuid` VARCHAR(36)  NOT NULL,
 	`game_id` INTEGER,
-	`gamestattype_id` INTEGER,
+	`gamestattype` VARCHAR(6) default 'max' NOT NULL,
 	`name` VARCHAR(255)  NOT NULL,
+	`stripped_name` VARCHAR(255)  NOT NULL,
 	`description` TEXT,
 	PRIMARY KEY (`id`),
 	INDEX `gamestat_FI_1` (`game_id`),
 	CONSTRAINT `gamestat_FK_1`
 		FOREIGN KEY (`game_id`)
 		REFERENCES `game` (`id`)
-		ON DELETE CASCADE,
-	INDEX `gamestat_FI_2` (`gamestattype_id`),
-	CONSTRAINT `gamestat_FK_2`
-		FOREIGN KEY (`gamestattype_id`)
-		REFERENCES `gamestattype` (`id`)
-		ON DELETE SET NULL
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- gamestattype
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `gamestattype`;
-
-
-CREATE TABLE `gamestattype`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(255)  NOT NULL,
-	`description` TEXT,
-	PRIMARY KEY (`id`)
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

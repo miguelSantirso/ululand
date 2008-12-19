@@ -19,7 +19,7 @@ class GameStat extends BaseGameStat
 		return $this->name." (".$this->getGame().")";
 	}
 	
-    public function getGameStatForGame($game)
+    /*public function getGameStatForGame($game)
 	{
 		$newValue = new GameStat_PlayerProfile();
 		$newValue->setPlayerProfileId($playerId);
@@ -27,7 +27,7 @@ class GameStat extends BaseGameStat
 		$newValue->setValue($value);
 			
 		$newValue->save();
-	}
+	}*/
 	
 	/**
 	 * Añade un valor de una estadística de partida para un jugador
@@ -57,6 +57,19 @@ class GameStat extends BaseGameStat
 		if (!is_null($endDate)) 
 			$c->add(Gamestat_PlayerProfilePeer::CREATED_AT, $endDate, Criteria::LESS_EQUAL);
 		return Gamestat_PlayerProfilePeer::doSelect($c);
+	}
+	
+	/**
+	 * Modificación de la función automática setName para que se establezca el campo stripped_name cuando corresponda.
+	 * Esto es necesario para el funcionamiento de los permalinks
+	 *
+	 * @param unknown_type $v
+	 */
+	public function setName($v)
+	{
+		parent::setName($v);
+		
+		$this->setStrippedName(ulToolkit::stripText($v));
 	}
 	
 	/**
@@ -107,3 +120,4 @@ class GameStat extends BaseGameStat
 		return $c;
 	}
 }
+sfPropelBehavior::add('GameStat', array('sfPropelUuidBehavior'));

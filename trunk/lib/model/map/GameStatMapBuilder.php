@@ -34,11 +34,15 @@ class GameStatMapBuilder {
 
 		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
 
+		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
+
 		$tMap->addForeignKey('GAME_ID', 'GameId', 'int', CreoleTypes::INTEGER, 'game', 'ID', false, null);
 
-		$tMap->addForeignKey('GAMESTATTYPE_ID', 'GamestattypeId', 'int', CreoleTypes::INTEGER, 'gamestattype', 'ID', false, null);
+		$tMap->addColumn('GAMESTATTYPE', 'Gamestattype', 'string', CreoleTypes::VARCHAR, true, 6);
 
 		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 255);
+
+		$tMap->addColumn('STRIPPED_NAME', 'StrippedName', 'string', CreoleTypes::VARCHAR, true, 255);
 
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
 

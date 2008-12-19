@@ -45,7 +45,6 @@
 		<li><?php echo link_to('Administrar estad&iacute;sticas de partida', 'gamestat'); ?>
 			<ul>
 				<li><?php echo link_to('Administrar valores de las estad&iacute;sticas de partida', 'gamestat_playerprofile'); ?></li>
-				<li><?php echo link_to('Administrar tipos de estad&iacute;sticas de partida', 'gamestattype'); ?></li>
 			</ul>
 		</li>
 		<li><?php echo link_to('Administrar competiciones', 'competition'); ?>
@@ -53,14 +52,9 @@
 				<li><?php echo link_to('Administrar relaci&oacute;n competiciones y jugadores', 'competition_playerprofile'); ?></li>
 			</ul>
 		</li>
-		<li><?php echo link_to('Administrar widgets', 'widget'); ?>
-		</li>
+		<li><?php echo link_to('Administrar widgets', 'widget'); ?></li>
 		<li><?php echo link_to('Administrar ofertas de colaboración', 'collaboration'); ?></li>
-		<li><?php echo link_to('Administrar recetas de código', 'codePiece'); ?>
-			<ul>
-				<li><?php echo link_to('Administrar lenguajes de programación para las recetas', 'codePieceLanguage'); ?></li>
-			</ul>
-		</li>
+		<li><?php echo link_to('Administrar recetas de código', 'codePiece'); ?></li>
 	</ul>
 	
 </div>

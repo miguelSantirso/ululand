@@ -9,12 +9,12 @@ list($tld, $domain, $subdomain, $subdomain2) = array_reverse(explode('.', $_SERV
 
 // determine which subdomain we're looking at
 $app = $subdomain;
-$app = (empty($app) || $app == 'www' ) ? 'splash' : $app;
+$app = (empty($app) || $app == 'www' ) ? 'frontend' : $app;
 
 // determine which app to load based on subdomain
 if (!is_dir(SF_ROOT_DIR.'/apps/'.$app))
 {
-    define('SF_APP','splash');
+    define('SF_APP','frontend');
 }
 else
 {

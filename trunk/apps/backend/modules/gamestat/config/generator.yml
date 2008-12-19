@@ -3,3 +3,10 @@ generator:
   param:
     model_class:      GameStat
     theme:            default
+    
+    edit:
+      fields:
+        uuid:
+          params: disabled=true
+        stripped_name:
+          params: disabled=true
