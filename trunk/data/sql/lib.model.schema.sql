@@ -415,6 +415,7 @@ CREATE TABLE `gamestat`
 	`name` VARCHAR(255)  NOT NULL,
 	`stripped_name` VARCHAR(255)  NOT NULL,
 	`description` TEXT,
+	`score_label` VARCHAR(32),
 	PRIMARY KEY (`id`),
 	INDEX `gamestat_FI_1` (`game_id`),
 	CONSTRAINT `gamestat_FK_1`

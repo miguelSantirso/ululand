@@ -112,7 +112,7 @@ propel:
     _attributes: { phpName: Game}
     id: ~
     uuid:              { type: varchar(36),  required: true }
-    privileges_level:  { type: integer,      required: true, default: 2 }
+    privileges_level:  { type: integer,      required: true, default: 1 }
     name:              { type: varchar(80),  required: true }
     stripped_name:     { type: varchar(80),  required: true }
     description:       { type: longvarchar,  required: false }
@@ -180,6 +180,7 @@ propel:
     name:              { type: varchar(255), required: true }
     stripped_name:     { type: varchar(255), required: true }
     description:       { type: longvarchar }
+    score_label:       { type: varchar(32) }
 
 
   gamestat_player_profile:

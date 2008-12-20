@@ -3,7 +3,7 @@
 	<ul>
 		<li><?php echo link_to(__('Index'), 'competition', array('class' => $action == "index" ? 'selected' : '')); ?></li>
 		<li><?php echo link_to(__('List'), 'competition/list', array('class' => $action == "list" ? 'selected' : '')); ?></li>
-		<li><?php echo link_to(__('New Competition'), 'competition/edit', array('class' => $action == "edit" ? 'selected' : '')); ?></li>
+		<!-- <li><?php echo link_to(__('New Competition'), 'competition/edit', array('class' => $action == "edit" ? 'selected' : '')); ?></li> -->
 	</ul>
 	
 	<h3>

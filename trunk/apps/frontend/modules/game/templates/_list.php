@@ -9,7 +9,10 @@
 		<ul class="compound">
 			<?php foreach ($games as $game): ?>
 				<?php if($game->isPublished()) : ?>
-				<li class="">
+				<li class="gamesListItem">
+					<?php if($game->hasGamestats()) : ?>
+						<?php echo image_tag('gamestatsEnabled.png', array('class' => 'gamestatsEnabledIcon', 'title' => __('Gamestats Enabled'))); ?>
+					<?php endif; ?>
 					<?php echo linkToGameWithThumbnail($game, 100, array('class' => 'firstRow xLarge')); ?>
 					<div class="lastRow">
 						

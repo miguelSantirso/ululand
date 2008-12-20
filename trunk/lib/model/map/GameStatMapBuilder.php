@@ -46,5 +46,7 @@ class GameStatMapBuilder {
 
 		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
+		$tMap->addColumn('SCORE_LABEL', 'ScoreLabel', 'string', CreoleTypes::VARCHAR, false, 32);
+
 	} 
 } 

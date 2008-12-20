@@ -16,19 +16,9 @@ class GameStat extends BaseGameStat
 	 **/
 	public function __toString()
 	{
-		return $this->name." (".$this->getGame().")";
+		return $this->name;
 	}
-	
-    /*public function getGameStatForGame($game)
-	{
-		$newValue = new GameStat_PlayerProfile();
-		$newValue->setPlayerProfileId($playerId);
-		$newValue->setGamestat($this);
-		$newValue->setValue($value);
-			
-		$newValue->save();
-	}*/
-	
+
 	/**
 	 * Añade un valor de una estadística de partida para un jugador
 	 *
@@ -45,6 +35,14 @@ class GameStat extends BaseGameStat
 		$newValue->save();
 	}
 	
+	/**
+	 * Retorna los valores asociados al gamestat, permitiendo limitar el número de resultados y filtrarlos por un rango de fechas
+	 *
+	 * @param int $limit Límite de resultados a obtener. Si se indica 0 no hay límite
+	 * @param timestamp $startDate Retornará valores de gamestat creados con posterioridad a la fecha pasada
+	 * @param timestamp $endDate Retornará valores de gamestat creados con anterioridad a la fecha pasada
+	 * @return array Lista de valores ordenados
+	 */
 	public function getOrderedValues($limit = 0, $startDate = null, $endDate = null)
 	{
 		$c = new Criteria();
@@ -104,13 +102,13 @@ class GameStat extends BaseGameStat
 	{
 		switch ($gamestatType)
 		{
-			case 'max':
+			case GameStatPeer::MAX_GAMESTATTYPE:
 				$c->addDescendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
-			case 'min':
+			case GameStatPeer::MIN_GAMESTATTYPE:
 				$c->addAscendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
-			case 'add':
+			case GameStatPeer::ADD_GAMESTATTYPE:
 				$c->addDescendingOrderByColumn(GameStat_PlayerProfilePeer::VALUE);
 				break;
 			default:

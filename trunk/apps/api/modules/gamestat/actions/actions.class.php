@@ -98,7 +98,7 @@ class gamestatActions extends apiCommonActions
 	public function executeSetValueFromMochiads()
 	{
 		// Comprobar que mochiads nos envía todos los parámetros que necesitamos
-		$this->checkRequiredParameters( array('userID', 'sessionID', 'boardID', 'score') );
+		$this->checkRequiredParameters( array('userID', 'sessionID', 'boardID', 'score', 'title') );
 		
 		$apiKey = $this->getRequestParameter('sessionID');
 		$user = sfGuardUserProfilePeer::retrieveByUuid($this->getRequestParameter('userID'));
@@ -132,40 +132,24 @@ class gamestatActions extends apiCommonActions
 		
 		// Es necesario crear el gamestat por primera vez
 		if(!$gamestat)
-		{
-			$c = new Criteria();
-			$c->add(GameStatTypePeer::NAME, 'max');
-			$gamestattype = GameStatTypePeer::doSelect($c);
-
-			$this->logMessage("uno", "err");
-			
+		{	
 			$gamestat = new GameStat();
-			$this->logMessage($this->getRequestParameter('boardID'), "err");
-			$gamestat->setName($this->getRequestParameter('boardID'));
+			$gamestat->setUuid($this->getRequestParameter('boardID'));
+			$gamestat->setName($this->getRequestParameter('title'));
+			$gamestat->setDescription($this->getRequestParameter('description'));
+			$gamestat->setScoreLabel($this->getRequestParameter('scoreLabel'));
+			$gamestat->setGameStatType($this->getRequestParameter('sortOrder') == 'desc' ? GameStatPeer::MIN_GAMESTATTYPE : GameStatPeer::MAX_GAMESTATTYPE);
 			$gamestat->setGame($game);
-			/*$gamestat->setDescription($this->getRequestParameter('description'));
-			$gamestat->setGameStatType($gamestattype);*/
-			
-			//$gamestat->setDescription($this->getRequestParameter('description'));
-			$gamestat->setGameStatTypeId(1);
-			
-			$this->logMessage("uno coma cinco", "err");
 			
 			$gamestat->save();
 		}
 		
-		$this->logMessage("dos", "err");
-		
 		// Finalmente, enviamos el nuevo valor
 		$gamestat->addGameStatValueForPlayer($this->getRequestParameter('score'), $user->getPlayerProfile()->getId());
-		
-		$this->logMessage("tres", "err");
 		
 		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getUsername());
 		$this->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
-		
-		$this->logMessage("cuatro", "err");
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-10T21:22:16Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-20T12:45:58Z">
     <body>
 
 <trans-unit id="1">
@@ -1276,12 +1276,22 @@
 
 <trans-unit id="267">
 <source>Latest ULUs (welcome!)</source>
-<target>Últimos ULUs (¡bienvenidos!)</target>
+<target>&#xDA;ltimos ULUs (&#xA1;bienvenidos!)</target>
 </trans-unit>
 
 <trans-unit id="268">
 <source>Customize your ULU</source>
 <target>Personaliza tu ULU</target>
+</trans-unit>
+
+<trans-unit id="269">
+<source>Play %s now!</source>
+<target>¡Juega a %s ahora!</target>
+</trans-unit>
+
+<trans-unit id="270">
+<source>Gamestats Enabled</source>
+<target>Estadísticas de Partida Activadas</target>
 </trans-unit>
 </body>
   </file>

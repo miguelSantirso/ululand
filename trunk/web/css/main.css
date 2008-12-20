@@ -580,6 +580,10 @@ div.gameBox h3 { margin-top: 0; margin-bottom: 0; font-size: xx-large; font-weig
 			font-weight: normal;}
 		div.gameBox div.gameBoxDetails p  { margin: 0 0 3px; color: #696969 !important; }
 
+/* gamestats enabled icon */
+
+li.gamesListItem img.gamestatsEnabledIcon { position: absolute; margin-top: 5px; margin-left: 5px; }
+
 /* related games list */
 
 ul.relatedGames { list-style-type: none; margin: 0; padding: 0; }
@@ -595,7 +599,6 @@ ul.relatedGames { list-style-type: none; margin: 0; padding: 0; }
 				text-transform: uppercase; font-size: 16px; font-weight: bold; letter-spacing: -1px; }
 			ul.relatedGames li a span.relatedGameDetails { color: #696969; font-size: small; }
 			ul.relatedGames li a:hover span.relatedGameDetails { color: #000; }			
-			
 
 /* game releases list */
 

@@ -34,6 +34,16 @@ class Competition extends BaseCompetition
 	}
 	
 	/**
+	 * Retorna el juego asociado a esta competición
+	 *
+	 * @return Game Juego asociado a la competición
+	 */
+	public function getGame()
+	{
+		return $this->getGameStat()->getGame();
+	}
+	
+	/**
 	 * Devuelve los miembros de un competición
 	 *
 	 * @param Criteria $c criteria que se añadirá al select

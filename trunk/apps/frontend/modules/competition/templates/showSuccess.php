@@ -11,7 +11,7 @@
 			<?php if($sf_user->isAuthenticated()) : ?>
 			<?php $status = $competition->getStatus($sf_user->getPlayerProfile()); ?>
 				<?php if($status == CompetitionPeer::OWNER) : ?>
-					<p><?php echo link_to(__("Admin"), 'competition/edit?id='.$competition->getId().'&game='.null); ?></p>
+					<p><?php echo link_to(__("Admin"), 'competition/edit?id='.$competition->getId().'&game='.null, array('class' => 'bigBox')); ?></p>
 				<?php endif; ?>
 				
 				<?php if($status == CompetitionPeer::MEMBER || $status == CompetitionPeer::OWNER) : ?>
@@ -37,6 +37,9 @@
 			<?php } else { ?>
 				<p><?php echo __('There is no description for this competition'); ?></p>
 			<?php } ?>
+			<?php ?>
+			<br/>
+			<p><?php echo linkToGame($competition->getGame(), array('class' => 'bigBox'), __(sprintf(__('Play %s now!'), $competition->getGame()))); ?></p>
 		</div>
 		
 		<div class="contentBox" id="postComment">

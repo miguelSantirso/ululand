@@ -57,12 +57,12 @@
 		<!-- acciones, barra búsqueda y relacionados -->
 		<div class="contentColumn quarter alignLeft">
 			<?php if($sf_user->isAuthenticated()) : ?>
-				<?php if(count($game->getGameStats()) > 0) : ?>
+				<?php if($game->hasGamestats()) : ?>
 					<?php echo link_to(__('Create Competition'), 'competition/edit?game='.$game->getId(), array('class' => 'bigBox')); ?>
 				<?php endif; ?>
 			<?php endif; ?>
 			<?php include_partial('searchForm'); ?>
-			<?php include_partial('relatedByTags', array('limit' => 5, 'tagsString' => $game->getTagsString())); ?>
+			<?php include_component('game', 'relatedByTags', array('limit' => 5, 'tagsString' => $game->getTagsString())); ?>
 		</div>
 	</div>
 	

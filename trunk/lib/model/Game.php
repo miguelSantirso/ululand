@@ -65,6 +65,15 @@ class Game extends BaseGame
 	}
 	
 	/**
+	 * Retorna cierto si el juego tiene algún gamestat activado
+	 *
+	 */
+	public function hasGamestats()
+	{
+		return count($this->getGameStats()) > 0;
+	}
+	
+	/**
 	 * Retorna la anchura en píxeles de la versión activa del juego
 	 *
 	 * @return Anchura en píxeles de la versión activa del juego o null si el juego no tiene versión activa asociada

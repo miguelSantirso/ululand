@@ -9,4 +9,7 @@
  */ 
 class GameStatPeer extends BaseGameStatPeer
 {
+	const MAX_GAMESTATTYPE = 'max';
+	const MIN_GAMESTATTYPE = 'min';
+	const ADD_GAMESTATTYPE = 'add';
 }
