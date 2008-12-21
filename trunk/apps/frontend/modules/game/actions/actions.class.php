@@ -29,6 +29,9 @@ class gameActions extends sfActions
 		if($tag)
 		{
 			$this->tag = $tag;
+			// Cambiar el título para mejorar el SEO
+			$this->getResponse()->setTitle(sprintf(ulToolkit::__('%s games at ULUland.com. The best flash gaming experience'),
+				$tag));
 		}
   		$search = $this->getRequestParameter('search');
 		if($search)
@@ -62,6 +65,10 @@ class gameActions extends sfActions
 
   	// Cargar los gamestats del juego para mostrarlos en el template
   	$this->gamestats = $this->game->getGameStats();
+  	
+  	// Cambiar el título para mejorar el SEO
+  	$this->getResponse()->setTitle(sprintf(ulToolkit::__('%s at ULUland.com. The best flash gaming experience'),
+			$this->game->getName()));
   }
 
   /**

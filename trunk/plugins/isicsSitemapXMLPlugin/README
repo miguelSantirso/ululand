@@ -1,0 +1,126 @@
+# isicsSitemapXMLPlugin plugin
+
+The isicsSitemapXMLPlugin provides an easy way to generate a sitemap.xml.
+
+Each module (from plugins or not) who implements the sitemapGenerator interface adds automatically its owns urls.
+
+## Features
+  * Quick to use (nothing to do if the module already implements the interface)
+  * Cached (24h of lifetime by default)
+
+## License
+
+The isicsSitemapXMLPlugin is licensed under the GNU Lesser General Public License (LGPL).
+ 
+## Installation
+
+  * Install the plugin:
+
+        [plain]
+        $ symfony plugin-install http://plugins.symfony-project.com/isicsSitemapXMLPlugin
+        $ symfony cc
+
+  * Modify the .htaccess file to redirect sitemap.xml to front controller:
+ 
+        [plain]
+        # we skip all files with .something
+        # comment the following 3 lines to allow periods in routes
+        RewriteCond %{REQUEST_URI} \..+$
+        RewriteCond %{REQUEST_URI} !\.html$
+        RewriteCond %{REQUEST_URI} !sitemap\.xml$
+        RewriteRule .* - [L]
+
+## Usage
+
+### Extending a module (nothing to do if the module is already "isicsSitemapXMLPlugin compatible")
+
+Each module who has to add urls to sitemap.xml must implements the sitemapGenerator interface.
+The interface contains a generate() method to implement in a file named MODULENAME/lib/MODULENAMESitemapGenerator.class.php.
+
+For instance, we take a news module.
+In news module lib dir, we create the file newsSitemapGenerator.class.php:
+
+    [php]
+    <?php
+    class newsSitemapGenerator implements sitemapGenerator
+    {
+      public static function generate()
+      {
+        $urls = array();  
+  
+        $c = new Criteria();
+        $c->addDescendingOrderByColumn(NewsArticlePeer::PUBLISH_UP);
+    
+        $articles = NewsArticlePeer::doSelect($c);
+
+        foreach ($articles as $article)
+        {
+          $urls[] = new sitemapURL('@news_article?slug=' . $article->getSlug(), $article->getPublishUp('c'));
+        }
+
+        return $urls;    
+      }
+    }
+
+``Note the 'c' value of getPublishUp() param to get an ISO 8601 date.``
+
+### Configuration
+Enable the modules in app.yml:
+
+    [plain]
+    all:
+      isicsSitemapXML:
+      modules:       [ news ]
+
+Just enjoy!!
+
+### Add default urls
+
+You can add default urls by 2 ways:
+
+  1.  Using configuration:
+
+        [plain]
+        all:
+          isicsSitemapXML:
+            modules:       [ news ]
+            default_urls:
+              url1:
+                loc:        mymodule1/myaction1
+              url2:
+                loc:        mymodule1/myaction2
+                changefreq: never
+                priority:   1
+
+  2.  Redifining addDefaultUrls() method:
+
+        [php]
+        <?php
+        require_once(dirname(__FILE__).'/../../../plugins/isicsSitemapXMLPlugin/modules/isicsSitemapXML/lib/BaseisicsSitemapXMLActions.class.php');
+
+        class isicsSitemapXMLActions extends BaseisicsSitemapXMLActions
+        {
+          protected function addDefaultUrls()
+          {
+            $this->urls[] = new sitemapURL('mymodule1/myaction1');
+            $this->urls[] = new sitemapURL('mymodule1/myaction2', null, 'never', 1);
+          }
+        }
+ 
+## Roadmap
+
+  * Manage multiple Sitemaps and a Sitemap index (for sites with more than 50 000 URLs)
+  * Rewrite using sfEvent (sf >= 1.1)
+
+## Changelog
+
+### 2008-09-11 | 0.9.1-beta
+
+  * Update README to markdown (Gordon Franke)
+  * Add cast for priority to float (Gordon Franke)
+  * Avoid disabling short open tag (Gordon Franke)
+  * Adding default urls support (idea from Gordon Franke)
+
+### 2008-06-16 | 0.9.0-beta
+
+  * Initial public release.

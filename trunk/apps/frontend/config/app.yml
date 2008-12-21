@@ -13,10 +13,13 @@ all:
     avatarPiece: "UploadedPieces"
     groupIcons:  "GroupIcons"
     competitionIcons:  "CompetitionIcons"
-  
+
   rating:
     user_id_getter:      [myUser, getConnectedAvatarId] 
-    
+
+  isicsSitemapXML:
+    modules: [game, profile]
+
   sfPropelActAsCommentableBehaviorPlugin:
     allowed_tags:
       a:              <a>

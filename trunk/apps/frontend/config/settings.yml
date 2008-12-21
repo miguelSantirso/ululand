@@ -85,7 +85,7 @@ all:
     standard_helpers:  [I18N, Partial, Cache, Form, ModalBox, ulLinks, ulImages, ulMisc, Javascript]
 #    
     # Activated modules from plugins or from the symfony core
-    enabled_modules:   [ default, sfEmail, sfApprovable, sfRating, sfGuardAuth, sfComment]
+    enabled_modules:   [ default, sfEmail, sfApprovable, sfRating, sfGuardAuth, sfComment, isicsSitemapXML]
 #
     # Charset used for the response
     charset:                utf-8

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-20T12:45:58Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-21T17:20:28Z">
     <body>
 
 <trans-unit id="1">
@@ -1286,12 +1286,27 @@
 
 <trans-unit id="269">
 <source>Play %s now!</source>
-<target>¡Juega a %s ahora!</target>
+<target>&#xA1;Juega a %s ahora!</target>
 </trans-unit>
 
 <trans-unit id="270">
 <source>Gamestats Enabled</source>
-<target>Estadísticas de Partida Activadas</target>
+<target>Estad&#xED;sticas de Partida Activadas</target>
+</trans-unit>
+
+<trans-unit id="271">
+<source>%s games at ULUland.com. The best flash gaming experience</source>
+<target>Juegos de %s en ULUland.com. La mejor experiencia de juego flash</target>
+</trans-unit>
+
+<trans-unit id="272">
+<source>%s en ULUland.com. La mejor experiencia de juego flash</source>
+<target></target>
+</trans-unit>
+
+<trans-unit id="273">
+<source>Taking part in %1$s competitions</source>
+<target>Participando en %1$s competiciones</target>
 </trans-unit>
 </body>
   </file>

@@ -127,7 +127,7 @@ class gamestatActions extends apiCommonActions
 		// Comprobamos si ya se ha creado el gamestat. Si no, lo creamos
 		$c = new Criteria();
 		$c->add(GameStatPeer::GAME_ID, $game->getId());
-		$c->add(GameStatPeer::NAME, $this->getRequestParameter('boardID'));
+		$c->add(GameStatPeer::STRIPPED_NAME, ulToolkit::stripText($this->getRequestParameter('title')));
 		$gamestat = GameStatPeer::doSelectOne($c);
 		
 		// Es necesario crear el gamestat por primera vez
@@ -138,7 +138,7 @@ class gamestatActions extends apiCommonActions
 			$gamestat->setName($this->getRequestParameter('title'));
 			$gamestat->setDescription($this->getRequestParameter('description'));
 			$gamestat->setScoreLabel($this->getRequestParameter('scoreLabel'));
-			$gamestat->setGameStatType($this->getRequestParameter('sortOrder') == 'desc' ? GameStatPeer::MIN_GAMESTATTYPE : GameStatPeer::MAX_GAMESTATTYPE);
+			$gamestat->setGameStatType($this->getRequestParameter('sortOrder') == 'asc' ? GameStatPeer::MIN_GAMESTATTYPE : GameStatPeer::MAX_GAMESTATTYPE);
 			$gamestat->setGame($game);
 			
 			$gamestat->save();

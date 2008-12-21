@@ -69,7 +69,7 @@ class recipeActions extends sfActions
 		$this->code_piece->incrementCounter(); // Una visita más
 
 		$this->getResponse()->setTitle(sprintf(ulToolkit::__('%s. Flash code recipes at developers.ululand.com'),
-		$this->code_piece->getTitle()));
+			$this->code_piece->getTitle()));
 	}
 
 	/**

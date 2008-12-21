@@ -60,9 +60,22 @@ class PlayerProfile extends BasePlayerProfile
 	public function getNbGroups()
 	{
 		$c = new Criteria();
-		$c->add(PlayerProfile_GroupPeer::PLAYER_PROFILE_ID, $this->getsfGuardUserProfile()->getId());
+		$c->add(PlayerProfile_GroupPeer::PLAYER_PROFILE_ID, $this->getId());
 		
 		return PlayerProfile_GroupPeer::doCount($c);
+	}
+	
+	/**
+	 * Retorna el número de grupos a los que pertenece el jugador
+	 *
+	 * @return Integer número de grupos a los que pertenece el jugador
+	 */
+	public function getNbCompetitions()
+	{
+		$c = new Criteria();
+		$c->add(Competition_PlayerProfilePeer::PLAYER_PROFILE_ID, $this->getId());
+		
+		return Competition_PlayerProfilePeer::doCount($c);
 	}
 		
 	/**
