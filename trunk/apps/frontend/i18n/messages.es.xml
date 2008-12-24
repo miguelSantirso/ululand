@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-21T17:20:28Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-24T20:39:33Z">
     <body>
 
 <trans-unit id="1">
@@ -1101,7 +1101,7 @@
 
 <trans-unit id="232">
 <source>sign in</source>
-<target>registrarse</target>
+<target>entrar</target>
 </trans-unit>
 
 <trans-unit id="233">
@@ -1301,12 +1301,62 @@
 
 <trans-unit id="272">
 <source>%s en ULUland.com. La mejor experiencia de juego flash</source>
-<target></target>
+<target/>
 </trans-unit>
 
 <trans-unit id="273">
 <source>Taking part in %1$s competitions</source>
 <target>Participando en %1$s competiciones</target>
+</trans-unit>
+
+<trans-unit id="274">
+<source>All games</source>
+<target>Todos los juegos</target>
+</trans-unit>
+
+<trans-unit id="275">
+<source>All people</source>
+<target>Toda la gente</target>
+</trans-unit>
+
+<trans-unit id="276">
+<source>Customize avatar</source>
+<target>Personalizar avatar</target>
+</trans-unit>
+
+<trans-unit id="277">
+<source>Modify profile</source>
+<target>Modificar perfil</target>
+</trans-unit>
+
+<trans-unit id="278">
+<source>Change password</source>
+<target>Cambiar contrase&#xF1;a</target>
+</trans-unit>
+
+<trans-unit id="279">
+<source>Change language</source>
+<target>Cambiar idioma</target>
+</trans-unit>
+
+<trans-unit id="280">
+<source>%s at ULUland.com. The best flash gaming experience</source>
+<target>%s en ULUland.com. La mejor experiencia de juego flash</target>
+</trans-unit>
+
+<trans-unit id="281">
+<source>Loading...</source>
+<target>Cargando...</target>
+</trans-unit>
+
+<trans-unit id="282">
+<source>Player</source>
+<target>Jugador</target>
+</trans-unit>
+
+<trans-unit id="283">
+<source>Value</source>
+<target>Valor</target>
 </trans-unit>
 </body>
   </file>

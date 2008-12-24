@@ -20,6 +20,8 @@ class ulsfGuardAuthActions extends BasesfGuardAuthActions
 		if($this->getUser()->isAuthenticated())
 		$this->getUser()->setCulture($this->getUser()->getProfile()->getCulture());
 		
+		$this->getUser()->setAttribute('referer', sfContext::getInstance()->getRequest()->getReferer());
+		
 		parent::executeSignin();
 	}
 

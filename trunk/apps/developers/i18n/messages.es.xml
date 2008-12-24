@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.0">
-  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-11-27T19:50:41Z">
+  <file orginal="global" source-language="en_US" datatype="plaintext" date="2008-12-24T10:16:25Z">
     <body>
     
 <trans-unit id="1">
@@ -1593,7 +1593,7 @@
 
 <trans-unit id="1">
 <source>Welcome back, %1$s! %2$s? %3$s?</source>
-<target>Hola de nuevo, ¡%1$s! ¿%2$s? ¿%3$s?</target>
+<target>Hola de nuevo, &#xA1;%1$s! &#xBF;%2$s? &#xBF;%3$s?</target>
 </trans-unit>
 
 <trans-unit id="2">
@@ -1603,52 +1603,52 @@
 
 <trans-unit id="3">
 <source>Wrong Password</source>
-<target>Contraseña Incorrecta</target>
+<target>Contrase&#xF1;a Incorrecta</target>
 </trans-unit>
 
 <trans-unit id="4">
 <source>There is already a code recipe with that title. Choose a different one, please</source>
-<target>Ya hay una receta con ese título. Elige uno diferente, por favor</target>
+<target>Ya hay una receta con ese t&#xED;tulo. Elige uno diferente, por favor</target>
 </trans-unit>
 
 <trans-unit id="5">
 <source>Your profile has been successfully updated!</source>
-<target>¡Tu perfil se ha actualizado con éxito!</target>
+<target>&#xA1;Tu perfil se ha actualizado con &#xE9;xito!</target>
 </trans-unit>
 
 <trans-unit id="6">
 <source>Your password has been successfully updated!</source>
-<target>¡Tu contraseña se ha actualizado con éxito!</target>
+<target>&#xA1;Tu contrase&#xF1;a se ha actualizado con &#xE9;xito!</target>
 </trans-unit>
 
 <trans-unit id="7">
 <source>The interface settings have been succesfully updated!</source>
-<target>¡La configuración de la interfaz se ha actualizado con éxito!</target>
+<target>&#xA1;La configuraci&#xF3;n de la interfaz se ha actualizado con &#xE9;xito!</target>
 </trans-unit>
 
 <trans-unit id="8">
 <source>Change Your Password</source>
-<target>Cambia Tu Contraseña</target>
+<target>Cambia Tu Contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="9">
 <source>Current Password</source>
-<target>Contraseña Actual</target>
+<target>Contrase&#xF1;a Actual</target>
 </trans-unit>
 
 <trans-unit id="10">
 <source>New Password</source>
-<target>Nueva Contraseña</target>
+<target>Nueva Contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="11">
 <source>Retype new password</source>
-<target>Reescribe la nueva contraseña</target>
+<target>Reescribe la nueva contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="12">
 <source>Change Password</source>
-<target>Cambiar Contraseña</target>
+<target>Cambiar Contrase&#xF1;a</target>
 </trans-unit>
 
 <trans-unit id="13">
@@ -1663,12 +1663,12 @@
 
 <trans-unit id="15">
 <source>Drag the pieces from your catalog and drop them over your avatar to change it</source>
-<target>Arrastra las piezas desde el catálogo y suéltalas sobre sobre tu avatar para cambiarlo</target>
+<target>Arrastra las piezas desde el cat&#xE1;logo y su&#xE9;ltalas sobre sobre tu avatar para cambiarlo</target>
 </trans-unit>
 
 <trans-unit id="16">
 <source>Your Pieces Catalogue</source>
-<target>Tu Catálogo de Piezas</target>
+<target>Tu Cat&#xE1;logo de Piezas</target>
 </trans-unit>
 
 <trans-unit id="17">
@@ -1708,12 +1708,12 @@
 
 <trans-unit id="24">
 <source>Edit your name, your description and other personal info</source>
-<target>Edita tu nombre, tu descripción y otra información personal</target>
+<target>Edita tu nombre, tu descripci&#xF3;n y otra informaci&#xF3;n personal</target>
 </trans-unit>
 
 <trans-unit id="25">
 <source>You can change your password here</source>
-<target>Puedes cambiar tu contraseña aquí</target>
+<target>Puedes cambiar tu contrase&#xF1;a aqu&#xED;</target>
 </trans-unit>
 
 <trans-unit id="26">
@@ -1728,7 +1728,7 @@
 
 <trans-unit id="28">
 <source>This is the name that everyone will see.</source>
-<target>Este es el nombre que verán todos.</target>
+<target>Este es el nombre que ver&#xE1;n todos.</target>
 </trans-unit>
 
 <trans-unit id="29">
@@ -1753,17 +1753,17 @@
 
 <trans-unit id="33">
 <source>Gender:</source>
-<target>Género:</target>
+<target>G&#xE9;nero:</target>
 </trans-unit>
 
 <trans-unit id="34">
 <source>update preview</source>
-<target>actualizar previsualización</target>
+<target>actualizar previsualizaci&#xF3;n</target>
 </trans-unit>
 
 <trans-unit id="35">
 <source>The password you entered is not correct</source>
-<target>La contraseña que has introducido no es correcta</target>
+<target>La contrase&#xF1;a que has introducido no es correcta</target>
 </trans-unit>
 
 <trans-unit id="36">
@@ -1773,17 +1773,97 @@
 
 <trans-unit id="37">
 <source>Username must be 2 characters or more</source>
-<target>El nombre de usuario debe tener dos caracteres o más</target>
+<target>El nombre de usuario debe tener dos caracteres o m&#xE1;s</target>
 </trans-unit>
 
 <trans-unit id="38">
 <source>There is already a collaboration offer with that title. Choose a different one, please</source>
-<target>Ya hay una oferta de colaboración con ese título. Elige uno diferente, por favor</target>
+<target>Ya hay una oferta de colaboraci&#xF3;n con ese t&#xED;tulo. Elige uno diferente, por favor</target>
 </trans-unit>
 
 <trans-unit id="39">
 <source>The name everyone will see.</source>
-<target>El nombre que verán todos.</target>
+<target>El nombre que ver&#xE1;n todos.</target>
+</trans-unit>
+
+<trans-unit id="1">
+<source>%s. You have %s days left.</source>
+<target>%s. Te quedan %s días.</target>
+</trans-unit>
+
+<trans-unit id="2">
+<source>Validate your email now!</source>
+<target>¡Valida ahora tu email!</target>
+</trans-unit>
+
+<trans-unit id="3">
+<source>All games</source>
+<target>Todos los juegos</target>
+</trans-unit>
+
+<trans-unit id="4">
+<source>Developers list</source>
+<target>Lista de desarrolladores</target>
+</trans-unit>
+
+<trans-unit id="5">
+<source>Modify profile</source>
+<target>Modificar perfil</target>
+</trans-unit>
+
+<trans-unit id="6">
+<source>Change password</source>
+<target>Cambiar contraseña</target>
+</trans-unit>
+
+<trans-unit id="7">
+<source>Change language</source>
+<target>Cambiar idioma</target>
+</trans-unit>
+
+<trans-unit id="8">
+<source>Email account validation</source>
+<target>Validación de la cuenta de correo</target>
+</trans-unit>
+
+<trans-unit id="9">
+<source>We need to confirm that you are the owner of the email you provided (%s)</source>
+<target>Necesitamos confirmar que eres el propietario de la cuenta de correo que nos has dado (%s)</target>
+</trans-unit>
+
+<trans-unit id="10">
+<source>Have you lost your confirmation email?</source>
+<target>¿Has perdido tu email de confirmación?</target>
+</trans-unit>
+
+<trans-unit id="11">
+<source>Resend email to %s</source>
+<target>Reenviar email a %s</target>
+</trans-unit>
+
+<trans-unit id="12">
+<source>We trust you, but...</source>
+<target>Confiamos en ti, pero...</target>
+</trans-unit>
+
+<trans-unit id="13">
+<source>Check your email inbox</source>
+<target>Revisa la bandeja de entrada de tu email</target>
+</trans-unit>
+
+<trans-unit id="14">
+<source>Go to %s</source>
+<target>Ir a %s</target>
+</trans-unit>
+
+<trans-unit id="15">
+<source>Click on the confirmation URL</source>
+<target>Haz clic en la URL de confirmación</target>
+</trans-unit>
+
+<trans-unit id="16">
+<source>Close this window</source>
+<target>Cierra esta ventana</target>
 </trans-unit>
 </body>
   </file>

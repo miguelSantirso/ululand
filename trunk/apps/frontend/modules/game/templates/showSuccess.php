@@ -1,5 +1,14 @@
 <?php use_helper('sfRating', 'Date'); ?>
 
+<?php $with = "'id=' + $('gamestatSelect').value"; ?>
+<?php echo javascript_tag('
+	function updateGamestatTable()
+	{
+		Element.setOpacity("rankingsTable", 0.5);
+		'.remote_function(array('update' => 'rankingsTable', 'url' => 'gamestat/show', 'with' => $with,
+								'complete' => 'Element.setOpacity("rankingsTable", 1)')).'
+	}'); ?>
+
 <div id="pageContent">
 
 	<!-- juego, info y barra lateral -->
@@ -32,19 +41,14 @@
 									time_ago_in_words($game->getCreatedAt('U')), 
 									format_date($game->getCreatedAt()) ); ?></p>
 					<?php endif; ?>
+					<p class="small"><?php echo __('Tags') ?>: <strong><?php echo $game->getLinkedTagsString(); ?></strong></p>
+					<p class="small"><?php echo sprintf(__('%s gameplays'), '<strong>'.$game->getCounter().'</strong>'); ?></p>
 					<?php
 						$url = url_for('game/embed?g='.$game->getUuid(), true); 
 						$embedCode = '<script type="text/javascript" language="javascript" charset="utf-8" src="'.$url.'"></script>';
 					?>
 					<h4 class="header"><?php echo __('Embed Game:'); ?></h4>
 					<input name="embedCode" id="embedCode" type="text" readonly="" onclick="javascript:$('embedCode').focus();$('embedCode').select();" value='<?php echo $embedCode; ?>' />
-					<p class="noSpace small"><?php echo __('Tags') ?>: <strong><?php echo $game->getLinkedTagsString(); ?></strong></p>
-					<?php if($game->hasBeenRated()) : ?>
-					<p class="noSpace small"><?php echo __('Rating'); ?>: <strong><?php echo sprintf(__('%s out of %s'), $game->getRating(), $game->getMaxRating()); ?></strong></p>
-					<?php endif; ?>
-					<p class="noSpace small"><?php echo sprintf(__('%s gameplays'), '<strong>'.$game->getCounter().'</strong>'); ?></p>
-					<h4 class="header"><?php echo __('Rate this game'); ?>:</h4>
-					<?php echo sf_rater($game) ?>
 				</div>
 				<div class="contentColumn alignLeft">
 					<h4 class="header"><?php echo __('Detailed ratings'); ?></h4>
@@ -60,6 +64,8 @@
 				<?php if($game->hasGamestats()) : ?>
 					<?php echo link_to(__('Create Competition'), 'competition/edit?game='.$game->getId(), array('class' => 'bigBox')); ?>
 				<?php endif; ?>
+				<h4 class="header"><?php echo __('Rate this game'); ?>:</h4>
+				<?php echo sf_rater($game) ?>
 			<?php endif; ?>
 			<?php include_partial('searchForm'); ?>
 			<?php include_component('game', 'relatedByTags', array('limit' => 5, 'tagsString' => $game->getTagsString())); ?>
@@ -81,19 +87,21 @@
 		
 		<div class="contentColumn third alignRight">
 			<div id="rankings" class="contentBox">
+				<?php $gamestatsOptionsForSelect = array(); ?>
+				<?php foreach($gamestats as $gamestat) { $gamestatsOptionsForSelect[$gamestat->getId()] = $gamestat->getName(); } ?>
+				<?php echo select_tag('gamestatSelect', options_for_select($gamestatsOptionsForSelect),
+					array('id' => 'gamestatSelect', 'class' => 'alignRight',
+							'onChange' => 'updateGamestatTable();')); ?>
+				
 				<h4 class="header small"><?php echo __('Rankings:') ?></h4>
 				<?php $gamestats = $game->getGameStats(); ?>
 				<?php if(count($gamestats) == 0) : ?>
 					<p class="small">Este juego no tiene gamestats activos. <a href="#">&iexcl;P&iacute;dele a su autor que los configure!</a>.</p>
 				<?php else : ?>
-					<?php foreach($gamestats as $gamestat) : ?>
-					<h5 class="header medium"><?php echo $gamestat; ?></h5>
-					<ol class="normalList normal">
-						<?php foreach($gamestat->getOrderedValues(10) as $value) : ?>
-						<li><?php echo linkToProfile($value->getPlayerProfile()->getsfGuardUserProfile()); ?>: <?php echo $value->getValue(); ?></li>
-						<?php endforeach; ?>
-					</ol>
-					<?php endforeach; ?>
+					<div id="rankingsTable">
+						<p><?php echo image_tag('ajax-loader.gif'); ?> <?php echo __('Loading...'); ?></p>
+						<?php echo javascript_tag('updateGamestatTable();'); ?>
+					</div>
 				<?php endif; ?>
 			</div>
 		</div>

@@ -230,6 +230,9 @@ div#content {
 {
 	color: #444;
 }
+/* ululand logo at the bottom */
+
+img#ululandLogoBottom { float: right; margin: -15px 21px; }
 
 div#pageContent
 {
@@ -384,7 +387,6 @@ div#avatarPiecesReceiver { text-align: center; margin: 10px 10px 10px 25px; back
 	div#avatarPiecesReceiver.receiverActive { border: 696969; background: #fafafa; }
 div#avatarPiecesReceiver + p:first-line { font-size: large; font-weight: bold; }
 
-
 /* avatar pieces catalogue list */
 
 ul#avatarPiecesCatalogue { list-style-type: none; padding: 0; }
@@ -396,7 +398,6 @@ ul#avatarPiecesCatalogue { list-style-type: none; padding: 0; }
 		ul#avatarPiecesCatalogue li span.pieceDescription { display: block; font-size: small; margin-top: 2px; color: #696969; }
 	ul#avatarPiecesCatalogue li span.pieceImage:hover { border-color: #0099cc; background: #fff; }
 	ul#avatarPiecesCatalogue li span.pieceImage { cursor: move; }
-															
 
 /* styled lists */
 
@@ -584,6 +585,17 @@ div.gameBox h3 { margin-top: 0; margin-bottom: 0; font-size: xx-large; font-weig
 
 li.gamesListItem img.gamestatsEnabledIcon { position: absolute; margin-top: 5px; margin-left: 5px; }
 
+/* gamestats table */
+
+table.gamestatTable { width: 100%; border-collapse: collapse; border-width: 0px; color: #555; text-align: center; }
+	table.gamestatTable a { text-decoration: none; }
+	table.gamestatTable tr.header { background-color: #107FC9; }
+		table.gamestatTable th { color: #fff; text-transform: uppercase; padding: 2px; font-weight: normal; }
+		table.gamestatTable tr { background-color: #e5e5e5; }
+		table.gamestatTable tr.alt { background-color: #f1f1f1; }
+		table.gamestatTable td { padding: 4px 0; }
+		table.gamestatTable td.position { text-align: center; font-weight: bold; }
+
 /* related games list */
 
 ul.relatedGames { list-style-type: none; margin: 0; padding: 0; }
@@ -658,13 +670,11 @@ form#sf_comment_form { padding: 0 0 0 90px; margin: 8px 0 30px 0; }
 	form#sf_comment_form textarea { display: block; width: 98%; height: 74px; border: 1px solid #ddd; padding: 4px; }
 	form#sf_comment_form div.actions { margin: 5px 0 10px 0; }
 		form#sf_comment_form div.actions input.submit { font-size: small; float: right; }
-		form#sf_comment_form div.actions span { font-size: x-small; color: #696969; margin: 0 0 0 5px; }
-	
+		form#sf_comment_form div.actions span { font-size: x-small; color: #696969; margin: 0 0 0 5px; }	
 
 /* embed form */
 
 input#embedCode { width: 98%; }
-
 
 /* chat bar */
 
@@ -673,5 +683,23 @@ div#chatBar { position: fixed; bottom: 0; right: 0; width: 100%; height: 25px; z
 		div#chatBarUi div#chatClient { float: right; background: #e2e2e2; border-left: 1px solid #f5f5f5; }
 		div#chatBarUi a#toggleChatButton { text-decoration: none; padding-top: 5px; margin-right: 5px; }
 div.chatClientUp { margin-top: -370px; background: #fdfdfd !important; border: 1px solid #eee; }
-			
-	
+
+/* footer */
+
+div#footer { background-color: #5397e1; color: #fff; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px;
+	width: 1000px; margin: 0.4em auto; padding: 0; }
+
+/* footer menu */
+
+ul#footerMenu { padding: 8px 0 0; }
+ul#footerMenu, ul#footerMenu li ul { list-style-type: none; margin-bottom: 10px; }
+	ul#footerMenu li { float: left; margin-left: 45px; }
+		ul#footerMenu li a { padding: 2px; color: #ebf5ff; text-decoration: none; font-size: 15px; }
+		ul#footerMenu li a:hover { text-decoration: underline; }
+		ul#footerMenu li ul { margin-top: 5px; padding: 0; }
+			ul#footerMenu li ul li { margin-left: 0; display: block; float: none; }
+				ul#footerMenu li ul li a { font-size: 12px; color: #c8dcf5; }
+
+img#pncilLogo { float: right; margin: 20px 25px 0 0; }
+
+p#copyrightText { color: #5397e1; float: right; font-size: small; margin-right: 1em; }

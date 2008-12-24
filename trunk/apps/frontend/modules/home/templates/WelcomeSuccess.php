@@ -32,7 +32,8 @@
 			
 		<div class="contentColumn half alignLeft">
 			<div class="contentBox bordered">
-				<h3 class="header"><?php echo __('New Games') ?></h3>
+				<div class="alignRight"><?php include_partial('game/searchForm', array('title' => '')); ?></div>
+				<h3 class="header"><?php echo __('New Games'); ?></h3>
 				<?php include_component('game', 'list', array('limit' => 5, 'orderDescendingBy' => GamePeer::CREATED_AT)) ?>
 			</div>
 		</div>
