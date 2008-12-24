@@ -2,7 +2,7 @@
 	<tr class="header">
 		<th>#</th>
 		<th><?php echo __('Player'); ?></th>
-		<?php $valueLabel = is_null($gamestat->getScoreLabel()) ? 'Value' : $gamestat->getScoreLabel(); ?>
+		<?php $valueLabel = is_null($gamestat->getScoreLabel()) || $gamestat->getScoreLabel() == 'undefined' ? 'Value' : $gamestat->getScoreLabel(); ?>
 		<th><?php echo __($valueLabel); ?></th>
 	</tr>
 	<?php $i=1; $alt=""; ?>

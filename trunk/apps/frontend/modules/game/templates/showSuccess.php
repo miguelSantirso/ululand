@@ -85,6 +85,7 @@
 			</div>
 		</div>
 		
+		<?php if(count($gamestats > 0)) : ?>
 		<div class="contentColumn third alignRight">
 			<div id="rankings" class="contentBox">
 				<?php $gamestatsOptionsForSelect = array(); ?>
@@ -95,16 +96,13 @@
 				
 				<h4 class="header small"><?php echo __('Rankings:') ?></h4>
 				<?php $gamestats = $game->getGameStats(); ?>
-				<?php if(count($gamestats) == 0) : ?>
-					<p class="small">Este juego no tiene gamestats activos. <a href="#">&iexcl;P&iacute;dele a su autor que los configure!</a>.</p>
-				<?php else : ?>
-					<div id="rankingsTable">
-						<p><?php echo image_tag('ajax-loader.gif'); ?> <?php echo __('Loading...'); ?></p>
-						<?php echo javascript_tag('updateGamestatTable();'); ?>
-					</div>
-				<?php endif; ?>
+				<div id="rankingsTable">
+					<p><?php echo image_tag('ajax-loader.gif'); ?> <?php echo __('Loading...'); ?></p>
+					<?php echo javascript_tag('updateGamestatTable();'); ?>
+				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 		
 	</div>
 

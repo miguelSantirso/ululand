@@ -90,9 +90,9 @@
 		$linkText = $customText == "" ? sprintf(__('%s\'s competitions'), $sfGuardUserProfile) : $customText;
 		return link_to($linkText, "competition/list?username=".$sfGuardUserProfile->getUsername(), $options);
 	}
-	
+
 	/**
-	 * Retorna el c�digo html de un enlace a la oferta de colaboraci�n pasada como par�metro
+	 * Retorna el código html de un enlace a la oferta de colaboraci�n pasada como par�metro
 	 *
 	 * @param CollaborationOffer $collaborationOffer Oferta de colaboraci�n a la que se desea enlazar
 	 * @param array $options opciones que se a�adir�n al link_to
@@ -112,7 +112,7 @@
 	}
 	
 	/**
-	 * Retorna el c�digo html de un enlace a la oferta de colaboraci�n pasada como par�metro
+	 * Retorna el código html de un enlace a la oferta de colaboraci�n pasada como par�metro
 	 *
 	 * @param CollaborationOffer $collaborationOffer Oferta de colaboraci�n a la que se desea enlazar
 	 * @param array $options opciones que se a�adir�n al link_to
@@ -126,7 +126,7 @@
 	}
 	
 	/**
-	 * Retorna el c�digo html de un enlace a la receta pasada como par�metro
+	 * Retorna el código html de un enlace a la receta pasada como par�metro
 	 *
 	 * @param CodePiece $recipe Receta a la que se desea enlazar
 	 * @param array $options opciones que se a�adir�n al link_to

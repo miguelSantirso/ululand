@@ -2,9 +2,9 @@
 	<div class="clearFloat"></div>
 	<ul id="footerMenu">
 		<li>
-			<?php echo link_to(__("Games"), 'games'); ?>
+			<?php echo link_to(__("Games"), 'game'); ?>
 			<ul>
-				<li><?php echo link_to(__("All games"), 'games/list'); ?></li>
+				<li><?php echo link_to(__("All games"), 'games'); ?></li>
 				<li><?php echo link_to(__("Competitions"), 'competitions'); ?></li>
 			</ul>
 		</li>
