@@ -100,7 +100,7 @@ class ulsfGuardAuthActions extends BasesfGuardAuthActions
 			// Enviar correo de bienvenida
 			$this->sendApprovalEmail($profile);
 			
-			$this->setFlash('success', ulToolkit::__('Welcome to ululand! You are our latest registered user (and we love you)'));
+			$this->getUser()->setFlash('success', ulToolkit::__('Welcome to ululand! You are our latest registered user (and we love you)'));
 			
 			$this->redirect('@homepage');
 		}
@@ -113,7 +113,7 @@ class ulsfGuardAuthActions extends BasesfGuardAuthActions
 	public function handleErrorRegister()
 	{
 		// @todo mensaje no internacionalizado
-		$this->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
+		$this->getUser()->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
 		return sfView::SUCCESS;
 	}
 
@@ -124,7 +124,7 @@ class ulsfGuardAuthActions extends BasesfGuardAuthActions
 	public function executeEmailApproved()
 	{
 		$this->getUser()->getAttributeHolder()->remove('daysToValidateEmail');
-		$this->setFlash('success', ulToolkit::__('Your email has been successfully verified. Thanks!'));
+		$this->getUser()->setFlash('success', ulToolkit::__('Your email has been successfully verified. Thanks!'));
 		 
 		$this->redirect('@homepage');
 	}
@@ -163,7 +163,7 @@ class ulsfGuardAuthActions extends BasesfGuardAuthActions
 		if($sfGuardUserProfile && !$sfGuardUserProfile->getIsApproved())
 		{
 			$this->sendApprovalEmail($sfGuardUserProfile);
-			$this->setFlash('success', sprintf(ulToolkit::__('Confirmation email successfully delivered to %s'), $this->userEmail));
+			$this->getUser()->setFlash('success', sprintf(ulToolkit::__('Confirmation email successfully delivered to %s'), $this->userEmail));
 			$this->setTemplate('approveEmail');
 		}
 		else

@@ -46,7 +46,7 @@ class optionsActions extends sfActions
 			if($profileId != $this->getUser()->getProfile()->getId())
 			{
 				// @todo Mensaje no internacionalizado
-				$this->setFlash('warning', 'No tienes permisos para editar ese perfil');
+				$this->getUser()->setFlash('warning', 'No tienes permisos para editar ese perfil');
 				$this->forward('profile', 'list');
 			}
 				
@@ -72,7 +72,7 @@ class optionsActions extends sfActions
 			$this->sf_guard_user_profile = $sf_guard_user_profile;
 			$this->playerProfile = $playerProfile;
 			
-			$this->setFlash('success', ulToolkit::__('Your profile has been successfully updated!'), false);
+			$this->getUser()->setFlash('success', ulToolkit::__('Your profile has been successfully updated!'), false);
 			$this->redirect('@options');
 		}
 	}
@@ -112,7 +112,7 @@ class optionsActions extends sfActions
 
 			$sf_guard_user->save();
 			
-			$this->setFlash('success', ulToolkit::__('Your password has been successfully updated!'), false);
+			$this->getUser()->setFlash('success', ulToolkit::__('Your password has been successfully updated!'), false);
 			$this->redirect('@options');
 		}
 	}
@@ -150,7 +150,7 @@ class optionsActions extends sfActions
 			if($profileId != $this->getUser()->getProfile()->getId())
 			{
 				// @todo Mensaje no internacionalizado
-				$this->setFlash('warning', 'No tienes permisos para editar ese perfil');
+				$this->getUser()->setFlash('warning', 'No tienes permisos para editar ese perfil');
 				$this->forward('profile', 'list');
 			}
 			
@@ -164,7 +164,7 @@ class optionsActions extends sfActions
 			
 			$this->getUser()->setCulture($sf_guard_user_profile->getCulture());
 			
-			$this->setFlash('success', ulToolkit::__('The interface settings have been succesfully updated!'), false);
+			$this->getUser()->setFlash('success', ulToolkit::__('The interface settings have been succesfully updated!'), false);
 			$this->redirect('@options');
 		}
 	}

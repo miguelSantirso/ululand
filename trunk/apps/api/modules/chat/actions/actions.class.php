@@ -35,8 +35,8 @@ class chatActions extends apiCommonActions
 		$usersAmount = count($activeUsers);
 		if($usersAmount >= sfConfig::get('app_chat_max_users'))
 		{
-			$this->setFlash('api_error_code', 5);
-			$this->setFlash('api_error_message', "Users max reached." );
+			$this->getUser()->setFlash('api_error_code', 5);
+			$this->getUser()->setFlash('api_error_message', "Users max reached." );
 			$this->forward('output', 'error');
 		}
 
@@ -78,8 +78,8 @@ class chatActions extends apiCommonActions
 		
 		if(empty($uniqid) || empty($message))
 		{
-			$this->setFlash('api_error_code', 5);
-			$this->setFlash('api_error_message', "uniqid or message parameters are not valid" );
+			$this->getUser()->setFlash('api_error_code', 5);
+			$this->getUser()->setFlash('api_error_message', "uniqid or message parameters are not valid" );
 			$this->forward('output', 'error');
 		}
 		

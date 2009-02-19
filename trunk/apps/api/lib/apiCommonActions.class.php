@@ -144,8 +144,8 @@ class apiCommonActions extends sfActions
 				break;
 		}
 
-		$this->setFlash('responseData', $this->returnValue);
-		$this->setFlash('responseType', $this->returnType);
+		$this->getUser()->setFlash('responseData', $this->returnValue);
+		$this->getUser()->setFlash('responseType', $this->returnType);
 		$this->forward('output', 'response');
 	}
 
@@ -161,9 +161,9 @@ class apiCommonActions extends sfActions
 		{
 			if ( is_null($this->getRequestParameter($requiredParameter)) )
 			{
-				$this->setFlash('api_error_code', 2);
+				$this->getUser()->setFlash('api_error_code', 2);
 				$errorMessage = "ERROR: This API function requires '".$requiredParameter."' as a parameter.";
-				$this->setFlash('api_error_message', $errorMessage);
+				$this->getUser()->setFlash('api_error_message', $errorMessage);
 				$this->logMessage($errorMessage, "err");
 				$this->forward('output', 'error');
 			}
@@ -203,9 +203,9 @@ class apiCommonActions extends sfActions
 		// Comprobar que la sesión exista.
 		if(!$apiSession)
 		{
-			$this->setFlash('api_error_code', 1);
+			$this->getUser()->setFlash('api_error_code', 1);
 			// Si no existe la sesión, lo más probable es que sea porque ha caducado
-			$this->setFlash('api_error_message', "ERROR: Your api session has expired. Please, reload the page.");
+			$this->getUser()->setFlash('api_error_message', "ERROR: Your api session has expired. Please, reload the page.");
 
 			$this->forward('output', 'error');
 		}
@@ -216,8 +216,8 @@ class apiCommonActions extends sfActions
 		// Comprobar que la sesión dispone de un nivel de privilegios superior o igual al exigido
 		if($sessionPrivileges > $requiredPrivileges)
 		{
-			$this->setFlash('api_error_code', 0);
-			$this->setFlash('api_error_message', "ERROR: Access denied. This operation requires a privileges level of ".$requiredPrivileges.". You have privileges level ".$apiSession->getPrivilegesLevel());
+			$this->getUser()->setFlash('api_error_code', 0);
+			$this->getUser()->setFlash('api_error_message', "ERROR: Access denied. This operation requires a privileges level of ".$requiredPrivileges.". You have privileges level ".$apiSession->getPrivilegesLevel());
 
 			$this->forward('output', 'error');
 		}
@@ -228,8 +228,8 @@ class apiCommonActions extends sfActions
 		{
 			if($userUuid != -1 && $apiSession->getUserUuid() != $userUuid)
 			{
-				$this->setFlash('api_error_code', 0);
-				$this->setFlash('api_error_message', "ERROR: Access denied. You don't have permission to modify that user.");
+				$this->getUser()->setFlash('api_error_code', 0);
+				$this->getUser()->setFlash('api_error_message', "ERROR: Access denied. You don't have permission to modify that user.");
 
 				$this->forward('output', 'error');
 			}

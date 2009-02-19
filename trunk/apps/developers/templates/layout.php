@@ -39,7 +39,7 @@
 		<?php endif; ?>
 		
 		<div id="contentShadow"></div>
-		<?php echo $sf_data->getRaw('sf_content') ?>
+		<?php echo $sf_content ?>
 		
 		<div style="clear:both;"></div>
 	</div>

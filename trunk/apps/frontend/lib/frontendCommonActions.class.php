@@ -15,9 +15,9 @@ class frontendCommonActions extends sfActions
   		
   	$this->getResponse()->addJavaScript('/sf/prototype/js/prototype');
 
-    $this->formErrors = $this->getFlash('error', null);
-    $this->warnings = $this->getFlash('warning', null);
-    $this->successes = $this->getFlash('success', null);
+    $this->formErrors = $this->getUser()->getFlash('error', null);
+    $this->warnings = $this->getUser()->getFlash('warning', null);
+    $this->successes = $this->getUser()->getFlash('success', null);
     $this->authenticated = $this->getUser()->isAuthenticated();
     if(!$this->authenticated)
     {
@@ -52,11 +52,11 @@ class frontendCommonActions extends sfActions
   		$remainingDays = $this->getUser()->getAttribute('remainingDaysToApproveEmail');
   		if($remainingDays > 0)
   		{
-  			$this->setFlash('warning', 'No has validado tu email a&uacute;n. Te quedan '.$remainingDays.' d&iacute;as para <a href="/index.php/home/ApproveEmail.html">validarlo</a>.');
+  			$this->getUser()->setFlash('warning', 'No has validado tu email a&uacute;n. Te quedan '.$remainingDays.' d&iacute;as para <a href="/index.php/home/ApproveEmail.html">validarlo</a>.');
   		}
   		else
   		{
-  			$this->setFlash('warning', 'Debes <a href="/index.php/home/ApproveEmail.html">validar</a> tu email para entrar.');
+  			$this->getUser()->setFlash('warning', 'Debes <a href="/index.php/home/ApproveEmail.html">validar</a> tu email para entrar.');
   			$userEmail = $this->getUser()->getAttribute('email');
   			$this->getUser()->getAttributeHolder()->clear();
   			$this->redirect('home/ApproveEmail?userEmail='.$userEmail);

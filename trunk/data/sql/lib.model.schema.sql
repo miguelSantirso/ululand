@@ -283,7 +283,7 @@ CREATE TABLE `game`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`uuid` VARCHAR(36)  NOT NULL,
-	`privileges_level` INTEGER default 2 NOT NULL,
+	`privileges_level` INTEGER default 1 NOT NULL,
 	`name` VARCHAR(80)  NOT NULL,
 	`stripped_name` VARCHAR(80)  NOT NULL,
 	`description` TEXT,

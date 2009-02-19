@@ -135,7 +135,7 @@ class recipeActions extends sfActions
 
 		if($this->getUser()->getId() != $this->code_piece->getCreatedBy())
 		{
-			$this->setFlash('warning', 'You don\'t have permission to edit this recipe!');
+			$this->getUser()->setFlash('warning', 'You don\'t have permission to edit this recipe!');
 			$this->redirect('recipe/show?id='.$this->getRequestParameter('id'));
 		}
 	}
@@ -172,7 +172,7 @@ class recipeActions extends sfActions
 	public function handleErrorUpdate()
 	{
 		// @todo mensaje no internacionalizado
-		$this->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
+		$this->getUser()->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
 
 		if($this->getRequestParameter('id'))
 		{

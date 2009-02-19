@@ -22,8 +22,8 @@ class outputActions extends sfActions
 	 */
 	public function executeError()
 	{
-		$this->error_code    = $this->getFlash('api_error_code', 0);
-		$this->error_message = $this->getFlash('api_error_message', "Unknown error");
+		$this->error_code    = $this->getUser()->getFlash('api_error_code', 0);
+		$this->error_message = $this->getUser()->getFlash('api_error_message', "Unknown error");
 		
 		header('Content-Type: text/plain');
 	}
@@ -35,8 +35,8 @@ class outputActions extends sfActions
 	 */
 	public function executeResponse()
 	{
-		$this->contentType  = $this->getFlash('responseType', 'Content-Type: text/plain');
-		$this->responseData = $this->getFlash('responseData');
+		$this->contentType  = $this->getUser()->getFlash('responseType', 'Content-Type: text/plain');
+		$this->responseData = $this->getUser()->getFlash('responseData');
 
 		header($this->contentType);
 		return sfView::SUCCESS;

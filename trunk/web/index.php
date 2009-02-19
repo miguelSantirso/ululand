@@ -24,3 +24,14 @@ else
 require_once(SF_ROOT_DIR.DIRECTORY_SEPARATOR.'apps'.DIRECTORY_SEPARATOR.SF_APP.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 
 sfContext::getInstance()->getController()->dispatch();
+
+
+/*
+<?php
+##IP_CHECK##
+require_once(dirname(__FILE__).'/../config/ProjectConfiguration.class.php');
+
+$configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', false);
+sfContext::createInstance($configuration)->dispatch();
+
+*/

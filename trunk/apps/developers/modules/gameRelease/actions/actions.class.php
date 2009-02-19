@@ -58,7 +58,7 @@ class gameReleaseActions extends sfActions
 			{
 				if(!$this->gameRelease->getPassword())
 				{
-					$this->setFlash('error', 'This version of the game is private. You don\'t have permission to see it');
+					$this->getUser()->setFlash('error', 'This version of the game is private. You don\'t have permission to see it');
 					$this->redirect('game/show?id='.$this->game->getId());
 				}
 				else 
@@ -66,7 +66,7 @@ class gameReleaseActions extends sfActions
 					if($this->getRequestParameter('password') != $this->gameRelease->getPassword())
 					{
 						if($this->getRequestParameter('password'))
-							$this->setFlash('error', ulToolkit::__('The password is not correct. Try again, please.'), false);
+							$this->getUser()->setFlash('error', ulToolkit::__('The password is not correct. Try again, please.'), false);
 
 						$this->setTemplate('askPassword');
 					}
@@ -147,7 +147,7 @@ class gameReleaseActions extends sfActions
 
 		if($this->getUser()->getId() != $this->gameRelease->getCreatedBy())
 		{
-			$this->setFlash('warning', 'You don\'t have permission to edit this game release!');
+			$this->getUser()->setFlash('warning', 'You don\'t have permission to edit this game release!');
 			$this->redirect('gameRelease/show?id='.$this->gameRelease->getId());
 		}
 	}
@@ -182,7 +182,7 @@ class gameReleaseActions extends sfActions
 		$gameRelease->setDescription($this->getRequestParameter('description'));
 		$gameRelease->setGamereleasestatusId($this->getRequestParameter('game_release_status_id'));
 		if(!is_null($game->getActiveReleaseId()) && $game->getActiveReleaseId() == $gameRelease->getId())
-			$this->setFlash('error', 'The privacity of the active version of the game cannot be changed.');
+			$this->getUser()->setFlash('error', 'The privacity of the active version of the game cannot be changed.');
 		else
 		{
 			$privacity = $this->getRequestParameter('privacity');

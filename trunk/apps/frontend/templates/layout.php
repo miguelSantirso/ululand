@@ -40,7 +40,7 @@
 		<?php endif; ?>
 		
 		<div id="contentShadow"></div>
-		<?php echo $sf_data->getRaw('sf_content') ?>
+		<?php echo $sf_content ?>
 		<div style="clear:both;"></div>
 		<?php echo image_tag('logoUlulandBottom.png', array('id' => 'ululandLogoBottom')); ?>
 	</div>

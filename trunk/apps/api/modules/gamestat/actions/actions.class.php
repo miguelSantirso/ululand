@@ -51,8 +51,8 @@ class gamestatActions extends apiCommonActions
 		// Comprobar que existe el juego
 		if(!$game)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'gameUuid'. There is not a game whose uuid is ".$this->getRequestParameter('gameUuid'));
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'gameUuid'. There is not a game whose uuid is ".$this->getRequestParameter('gameUuid'));
 			$this->forward('output', 'error');
 		}
 		
@@ -62,8 +62,8 @@ class gamestatActions extends apiCommonActions
 		// Comprobar que el usuario existe
 		if(!$user)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'userUuid'. There is not a user whose uuid is ".$this->getRequestParameter('userUuid'));
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'userUuid'. There is not a user whose uuid is ".$this->getRequestParameter('userUuid'));
 			$this->forward('output', 'error');
 		}
 
@@ -76,8 +76,8 @@ class gamestatActions extends apiCommonActions
 		// Comprobar que el gamestat existe
 		if(!$gamestat)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'gamestatName'. ".$game->getName()." does not have a gamestat called ".$this->getRequestParameter('gamestatName') );
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'gamestatName'. ".$game->getName()." does not have a gamestat called ".$this->getRequestParameter('gamestatName') );
 			$this->forward('output', 'error');
 		}
 
@@ -106,8 +106,8 @@ class gamestatActions extends apiCommonActions
 		// Comprobar que el avatar existe
 		if(!$user)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'userID'. There is not a user whose uuid is ".$this->getRequestParameter('userID'));
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'userID'. There is not a user whose uuid is ".$this->getRequestParameter('userID'));
 			$this->forward('output', 'error');
 		}
 		
@@ -119,8 +119,8 @@ class gamestatActions extends apiCommonActions
 		
 		if(!$game)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'apiSessionId'. This session was not started by a game, and that is required to use this function.");
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'apiSessionId'. This session was not started by a game, and that is required to use this function.");
 			$this->forward('output', 'error');
 		}
 		
@@ -147,8 +147,8 @@ class gamestatActions extends apiCommonActions
 		// Finalmente, enviamos el nuevo valor
 		$gamestat->addGameStatValueForPlayer($this->getRequestParameter('score'), $user->getPlayerProfile()->getId());
 		
-		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getUsername());
-		$this->setFlash('responseType', "Content-Type: plain/text");
+		$this->getUser()->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getUsername());
+		$this->getUser()->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}
 
@@ -178,8 +178,8 @@ class gamestatActions extends apiCommonActions
 		// Comprobar que el usuario existe
 		if(!$user)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'userUuid'. There is not a user whose uuid is ".$this->getRequestParameter('userUuid'));
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'userUuid'. There is not a user whose uuid is ".$this->getRequestParameter('userUuid'));
 			$this->forward('output', 'error');
 		}
 		
@@ -191,8 +191,8 @@ class gamestatActions extends apiCommonActions
 		
 		if(!$game)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'apiSessionId'. This session was not started by a game, and that is required to use this function.");
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'apiSessionId'. This session was not started by a game, and that is required to use this function.");
 			$this->forward('output', 'error');
 		}
 		
@@ -205,8 +205,8 @@ class gamestatActions extends apiCommonActions
 		// Comprobar que el gamestat existe
 		if(!$gamestat)
 		{
-			$this->setFlash('api_error_code', 3);
-			$this->setFlash('api_error_message', "Unexpected value for 'gamestatName'. ".$game->getName()." does not have a gamestat called ".$this->getRequestParameter('gamestatName') );
+			$this->getUser()->setFlash('api_error_code', 3);
+			$this->getUser()->setFlash('api_error_message', "Unexpected value for 'gamestatName'. ".$game->getName()." does not have a gamestat called ".$this->getRequestParameter('gamestatName') );
 			$this->forward('output', 'error');
 		}
 		
@@ -214,8 +214,8 @@ class gamestatActions extends apiCommonActions
 		// Finalmente, enviamos el nuevo valor
 		$gamestat->addGameStatValueForPlayer($this->getRequestParameter('value'), $user->getPlayerProfile()->getId());
 		
-		$this->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getUsername());
-		$this->setFlash('responseType', "Content-Type: plain/text");
+		$this->getUser()->setFlash('responseData', "GameStat ".$gamestat->getName()." of game ".$game->getName()." has been processed for user ".$user->getUsername());
+		$this->getUser()->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}
 }

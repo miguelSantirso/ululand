@@ -70,7 +70,7 @@ class groupActions extends sfActions
 	// Comprobar que el usuario está editando su propio perfil y no otro
 	if($this->group->getStatus($this->getUser()->getPlayerProfile()) != GroupPeer::OWNER)
 	{
-		$this->setFlash('error', 'No tienes permisos para editar este grupo');
+		$this->getUser()->setFlash('error', 'No tienes permisos para editar este grupo');
 		$this->redirect('group/list');
 	}
   }
@@ -85,7 +85,7 @@ class groupActions extends sfActions
   public function handleErrorEdit()
   {
   	$this->sfContext = $this->getContext();
-  	$this->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario para crear el grupo.', false);
+  	$this->getUser()->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario para crear el grupo.', false);
     $this->preExecute(); // Es necesario llamarlo a mano para que ejecute todo el c�digo previo 
     return sfView::SUCCESS;
   }
@@ -236,7 +236,7 @@ class groupActions extends sfActions
   		if($group->getStatus($this->getUser()->getPlayerProfile()) != GroupPeer::OWNER)
   		{
   			// @todo Mensaje no internacionalizado
-  			$this->setFlash('warning', 'No tienes permisos para editar este grupo');
+  			$this->getUser()->setFlash('warning', 'No tienes permisos para editar este grupo');
   			$this->forward('group', 'list');
   		}
 

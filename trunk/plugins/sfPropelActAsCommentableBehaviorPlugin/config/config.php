@@ -9,7 +9,8 @@
  */
 if (in_array('sfComment', sfConfig::get('sf_enabled_modules', array())))
 {
-  $r = sfRouting::getInstance();
+  //$r = sfRouting::getInstance();
+  $r = sfContext::getInstance()->getRouting();
   $r->prependRoute('sf_comment_authenticated', '/sfComment/authenticated_comment', array('module' => 'sfComment', 'action' => 'authenticatedComment'));
   $r->prependRoute('sf_comment_anonymous', '/sfComment/anonymous_comment', array('module' => 'sfComment', 'action' => 'anonymousComment'));
 }

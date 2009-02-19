@@ -4,23 +4,20 @@
  * CleanChatSessions batch script
  *
  * Limpia la tabla que almacena las sesiones de los usuarios del chat. Elimina los objetos con una antiguedad mayor a 24 horas.
- * Además, suma los créditos correspondientes a cada avatar por el tiempo jugado.
+ * Ademï¿½s, suma los crï¿½ditos correspondientes a cada avatar por el tiempo jugado.
  *
  * @package    PFC
  * @subpackage batch
  * @version    $Id$
  */
 
-define('SF_ROOT_DIR',    realpath(dirname(__file__).'/..'));
-define('SF_APP',         'backend');
-define('SF_ENVIRONMENT', 'dev');
-define('SF_DEBUG',       1);
-
-require_once(SF_ROOT_DIR.DIRECTORY_SEPARATOR.'apps'.DIRECTORY_SEPARATOR.SF_APP.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+require_once(dirname(__FILE__).'/../config/ProjectConfiguration.class.php');
+$configuration = ProjectConfiguration::getApplicationConfiguration('backend', 'dev', false);
+sfContext::createInstance($configuration);
 
 // initialize database manager
-$databaseManager = new sfDatabaseManager();
-$databaseManager->initialize();
+$databaseManager = new sfDatabaseManager($configuration);
+$databaseManager->loadConfiguration();
 
 // batch process here
 
@@ -34,13 +31,13 @@ $sessionsToRemove = ChatUserOnlinePeer::doSelect($c);
 
 foreach ($sessionsToRemove as $session)
 {
-	// Calcular la duración de la sesión
+	// Calcular la duraciÃ³n de la sesiÃ³n
 	$sessionLength = strtotime($session->getUpdatedAt()) - strtotime($session->getCreatedAt()); // en segundos
-	// Obtener el avatar que ejecutó esta sesión
+	// Obtener el avatar que ejecutÃ³ esta sesiÃ³n
 	$avatar = AvatarPeer::retrieveByApiKey($session->getAvatarApiKey());
-	// Sumarle al avatar los créditos que le correspondan por el tiempo jugado
+	// Sumarle al avatar los crÃ©ditos que le correspondan por el tiempo jugado
 	$avatar->addCreditsForPlayedTime($sessionLength);
 	
-	// La sesión ya ha sido procesada y no hace falta. La borramos
+	// La sesiï¿½n ya ha sido procesada y no hace falta. La borramos
 	$session->delete();
 }

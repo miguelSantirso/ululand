@@ -107,7 +107,7 @@ class collaborationActions extends sfActions
 
     if($this->getUser()->getId() != $this->collaboration_offer->getCreatedBy())
     {
-    	$this->setFlash('warning', 'You don\'t have permission to edit this collaboration offer!');
+    	$this->getUser()->setFlash('warning', 'You don\'t have permission to edit this collaboration offer!');
     	$this->redirect('collaboration/show?id='.$this->getRequestParameter('id'));
     }
   }
@@ -145,7 +145,7 @@ class collaborationActions extends sfActions
   public function handleErrorUpdate()
   {
 		// @todo mensaje no internacionalizado
-		$this->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
+		$this->getUser()->setFlash('error', 'Has cometido alg&uacute;n error al rellenar el formulario.', false);
 		
 		if($this->getRequestParameter('id'))
 		{

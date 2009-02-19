@@ -78,8 +78,8 @@ class playerActions extends apiCommonActions
 		
 		$avatar->addCredits($this->getRequestParameter('amount'));
 		
-		$this->setFlash('responseData', "Se han añadido " .  $amount . " créditos al avatar " . $avatar);
-		$this->setFlash('responseType', "Content-Type: plain/text");
+		$this->getUser()->setFlash('responseData', "Se han añadido " .  $amount . " créditos al avatar " . $avatar);
+		$this->getUser()->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}
 	*/
@@ -104,8 +104,8 @@ class playerActions extends apiCommonActions
 		
 		$player->substractCredits($this->getRequestParameter('amount'));		
 		
-		$this->setFlash('responseData', "Se han restado " .  $this->getRequestParameter('amount') . " créditos al jugador " . $player);
-		$this->setFlash('responseType', "Content-Type: plain/text");
+		$this->getUser()->setFlash('responseData', "Se han restado " .  $this->getRequestParameter('amount') . " créditos al jugador " . $player);
+		$this->getUser()->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}
 }

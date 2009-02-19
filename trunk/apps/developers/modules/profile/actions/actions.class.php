@@ -92,7 +92,7 @@ class profileActions extends sfActions
 		if($this->sf_guard_user_profile != $this->getUser()->getProfile())
 		{
 			// @todo Mensaje no internacionalizado
-			$this->setFlash('error', 'No tienes permisos para editar ese perfil');
+			$this->getUser()->setFlash('error', 'No tienes permisos para editar ese perfil');
 			$this->forward('profile', 'list');
 		}
 
@@ -118,7 +118,7 @@ class profileActions extends sfActions
 			if($this->getUser()->isAuthenticated() && $profileId != $this->getUser()->getProfile()->getId())
 			{
 				// @todo Mensaje no internacionalizado
-				$this->setFlash('warning', 'No tienes permisos para editar ese perfil');
+				$this->getUser()->setFlash('warning', 'No tienes permisos para editar ese perfil');
 				$this->forward('profile', 'list');
 			}
 			

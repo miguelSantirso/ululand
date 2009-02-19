@@ -10,5 +10,6 @@
  */
 
 chdir(dirname(__FILE__));
-include('config/config.php');
-include($sf_symfony_data_dir.'/bin/symfony.php');
+require_once(dirname(__FILE__).'/config/ProjectConfiguration.class.php');
+$configuration = new ProjectConfiguration();
+include($configuration->getSymfonyLibDir().'/command/cli.php');

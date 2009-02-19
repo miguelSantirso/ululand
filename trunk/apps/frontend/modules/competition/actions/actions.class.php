@@ -110,7 +110,7 @@ class competitionActions extends sfActions
 	// Comprobar que el usuario está editando su propio perfil y no otro
 	if($this->competition->getStatus($this->getUser()->getPlayerProfile()) != CompetitionPeer::OWNER)
 	{
-		$this->setFlash('error', 'No tienes permisos para editar esta competición');
+		$this->getUser()->setFlash('error', 'No tienes permisos para editar esta competición');
 		$this->redirect('competition/list');
 	}
   }
@@ -133,7 +133,7 @@ class competitionActions extends sfActions
   		if($competition->getStatus($this->getUser()->getPlayerProfile()) != CompetitionPeer::OWNER)
   		{
   			// @todo Mensaje no internacionalizado
-  			$this->setFlash('warning', 'No tienes permisos para editar esta competición');
+  			$this->getUser()->setFlash('warning', 'No tienes permisos para editar esta competición');
   			$this->forward('competition', 'list');
   		}
   		

@@ -128,7 +128,7 @@ class gameActions extends sfActions
 
 		if($this->getUser()->getId() != $this->game->getCreatedBy())
 		{
-			$this->setFlash('warning', 'You don\'t have permission to edit this game!');
+			$this->getUser()->setFlash('warning', 'You don\'t have permission to edit this game!');
 			$this->redirect('game/show?id='.$this->game->getId());
 		}
 		
@@ -197,7 +197,7 @@ class gameActions extends sfActions
 		if(!is_null($gameRelease) && $gameRelease->getGameId() != $game->getId())
 		{
 			// la release no pertenece al juego. Error:
-			$this->setFlash('error', $gameRelease . ' is not a version of ' . $game);
+			$this->getUser()->setFlash('error', $gameRelease . ' is not a version of ' . $game);
 			return $this->redirect('game/show?id='.$game->getId());
 		}
 		
@@ -206,7 +206,7 @@ class gameActions extends sfActions
 		
 		if($gameRelease && !$gameRelease->getIsPublic())
 		{
-			$this->setFlash('warning', 'The privacity of this version of the game has been changed automatically to <strong>public</strong>');
+			$this->getUser()->setFlash('warning', 'The privacity of this version of the game has been changed automatically to <strong>public</strong>');
 			$gameRelease->setIsPublic(true);
 			$gameRelease->save();
 		}

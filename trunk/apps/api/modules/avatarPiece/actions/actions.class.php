@@ -94,8 +94,8 @@ class avatarPieceActions extends apiCommonActions
 		$newPiece->setUrl($newPiece->getId().'.png');
 		$newPiece->save();
 		
-		$this->setFlash('responseData', "Pieza de nombre ".$name ." añadida correctamente.");
-		$this->setFlash('responseType', "Content-Type: plain/text");
+		$this->getUser()->setFlash('responseData', "Pieza de nombre ".$name ." añadida correctamente.");
+		$this->getUser()->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}
 
@@ -163,8 +163,8 @@ class avatarPieceActions extends apiCommonActions
 		// Guardar los cambios
 		$piece->save();
 		
-		$this->setFlash('responseData', "Pieza de nombre ".$newName." actualizada correctamente.");
-		$this->setFlash('responseType', "Content-Type: plain/text");
+		$this->getUser()->setFlash('responseData', "Pieza de nombre ".$newName." actualizada correctamente.");
+		$this->getUser()->setFlash('responseType', "Content-Type: plain/text");
 		$this->forward('output', 'response');
 	}
 	
