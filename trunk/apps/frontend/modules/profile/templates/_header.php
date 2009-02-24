@@ -7,7 +7,7 @@
 	<h3>
 		<?php
 		$separator = ' &raquo; ' ;
-		$moduleIndex = link_to(__('People'), 'profile');
+		$moduleIndex = link_to(__('People'), 'profile/index');
 		switch($action) 
 		{
 			case "list":

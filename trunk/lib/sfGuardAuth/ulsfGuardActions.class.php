@@ -15,14 +15,14 @@ class ulsfGuardAuthActions extends BasesfGuardAuthActions
 	 * Acción que extiende la acción signin del plugin "sfGuardAuth". Actualiza el idioma del interfaz del sistema cuando el usuario inicia sesión
 	 *
 	 */
-	public function executeSignin()
+	public function executeSignin($request)
 	{
 		if($this->getUser()->isAuthenticated())
 		$this->getUser()->setCulture($this->getUser()->getProfile()->getCulture());
 		
 		$this->getUser()->setAttribute('referer', sfContext::getInstance()->getRequest()->getReferer());
 		
-		parent::executeSignin();
+		parent::executeSignin($request);
 	}
 
 	/**

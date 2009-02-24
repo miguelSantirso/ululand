@@ -20,8 +20,7 @@
 					<?php endif; ?>
 				</ul>
 			</li>
-			<?php $selected = $sf_context->getModuleName() == 'nahoWiki' ||
-								$sf_context->getModuleName() == 'collaboration' ||
+			<?php $selected = $sf_context->getModuleName() == 'collaboration' ||
 								$sf_context->getModuleName() == 'recipe' ||
 								$sf_context->getModuleName() == 'community' || 
 								$sf_context->getModuleName() == 'profile'; ?>

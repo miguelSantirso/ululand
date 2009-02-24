@@ -2,21 +2,21 @@
 	<div class="clearFloat"></div>
 	<ul id="footerMenu">
 		<li>
-			<?php echo link_to(__("Games"), 'game'); ?>
+			<?php echo link_to(__("Games"), 'game/index'); ?>
 			<ul>
-				<li><?php echo link_to(__("All games"), 'games'); ?></li>
-				<li><?php echo link_to(__("Competitions"), 'competitions'); ?></li>
+				<li><?php echo link_to(__("All games"), 'game/list'); ?></li>
+				<li><?php echo link_to(__("Competitions"), 'competition/index'); ?></li>
 			</ul>
 		</li>
 		<li>
-			<?php echo link_to(__("Community"), 'community'); ?>
+			<?php echo link_to(__("Community"), 'community/index'); ?>
 			<ul>
 				<li><?php echo link_to(__("All people"), 'people/list'); ?></li>
-				<li><?php echo link_to(__("Groups"), 'groups'); ?></li>
+				<li><?php echo link_to(__("Groups"), 'group/index'); ?></li>
 			</ul>
 		</li>
 		<li>
-			<?php echo link_to(__("Options"), 'options'); ?>
+			<?php echo link_to(__("Options"), 'options/index'); ?>
 			<ul>
 				<li><?php echo link_to(__("Customize avatar"), '@options_edit_avatar'); ?></li>
 				<li><?php echo link_to(__("Modify profile"), '@options_edit_profile'); ?></li>

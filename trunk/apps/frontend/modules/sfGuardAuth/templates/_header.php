@@ -9,7 +9,7 @@
 	<h3>
 		<?php
 		$separator = ' &raquo; ' ;
-		$moduleIndex = link_to(__('Home'), 'home');
+		$moduleIndex = link_to(__('Home'), 'home/index');
 		switch($action) 
 		{
 			case "disabled":

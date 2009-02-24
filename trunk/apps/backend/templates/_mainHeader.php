@@ -11,7 +11,7 @@ $isHome = $module == 'admin' || $module == 'sfGuardAuth';
 	
 	<h2>
 		<?php if($isHome) : ?>
-		<?php echo link_to(__('Home'), 'admin'); ?>
+		<?php echo link_to(__('Home'), 'admin/index'); ?>
 		<?php endif; ?>
 		
 	</h2>

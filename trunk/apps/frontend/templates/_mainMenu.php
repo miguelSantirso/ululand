@@ -10,20 +10,20 @@
 			<?php $selected = $sf_context->getModuleName() == 'game' ||
 								$sf_context->getModuleName() == 'competition'; ?>
 			<li class="<?php echo $selected ? 'selected' : '' ?>">
-				<?php echo link_to(__("Games"), '/game'); ?>
+				<?php echo link_to(__("Games"), '/game/index'); ?>
 				<ul>
 					<li><?php echo link_to(__("All Games List"), "/game/list"); ?></li>
-					<li><?php echo link_to(__("Competitions"), "/competition"); ?></li>
+					<li><?php echo link_to(__("Competitions"), "/competition/index"); ?></li>
 				</ul>
 			</li>
 			<?php $selected = $sf_context->getModuleName() == 'group' || 
 								$sf_context->getModuleName() == 'profile' ||
 								$sf_context->getModuleName() == 'community'; ?>
 			<li class="<?php echo $selected ? 'selected' : '' ?>">
-				<?php echo link_to(__("Community"), "/community"); ?>
+				<?php echo link_to(__("Community"), "/community/index"); ?>
 				<ul>
 					<li><?php echo link_to(__("Registered people"), "/profile/list"); ?></li>
-					<li><?php echo link_to(__("Groups"), "/group"); ?></li>
+					<li><?php echo link_to(__("Groups"), "/group/index"); ?></li>
 				</ul>
 			</li>
 		</ul>

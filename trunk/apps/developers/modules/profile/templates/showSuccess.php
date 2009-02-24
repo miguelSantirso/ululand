@@ -1,4 +1,3 @@
-<?php use_helper('nahoWiki'); ?>
 <div id="pageContent">
 
 	<div class="contentColumn wide alignLeft">
@@ -30,7 +29,6 @@
 			<?php endif; ?>
 			<p class="noSpace small"><?php echo __('Tags'); ?>: <?php echo $developerProfile->getLinkedTagsString(); ?></p>
 			<p class="noSpace small"><?php echo __('Visits'); ?>: <strong><?php echo $developerProfile->getCounter(); ?></strong></p>
-			<p class="small"><?php echo __('Wiki'); ?>: <?php echo link_to_wiki_user($sf_guard_user_profile, $sf_guard_user_profile); ?></p>
 			
 			<?php if($sf_user->isAuthenticated() && $sf_guard_user_profile->getId() == $sf_user->getProfile()->getId()) { ?> 
 				<span class="small"><?php echo linkToEditProfile(); ?></span>

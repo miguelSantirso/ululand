@@ -85,7 +85,7 @@ all:
     standard_helpers:       [Partial, Cache, Form, I18N, ulLinks, ulImages]
 #
 #    # Activated modules from plugins or from the symfony core
-    enabled_modules:        [default, sfGuardAuth, sfComment, nahoWiki, sfRating]
+    enabled_modules:        [default, sfGuardAuth, sfComment, sfRating]
 #
 #    # Charset used for the response
     charset:                utf-8

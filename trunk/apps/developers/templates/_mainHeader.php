@@ -6,8 +6,7 @@ $isHome = $module == 'home' || $module == 'sfGuardAuth';
 
 $isGames = $module == 'game' || $module == 'gameRelease';
 
-$isCommunity = $module == 'nahoWiki' ||
-	$module == 'collaboration' ||
+$isCommunity = $module == 'collaboration' ||
 	$module == 'recipe' ||
 	$module == 'community' ||
 	$module == 'profile';
@@ -21,7 +20,6 @@ $isOptions = $module == 'options';
 		<li><?php echo link_to(__('Recipes'), 'recipe', array('class' => $module == "recipe" ? 'selected' : '')); ?></li>
 		<li><?php echo link_to(__('Collaborations'), 'collaboration', array('class' => $module == "collaboration" ? 'selected' : '')); ?></li>
 		<li><?php echo link_to(__('People'), 'profile', array('class' => $module == "profile" ? 'selected' : '')); ?></li>
-		<li><?php echo link_to(__('Wiki'), '@wiki_home', array('class' => $module == "nahoWiki" ? 'selected' : '')); ?></li>
 	</ul>
 	<?php endif; ?>
 

@@ -42,6 +42,7 @@ all:
 #    unavailable_action:  unavailable  # From an application disabled via the available setting below
 #
   .settings:
+    compat_10:               on    #Compatibilidad con symfony 1.0
 #    available:              on        # Enable the whole application. Switch to off to redirect all requests to the unavailable module and action.
 #
 #    # Optional features. Deactivating unused features boots performance a bit.
