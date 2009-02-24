@@ -2,7 +2,7 @@
 
 
 
-class AvatarMapBuilder {
+class AvatarMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.AvatarMapBuilder';
@@ -25,26 +25,27 @@ class AvatarMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(AvatarPeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('avatar');
+		$tMap = $this->dbMap->addTable(AvatarPeer::TABLE_NAME);
 		$tMap->setPhpName('Avatar');
+		$tMap->setClassname('Avatar');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addForeignKey('PROFILE_ID', 'ProfileId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
+		$tMap->addForeignKey('PROFILE_ID', 'ProfileId', 'INTEGER', 'sf_guard_user_profile', 'ID', true, null);
 
-		$tMap->addForeignKey('HEAD_ID', 'HeadId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+		$tMap->addForeignKey('HEAD_ID', 'HeadId', 'INTEGER', 'avatarpiece', 'ID', false, null);
 
-		$tMap->addForeignKey('BODY_ID', 'BodyId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+		$tMap->addForeignKey('BODY_ID', 'BodyId', 'INTEGER', 'avatarpiece', 'ID', false, null);
 
-		$tMap->addForeignKey('ARMS_ID', 'ArmsId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+		$tMap->addForeignKey('ARMS_ID', 'ArmsId', 'INTEGER', 'avatarpiece', 'ID', false, null);
 
-		$tMap->addForeignKey('LEGS_ID', 'LegsId', 'int', CreoleTypes::INTEGER, 'avatarpiece', 'ID', false, null);
+		$tMap->addForeignKey('LEGS_ID', 'LegsId', 'INTEGER', 'avatarpiece', 'ID', false, null);
 
-		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
+		$tMap->addColumn('UUID', 'Uuid', 'VARCHAR', true, 36);
 
 	} 
 } 

@@ -2,7 +2,7 @@
 
 
 
-class ChatMessageMapBuilder {
+class ChatMessageMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.ChatMessageMapBuilder';
@@ -25,20 +25,21 @@ class ChatMessageMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(ChatMessagePeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('chat_message');
+		$tMap = $this->dbMap->addTable(ChatMessagePeer::TABLE_NAME);
 		$tMap->setPhpName('ChatMessage');
+		$tMap->setClassname('ChatMessage');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addColumn('USER_UUID', 'UserUuid', 'string', CreoleTypes::VARCHAR, true, 36);
+		$tMap->addColumn('USER_UUID', 'UserUuid', 'VARCHAR', true, 36);
 
-		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'TIMESTAMP', false, null);
 
-		$tMap->addColumn('CHAT_MESSAGE', 'ChatMessage', 'string', CreoleTypes::LONGVARCHAR, true, null);
+		$tMap->addColumn('CHAT_MESSAGE', 'ChatMessage', 'LONGVARCHAR', true, null);
 
 	} 
 } 

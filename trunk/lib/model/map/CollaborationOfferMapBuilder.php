@@ -2,7 +2,7 @@
 
 
 
-class CollaborationOfferMapBuilder {
+class CollaborationOfferMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.CollaborationOfferMapBuilder';
@@ -25,26 +25,27 @@ class CollaborationOfferMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(CollaborationOfferPeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('collaboration_offer');
+		$tMap = $this->dbMap->addTable(CollaborationOfferPeer::TABLE_NAME);
 		$tMap->setPhpName('CollaborationOffer');
+		$tMap->setClassname('CollaborationOffer');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addForeignKey('CREATED_BY', 'CreatedBy', 'int', CreoleTypes::INTEGER, 'sf_guard_user', 'ID', false, null);
+		$tMap->addForeignKey('CREATED_BY', 'CreatedBy', 'INTEGER', 'sf_guard_user', 'ID', false, null);
 
-		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'TIMESTAMP', false, null);
 
-		$tMap->addColumn('UPDATED_AT', 'UpdatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+		$tMap->addColumn('UPDATED_AT', 'UpdatedAt', 'TIMESTAMP', false, null);
 
-		$tMap->addColumn('TITLE', 'Title', 'string', CreoleTypes::VARCHAR, true, 75);
+		$tMap->addColumn('TITLE', 'Title', 'VARCHAR', true, 75);
 
-		$tMap->addColumn('STRIPPED_TITLE', 'StrippedTitle', 'string', CreoleTypes::VARCHAR, true, 75);
+		$tMap->addColumn('STRIPPED_TITLE', 'StrippedTitle', 'VARCHAR', true, 75);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, true, null);
+		$tMap->addColumn('DESCRIPTION', 'Description', 'LONGVARCHAR', true, null);
 
 	} 
 } 

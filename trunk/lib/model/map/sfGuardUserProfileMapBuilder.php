@@ -2,7 +2,7 @@
 
 
 
-class sfGuardUserProfileMapBuilder {
+class sfGuardUserProfileMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.sfGuardUserProfileMapBuilder';
@@ -25,30 +25,31 @@ class sfGuardUserProfileMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(sfGuardUserProfilePeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('sf_guard_user_profile');
+		$tMap = $this->dbMap->addTable(sfGuardUserProfilePeer::TABLE_NAME);
 		$tMap->setPhpName('sfGuardUserProfile');
+		$tMap->setClassname('sfGuardUserProfile');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
+		$tMap->addColumn('UUID', 'Uuid', 'VARCHAR', true, 36);
 
-		$tMap->addForeignKey('USER_ID', 'UserId', 'int', CreoleTypes::INTEGER, 'sf_guard_user', 'ID', true, null);
+		$tMap->addForeignKey('USER_ID', 'UserId', 'INTEGER', 'sf_guard_user', 'ID', true, null);
 
-		$tMap->addColumn('USERNAME', 'Username', 'string', CreoleTypes::VARCHAR, false, 30);
+		$tMap->addColumn('USERNAME', 'Username', 'VARCHAR', false, 30);
 
-		$tMap->addColumn('FIRST_NAME', 'FirstName', 'string', CreoleTypes::VARCHAR, false, 20);
+		$tMap->addColumn('FIRST_NAME', 'FirstName', 'VARCHAR', false, 20);
 
-		$tMap->addColumn('LAST_NAME', 'LastName', 'string', CreoleTypes::VARCHAR, false, 20);
+		$tMap->addColumn('LAST_NAME', 'LastName', 'VARCHAR', false, 20);
 
-		$tMap->addColumn('GENDER', 'Gender', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addColumn('GENDER', 'Gender', 'INTEGER', true, null);
 
-		$tMap->addColumn('CULTURE', 'Culture', 'string', CreoleTypes::VARCHAR, false, 8);
+		$tMap->addColumn('CULTURE', 'Culture', 'VARCHAR', false, 8);
 
-		$tMap->addColumn('IS_APPROVED', 'IsApproved', 'boolean', CreoleTypes::BOOLEAN, true, null);
+		$tMap->addColumn('IS_APPROVED', 'IsApproved', 'BOOLEAN', true, null);
 
 	} 
 } 

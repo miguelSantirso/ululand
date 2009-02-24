@@ -2,7 +2,7 @@
 
 
 
-class GameStatMapBuilder {
+class GameStatMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.GameStatMapBuilder';
@@ -25,28 +25,29 @@ class GameStatMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(GameStatPeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('gamestat');
+		$tMap = $this->dbMap->addTable(GameStatPeer::TABLE_NAME);
 		$tMap->setPhpName('GameStat');
+		$tMap->setClassname('GameStat');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addColumn('UUID', 'Uuid', 'string', CreoleTypes::VARCHAR, true, 36);
+		$tMap->addColumn('UUID', 'Uuid', 'VARCHAR', true, 36);
 
-		$tMap->addForeignKey('GAME_ID', 'GameId', 'int', CreoleTypes::INTEGER, 'game', 'ID', false, null);
+		$tMap->addForeignKey('GAME_ID', 'GameId', 'INTEGER', 'game', 'ID', false, null);
 
-		$tMap->addColumn('GAMESTATTYPE', 'Gamestattype', 'string', CreoleTypes::VARCHAR, true, 6);
+		$tMap->addColumn('GAMESTATTYPE', 'Gamestattype', 'VARCHAR', true, 6);
 
-		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 255);
+		$tMap->addColumn('NAME', 'Name', 'VARCHAR', true, 255);
 
-		$tMap->addColumn('STRIPPED_NAME', 'StrippedName', 'string', CreoleTypes::VARCHAR, true, 255);
+		$tMap->addColumn('STRIPPED_NAME', 'StrippedName', 'VARCHAR', true, 255);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPTION', 'Description', 'LONGVARCHAR', false, null);
 
-		$tMap->addColumn('SCORE_LABEL', 'ScoreLabel', 'string', CreoleTypes::VARCHAR, false, 32);
+		$tMap->addColumn('SCORE_LABEL', 'ScoreLabel', 'VARCHAR', false, 32);
 
 	} 
 } 

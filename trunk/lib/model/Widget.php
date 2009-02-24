@@ -55,7 +55,7 @@ class Widget extends BaseWidget
 	 *
 	 * @param unknown_type $con
 	 */
-	public function save($con = null)
+	public function save(PropelPDO $con = null)
 	{	
 		if(!$this->getApiKey())
 		{

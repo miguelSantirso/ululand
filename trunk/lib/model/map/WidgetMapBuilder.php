@@ -2,7 +2,7 @@
 
 
 
-class WidgetMapBuilder {
+class WidgetMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.WidgetMapBuilder';
@@ -25,30 +25,31 @@ class WidgetMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(WidgetPeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('widget');
+		$tMap = $this->dbMap->addTable(WidgetPeer::TABLE_NAME);
 		$tMap->setPhpName('Widget');
+		$tMap->setClassname('Widget');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addColumn('PRIVILEGES_LEVEL', 'PrivilegesLevel', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addColumn('PRIVILEGES_LEVEL', 'PrivilegesLevel', 'INTEGER', true, null);
 
-		$tMap->addColumn('API_KEY', 'ApiKey', 'string', CreoleTypes::VARCHAR, false, 13);
+		$tMap->addColumn('API_KEY', 'ApiKey', 'VARCHAR', false, 13);
 
-		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 255);
+		$tMap->addColumn('NAME', 'Name', 'VARCHAR', true, 255);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPTION', 'Description', 'LONGVARCHAR', false, null);
 
-		$tMap->addColumn('URL', 'Url', 'string', CreoleTypes::VARCHAR, true, 255);
+		$tMap->addColumn('URL', 'Url', 'VARCHAR', true, 255);
 
-		$tMap->addColumn('WIDTH', 'Width', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addColumn('WIDTH', 'Width', 'INTEGER', true, null);
 
-		$tMap->addColumn('HEIGHT', 'Height', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addColumn('HEIGHT', 'Height', 'INTEGER', true, null);
 
-		$tMap->addColumn('BGCOLOR', 'Bgcolor', 'string', CreoleTypes::VARCHAR, false, 8);
+		$tMap->addColumn('BGCOLOR', 'Bgcolor', 'VARCHAR', false, 8);
 
 	} 
 } 

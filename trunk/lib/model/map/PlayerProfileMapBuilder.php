@@ -2,7 +2,7 @@
 
 
 
-class PlayerProfileMapBuilder {
+class PlayerProfileMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.PlayerProfileMapBuilder';
@@ -25,22 +25,23 @@ class PlayerProfileMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(PlayerProfilePeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('player_profile');
+		$tMap = $this->dbMap->addTable(PlayerProfilePeer::TABLE_NAME);
 		$tMap->setPhpName('PlayerProfile');
+		$tMap->setClassname('PlayerProfile');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addForeignKey('USER_PROFILE_ID', 'UserProfileId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
+		$tMap->addForeignKey('USER_PROFILE_ID', 'UserProfileId', 'INTEGER', 'sf_guard_user_profile', 'ID', true, null);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPTION', 'Description', 'LONGVARCHAR', false, null);
 
-		$tMap->addColumn('TOTAL_CREDITS', 'TotalCredits', 'int', CreoleTypes::INTEGER, false, null);
+		$tMap->addColumn('TOTAL_CREDITS', 'TotalCredits', 'INTEGER', false, null);
 
-		$tMap->addColumn('SPENT_CREDITS', 'SpentCredits', 'int', CreoleTypes::INTEGER, false, null);
+		$tMap->addColumn('SPENT_CREDITS', 'SpentCredits', 'INTEGER', false, null);
 
 	} 
 } 

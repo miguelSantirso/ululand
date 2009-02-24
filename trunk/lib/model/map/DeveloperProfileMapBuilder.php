@@ -2,7 +2,7 @@
 
 
 
-class DeveloperProfileMapBuilder {
+class DeveloperProfileMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.DeveloperProfileMapBuilder';
@@ -25,22 +25,23 @@ class DeveloperProfileMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(DeveloperProfilePeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('developer_profile');
+		$tMap = $this->dbMap->addTable(DeveloperProfilePeer::TABLE_NAME);
 		$tMap->setPhpName('DeveloperProfile');
+		$tMap->setClassname('DeveloperProfile');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addForeignKey('USER_PROFILE_ID', 'UserProfileId', 'int', CreoleTypes::INTEGER, 'sf_guard_user_profile', 'ID', true, null);
+		$tMap->addForeignKey('USER_PROFILE_ID', 'UserProfileId', 'INTEGER', 'sf_guard_user_profile', 'ID', true, null);
 
-		$tMap->addColumn('URL', 'Url', 'string', CreoleTypes::VARCHAR, false, 64);
+		$tMap->addColumn('URL', 'Url', 'VARCHAR', false, 64);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPTION', 'Description', 'LONGVARCHAR', false, null);
 
-		$tMap->addColumn('IS_FREE', 'IsFree', 'boolean', CreoleTypes::BOOLEAN, false, null);
+		$tMap->addColumn('IS_FREE', 'IsFree', 'BOOLEAN', false, null);
 
 	} 
 } 

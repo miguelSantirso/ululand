@@ -2,7 +2,7 @@
 
 
 
-class ChatUserOnlineMapBuilder {
+class ChatUserOnlineMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.ChatUserOnlineMapBuilder';
@@ -25,22 +25,23 @@ class ChatUserOnlineMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(ChatUserOnlinePeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('chat_useronline');
+		$tMap = $this->dbMap->addTable(ChatUserOnlinePeer::TABLE_NAME);
 		$tMap->setPhpName('ChatUserOnline');
+		$tMap->setClassname('ChatUserOnline');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addColumn('USER_UUID', 'UserUuid', 'string', CreoleTypes::VARCHAR, true, 36);
+		$tMap->addColumn('USER_UUID', 'UserUuid', 'VARCHAR', true, 36);
 
-		$tMap->addColumn('USER_NAME', 'UserName', 'string', CreoleTypes::VARCHAR, true, 64);
+		$tMap->addColumn('USER_NAME', 'UserName', 'VARCHAR', true, 64);
 
-		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'TIMESTAMP', false, null);
 
-		$tMap->addColumn('UPDATED_AT', 'UpdatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+		$tMap->addColumn('UPDATED_AT', 'UpdatedAt', 'TIMESTAMP', false, null);
 
 	} 
 } 

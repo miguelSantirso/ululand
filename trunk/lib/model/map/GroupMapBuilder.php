@@ -2,7 +2,7 @@
 
 
 
-class GroupMapBuilder {
+class GroupMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.GroupMapBuilder';
@@ -25,24 +25,25 @@ class GroupMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(GroupPeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('grupo');
+		$tMap = $this->dbMap->addTable(GroupPeer::TABLE_NAME);
 		$tMap->setPhpName('Group');
+		$tMap->setClassname('Group');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 64);
+		$tMap->addColumn('NAME', 'Name', 'VARCHAR', true, 64);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addColumn('DESCRIPTION', 'Description', 'VARCHAR', false, 255);
 
-		$tMap->addColumn('STRIPPED_NAME', 'StrippedName', 'string', CreoleTypes::VARCHAR, true, 80);
+		$tMap->addColumn('STRIPPED_NAME', 'StrippedName', 'VARCHAR', true, 80);
 
-		$tMap->addColumn('THUMBNAIL_PATH', 'ThumbnailPath', 'string', CreoleTypes::VARCHAR, false, 255);
+		$tMap->addColumn('THUMBNAIL_PATH', 'ThumbnailPath', 'VARCHAR', false, 255);
 
-		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
+		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'TIMESTAMP', false, null);
 
 	} 
 } 

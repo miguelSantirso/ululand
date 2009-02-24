@@ -2,7 +2,7 @@
 
 
 
-class GameReleaseStatusMapBuilder {
+class GameReleaseStatusMapBuilder implements MapBuilder {
 
 	
 	const CLASS_NAME = 'lib.model.map.GameReleaseStatusMapBuilder';
@@ -25,18 +25,19 @@ class GameReleaseStatusMapBuilder {
 	
 	public function doBuild()
 	{
-		$this->dbMap = Propel::getDatabaseMap('propel');
+		$this->dbMap = Propel::getDatabaseMap(GameReleaseStatusPeer::DATABASE_NAME);
 
-		$tMap = $this->dbMap->addTable('gamereleasestatus');
+		$tMap = $this->dbMap->addTable(GameReleaseStatusPeer::TABLE_NAME);
 		$tMap->setPhpName('GameReleaseStatus');
+		$tMap->setClassname('GameReleaseStatus');
 
 		$tMap->setUseIdGenerator(true);
 
-		$tMap->addPrimaryKey('ID', 'Id', 'int', CreoleTypes::INTEGER, true, null);
+		$tMap->addPrimaryKey('ID', 'Id', 'INTEGER', true, null);
 
-		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 80);
+		$tMap->addColumn('NAME', 'Name', 'VARCHAR', true, 80);
 
-		$tMap->addColumn('DESCRIPTION', 'Description', 'string', CreoleTypes::LONGVARCHAR, false, null);
+		$tMap->addColumn('DESCRIPTION', 'Description', 'LONGVARCHAR', false, null);
 
 	} 
 } 
